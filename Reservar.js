@@ -344,3 +344,49 @@ window.location.href="Requisitar livro.html";
 });
 
 }
+const menu=document.querySelector(".menu");
+const abrirMenu=document.getElementById("abrirMenu");
+const overlay=document.getElementById("overlay");
+
+
+function abrir(){
+
+menu.classList.add("ativo");
+
+overlay.classList.add("ativo");
+
+}
+
+
+function fechar(){
+
+menu.classList.remove("ativo");
+
+overlay.classList.remove("ativo");
+
+}
+
+
+if(abrirMenu){
+
+abrirMenu.onclick=abrir;
+
+}
+
+
+if(overlay){
+
+overlay.onclick=fechar;
+
+}
+
+
+document.addEventListener("keydown",e=>{
+
+if(e.key==="Escape"){
+
+fechar();
+
+}
+
+});
