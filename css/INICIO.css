@@ -281,3 +281,606 @@ a{
 .Economia{background:linear-gradient(135deg,#f97316,#ea580c);}
 .romance{background:linear-gradient(135deg,#ec4899,#db2777);}
 .outros{background:linear-gradient(135deg,#94a3b8,#64748b);}
+.painel{
+
+    background:linear-gradient(180deg,#0f172a,#1e293b);
+
+    border-radius:25px;
+
+    padding:25px;
+
+    color:#fff;
+
+    box-shadow:var(--sombra);
+
+}
+
+.livro-destaque{
+
+    width:100%;
+
+}
+
+.imag{
+
+    width:100%;
+
+    height:300px;
+
+    object-fit:cover;
+
+    border-radius:20px;
+
+    transition:.3s;
+
+}
+
+.imag:hover{
+
+    transform:scale(1.03);
+
+}
+
+.text{
+
+    margin-top:20px;
+
+    font-size:15px;
+
+    line-height:1.8;
+
+    color:#e2e8f0;
+
+}
+
+.btn-reservar{
+
+    display:block;
+
+    width:90%;
+
+    margin:30px auto 0;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#16a34a;
+
+    color:#fff;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.btn-reservar:hover{
+
+    background:#2563eb;
+
+    transform:translateY(-3px);
+
+}
+
+
+.futer{
+
+    width:100%;
+
+    margin-top:40px;
+
+    padding:50px 25px;
+
+    text-align:center;
+
+    color:#fff;
+
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+
+}
+
+.futer h2{
+
+    margin-bottom:15px;
+
+}
+
+.futer p{
+
+    color:#dbeafe;
+
+    line-height:1.8;
+
+}
+
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.6);
+
+    backdrop-filter:blur(8px);
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+
+}
+
+.modal.show{
+
+    display:flex;
+
+}
+
+.modal-conteudo{
+
+    width:90%;
+
+    max-width:900px;
+
+    background:#fff;
+
+    border-radius:25px;
+
+    padding:30px;
+
+    box-shadow:0 25px 60px rgba(0,0,0,.3);
+
+}
+
+.modal-topo{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+.modal-topo button{
+
+    border:none;
+
+    background:#ef4444;
+
+    color:#fff;
+
+    padding:10px 15px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+}
+
+
+.grid-definicoes{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+}
+
+.card-def{
+
+    background:#f8fafc;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    border:1px solid #e2e8f0;
+
+    transition:.3s;
+
+    cursor:pointer;
+
+}
+
+.card-def:hover{
+
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+
+    color:#fff;
+
+    transform:translateY(-5px);
+
+}
+
+
+.switch{
+
+    position:relative;
+
+    display:inline-block;
+
+    width:60px;
+
+    height:30px;
+
+}
+
+.switch input{
+
+    display:none;
+
+}
+
+.slider{
+
+    position:absolute;
+
+    inset:0;
+
+    background:#cbd5e1;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.slider::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:24px;
+
+    height:24px;
+
+    left:3px;
+
+    bottom:3px;
+
+    background:#fff;
+
+    border-radius:50%;
+
+    transition:.3s;
+
+}
+
+input:checked + .slider{
+
+    background:#2563eb;
+
+}
+
+input:checked + .slider::before{
+
+    @media(max-width:1200px){
+
+    .app{
+
+        grid-template-columns:250px 1fr;
+
+    }
+
+    .painel{
+
+        grid-column:1/-1;
+
+    }
+
+}
+
+
+@media(max-width:900px){
+
+    .app{
+
+        display:flex;
+
+        flex-direction:column;
+
+        padding:15px;
+
+    }
+
+    .menu{
+
+        width:100%;
+
+        position:relative;
+
+        top:0;
+
+    }
+
+    .conteudo{
+
+        width:100%;
+
+    }
+
+    .painel{
+
+        width:100%;
+
+    }
+
+    .categorias-caixa{
+
+        grid-template-columns:repeat(3,1fr);
+
+    }
+
+}
+
+
+@media(max-width:768px){
+
+    body{
+
+        font-size:15px;
+
+    }
+
+    .app{
+
+        padding:10px;
+
+        gap:15px;
+
+    }
+
+    .menu{
+
+        border-radius:20px;
+
+        padding:20px;
+
+    }
+
+    .icone{
+
+        font-size:18px;
+
+    }
+
+    .top,
+    #content{
+
+        padding:20px;
+
+        border-radius:20px;
+
+    }
+
+    .top h2{
+
+        font-size:22px;
+
+        text-align:center;
+
+    }
+
+    .livro{
+
+        flex:0 0 160px;
+
+    }
+
+    .livro img{
+
+        height:240px;
+
+    }
+
+    .categorias-caixa{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .categoria-caixa{
+
+        padding:18px;
+
+    }
+
+    .painel{
+
+        padding:20px;
+
+    }
+
+    .imag{
+
+        height:250px;
+
+    }
+
+    .modal-conteudo{
+
+        width:95%;
+
+        padding:20px;
+
+    }
+
+    .grid-definicoes{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+
+@media(max-width:480px){
+
+    .app{
+
+        padding:8px;
+
+    }
+
+    .user-box{
+
+        width:100%;
+
+        margin:10px auto;
+
+    }
+
+    .user-box img{
+
+        width:50px;
+
+        height:50px;
+
+    }
+
+    .top,
+    #content,
+    .painel{
+
+        padding:15px;
+
+    }
+
+    .top h2{
+
+        font-size:20px;
+
+    }
+
+    .livros{
+
+        gap:12px;
+
+    }
+
+    .livro{
+
+        flex:0 0 145px;
+
+    }
+
+    .livro img{
+
+        height:220px;
+
+    }
+
+    .titulo{
+
+        font-size:14px;
+
+    }
+
+    .Autor{
+
+        font-size:13px;
+
+    }
+
+    .categorias-caixa{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .categoria-caixa{
+
+        min-height:130px;
+
+    }
+
+    .painel .text{
+
+        font-size:14px;
+
+        line-height:1.6;
+
+    }
+
+    .btn-reservar{
+
+        width:100%;
+
+        font-size:16px;
+
+    }
+
+    .futer{
+
+        padding:35px 15px;
+
+    }
+
+    .futer h2{
+
+        font-size:20px;
+
+    }
+
+}
+
+
+@media(max-width:360px){
+
+    .icone{
+
+        font-size:16px;
+
+    }
+
+    .menu-lista li{
+
+        padding:12px;
+
+        font-size:14px;
+
+    }
+
+    .livro{
+
+        flex:0 0 130px;
+
+    }
+
+    .livro img{
+
+        height:200px;
+
+    }
+
+    .categoria-caixa h3{
+
+        font-size:16px;
+
+    }
+
+}
+
+    transform:translateX(30px);
+
+}
+
