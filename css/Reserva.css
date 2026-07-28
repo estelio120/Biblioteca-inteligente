@@ -30,9 +30,9 @@ display:none;
 border:none;
 background:#2563eb;
 color:white;
-font-size:50px;
-width:75px;
-height:55px;
+font-size:25px;
+width:45px;
+height:45px;
 border-radius:12px;
 cursor:pointer;
 display:flex;
@@ -64,7 +64,7 @@ min-height:100vh;
 .menu{
 background:white;
 border-radius:25px;
-padding:36px;
+padding:25px;
 height:calc(100vh - 40px);
 position:sticky;
 top:20px;
@@ -75,7 +75,7 @@ overflow-y:auto;
 
 .icone{
 text-align:center;
-font-size:30px;
+font-size:20px;
 font-weight:700;
 color:#2563eb;
 margin-bottom:10px;
@@ -104,12 +104,12 @@ color:inherit;
 display:flex;
 align-items:center;
 gap:12px;
-padding:25px;
+padding:15px;
 margin-bottom:10px;
 border-radius:15px;
 cursor:pointer;
 transition:.3s;
-font-size:40px;
+font-size:15px;
 }
 
 .menu-lista li:hover{
@@ -153,7 +153,7 @@ box-shadow:0 5px 20px rgba(0,0,0,.12);
 }
 
 .header h2{
-font-size:48px;
+font-size:18px;
 color:#2563eb;
 }
 
@@ -166,8 +166,8 @@ padding:15px;
 position:fixed;
 left:-320px;
 top:0;
-width:380px;
-height:50vh;
+width:280px;
+height:100vh;
 border-radius:0 25px 25px 0;
 transition:.4s ease;
 box-shadow:10px 0 30px rgba(0,0,0,.2);
@@ -187,26 +187,28 @@ padding:15px;
 @media(max-width:500px){
 
 .menu{
-width:360px;
+width:260px;
 }
 
 .header h2{
-font-size:30px;
+font-size:16px;
 }
 
 .icone{
-font-size:27px;
+font-size:17px;
 }
 
 .TE{
-font-size:30px;
+font-size:12px;
 }
 
 .menu-lista li{
 font-size:14px;
 padding:13px;
 }
-  .conteudo h2{
+
+}
+.conteudo h2{
 font-size:28px;
 margin-bottom:10px;
 }
@@ -225,11 +227,11 @@ margin-bottom:25px;
 
 
 #pesquisa{
-width:190%;
+width:100%;
 padding:14px 18px;
 border-radius:12px;
 border:1px solid #d1d5db;
-font-size:30px;
+font-size:16px;
 outline:none;
 transition:.3s;
 }
@@ -319,7 +321,7 @@ background:#22c55e;
 color:white;
 padding:6px 15px;
 border-radius:20px;
-font-size:34px;
+font-size:13px;
 font-weight:bold;
 z-index:2;
 }
@@ -334,7 +336,7 @@ margin-top:15px;
 
 
 .info h3{
-font-size:45px;
+font-size:18px;
 text-align:center;
 color:#1f2937;
 }
@@ -349,7 +351,7 @@ color:#64748b;
 .categoria{
 text-align:center;
 color:#2563eb;
-font-size:34px;
+font-size:14px;
 font-weight:bold;
 }
 
@@ -451,7 +453,8 @@ width:100%;
 
 
 }
-  .popupPagamento{
+
+.popupPagamento{
 width:700px;
 max-width:95%;
 background:#fff;
@@ -799,8 +802,6 @@ text-align:center;
 
 .futer{
 padding:40px 20px;
-}
-
 }
 
 }
