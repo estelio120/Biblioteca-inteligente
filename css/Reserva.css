@@ -120,7 +120,56 @@ inset:0;
 background:rgba(0,0,0,.5);
 z-index:1200;
 }
+@media(max-width:900px){
 
+
+.header{
+display:flex;
+align-items:center;
+gap:15px;
+padding:15px;
+background:white;
+position:sticky;
+top:0;
+z-index:1100;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+
+.header h2{
+font-size:18px;
+}
+
+
+.menu{
+
+position:fixed;
+
+left:-300px;
+
+top:0;
+
+width:280px;
+
+height:100vh;
+
+border-radius:0 25px 25px 0;
+
+transition:.4s;
+
+overflow-y:auto;
+
+}
+
+
+.menu.ativo{
+
+left:0;
+
+}
+
+
+}
 
 /* CONTEUDO */
 
