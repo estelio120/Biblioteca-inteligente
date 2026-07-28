@@ -56,6 +56,31 @@ reservar.onmouseleave=()=>{
 reservar.style.transform="scale(1)";
 };
 }
+const menu=document.querySelector(".menu");
+const overlay=document.getElementById("overlay");
+const abrirMenu=document.getElementById("abrirMenu");
+
+function abrir(){
+menu.classList.add("ativo");
+overlay.classList.add("ativo");
+document.body.style.overflow="hidden";
+}
+
+function fechar(){
+menu.classList.remove("ativo");
+overlay.classList.remove("ativo");
+document.body.style.overflow="auto";
+}
+
+abrirMenu.addEventListener("click",abrir);
+
+overlay.addEventListener("click",fechar);
+
+document.addEventListener("keydown",function(e){
+if(e.key==="Escape"){
+fechar();
+}
+});
 
 setTimeout(()=>{
 alert("📚 Bem-vindo à Biblioteca Digital Inteligente de Pemba!");
