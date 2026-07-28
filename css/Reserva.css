@@ -8,7 +8,7 @@ font-family:Arial,sans-serif;
 :root{
 --azul:#2563eb;
 --verde:#119b73;
---branco:#fff;
+--branco:#ffffff;
 --sombra:0 10px 30px rgba(0,0,0,.15);
 }
 
@@ -22,43 +22,44 @@ text-decoration:none;
 color:inherit;
 }
 
-
-/* BOTÃO MENU MOBILE */
-
 .header{
 display:none;
-background:white;
-padding:15px;
-align-items:center;
-gap:15px;
-position:sticky;
-top:0;
-z-index:2000;
-box-shadow:0 5px 20px rgba(0,0,0,.1);
 }
 
 .menu-btn{
+border:none;
 background:#2563eb;
 color:white;
-border:none;
 font-size:25px;
 width:45px;
 height:45px;
-border-radius:10px;
+border-radius:12px;
 cursor:pointer;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
-/* ESTRUTURA */
+#overlay{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.55);
+z-index:900;
+backdrop-filter:blur(3px);
+}
+
+#overlay.ativo{
+display:block;
+}
 
 .app{
 display:grid;
 grid-template-columns:280px 1fr;
 gap:25px;
 padding:20px;
+min-height:100vh;
 }
-
-
-/* MENU */
 
 .menu{
 background:white;
@@ -68,18 +69,17 @@ height:calc(100vh - 40px);
 position:sticky;
 top:20px;
 box-shadow:var(--sombra);
-z-index:1500;
+z-index:1000;
+overflow-y:auto;
 }
-
 
 .icone{
 text-align:center;
 font-size:20px;
-font-weight:bold;
-color:var(--azul);
+font-weight:700;
+color:#2563eb;
 margin-bottom:10px;
 }
-
 
 .TE{
 text-align:center;
@@ -88,11 +88,17 @@ color:#64748b;
 margin-bottom:30px;
 }
 
-
 .menu-lista{
 list-style:none;
+padding:0;
+margin:0;
 }
 
+.menu-lista a{
+display:block;
+text-decoration:none;
+color:inherit;
+}
 
 .menu-lista li{
 display:flex;
@@ -103,75 +109,26 @@ margin-bottom:10px;
 border-radius:15px;
 cursor:pointer;
 transition:.3s;
+font-size:15px;
 }
-
 
 .menu-lista li:hover{
-background:linear-gradient(135deg,#2563eb,#7c3aed);
+background:linear-gradient(
+135deg,
+#2563eb,
+#7c3aed
+);
 color:white;
-transform:translateX(5px);
+transform:translateX(6px);
 }
 
-
-#overlay{
-display:none;
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.5);
-z-index:1200;
+#conta1:hover{
+background:linear-gradient(
+135deg,
+#ef4444,
+#dc2626
+);
 }
-@media(max-width:900px){
-
-
-.header{
-display:flex;
-align-items:center;
-gap:15px;
-padding:15px;
-background:white;
-position:sticky;
-top:0;
-z-index:1100;
-box-shadow:0 5px 20px rgba(0,0,0,.1);
-}
-
-
-.header h2{
-font-size:18px;
-}
-
-
-.menu{
-
-position:fixed;
-
-left:-300px;
-
-top:0;
-
-width:280px;
-
-height:100vh;
-
-border-radius:0 25px 25px 0;
-
-transition:.4s;
-
-overflow-y:auto;
-
-}
-
-
-.menu.ativo{
-
-left:0;
-
-}
-
-
-}
-
-/* CONTEUDO */
 
 .conteudo{
 background:white;
@@ -181,10 +138,81 @@ box-shadow:var(--sombra);
 width:100%;
 }
 
+@media(max-width:900px){
 
-.conteudo h2{
+.header{
+display:flex;
+align-items:center;
+gap:15px;
+padding:15px;
+background:white;
+position:sticky;
+top:0;
+z-index:1200;
+box-shadow:0 5px 20px rgba(0,0,0,.12);
+}
+
+.header h2{
+font-size:18px;
+color:#2563eb;
+}
+
+.app{
+display:block;
+padding:15px;
+}
+
+.menu{
+position:fixed;
+left:-320px;
+top:0;
+width:280px;
+height:100vh;
+border-radius:0 25px 25px 0;
+transition:.4s ease;
+box-shadow:10px 0 30px rgba(0,0,0,.2);
+z-index:1100;
+}
+
+.menu.ativo{
+left:0;
+}
+
+.conteudo{
+padding:15px;
+}
+
+}
+
+@media(max-width:500px){
+
+.menu{
+width:260px;
+}
+
+.header h2{
+font-size:16px;
+}
+
+.icone{
+font-size:17px;
+}
+
+.TE{
+font-size:12px;
+}
+
+.menu-lista li{
+font-size:14px;
+padding:13px;
+}
+  .conteudo h2{
 font-size:28px;
 margin-bottom:10px;
+}
+
+.conteudo p{
+color:#64748b;
 }
 
 
@@ -192,26 +220,53 @@ margin-bottom:10px;
 position:relative;
 width:100%;
 max-width:450px;
-margin-bottom:20px;
+margin-bottom:25px;
 }
 
 
 #pesquisa{
 width:100%;
-padding:14px;
+padding:14px 18px;
 border-radius:12px;
-border:1px solid #ddd;
+border:1px solid #d1d5db;
 font-size:16px;
 outline:none;
+transition:.3s;
 }
 
 
 #pesquisa:focus{
 border-color:#2563eb;
+box-shadow:0 0 10px rgba(37,99,235,.2);
 }
 
 
-/* LIVROS */
+#sugestoes{
+position:absolute;
+top:100%;
+left:0;
+width:100%;
+background:white;
+border-radius:0 0 12px 12px;
+box-shadow:0 10px 25px rgba(0,0,0,.15);
+z-index:500;
+display:none;
+max-height:200px;
+overflow-y:auto;
+}
+
+
+.item-sugestao{
+padding:12px;
+cursor:pointer;
+transition:.3s;
+}
+
+
+.item-sugestao:hover{
+background:#f1f5f9;
+}
+
 
 .conte{
 display:grid;
@@ -232,11 +287,13 @@ transition:.3s;
 position:relative;
 display:flex;
 flex-direction:column;
+overflow:hidden;
 }
 
 
 .card:hover{
-transform:translateY(-5px);
+transform:translateY(-8px);
+box-shadow:0 18px 40px rgba(0,0,0,.15);
 }
 
 
@@ -245,6 +302,12 @@ width:100%;
 height:260px;
 object-fit:cover;
 border-radius:15px;
+transition:.3s;
+}
+
+
+.card:hover img{
+transform:scale(1.03);
 }
 
 
@@ -254,32 +317,40 @@ top:25px;
 left:25px;
 background:#22c55e;
 color:white;
-padding:6px 14px;
+padding:6px 15px;
 border-radius:20px;
 font-size:13px;
+font-weight:bold;
+z-index:2;
 }
 
 
 .info{
+display:flex;
+flex-direction:column;
+gap:10px;
 margin-top:15px;
-text-align:center;
 }
 
 
 .info h3{
 font-size:18px;
-margin-bottom:10px;
+text-align:center;
+color:#1f2937;
 }
 
 
 .autor{
+text-align:center;
 color:#64748b;
 }
 
 
 .categoria{
+text-align:center;
 color:#2563eb;
-margin-top:8px;
+font-size:14px;
+font-weight:bold;
 }
 
 
@@ -290,17 +361,14 @@ margin-top:15px;
 }
 
 
-button{
-cursor:pointer;
-}
-
-
 .btnDetalhes,
 .btnReservar{
 flex:1;
-padding:10px;
+padding:11px;
 border-radius:10px;
 font-weight:bold;
+cursor:pointer;
+transition:.3s;
 }
 
 
@@ -311,221 +379,44 @@ color:#2563eb;
 }
 
 
+.btnDetalhes:hover{
+background:#2563eb;
+color:white;
+}
+
+
 .btnReservar{
 border:none;
-background:#119b73;
+background:linear-gradient(
+135deg,
+#119b73,
+#27b58b
+);
 color:white;
 }
 
 
-
-/* POPUP */
-
-.popup{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.7);
-display:none;
-justify-content:center;
-align-items:center;
-padding:20px;
-z-index:3000;
+.btnReservar:hover{
+transform:scale(1.05);
 }
 
 
-.popup-conteudo{
-background:white;
-width:900px;
-max-width:100%;
-max-height:90vh;
-overflow-y:auto;
-padding:30px;
-border-radius:25px;
-}
+@media(max-width:900px){
 
-
-.popup-topo{
-display:flex;
-gap:30px;
-}
-
-
-.popup-capa{
-width:250px;
-}
-
-
-.popup-capa img{
-width:100%;
-border-radius:20px;
-}
-
-
-.beneficios{
-display:grid;
+.conte{
 grid-template-columns:repeat(2,1fr);
-gap:20px;
-}
-
-
-.beneficio{
-padding:20px;
-background:#f8fafc;
-border-radius:15px;
-}
-
-
-.caixaReserva,
-.caixaPDF{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:20px;
-padding:20px;
-background:#f8fafc;
-border-radius:20px;
-margin-top:20px;
-}
-
-
-.btnReservarGrande,
-.btnComprarGrande{
-padding:15px 30px;
-border:none;
-border-radius:15px;
-background:#119b73;
-color:white;
-font-size:17px;
-}
-
-
-.btnComprarGrande{
-background:#2563eb;
-}
-
-
-
-/* PAGAMENTO */
-
-.popupPagamento{
-background:white;
-width:700px;
-max-width:100%;
-padding:30px;
-border-radius:25px;
-}
-
-
-.checkoutLivro{
-display:flex;
-gap:20px;
-align-items:center;
-background:#f8fafc;
-padding:20px;
-border-radius:15px;
-}
-
-
-.checkoutLivro img{
-width:120px;
-height:160px;
-object-fit:cover;
-border-radius:15px;
-}
-
-
-.cartaoPagamento{
-display:flex;
-align-items:center;
 gap:15px;
 padding:15px;
-border:2px solid #ddd;
-border-radius:15px;
-margin-top:10px;
 }
 
-
-.dadosPagamento input{
-width:100%;
-padding:14px;
-border-radius:10px;
-border:1px solid #ccc;
-margin-top:8px;
+.card img{
+height:230px;
 }
-
-
-.btnConfirmarPagamento{
-width:100%;
-padding:16px;
-background:#119b73;
-border:none;
-border-radius:15px;
-color:white;
-font-size:18px;
-margin-top:20px;
-}
-
-
-/* FOOTER */
-
-.futer{
-background:linear-gradient(135deg,#2563eb,#7c3aed);
-padding:50px 20px;
-text-align:center;
-color:white;
-margin-top:40px;
-}
-
-
-
-/* TABLET */
-
-@media(max-width:1000px){
-
-.app{
-grid-template-columns:1fr;
-}
-
-
-.menu{
-position:fixed;
-left:-320px;
-top:0;
-height:100vh;
-width:280px;
-border-radius:0 25px 25px 0;
-transition:.4s;
-}
-
-
-.menu.ativo{
-left:0;
-}
-
-
-#overlay.ativo{
-display:block;
-}
-
-
-.header{
-display:flex;
-}
-
 
 }
 
-
-
-/* TELEFONE */
 
 @media(max-width:600px){
-
-
-.conteudo{
-padding:15px;
-}
-
 
 .conte{
 grid-template-columns:1fr;
@@ -533,38 +424,18 @@ padding:10px;
 }
 
 
+.conteudo h2{
+font-size:22px;
+}
+
+
+.card{
+padding:12px;
+}
+
+
 .card img{
-height:230px;
-}
-
-
-.popup-topo{
-flex-direction:column;
-align-items:center;
-text-align:center;
-}
-
-
-.popup-capa{
-width:200px;
-}
-
-
-.beneficios{
-grid-template-columns:1fr;
-}
-
-
-.caixaReserva,
-.caixaPDF{
-flex-direction:column;
-text-align:center;
-}
-
-
-.checkoutLivro{
-flex-direction:column;
-text-align:center;
+height:250px;
 }
 
 
@@ -579,29 +450,357 @@ width:100%;
 }
 
 
-.icone{
-font-size:17px;
+}
+  .popupPagamento{
+width:700px;
+max-width:95%;
+background:#fff;
+border-radius:22px;
+padding:30px;
+box-shadow:0 20px 50px rgba(0,0,0,.25);
+}
+
+.checkoutHeader{
+display:flex;
+align-items:center;
+gap:18px;
+margin-bottom:25px;
+padding-bottom:18px;
+border-bottom:1px solid #ececec;
+}
+
+.iconeCheckout{
+width:70px;
+height:70px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:35px;
+background:linear-gradient(135deg,#119b73,#27b58b);
+color:#fff;
+border-radius:50%;
+}
+
+.checkoutHeader h2{
+color:#1f2937;
+font-size:28px;
+margin-bottom:6px;
+}
+
+.checkoutHeader p{
+color:#666;
+}
+
+.checkoutLivro{
+display:flex;
+gap:20px;
+align-items:center;
+background:#f8fafc;
+padding:18px;
+border-radius:15px;
+margin-bottom:25px;
+}
+
+.checkoutLivro img{
+width:120px;
+height:170px;
+object-fit:cover;
+border-radius:12px;
+box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+.checkoutInfo{
+flex:1;
+}
+
+.checkoutInfo h3{
+color:#222;
+font-size:24px;
+margin-bottom:8px;
+}
+
+.checkoutInfo p{
+color:#666;
+margin-bottom:12px;
+}
+
+.livroDigital{
+display:inline-block;
+background:#dcfce7;
+color:#15803d;
+padding:8px 16px;
+border-radius:30px;
+font-weight:bold;
+font-size:14px;
+}
+
+.resumoCompra{
+background:#fafafa;
+border:1px solid #ececec;
+border-radius:15px;
+padding:20px;
+margin-bottom:25px;
+}
+
+.resumoCompra h3{
+color:#1f2937;
+margin-bottom:18px;
+}
+
+.linhaResumo{
+display:flex;
+justify-content:space-between;
+margin-bottom:12px;
+color:#555;
+}
+
+.total{
+margin-top:15px;
+padding-top:15px;
+border-top:1px dashed #ccc;
+font-size:20px;
+font-weight:bold;
+color:#119b73;
+}
+
+.metodoPagamento{
+margin-bottom:25px;
+}
+
+.metodoPagamento h3{
+margin-bottom:18px;
+color:#1f2937;
+}
+
+.opcaoPagamento{
+display:block;
+margin-bottom:15px;
+cursor:pointer;
+}
+
+.opcaoPagamento input{
+display:none;
+}
+
+.cartaoPagamento{
+display:flex;
+align-items:center;
+gap:18px;
+padding:18px;
+border:2px solid #ddd;
+border-radius:15px;
+background:#fff;
+}
+
+.cartaoPagamento:hover{
+border-color:#119b73;
+background:#f6fffb;
+transform:translateY(-2px);
+}
+
+.opcaoPagamento input:checked + .cartaoPagamento{
+border:2px solid #119b73;
+background:#eefdf7;
+}
+
+.logoMpesa,
+.logoEmola{
+width:65px;
+height:65px;
+object-fit:contain;
+border-radius:15px;
+background:#fff;
+padding:8px;
+border:1px solid #e5e7eb;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.cartaoPagamento strong{
+font-size:18px;
+color:#222;
+}
+
+.cartaoPagamento p{
+color:#666;
+margin-top:5px;
+}
+
+.dadosPagamento{
+margin-bottom:20px;
+}
+
+.dadosPagamento label{
+display:block;
+margin-bottom:8px;
+font-weight:bold;
+color:#374151;
+}
+
+.dadosPagamento input{
+width:100%;
+padding:14px;
+border:1px solid #d1d5db;
+border-radius:10px;
+font-size:16px;
+outline:none;
+}
+
+.dadosPagamento input:focus{
+border-color:#119b73;
+box-shadow:0 0 8px rgba(17,155,115,.25);
+}
+
+.seguranca{
+text-align:center;
+margin-top:15px;
+font-size:13px;
+color:#6b7280;
+}
+
+.btnConfirmarPagamento{
+width:100%;
+padding:16px;
+border:none;
+border-radius:14px;
+background:linear-gradient(135deg,#119b73,#27b58b);
+color:#fff;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+box-shadow:0 12px 25px rgba(17,155,115,.25);
+}
+
+.btnConfirmarPagamento:hover{
+transform:translateY(-3px);
+}
+
+.futer{
+width:100%;
+padding:60px 40px;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+color:white;
+text-align:center;
+margin-top:40px;
+}
+
+.futer h2{
+margin-bottom:15px;
+}
+
+.futer p{
+color:#cbd5e1;
+line-height:1.8;
+}
+
+@media(max-width:1100px){
+
+.app{
+grid-template-columns:240px 1fr;
 }
 
 }
 
+@media(max-width:850px){
 
-/* TELEFONES PEQUENOS */
-
-@media(max-width:380px){
-
-.conteudo h2{
-font-size:22px;
+body{
+overflow-x:hidden;
 }
 
-
-.card img{
-height:200px;
+.app{
+display:block;
+padding:10px;
 }
-
 
 .menu{
-width:260px;
+position:fixed;
+left:-300px;
+top:0;
+width:280px;
+height:100vh;
+z-index:2000;
+border-radius:0 25px 25px 0;
+transition:.3s;
+}
+
+.menu.ativo{
+left:0;
+}
+
+.conteudo{
+margin:0;
+width:100%;
+}
+
+.conte{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:600px){
+
+.conte{
+grid-template-columns:1fr;
+padding:10px;
+}
+
+.card{
+width:100%;
+}
+
+.card img{
+height:230px;
+}
+
+.popup-conteudo{
+padding:20px;
+}
+
+.popup-topo{
+flex-direction:column;
+align-items:center;
+text-align:center;
+}
+
+.popup-capa{
+width:200px;
+}
+
+.beneficios{
+grid-template-columns:1fr;
+}
+
+.caixaReserva,
+.caixaPDF{
+flex-direction:column;
+gap:20px;
+text-align:center;
+}
+
+.checkoutHeader{
+flex-direction:column;
+text-align:center;
+}
+
+.checkoutLivro{
+flex-direction:column;
+text-align:center;
+}
+
+.checkoutLivro img{
+width:160px;
+height:220px;
+}
+
+.cartaoPagamento{
+flex-direction:column;
+text-align:center;
+}
+
+.futer{
+padding:40px 20px;
+}
+
 }
 
 }
