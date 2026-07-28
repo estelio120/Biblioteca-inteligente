@@ -1,0 +1,719 @@
+/* ==========================================
+   BIBLIOTECA DIGITAL INTELIGENTE
+   STYLE.CSS
+========================================== */
+
+/* ========= RESET ========= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Segoe UI',sans-serif;
+
+    background:#f4f7fb;
+
+    color:#1e293b;
+
+    overflow-x:hidden;
+
+    min-height:100vh;
+}
+
+/* ========= VARIÁVEIS ========= */
+
+:root{
+
+    --primary:#2563eb;
+
+    --secondary:#7c3aed;
+
+    --success:#10b981;
+
+    --danger:#ef4444;
+
+    --dark:#0f172a;
+
+    --card:#ffffff;
+
+    --text:#1e293b;
+
+    --text-light:#64748b;
+
+    --border:#e2e8f0;
+
+    --shadow:
+    0 10px 30px rgba(0,0,0,.08);
+
+    --shadow-hover:
+    0 20px 50px rgba(0,0,0,.15);
+
+    --radius:20px;
+}
+
+/* ========= APP ========= */
+
+.app{
+
+    display:grid;
+
+    grid-template-columns:
+    280px
+    1fr
+    330px;
+
+    gap:25px;
+
+    min-height:100vh;
+
+    padding:20px;
+}
+/* ==========================================
+   MENU LATERAL
+========================================== */
+
+.menu{
+
+    background:
+    rgba(255,255,255,.9);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:25px;
+
+    padding:25px;
+
+    box-shadow:var(--shadow);
+
+    position:sticky;
+
+    top:20px;
+
+    height:calc(100vh - 40px);
+}
+
+/* LOGO */
+
+.icone{
+
+    font-size:26px;
+
+    font-weight:700;
+
+    color:var(--primary);
+
+    margin-bottom:10px;
+}
+
+.TE{
+
+    font-size:15px;
+
+    color:var(--text-light);
+
+    margin-bottom:35px;
+}
+
+/* MENU */
+
+.menu-lista{
+
+    list-style:none;
+}
+
+.menu-lista li{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    padding:15px;
+
+    margin-bottom:12px;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.menu-lista li a{
+
+    text-decoration:none;
+
+    color:inherit;
+}
+
+/* HOVER */
+
+.menu-lista li:hover{
+
+    background:
+    linear-gradient(
+    135deg,
+    #2563eb,
+    #7c3aed
+    );
+
+    color:white;
+
+    transform:translateX(8px);
+
+    box-shadow:
+    0 15px 30px rgba(37,99,235,.25);
+}
+
+/* ITEM ATIVO */
+
+.menu-lista li:first-child{
+
+    background:
+    linear-gradient(
+    135deg,
+    #2563eb,
+    #7c3aed
+    );
+
+    color:white;
+}
+.user-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    background:white;
+
+    padding:15px;
+
+    border-radius:18px;
+
+    margin-bottom:30px;
+
+    box-shadow:var(--shadow);
+}
+
+.user-box img{
+
+    width:55px;
+
+    height:55px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+}
+
+.user-box h4{
+
+    font-size:15px;
+}
+
+.user-box p{
+
+    font-size:12px;
+
+    color:var(--text-light);
+}
+
+.conteudo{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+}
+.busca{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:10px;
+}
+
+.busca input{
+
+    width:100%;
+
+    padding:16px 25px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:50px;
+
+    background:white;
+
+    box-shadow:var(--shadow);
+
+    font-size:15px;
+
+    transition:.3s;
+}
+
+.busca input:focus{
+
+    box-shadow:
+    0 0 25px rgba(37,99,235,.25);
+}
+/* ==========================================
+   LIVROS RECOMENDADOS
+========================================== */
+
+.top{
+
+    background:white;
+
+    border-radius:25px;
+
+    padding:30px;
+
+    box-shadow:var(--shadow);
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+/* TÍTULO */
+
+.top h2{
+
+    font-size:28px;
+
+    color:#0f172a;
+
+    margin-bottom:30px;
+}
+
+/* CONTAINER DOS LIVROS */
+
+.livros{
+
+    display:flex;
+
+    align-items:flex-end;
+
+    gap:25px;
+
+    overflow-x:auto;
+
+    padding:15px 5px;
+
+    scrollbar-width:none;
+}
+
+.livros::-webkit-scrollbar{
+    display:none;
+}
+.livro1,
+.livro2,
+.livro3,
+.livro4,
+.livro5,
+.livro6{
+
+    position:relative;
+
+    flex-shrink:0;
+
+    cursor:pointer;
+
+    transition:.4s;
+
+    transform-style:preserve-3d;
+}
+.livro1:hover,
+.livro2:hover,
+.livro3:hover,
+.livro4:hover,
+.livro5:hover,
+.livro6:hover{
+
+    transform:
+    translateY(-15px)
+    scale(1.08);
+
+    z-index:50;
+}
+
+.livros img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    border-radius:16px;
+
+    box-shadow:
+    0 15px 30px rgba(0,0,0,.25);
+
+    transition:.4s;
+}
+.livro1:hover img,
+.livro2:hover img,
+.livro3:hover img,
+.livro4:hover img,
+.livro5:hover img,
+.livro6:hover img{
+
+    transform:scale(1.05);
+}
+.livro1{
+
+    width:220px;
+
+    height:320px;
+}
+
+.livro2{
+
+    width:200px;
+
+    height:290px;
+}
+
+.livro3{
+
+    width:180px;
+
+    height:260px;
+}
+
+.livro4{
+
+    width:160px;
+
+    height:230px;
+}
+
+.livro5{
+
+    width:140px;
+
+    height:210px;
+}
+
+.livro6{
+
+    width:120px;
+
+    height:190px;
+}
+
+.titulo{
+
+    margin-top:12px;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    color:#0f172a;
+
+    line-height:1.4;
+}
+
+.Autor{
+
+    margin-top:5px;
+
+    font-size:12px;
+
+    color:#64748b;
+}
+
+.livro1::before,
+.livro2::before,
+.livro3::before,
+.livro4::before,
+.livro5::before,
+.livro6::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+    to top,
+    rgba(0,0,0,.5),
+    transparent
+    );
+
+    border-radius:16px;
+
+    opacity:0;
+
+    transition:.4s;
+    .livro1{
+
+    animation:aparecerLivro .8s ease;
+}
+
+.livro2{
+
+    animation:aparecerLivro 1s ease;
+}
+
+.livro3{
+
+    animation:aparecerLivro 1.2s ease;
+}
+
+.livro4{
+
+    animation:aparecerLivro 1.4s ease;
+}
+
+.livro5{
+
+    animation:aparecerLivro 1.6s ease;
+}
+
+.livro6{
+
+    animation:aparecerLivro 1.8s ease;
+}
+}
+.top::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:5px;
+
+    background:
+    linear-gradient(
+    90deg,
+    #2563eb,
+    #7c3aed,
+    #06b6d4
+    );
+}
+
+.content{
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+.content p{
+    color:#6b7280;
+}
+
+.categorias-caixa{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:15px;
+}
+
+.categoria-caixa{
+    padding:20px;
+    border-radius:16px;
+    color:white;
+    transition: transform 0.3s ease;
+    text-decoration:none;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.categoria-caixa .icone{
+    font-size:28px;
+}
+ .card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  padding: 25px;
+  color: white;
+  font-weight: 600;
+  height: 120px;
+}
+
+
+.categoria-caixa::before{
+  content: "";
+  position:absolute;
+  width: 100px;
+  height: 100px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%;
+  top: -10px;
+  right: -20px;
+}
+
+
+.categoria-caixa::after{
+  content: "";
+  position: absolute;
+  width: 76px;
+  height: 76px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 60%;
+  bottom: -8px;
+  left: -5px;
+}
+
+
+.literatura{background:linear-gradient(135deg,#34d399, #059669);}
+.literatura:hover{ transform:scale(1.08);}
+
+.geografia{background:linear-gradient(135deg,#b54bff,#6e00bd);}
+.geografia:hover{transform:scale(1.08);}
+
+.psicologia{background:linear-gradient(135deg,#f0657d,#d9485f);}
+.psicologia:hover{transform:scale(1.08);}
+
+.desporto{background:linear-gradient(135deg,#4ade80, #16a34a);}
+.desporto:hover{transform:scale(1.08);}
+
+.historia{background:linear-gradient(135deg,#b54bff,#4a61e2);}
+.historia:hover{transform:scale(1.08);}
+
+.religiao{background:linear-gradient(135deg,#e67e22,#cc6a0f);}
+.religiao:hover{ transform:scale(1.08);}
+
+.informatica{background:linear-gradient(135deg,#2ec4e6,#1fa3c8);}
+.informatica:hover{transform:scale(1.08);}
+
+.direito{background:linear-gradient(135deg,#5f6c7b,#4b5563);}
+.direito:hover{transform:scale(1.08);}
+
+.Economia{background:linear-gradient(135deg,#a47449,#e67e22);}
+.Economia:hover{transform:scale(1.08);}
+
+.romance{background:#f25287;}
+.romance:hover{background:#d93a6d; transform:scale(1.08);}
+
+.outros{background:linear-gradient(135deg,#8e9aaf,#6c7a89);}
+.outros:hover{ transform:scale(1.08);}
+
+
+
+.painel{
+    
+    width:320px;
+    flex-shrink:0;
+    border-radius:16px;
+    padding:20px;
+    margin:20px;
+    background:
+    linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
+    url('https://www.voguefashioninstitute.com/wp-content/uploads/2022/11/l.jpg');
+    background-size:cover;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+.imag{
+    background:white;
+    padding:8px;
+    border-radius:12px;
+    width:344PX;
+    height:290px;
+    
+}
+
+.text{
+    color:white;
+    font-size:20px;
+    margin-top: -284px;
+}
+
+.btn-reservar{
+    padding:12px;
+    border:none;
+    background:#0836c9;
+    color:white;
+    font-size:16px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.btn-reservar:hover{
+    background:#5959f3;
+}
+
+
+.futer{
+    width:100%;
+    padding:40px;
+    background:linear-gradient(180deg,#119b73 0%, #18a87c 50%, #27b58b 100%);
+}
+
+.futer h2,
+.futer p{
+    text-align:center;
+    color:white;
+}
+
+.topo{
+    padding:12px;
+    background:#18a87c;
+    width:230px;
+    border-radius:8px;
+    margin:0 auto 20px auto;
+    text-align:center;
+}
+
+
+
+@keyframes entradaSuave {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.menu,
+.top,
+.content,
+.painel,
+.futer {
+    opacity: 0;
+    animation: entradaSuave 0.8s ease forwards;
+}
+
+
+.menu { animation-delay: 0.2s; }
+.top { animation-delay: 0.4s; }
+.content { animation-delay: 0.6s; }
+.painel { animation-delay: 0.8s; }
+.futer { animation-delay: 1s; }

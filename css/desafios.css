@@ -1,0 +1,501 @@
+:root{
+--primary:#2563eb;
+--primary-dark:#1d4ed8;
+--success:#10b981;
+--warning:#f59e0b;
+--bg:#f8fafc;
+--card:#fff;
+--text:#1e293b;
+--text-light:#64748b;
+--radius:18px;
+--shadow:0 10px 30px rgba(15,23,42,.08);
+}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+body{
+background:var(--bg);
+font-family:"Segoe UI",sans-serif;
+color:var(--text);
+min-height:100vh;
+}
+a{
+text-decoration:none;
+color:inherit;
+}
+.app{
+display:flex;
+min-height:100vh;
+}
+@keyframes entradaSuave{
+from{
+opacity:0;
+transform:translateX(24px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+.menu-lateral,
+.menu-lista,
+.conteudo,
+#areaReservas,
+.futer{
+opacity:0;
+animation:entradaSuave .8s ease forwards;
+}
+.menu-lateral{animation-delay:.2s;}
+.menu-lista{animation-delay:.4s;}
+.conteudo{animation-delay:.6s;}
+#areaReservas{animation-delay:.8s;}
+.futer{animation-delay:1s;}
+.menu-lateral{
+width:280px;
+background:#fff;
+padding:25px;
+border-right:1px solid #e2e8f0;
+box-shadow:0 0 40px rgba(0,0,0,.05);
+}
+.logo-area{
+text-align:center;
+margin-bottom:35px;
+}
+.avatar{
+width:90px;
+height:90px;
+margin:auto;
+border-radius:50%;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:34px;
+font-weight:700;
+color:#fff;
+box-shadow:0 15px 30px rgba(37,99,235,.3);
+margin-bottom:15px;
+transition:.4s;
+}
+.avatar:hover{
+transform:scale(1.08) rotate(5deg);
+}
+.logo-area h2{
+font-size:22px;
+margin-bottom:6px;
+}
+.logo-area p{
+font-size:14px;
+color:var(--text-light);
+}
+.perfil-menu{
+background:#f8fafc;
+padding:18px;
+border-radius:18px;
+text-align:center;
+margin-bottom:30px;
+box-shadow:0 10px 20px rgba(0,0,0,.05);
+}
+.perfil-menu h3{
+font-size:18px;
+margin-bottom:8px;
+}
+.perfil-menu span{
+display:block;
+color:var(--text-light);
+margin-bottom:15px;
+}
+.pontos-menu{
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+color:#fff;
+padding:10px;
+border-radius:12px;
+font-weight:700;
+}
+.menu-lista{
+list-style:none;
+}
+.menu-lista li{
+display:flex;
+align-items:center;
+gap:14px;
+padding:15px;
+margin-bottom:12px;
+border-radius:15px;
+cursor:pointer;
+transition:.3s;
+position:relative;
+overflow:hidden;
+}
+.menu-lista li::before{
+content:"";
+position:absolute;
+left:0;
+top:0;
+width:5px;
+height:100%;
+background:#2563eb;
+transform:scaleY(0);
+transition:.3s;
+}
+.menu-lista li:hover::before{
+transform:scaleY(1);
+}
+.menu-lista li:hover{
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+color:#fff;
+transform:translateX(10px);
+box-shadow:0 15px 30px rgba(37,99,235,.25);
+}
+.menu-lista li:first-child{
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+color:#fff;
+}
+
+.conteudo{
+flex:1;
+padding:35px;
+}
+.cartao-progresso{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:30px;
+margin-bottom:30px;
+border-radius:20px;
+color:#fff;
+background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+box-shadow:0 20px 40px rgba(37,99,235,.25);
+}
+.barra-progresso{
+width:100%;
+height:10px;
+margin-top:15px;
+background:rgba(255,255,255,.2);
+border-radius:50px;
+overflow:hidden;
+}
+.barra{
+width:0;
+height:100%;
+background:#fff;
+border-radius:50px;
+transition:1s;
+}
+.nivel{
+display:inline-block;
+padding:6px 12px;
+background:#fff;
+color:var(--primary);
+border-radius:20px;
+font-weight:600;
+}
+.pontos h1{
+font-size:60px;
+}
+.titulo{
+margin:30px 0 15px;
+}
+.card-reserva{
+display:flex;
+gap:20px;
+padding:20px;
+margin-bottom:20px;
+background:#fff;
+border-radius:18px;
+box-shadow:var(--shadow);
+transition:.3s;
+}
+.card-reserva:hover{
+transform:translateY(-5px);
+box-shadow:0 20px 35px rgba(0,0,0,.1);
+}
+.reserva-img img{
+width:110px;
+height:160px;
+object-fit:cover;
+border-radius:12px;
+}
+.reserva-info{
+flex:1;
+}
+.reserva-info h3{
+margin-bottom:10px;
+}
+.status{
+display:inline-block;
+margin-top:10px;
+padding:6px 12px;
+font-size:13px;
+font-weight:600;
+background:#dcfce7;
+color:#166534;
+border-radius:20px;
+}
+.btn-remover{
+padding:12px 18px;
+border:none;
+border-radius:12px;
+background:#ef4444;
+color:#fff;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+}
+.btn-remover:hover{
+background:#dc2626;
+transform:scale(1.05);
+}
+.sem-reservas{
+padding:40px;
+text-align:center;
+background:#fff;
+border-radius:18px;
+box-shadow:var(--shadow);
+}
+.sem-reservas h3{
+margin-bottom:10px;
+}
+.sem-reservas p{
+color:var(--text-light);
+}
+.lista-desafios{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+}
+.desafio{
+padding:25px;
+background:#fff;
+border-radius:18px;
+box-shadow:var(--shadow);
+cursor:pointer;
+transition:.3s;
+}
+.desafio:hover{
+transform:translateY(-6px);
+box-shadow:0 20px 35px rgba(0,0,0,.1);
+}
+.amarelo{border-left:5px solid #f59e0b;}
+.verde{border-left:5px solid #10b981;}
+.azul{border-left:5px solid #2563eb;}
+.laranja{border-left:5px solid #ea580c;}
+.explicacao{
+margin-top:12px;
+padding:15px;
+background:#f1f5f9;
+border-radius:12px;
+line-height:1.7;
+animation:entradaSuave .4s ease;
+}
+.ranking{
+background:#fff;
+border-radius:18px;
+overflow:hidden;
+box-shadow:var(--shadow);
+}
+.usuario{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 20px;
+border-bottom:1px solid #f1f5f9;
+transition:.3s;
+}
+.usuario:last-child{
+border-bottom:none;
+}
+.usuario:hover{
+background:#f8fafc;
+padding-left:28px;
+}
+.como-ganhar{
+margin-top:30px;
+padding:25px;
+background:#fff;
+border-radius:18px;
+box-shadow:var(--shadow);
+}
+.como-ganhar h2{
+margin-bottom:20px;
+}
+.linha{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:14px 0;
+border-bottom:1px solid #eef2f7;
+}
+.linha:last-child{
+border-bottom:none;
+}
+.linha strong{
+color:var(--success);
+}
+.futer{
+margin-top:40px;
+padding:50px 25px;
+background:linear-gradient(180deg,#119b73,#18a87c,#27b58b);
+color:#fff;
+}
+.futer h2,
+.futer p{
+text-align:center;
+}
+.topo{
+width:260px;
+margin:0 auto 20px;
+padding:12px;
+border-radius:12px;
+text-align:center;
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(10px);
+}
+@media(max-width:900px){
+.app{
+flex-direction:column;
+}
+.menu-lateral{
+width:100%;
+border-right:none;
+border-bottom:1px solid #e2e8f0;
+}
+.cartao-progresso{
+flex-direction:column;
+gap:20px;
+text-align:center;
+}
+.card-reserva{
+flex-direction:column;
+}
+.reserva-img img{
+width:100%;
+height:250px;
+}
+.lista-desafios{
+grid-template-columns:1fr;
+}
+.usuario{
+flex-direction:column;
+gap:10px;
+text-align:center;
+}
+}
+
+.top-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#fff;
+padding:18px 25px;
+border-radius:18px;
+margin-bottom:25px;
+box-shadow:var(--shadow);
+}
+
+
+.acoes-header{
+display:flex;
+align-items:center;
+gap:20px;
+}
+
+.notificacao{
+border:none;
+background:#f1f5f9;
+width:45px;
+height:45px;
+border-radius:50%;
+font-size:20px;
+cursor:pointer;
+transition:.3s;
+}
+
+.notificacao:hover{
+background:#2563eb;
+color:#fff;
+transform:scale(1.1);
+}
+
+.usuario-header{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.usuario-header span{
+display:block;
+font-size:13px;
+color:var(--text-light);
+}
+
+.mini-avatar{
+width:45px;
+height:45px;
+border-radius:50%;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+}
+
+.progresso-box{
+margin-top:20px;
+}
+
+.progresso-topo{
+display:flex;
+justify-content:space-between;
+font-size:14px;
+margin-bottom:10px;
+}
+
+.barra-progresso{
+height:14px;
+background:rgba(255,255,255,.25);
+border-radius:50px;
+overflow:hidden;
+}
+
+.barra{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,#facc15,#22c55e);
+border-radius:50px;
+transition:1s ease;
+position:relative;
+}
+
+.barra::after{
+content:"";
+position:absolute;
+top:0;
+left:0;
+height:100%;
+width:40px;
+background:rgba(255,255,255,.5);
+filter:blur(8px);
+animation:brilho 2s infinite;
+}
+
+@keyframes brilho{
+
+from{
+left:-40px;
+}
+
+to{
+left:100%;
+}
+
+}
+
+.mensagem-nivel{
+margin-top:12px;
+font-size:14px;
+opacity:.9;
+}

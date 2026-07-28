@@ -1,0 +1,52 @@
+.conteudo{
+  background:#0099ff;
+  font-family:arial, sans-serif;
+ }
+ .titulo{
+   text-align:center;
+   color:white;
+ }
+ .texto{
+  text-align:center;
+  color:white;
+}
+.formulario{
+  width:230px;
+  margin: 9px ;
+  background: white ;
+  padding: 40px  ;
+  border-radius:30px;
+  text-align:left;
+}
+.campo{
+  margin-buttom:15px;
+}
+.campo label {
+ display:block; 
+ margin-bottom:5px;
+font-weight:bold;
+}
+.campo input,
+.campo select{
+  width:255px;
+  height:40px;
+  padding:9px;
+  border-radius:6px;
+  border:1px solid #ccc;
+  background-color:#f2f2f2;
+  outline:none;
+  border-color:#0099ff;
+}
+.botao{
+  width:100px;
+  height:40px;
+  padding:9px;
+  border-radius:6px;
+  border:1px solid #ccc;
+}
+.campo input:focus,
+.campo select:focus{
+  outline:none;
+  background-color:#ffffff;
+
+}

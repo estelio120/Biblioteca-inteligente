@@ -1,0 +1,105 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Arial, sans-serif;
+
+    background:linear-gradient(
+        135deg,
+        #0d47ff,
+        #4f7cff,
+        #a6c8ff
+    );
+}
+
+@keyframes entradaSuave{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.login{
+    width:400px;
+    background:#fff;
+    padding:35px;
+    border-radius:18px;
+    box-shadow:0 10px 35px rgba(0,0,0,.2);
+    animation:entradaSuave .8s ease forwards;
+}
+
+.login h1{
+    text-align:center;
+    color:#0d47ff;
+    margin-bottom:10px;
+}
+
+.login p{
+    text-align:center;
+    color:#666;
+    font-size:14px;
+    margin-bottom:20px;
+}
+
+.login label{
+    display:block;
+    margin-bottom:5px;
+    font-weight:bold;
+    color:#333;
+}
+
+.login input{
+    width:100%;
+    padding:12px;
+    border:1px solid #dcdcdc;
+    border-radius:10px;
+    margin-bottom:15px;
+    font-size:14px;
+}
+
+.login input:focus{
+    outline:none;
+    border-color:#0d47ff;
+    box-shadow:0 0 5px rgba(13,71,255,.3);
+}
+
+button{
+    width:100%;
+    padding:13px;
+    background:#0d47ff;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+    margin-bottom:15px;
+}
+
+button:hover{
+    background:#0836c9;
+    transform:translateY(-2px);
+}
+
+.registar{
+    margin-top:15px;
+    text-align:center;
+}
+
+a{
+    text-decoration:none;
+    color:#0d47ff;
+}
