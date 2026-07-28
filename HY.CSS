@@ -1,0 +1,428 @@
+Atue como um Desenvolvedor Full Stack Sénior, Especialista em UI/UX, Engenharia de Software e Design de Produtos Digitais. O objetivo é redesenhar completamente uma página de catálogo de livros de uma Biblioteca Digital Inteligente, mantendo a funcionalidade principal, mas elevando a experiência do utilizador para um nível semelhante ao Google Books, Kindle, Netflix e Spotify.
+
+CONTEXTO DO PROJETO
+
+O sistema chama-se Biblioteca Digital Inteligente da Biblioteca Provincial de Pemba.
+
+O problema que o sistema resolve é:
+
+eliminar os catálogos físicos de centenas de páginas;
+reduzir o tempo gasto pelos bibliotecários na procura de livros;
+permitir que o leitor reserve um livro antes de chegar à biblioteca;
+eliminar parte do registo manual em papel;
+disponibilizar versões digitais (PDF) de livros autorizados para leitura ou compra.
+
+O site não deve parecer um projeto académico simples, mas sim uma plataforma profissional.
+
+OBJETIVO
+
+Redesenhar completamente a página de reserva de livros mantendo o conteúdo principal.
+
+Não alterar o propósito da página.
+
+Melhorar totalmente o design, a organização do HTML, CSS e JavaScript.
+
+LAYOUT
+
+Criar uma interface moderna.
+
+Inspirar-se em:
+
+Google Books
+Kindle
+Spotify
+Netflix
+Amazon Books
+
+Utilizar:
+
+Glassmorphism
+Cartões modernos
+Bordas arredondadas
+Sombras suaves
+Ícones
+Gradientes discretos
+Animações suaves
+Layout responsivo
+MENU LATERAL
+
+Manter o menu.
+
+Melhorar visualmente.
+
+Adicionar:
+
+ícones modernos
+utilizador no topo
+fotografia do leitor
+nome do leitor
+contador de favoritos
+contador de reservas
+indicador de notificações
+CABEÇALHO
+
+Criar um cabeçalho moderno contendo:
+
+Título da categoria
+
+Exemplo
+
+📚 Literatura
+
+Mostrar estatísticas:
+
+Total de livros
+Livros disponíveis
+Livros emprestados
+Novos livros
+Avaliação média
+PESQUISA
+
+Melhorar completamente.
+
+Enquanto o utilizador escreve:
+
+mostrar sugestões.
+
+Cada sugestão deve apresentar:
+
+miniatura
+título
+autor
+
+A pesquisa deve procurar por:
+
+título
+autor
+categoria
+FILTROS
+
+Adicionar filtros rápidos.
+
+Todos
+
+Disponíveis
+
+Emprestados
+
+PDF
+
+Mais procurados
+
+Novos
+
+Favoritos
+
+ORDENAÇÃO
+
+Adicionar:
+
+Ordenar por
+
+Mais recentes
+Título A-Z
+Autor
+Mais reservados
+Melhor avaliação
+CARDS DOS LIVROS
+
+Redesenhar totalmente.
+
+Cada card deve possuir:
+
+❤️ Favorito
+
+Estado
+
+Disponível
+
+ou
+
+Emprestado
+
+Imagem grande
+
+Título
+
+Autor
+
+Categoria
+
+Número de páginas
+
+Idioma
+
+Número de reservas
+
+Número de visualizações
+
+Avaliação
+
+★★★★★
+
+Botões
+
+Detalhes
+
+Reservar
+
+Comprar PDF
+
+Hover moderno
+
+Animação
+
+Sombra
+
+DETALHES DO LIVRO
+
+Ao clicar em
+
+Detalhes
+
+abrir um Modal.
+
+Mostrar:
+
+Imagem
+
+Título
+
+Autor
+
+Resumo
+
+Categoria
+
+Idioma
+
+Número de páginas
+
+ISBN
+
+Ano
+
+Localização na biblioteca
+
+Quantidade disponível
+
+Avaliações
+
+Reservar
+
+Comprar PDF
+
+FAVORITOS
+
+Adicionar coração.
+
+🤍
+
+Ao clicar
+
+❤️
+
+Guardar no LocalStorage.
+
+HISTÓRICO
+
+Guardar automaticamente:
+
+Livros reservados
+
+Livros visualizados
+
+Livros favoritos
+
+Mostrar depois no perfil.
+
+COMPRA DE PDF
+
+Adicionar um novo botão.
+
+Comprar PDF
+
+Fluxo:
+
+Livro
+
+↓
+
+Comprar PDF
+
+↓
+
+Selecionar pagamento
+
+↓
+
+Pagamento
+
+↓
+
+Recebe acesso
+
+↓
+
+Ler no telefone
+
+↓
+
+Baixar PDF
+
+PAGAMENTO
+
+Preparar estrutura para:
+
+M-Pesa
+
+e-Mola
+
+Cartão Bancário
+
+Mostrar:
+
+Preço
+
+Formato
+
+Tamanho
+
+Licença
+
+IA
+
+Adicionar um botão.
+
+🤖 Assistente Inteligente
+
+O utilizador pode escrever:
+
+"Quero um livro sobre liderança"
+
+ou
+
+"Quero aprender programação"
+
+A IA recomenda automaticamente livros do catálogo.
+
+CHAT
+
+Adicionar chat da biblioteca.
+
+Pode responder:
+
+Onde está este livro?
+
+Está disponível?
+
+Qual o horário?
+
+Posso renovar?
+
+Como comprar um PDF?
+
+TOAST
+
+Criar notificações modernas.
+
+Exemplos:
+
+Livro reservado.
+
+Livro adicionado aos favoritos.
+
+PDF comprado.
+
+Reserva cancelada.
+
+FOOTER
+
+Modernizar.
+
+Adicionar:
+
+redes sociais
+
+contactos
+
+horário
+
+endereço
+
+links úteis
+
+CSS
+
+Criar um CSS totalmente moderno.
+
+Utilizar:
+
+Flexbox
+
+Grid
+
+Variáveis CSS
+
+Responsividade
+
+Transições
+
+Hover
+
+Animações
+
+Glassmorphism
+
+Sombras
+
+Gradientes
+
+JAVASCRIPT
+
+Separar por módulos.
+
+pesquisa.js
+
+favoritos.js
+
+historico.js
+
+modal.js
+
+reserva.js
+
+pdf.js
+
+ia.js
+
+toast.js
+
+CÓDIGO
+
+Escrever código limpo.
+
+Bem comentado.
+
+HTML semântico.
+
+CSS organizado.
+
+JavaScript modular.
+
+Evitar repetição.
+
+OBJETIVO FINAL
+
+A plataforma deve parecer um sistema profissional de biblioteca digital, permitindo:
+
+procurar livros rapidamente;
+reservar livros físicos;
+visualizar detalhes;
+guardar favoritos;
+consultar histórico;
+receber recomendações por IA;
+comprar livros em PDF;
+efetuar pagamentos digitais;
+ler livros no telefone;
+oferecer uma experiência moderna, intuitiva e visualmente apelativa, comparável às principais plataformas de leitura digital.  <!DOCTYPE html>

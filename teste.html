@@ -1,0 +1,149 @@
+Quero que atues como um engenheiro de software sénior com mais de 30 anos de experiência em JavaScript, HTML, CSS, manipulação do DOM, LocalStorage e depuração de aplicações web. O teu objetivo é encontrar a verdadeira causa do problema, não apresentar soluções genéricas.
+
+Estou a desenvolver um sistema de Biblioteca Digital Inteligente.
+
+### Funcionamento do sistema
+
+Tenho uma página que apresenta vários livros em formato de cartões (cards).
+
+Cada card contém: responde ok 
+
+* imagem do livro;
+* título;
+* autor;
+* estado (Disponível);
+* botão "Ver detalhes";
+* botão "Reservar".
+
+Quando o utilizador clica em **Reservar**, o JavaScript cria um objeto com os dados do livro:
+
+* título;
+* autor;
+* imagem;
+* estado.
+
+Depois guarda esse objeto no LocalStorage através da chave:
+
+```javascript
+localStorage.setItem("livroSelecionado", JSON.stringify(livro));
+```
+
+Em seguida redireciona para:
+
+```javascript
+window.location.href = "Requisitar livro.html";
+```
+
+Na página "Requisitar livro.html", o JavaScript executa:
+
+```javascript
+const livro = JSON.parse(localStorage.getItem("livroSelecionado"));
+```
+
+Depois mostra:
+
+* capa do livro;
+* título;
+* autor;
+* descrição;
+* estado.
+
+Até aqui tudo funciona.
+
+### O problema
+
+Na primeira vez:
+
+1. clico em Reservar no Livro A;
+2. a página de requisição mostra corretamente:
+
+   * capa do Livro A;
+   * título do Livro A;
+   * autor do Livro A.
+
+Tudo correto.
+
+Depois volto para a página dos livros.
+
+Agora clico em Reservar no Livro B.
+
+O esperado seria aparecer:
+
+* capa do Livro B;
+* título do Livro B;
+* autor do Livro B.
+
+Mas isso não acontece.
+
+Continua a aparecer:
+
+* capa do Livro A;
+* título do Livro A;
+* autor do Livro A.
+
+Ou seja, parece que o LocalStorage continua com os dados do primeiro livro.
+
+### Informações importantes
+
+* Cada card possui o botão:
+
+```html
+<button class="btnReservar">Reservar</button>
+```
+
+* O JavaScript adiciona o evento usando:
+
+```javascript
+document.querySelectorAll(".btnReservar").forEach(...)
+```
+
+* O objeto do livro é obtido através de:
+
+```javascript
+const card = e.currentTarget.closest(".card");
+```
+
+Depois:
+
+```javascript
+card.querySelector("img")
+card.querySelector("h3")
+card.querySelector(".autor")
+```
+
+Não utilizo IDs repetidos nos cards.
+
+Na página de requisição apenas leio o objeto gravado no LocalStorage.
+
+### O que pretendo da tua resposta
+
+Não quero respostas superficiais.
+
+Quero que analises todo o fluxo de execução desde o clique no botão até ao carregamento da segunda página.
+
+Quero que identifiques exatamente onde pode estar o problema.
+
+Analisa cuidadosamente:
+
+* manipulação do DOM;
+* eventos;
+* LocalStorage;
+* redirecionamento;
+* cache do navegador;
+* caminhos das imagens;
+* reutilização de variáveis;
+* possíveis erros no HTML;
+* problemas de estrutura dos cards;
+* problemas de JavaScript.
+
+Se encontrares mais do que uma hipótese, organiza-as por probabilidade.
+
+Para cada hipótese explica:
+
+1. por que motivo ela pode provocar exatamente este comportamento;
+2. como confirmar que é realmente essa a causa;
+3. qual a correção completa.
+
+Não inventes soluções sem justificar.
+
+Quero uma análise técnica profunda, semelhante à de um programador sénior a depurar um sistema real.

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esqueci Minha Senha</title>
+    <link rel="stylesheet" href="css/esqueciSenh.css">
+</head>
+<body>
+
+<div class="login">
+
+    <h1>RECUPERAR SENHA</h1>
+
+    <form id="formRecuperacao">
+
+        <!-- ETAPA 1 -->
+        <div id="etapa1">
+
+            <p>
+                Informe seu e-mail para receber um código de recuperação.
+            </p>
+
+            <label for="email">
+                <b>Email</b>
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="seuemail@gmail.com"
+                required>
+
+            <button type="button" id="enviarCodigo">
+                Enviar Código
+            </button>
+
+        </div>
+
+        <!-- ETAPA 2 -->
+        <div id="etapa2" style="display:none;">
+
+            <label for="codigo">
+                <b>Código de Verificação</b>
+            </label>
+
+            <input
+                type="text"
+                id="codigo"
+                placeholder="Digite o código">
+
+            <label for="novaSenha">
+                <b>Nova Senha</b>
+            </label>
+
+            <input
+                type="password"
+                id="novaSenha"
+                placeholder="Nova senha">
+
+            <label for="confirmarSenha">
+                <b>Confirmar Senha</b>
+            </label>
+
+            <input
+                type="password"
+                id="confirmarSenha"
+                placeholder="Confirme a senha">
+
+            <button type="button" id="alterarSenha">
+                Alterar Senha
+            </button>
+
+        </div>
+
+    </form>
+
+    <p class="registar">
+        Lembrou sua senha?
+        <a href="LOGIN.html">Voltar ao Login</a>
+    </p>
+
+</div>
+
+<script>
+let codigoGerado = "";
+
+// Enviar código
+document.getElementById("enviarCodigo").addEventListener("click", () => {
+
+    const email = document.getElementById("email").value.trim();
+
+    if(email === ""){
+        alert("Digite o seu email.");
+        return;
+    }
+
+    codigoGerado = Math.floor(100000 + Math.random() * 900000).toString();
+
+    alert(
+        "Código enviado com sucesso!\n\n" +
+        "Código de teste: " + codigoGerado
+    );
+
+    // Esconde a etapa 1
+    document.getElementById("etapa1").style.display = "none";
+
+    // Mostra a etapa 2
+    document.getElementById("etapa2").style.display = "block";
+});
+
+// Alterar senha
+document.getElementById("alterarSenha").addEventListener("click", () => {
+
+    const codigo = document.getElementById("codigo").value.trim();
+    const novaSenha = document.getElementById("novaSenha").value;
+    const confirmarSenha = document.getElementById("confirmarSenha").value;
+
+    if(codigo !== codigoGerado){
+        alert("Código inválido.");
+        return;
+    }
+
+    if(novaSenha.length < 6){
+        alert("A senha deve ter pelo menos 6 caracteres.");
+        return;
+    }
+
+    if(novaSenha !== confirmarSenha){
+        alert("As senhas não coincidem.");
+        return;
+    }
+
+    alert(
+        "Senha alterada com sucesso!\n\n" +
+        "Agora você já pode entrar na sua conta."
+    );
+
+    window.location.href = "LOGIN.html";
+});
+</script>
+
+</body>
+</html>
