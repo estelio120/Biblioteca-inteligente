@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (img) {
             img.src = livro.imagem || "";
-            img.alt = livro.titulo || "Livro";
+            img.alt = livro.titulo || "Livrso";
         }
 
         if (titulo) titulo.innerText = livro.titulo || "";
