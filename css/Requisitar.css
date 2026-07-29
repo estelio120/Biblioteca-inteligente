@@ -144,8 +144,8 @@ a{
 }
 
 .menu-lista li svg{
-    width:20px;
-    height:20px;
+    width:45px;
+    height:45px;
     flex-shrink:0;
 }
 
@@ -224,7 +224,7 @@ a{
     }
 
     .menu{
-        width:280px;
+        width:380px;
         top:65px;
         height:calc(100vh - 65px);
     }
@@ -235,7 +235,7 @@ a{
 
     .menu-lista li{
         padding:14px;
-        font-size:15px;
+        font-size:67px;
     }
 
     .book-preview{
@@ -295,7 +295,7 @@ a{
 
 .autor{
     color:var(--text-light);
-    font-size:19px;
+    font-size:34px;
     margin-bottom:28px;
 }
 
@@ -323,7 +323,7 @@ a{
 .book-info span{
     display:block;
     color:var(--text-light);
-    font-size:13px;
+    font-size:26px;
     margin-top:8px;
 }
 
@@ -373,7 +373,7 @@ form{
 }
 
 .card h2{
-    font-size:24px;
+    font-size:34px;
     color:var(--dark);
     margin-bottom:25px;
     display:flex;
@@ -405,7 +405,7 @@ select{
     border:1px solid #cbd5e1;
     background:#fff;
     color:var(--dark);
-    font-size:15px;
+    font-size:24px;
     outline:none;
     transition:var(--transition);
 }
@@ -497,7 +497,7 @@ select:focus{
     }
 
     .book-details h1{
-        font-size:32px;
+        font-size:45px;
     }
 
     .book-info{
@@ -521,11 +521,11 @@ select:focus{
     }
 
     .book-details h1{
-        font-size:28px;
+        font-size:45px;
     }
 
     .autor{
-        font-size:17px;
+        font-size:25px;
     }
 
     .book-info{
@@ -543,7 +543,7 @@ select:focus{
     }
 
     .card h2{
-        font-size:20px;
+        font-size:28px;
     }
 
     .actions{
@@ -570,7 +570,7 @@ select:focus{
     }
 
     .book-details h1{
-        font-size:24px;
+        font-size:28px;
     }
 
     .descricao{
@@ -580,7 +580,7 @@ select:focus{
     input,
     select{
         height:48px;
-        font-size:14px;
+        font-size:29px;
     }
 
     .card{
@@ -650,7 +650,7 @@ select:focus{
     border:none;
     border-radius:15px;
     font-weight:bold;
-    font-size:16px;
+    font-size:45px;
     cursor:pointer;
     transition:var(--transition);
 }
@@ -728,14 +728,14 @@ select:focus{
     }
 
     .futer h2{
-        font-size:20px;
+        font-size:30px;
     }
 
 }
 
 
 
-/* melhorias extras para experiência mobile */
+
 
 @media(max-width:992px){
 
@@ -773,11 +773,11 @@ select:focus{
 @media(max-width:480px){
 
     .popup-card h2{
-        font-size:22px;
+        font-size:34px;
     }
 
     .popup-card p{
-        font-size:14px;
+        font-size:24px;
     }
 
 }
@@ -832,7 +832,7 @@ select:focus{
 /* scroll moderno */
 
 ::-webkit-scrollbar{
-    width:10px;
+    width:35px;
 }
 
 ::-webkit-scrollbar-track{
@@ -862,13 +862,13 @@ select:focus{
     }
 
     .header h2{
-        font-size:14px;
+        font-size:34px;
         max-width:180px;
     }
 
     .actions button{
         height:48px;
-        font-size:14px;
+        font-size:25px;
     }
 
 }
