@@ -1,17 +1,49 @@
-document.addEventListener("DOMContentLoaded",()=>{
+const menu=document.querySelector(".menu");
+const abrirMenu=document.getElementById("abrirMenu");
+const overlay=document.getElementById("overlay");
 
-const abrir=document.getElementById("abrirDefinicoes");
-const modal=document.getElementById("modalDefinicoes");
-const fechar=document.getElementById("fecharDefinicoes");
 
-if(abrir&&modal&&fechar){
-abrir.onclick=()=>modal.classList.add("show");
-fechar.onclick=()=>modal.classList.remove("show");
-window.onclick=e=>{
-if(e.target===modal)modal.classList.remove("show");
-};
+function abrir(){
+
+menu.classList.add("ativo");
+
+overlay.classList.add("ativo");
+
 }
 
+
+function fechar(){
+
+menu.classList.remove("ativo");
+
+overlay.classList.remove("ativo");
+
+}
+
+
+if(abrirMenu){
+
+abrirMenu.onclick=abrir;
+
+}
+
+
+if(overlay){
+
+overlay.onclick=fechar;
+
+}
+
+
+document.addEventListener("keydown",e=>{
+
+if(e.key==="Escape"){
+
+fechar();
+
+}
+
+});
 const sair=document.getElementById("btnSair");
 
 if(sair){
