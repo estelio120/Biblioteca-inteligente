@@ -328,3 +328,173 @@ button[type="submit"]:hover{
     background:#0f8b68;
     border-radius:10px;
 }
+@media(max-width:1200px){
+.content{
+margin-left:280px;
+padding:25px;
+}
+.book-preview{
+flex-direction:column;
+text-align:center;
+}
+.book-info{
+flex-wrap:wrap;
+justify-content:center;
+}
+}
+
+@media(max-width:992px){
+.menu{
+left:-280px;
+transition:.3s;
+z-index:1000;
+}
+.menu.active{
+left:0;
+}
+.content{
+margin-left:0;
+width:100%;
+padding:20px;
+}
+.book-preview{
+flex-direction:column;
+align-items:center;
+}
+.book-image img{
+width:220px;
+height:300px;
+}
+.book-details h1{
+font-size:28px;
+}
+.book-info{
+display:grid;
+grid-template-columns:1fr;
+gap:15px;
+}
+.actions{
+flex-direction:column;
+}
+.actions button{
+width:100%;
+}
+}
+
+@media(max-width:768px){
+.content{
+padding:15px;
+}
+.book-preview{
+padding:20px;
+}
+.book-image img{
+width:190px;
+height:270px;
+}
+.book-details h1{
+font-size:24px;
+}
+.autor{
+font-size:16px;
+}
+.book-info div{
+min-width:100%;
+}
+.card{
+padding:20px;
+}
+.card h2{
+font-size:20px;
+}
+input,
+select,
+button{
+font-size:15px;
+padding:12px;
+}
+.popup-card{
+padding:20px;
+}
+}
+
+@media(max-width:576px){
+.menu{
+width:240px;
+}
+.content{
+padding:12px;
+}
+.book-preview{
+padding:15px;
+gap:20px;
+}
+.book-image img{
+width:160px;
+height:230px;
+}
+.book-details h1{
+font-size:20px;
+}
+.autor{
+font-size:15px;
+}
+.descricao{
+padding:15px;
+}
+.card{
+padding:15px;
+}
+.card h2{
+font-size:18px;
+}
+label{
+font-size:14px;
+}
+input,
+select{
+padding:10px;
+font-size:14px;
+}
+button{
+padding:12px;
+font-size:14px;
+}
+.popup-card{
+width:95%;
+padding:18px;
+}
+.futer{
+padding:25px 15px;
+}
+}
+
+@media(max-width:400px){
+.icone{
+font-size:15px;
+}
+.TE{
+font-size:12px;
+}
+.menu-lista li{
+padding:10px;
+font-size:14px;
+}
+.book-image img{
+width:140px;
+height:200px;
+}
+.book-details h1{
+font-size:18px;
+}
+.book-info div{
+padding:12px;
+}
+.descricao p{
+font-size:14px;
+}
+.card{
+padding:12px;
+}
+}
+
