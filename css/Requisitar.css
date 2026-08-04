@@ -225,7 +225,7 @@ a{
     }
 
     .menu{
-        width:380px;
+        width:220px;
         top:65px;
         height:calc(100vh - 65px);
     }
@@ -236,7 +236,7 @@ a{
 
     .menu-lista li{
         padding:14px;
-        font-size:67px;
+        font-size:47px;
     }
 
     .book-preview{
