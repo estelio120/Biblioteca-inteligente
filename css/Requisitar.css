@@ -89,7 +89,7 @@ a{
 }
 
 .menu{
-    width:290px;
+    width:190px;
     height:calc(100vh - 72px);
     position:fixed;
     top:72px;
@@ -134,12 +134,13 @@ a{
     display:flex;
     align-items:center;
     gap:14px;
+    font-zise:23;
     padding:15px 18px;
     margin-bottom:12px;
     border-radius:15px;
     cursor:pointer;
     transition:var(--transition);
-    font-weight:600;
+    font-weight:200;
     color:var(--text);
 }
 
