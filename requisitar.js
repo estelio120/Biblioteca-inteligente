@@ -242,14 +242,7 @@ function mostrarConfirmacao() {
     };
 
 }
-const menu=document.querySelector(".menu");
-const btn=document.getElementById("menuBtn");
-const overlay=document.getElementById("overlay");
 
-btn.addEventListener("click",()=>{
-menu.classList.toggle("active");
-overlay.classList.toggle("active");
-});
 
 overlay.addEventListener("click",()=>{
 menu.classList.remove("active");
