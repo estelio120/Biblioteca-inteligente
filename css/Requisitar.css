@@ -297,12 +297,18 @@ button[type="submit"]:hover{
 .cancel{
     background:#ef4444;
     color:#fff;
+    height:20px;
+    font-size:24px;
+    font-family:bold;
+    text-align:center;
     text-decoration:none;
 }
 
 .cancel:hover{
-    background:#dc2626;
+    background:white;
+    color:red;
     transform:translateY(-2px);
+    
 }
 
 @keyframes entradaSuave{
