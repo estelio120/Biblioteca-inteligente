@@ -187,7 +187,8 @@ transition:var(--transition);
 
 .menu-lista li svg{
 flex-shrink:0;
-  font-size:30px;
+  font-size:90px;
+  
 }
 
 .menu-lista li:hover{
