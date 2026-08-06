@@ -297,6 +297,7 @@ button[type="submit"]:hover{
 .cancel{
     background:#ef4444;
     color:#fff;
+    text-decoration:none;
 }
 
 .cancel:hover{
