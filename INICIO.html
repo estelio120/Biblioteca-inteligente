@@ -4,235 +4,1619 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biblioteca</title>
+
+    <title>Biblioteca Digital Inteligente | Pemba</title>
+
     <link rel="stylesheet" href="css/INICIO.css">
 </head>
 
 <body>
- <header class="header">
-<button id="abrirMenu" class="menu-btn">☰</button>
-<h2>Biblioteca Digital Inteligente</h2>
-</header>   
-<div class="user-box">
 
-<img src="img/user.jpg">
+    <!-- =====================================================
+         HEADER MOBILE
+    ====================================================== -->
 
-<div>
-<h4>João Silva</h4>
-<p>Leitor Premium</p>
-</div>
+    <header class="header">
 
-</div>
+        <button id="abrirMenu" class="menu-btn" aria-label="Abrir menu">
+            ☰
+        </button>
 
-<div class="app">
+        <div class="header-logo">
+            <span>📖</span>
+            <h2>Biblioteca Digital Inteligente</h2>
+        </div>
 
-    <!-- MENU -->
-    <aside class="menu">
+        <div class="header-acoes">
 
-        <div class="icone">📖 BIBLIOTECA DIGITAL INTELIGENTE</div>
-        <p class="TE">Biblioteca Provincial de Pemba</p>
+            <!-- NOTIFICAÇÕES -->
+            <button
+                class="btn-notificacao"
+                id="btnNotificacao"
+                aria-label="Notificações">
+                🔔
+                <span class="notificacao-numero">3</span>
+            </button>
 
-        <ul class="menu-lista">
-                          <a href="perfil.html"><li class="conta"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-</svg> Perfil</li></a>
+            <!-- UTILIZADOR -->
+            <div class="user-box">
 
-                      <a href="#content"> <li class="som"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmarks-fill" viewBox="0 0 16 16">
-  <path d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5z"/>
-  <path d="M4.268 1A2 2 0 0 1 6 0h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L13 13.768V2a1 1 0 0 0-1-1z"/>
-</svg> Categorias</li></a>
-                         <li class="conta"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
-</svg> Favoritos</li>
-
-                   <a href="Reserva.html">
-                    <li class="lugar"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
-  <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
-</svg>Reservar</li>
-</a>
-           <li class="conta" id="abrirDefinicoes">
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear-wide-connected" viewBox="0 0 16 16">
-  <path d="M7.068.727c.243-.97 1.62-.97 1.864 0l.071.286a.96.96 0 0 0 1.622.434l.205-.211c.695-.719 1.888-.03 1.613.931l-.08.284a.96.96 0 0 0 1.187 1.187l.283-.081c.96-.275 1.65.918.931 1.613l-.211.205a.96.96 0 0 0 .434 1.622l.286.071c.97.243.97 1.62 0 1.864l-.286.071a.96.96 0 0 0-.434 1.622l.211.205c.719.695.03 1.888-.931 1.613l-.284-.08a.96.96 0 0 0-1.187 1.187l.081.283c.275.96-.918 1.65-1.613.931l-.205-.211a.96.96 0 0 0-1.622.434l-.071.286c-.243.97-1.62.97-1.864 0l-.071-.286a.96.96 0 0 0-1.622-.434l-.205.211c-.695.719-1.888.03-1.613-.931l.08-.284a.96.96 0 0 0-1.186-1.187l-.284.081c-.96.275-1.65-.918-.931-1.613l.211-.205a.96.96 0 0 0-.434-1.622l-.286-.071c-.97-.243-.97-1.62 0-1.864l.286-.071a.96.96 0 0 0 .434-1.622l-.211-.205c-.719-.695-.03-1.888.931-1.613l.284.08a.96.96 0 0 0 1.187-1.186l-.081-.284c-.275-.96.918-1.65 1.613-.931l.205.211a.96.96 0 0 0 1.622-.434zM12.973 8.5H8.25l-2.834 3.779A4.998 4.998 0 0 0 12.973 8.5m0-1a4.998 4.998 0 0 0-7.557-3.779l2.834 3.78zM5.048 3.967l-.087.065zm-.431.355A4.98 4.98 0 0 0 3.002 8c0 1.455.622 2.765 1.615 3.678L7.375 8zm.344 7.646.087.065z"/>
-</svg> Definiçoes</li><br>
-
-                               <a href="LOGIN.html"><li id="btnSair"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
-  <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
-</svg> Sair</li></a> 
-            
-
-    </aside>
-<div id="overlay"></div>
-
-    <!-- CONTEÚDO -->
-    <main class="conteudo">
-
-     
-
-
-        
-        <section class="top">
-
-            <h2>Livros recentes recomendados a leitura</h2><br>
-
-            <div class="livros">
-
-                <div class="livro">
-                    <img src="img/como convencer alguem em 90 segundos.jpg" width="78" height="45">
-                    <p class="titulo">Como Convencer Alguém em 90 Segundos</p>
-                    <p class="Autor">Nicholas Boothman</p>
+                <div class="mini-avatar">
+                    AC
                 </div>
 
-                <div class="livro">
-                    <img src="img/o-poder-da-acao.jpg" width="90" height="120">
-                    <p class="titulo">O poder da acçao</p>
-                    <p class="Autor">Paulo Viera</p>
+                <div>
+                    <h4>António Celestino</h4>
+                    <p>Leitor Iniciante</p>
                 </div>
 
-                <div class="livro">
-                    <img src="img/habitos atomicos.webp">
-                    <p class="titulo">Habitos Atomicos</p>
-                    <p class="Autor">james clear</p>
-                </div>
-
-                <div class="livro">
-                    <img src="img/Os segredos da mente milionária (capa do livro).jpg">
-                    <p class="titulo">Os segredos da mente milionaria</p>
-                    <p class="Autor">Tim Harv</p>
-                </div>
-
-                <div class="livro">
-                    <img src="img/como fazer amigos e influenciar pessoas.jpg" width="20" height="34">
-                    <p class="titulo">Como fazer amigos e influenciar pessoas</p>
-                    <p class="Autor">Dale carnigie</p>
-                </div>
-
-                <div class="livro">
-                    <img src="img/romance.webp">
-                    <p class="titulo">Um amor da primeira</p>
-                    <p class="Autor">Samira Almeida</p>
-                </div>
-     
-                    
             </div>
 
-        </section>
+        </div>
+
+    </header>
 
 
-        <!-- CATEGORIAS -->
-        <main id="content">
+    <!-- =====================================================
+         APLICAÇÃO
+    ====================================================== -->
 
-            <h2>Categorias</h2>
+    <div class="app">
 
-            <p>Explore livros por categria de do seu interresse</p><br>
 
-            <section class="categorias-caixa">
+        <!-- =================================================
+             OVERLAY MOBILE
+        ================================================== -->
 
-              
-                <a href="geografia.html" class="categoria-caixa geografia">
-                    <div class="icone">🌎</div>
-                    <h3>Literatura</h3>
-                    <span>3434 livros</span>
+        <div id="overlay"></div>
+
+
+        <!-- =================================================
+             MENU LATERAL
+        ================================================== -->
+
+        <aside class="menu" id="menuLateral">
+
+
+            <!-- LOGO -->
+            <div class="menu-logo">
+
+                <div class="logo-icone">
+                    📖
+                </div>
+
+                <h2>
+                    Biblioteca Digital
+                </h2>
+
+                <p>
+                    Biblioteca Provincial de Pemba
+                </p>
+
+            </div>
+
+
+            <!-- PERFIL DO UTILIZADOR -->
+            <div class="menu-utilizador">
+
+                <div class="avatar-grande">
+                    AC
+                </div>
+
+                <div class="dados-utilizador">
+
+                    <h3>
+                        António Celestino
+                    </h3>
+
+                    <span>
+                        Leitor Iniciante
+                    </span>
+
+                    <div class="pontos-utilizador">
+                        ⭐ 0 pontos
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- NAVEGAÇÃO -->
+            <nav>
+
+                <ul class="menu-lista">
+
+
+                    <!-- INÍCIO -->
+                    <li class="menu-item ativo">
+
+                        <a href="INICIO.html">
+
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="18"
+                                height="18"
+                                fill="currentColor"
+                                viewBox="0 0 16 16">
+
+                                <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 2 8h1v6.5a.5.5 0 0 0 .5.5H6v-4a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v4h2.5a.5.5 0 0 0 .5-.5V8h1a.5.5 0 0 0 .354-.854z"/>
+
+                            </svg>
+
+                            <span>Início</span>
+
+                        </a>
+
+                    </li>
+
+
+                    <!-- PERFIL -->
+                    <li class="menu-item">
+
+                        <a href="perfil.html">
+
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                viewBox="0 0 16 16">
+
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+
+                            </svg>
+
+                            <span>Perfil</span>
+
+                        </a>
+
+                    </li>
+
+
+                    <!-- CATEGORIAS -->
+                    <li class="menu-item">
+
+                        <a href="#categorias">
+
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                viewBox="0 0 16 16">
+
+                                <path d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5z"/>
+
+                                <path d="M4.268 1A2 2 0 0 1 6 0h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L13 13.768V2a1 1 0 0 0-1-1z"/>
+
+                            </svg>
+
+                            <span>Categorias</span>
+
+                        </a>
+
+                    </li>
+
+
+                    <!-- FAVORITOS -->
+                    <li class="menu-item">
+
+                        <a href="#favoritos">
+
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                viewBox="0 0 16 16">
+
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
+
+                            </svg>
+
+                            <span>Favoritos</span>
+
+                        </a>
+
+                    </li>
+
+
+                    <!-- RESERVAS -->
+                    <li class="menu-item">
+
+                        <a href="Reserva.html">
+
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                viewBox="0 0 16 16">
+
+                                <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
+
+                            </svg>
+
+                            <span>Minhas Reservas</span>
+
+                        </a>
+
+                    </li>
+
+
+                    <!-- DESAFIOS -->
+                    <li class="menu-item">
+
+                        <a href="desafios.html">
+
+                            <span class="menu-emoji">
+                                🏆
+                            </span>
+
+                            <span>Desafios</span>
+
+                        </a>
+
+                    </li>
+
+
+                    <!-- DEFINIÇÕES -->
+                    <li class="menu-item" id="abrirDefinicoes">
+
+                        <a href="#">
+
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                viewBox="0 0 16 16">
+
+                                <path d="M7.068.727c.243-.97 1.62-.97 1.864 0l.071.286a.96.96 0 0 0 1.622.434l.205-.211c.695-.719 1.888-.03 1.613.931l-.08.284a.96.96 0 0 0 1.187 1.187l.283-.081c.96-.275 1.65.918.931 1.613l-.211.205a.96.96 0 0 0 .434 1.622l.286.071c.97.243.97 1.62 0 1.864l-.286.071a.96.96 0 0 0-.434 1.622l.211.205c.719.695.03 1.888-.931 1.613l-.284-.08a.96.96 0 0 0-1.187 1.187l.081.283c.275.96-.918 1.65-1.613.931l-.205-.211a.96.96 0 0 0-1.622.434l-.071.286c-.243.97-1.62.97-1.864 0l-.071-.286a.96.96 0 0 0-1.622-.434l-.205.211c-.695.719-1.888-.03-1.613-.931l.08-.284a.96.96 0 0 0-1.186-1.187l-.284.081c-.96.275-1.65-.918-.931-1.613l.211-.205a.96.96 0 0 0-.434-1.622l-.286-.071c-.97-.243-.97-1.62 0-1.864l.286-.071a.96.96 0 0 0 .434-1.622l-.211-.205c-.719-.695-.03-1.888.931-1.613l.284.08a.96.96 0 0 0 1.187-1.186l-.081-.284c-.275-.96.918-1.65 1.613-.931l.205.211a.96.96 0 0 0 1.622.434z"/>
+
+                            </svg>
+
+                            <span>Definições</span>
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </nav>
+
+
+            <!-- SAIR -->
+            <div class="menu-sair">
+
+                <a href="LOGIN.html" id="btnSair">
+
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        viewBox="0 0 16 16">
+
+                        <path
+                            fill-rule="evenodd"
+                            d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+
+                        <path
+                            fill-rule="evenodd"
+                            d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+
+                    </svg>
+
+                    <span>Sair</span>
+
                 </a>
 
-                <a href="psicologia.html" class="categoria-caixa psicologia">
-                    <div class="icone">🧠</div>
-                    <h3>Psicologia</h3>
-                    <span>3434 livros</span>
-                </a>
+            </div>
 
-                <a href="desporto.html" class="categoria-caixa desporto">
-                    <div class="icone">🏅</div>
-                    <h3>Desporto</h3>
-                    <span>3434 livros</span>
-               
-                <a href="religiao.html"class="categoria-caixa religiao">
-                    <div class="icone">🏫</div>
-                    <h3>Religiao</h3>
-                    <span>3432 livros</span>
-                </a>
+        </aside>
 
-                <a href="informatica.html" class="categoria-caixa informatica">
-                    <div class="icone">💻</div>
-                    <h3>Informatica</h3>
-                    <span>340 livros</span>
-                </a>
 
-                <a href="direito.html"class="categoria-caixa direito">
-                    <div class="icone">⚖️</div>
-                    <h3>Direito</h3>
-                    <span>344 livros</span>
-                </a>
 
-                <a href="economia.html"class="categoria-caixa Economia">
-                    <div class="icone">📈</div>
-                    <h3>Economia</h3>
-                    <span>34 livros</span>
-                </a>
+        <!-- =================================================
+             CONTEÚDO PRINCIPAL
+        ================================================== -->
 
-                <a href="romance.html" class="categoria-caixa romance">
-                    <div class="icone">♥️</div>
-                    <h3>Romance</h3>
-                    <span>45 livros</span>
-                </a>
+        <main class="conteudo">
 
-                <a href="Reserva.html" class="categoria-caixa outros">
-                    <div class="icone">➕</div>
-                    <h3>outros</h3>
-                    <span>3 livros</span>
-                </a>
+
+            <!-- =================================================
+                 BOAS-VINDAS
+            ================================================== -->
+
+            <section class="boas-vindas">
+
+                <div class="boas-texto">
+
+                    <span class="saudacao">
+                        👋 Bem-vindo de volta!
+                    </span>
+
+                    <h1>
+                        Olá, António!
+                    </h1>
+
+                    <p>
+                        Que livro você gostaria de descobrir hoje?
+                    </p>
+
+                </div>
+
+                <div class="boas-icone">
+                    📚
+                </div>
 
             </section>
 
+
+
+            <!-- =================================================
+                 PESQUISA
+            ================================================== -->
+
+            <section class="pesquisa-area">
+
+                <div class="barra-pesquisa">
+
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        fill="currentColor"
+                        viewBox="0 0 16 16">
+
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+
+                    </svg>
+
+                    <input
+                        type="search"
+                        id="pesquisaLivro"
+                        placeholder="Pesquisar por título, autor ou categoria..."
+                        autocomplete="off">
+
+                    <button id="btnPesquisar">
+                        Pesquisar
+                    </button>
+
+                </div>
+
+                <div id="resultadoPesquisa" class="resultado-pesquisa"></div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 LIVRO EM DESTAQUE
+            ================================================== -->
+
+            <section class="livro-destaque-section">
+
+                <div class="destaque-conteudo">
+
+                    <div class="destaque-texto">
+
+                        <span class="destaque-tag">
+                            ⭐ LIVRO EM DESTAQUE
+                        </span>
+
+                        <h2>
+                            As 48 Leis do Poder
+                        </h2>
+
+                        <p class="destaque-autor">
+                            Robert Greene
+                        </p>
+
+                        <p class="destaque-descricao">
+
+                            “As 48 Leis do Poder” é mais que um livro:
+                            é um manual atemporal sobre influência,
+                            estratégia e liderança.
+
+                        </p>
+
+                        <p class="destaque-descricao">
+
+                            Inspirado em histórias de reis, generais e
+                            pensadores, Robert Greene revela como o poder
+                            molda relações e abre caminhos para quem sabe
+                            usá-lo.
+
+                        </p>
+
+                        <div class="destaque-acoes">
+
+                            <a href="Reserva.html">
+                                <button class="btn-reservar">
+                                    📚 Reservar livro
+                                </button>
+                            </a>
+
+                            <button
+                                class="btn-detalhes"
+                                id="verDetalhesDestaque">
+
+                                Ver detalhes →
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="destaque-capa">
+
+                        <div class="capa-brilho"></div>
+
+                        <img
+                            src="img/as-48-leis-de-poder.webp"
+                            alt="Capa do livro As 48 Leis do Poder">
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 MINHA ATIVIDADE
+            ================================================== -->
+
+            <section class="atividade-section">
+
+                <div class="section-cabecalho">
+
+                    <div>
+                        <span class="section-mini">
+                            SEU ESPAÇO
+                        </span>
+
+                        <h2>
+                            Minha atividade
+                        </h2>
+                    </div>
+
+                    <a href="perfil.html">
+                        Ver perfil →
+                    </a>
+
+                </div>
+
+
+                <div class="atividade-cards">
+
+
+                    <div class="atividade-card">
+
+                        <div class="atividade-icone azul">
+                            📚
+                        </div>
+
+                        <div>
+                            <strong id="totalReservas">
+                                0
+                            </strong>
+
+                            <span>
+                                Reservas
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="atividade-card">
+
+                        <div class="atividade-icone vermelho">
+                            ❤️
+                        </div>
+
+                        <div>
+                            <strong id="totalFavoritos">
+                                0
+                            </strong>
+
+                            <span>
+                                Favoritos
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="atividade-card">
+
+                        <div class="atividade-icone amarelo">
+                            ⭐
+                        </div>
+
+                        <div>
+                            <strong id="totalPontos">
+                                0
+                            </strong>
+
+                            <span>
+                                Pontos
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="atividade-card">
+
+                        <div class="atividade-icone verde">
+                            🏆
+                        </div>
+
+                        <div>
+                            <strong>
+                                0
+                            </strong>
+
+                            <span>
+                                Conquistas
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 LIVROS RECOMENDADOS
+            ================================================== -->
+
+            <section class="livros-section">
+
+                <div class="section-cabecalho">
+
+                    <div>
+
+                        <span class="section-mini">
+                            PARA VOCÊ
+                        </span>
+
+                        <h2>
+                            Livros recomendados
+                        </h2>
+
+                        <p>
+                            Livros selecionados para a sua próxima leitura.
+                        </p>
+
+                    </div>
+
+                    <button
+                        class="ver-todos"
+                        id="verTodosLivros">
+
+                        Ver todos →
+
+                    </button>
+
+                </div>
+
+
+                <div class="livros-grid" id="listaLivros">
+
+
+                    <!-- LIVRO 1 -->
+
+                    <article
+                        class="livro-card"
+                        data-titulo="Como Convencer Alguém em 90 Segundos"
+                        data-autor="Nicholas Boothman">
+
+                        <div class="livro-capa">
+
+                            <img
+                                src="img/como convencer alguem em 90 segundos.jpg"
+                                alt="Como Convencer Alguém em 90 Segundos">
+
+                            <button
+                                class="favorito-btn"
+                                aria-label="Adicionar aos favoritos">
+
+                                ♡
+
+                            </button>
+
+                            <span class="livro-badge">
+                                Recomendado
+                            </span>
+
+                        </div>
+
+                        <div class="livro-info">
+
+                            <h3>
+                                Como Convencer Alguém em 90 Segundos
+                            </h3>
+
+                            <p>
+                                Nicholas Boothman
+                            </p>
+
+                            <div class="livro-acoes">
+
+                                <a href="Reserva.html">
+                                    <button>
+                                        Reservar
+                                    </button>
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- LIVRO 2 -->
+
+                    <article
+                        class="livro-card"
+                        data-titulo="O Poder da Ação"
+                        data-autor="Paulo Vieira">
+
+                        <div class="livro-capa">
+
+                            <img
+                                src="img/o-poder-da-acao.jpg"
+                                alt="O Poder da Ação">
+
+                            <button
+                                class="favorito-btn"
+                                aria-label="Adicionar aos favoritos">
+
+                                ♡
+
+                            </button>
+
+                        </div>
+
+                        <div class="livro-info">
+
+                            <h3>
+                                O Poder da Ação
+                            </h3>
+
+                            <p>
+                                Paulo Vieira
+                            </p>
+
+                            <div class="livro-acoes">
+
+                                <a href="Reserva.html">
+                                    <button>
+                                        Reservar
+                                    </button>
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- LIVRO 3 -->
+
+                    <article
+                        class="livro-card"
+                        data-titulo="Hábitos Atômicos"
+                        data-autor="James Clear">
+
+                        <div class="livro-capa">
+
+                            <img
+                                src="img/habitos atomicos.webp"
+                                alt="Hábitos Atômicos">
+
+                            <button
+                                class="favorito-btn"
+                                aria-label="Adicionar aos favoritos">
+
+                                ♡
+
+                            </button>
+
+                            <span class="livro-badge verde">
+                                Popular
+                            </span>
+
+                        </div>
+
+                        <div class="livro-info">
+
+                            <h3>
+                                Hábitos Atômicos
+                            </h3>
+
+                            <p>
+                                James Clear
+                            </p>
+
+                            <div class="livro-acoes">
+
+                                <a href="Reserva.html">
+                                    <button>
+                                        Reservar
+                                    </button>
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- LIVRO 4 -->
+
+                    <article
+                        class="livro-card"
+                        data-titulo="Os Segredos da Mente Milionária"
+                        data-autor="T. Harv Eker">
+
+                        <div class="livro-capa">
+
+                            <img
+                                src="img/Os segredos da mente milionária (capa do livro).jpg"
+                                alt="Os Segredos da Mente Milionária">
+
+                            <button
+                                class="favorito-btn"
+                                aria-label="Adicionar aos favoritos">
+
+                                ♡
+
+                            </button>
+
+                        </div>
+
+                        <div class="livro-info">
+
+                            <h3>
+                                Os Segredos da Mente Milionária
+                            </h3>
+
+                            <p>
+                                T. Harv Eker
+                            </p>
+
+                            <div class="livro-acoes">
+
+                                <a href="Reserva.html">
+                                    <button>
+                                        Reservar
+                                    </button>
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- LIVRO 5 -->
+
+                    <article
+                        class="livro-card"
+                        data-titulo="Como Fazer Amigos e Influenciar Pessoas"
+                        data-autor="Dale Carnegie">
+
+                        <div class="livro-capa">
+
+                            <img
+                                src="img/como fazer amigos e influenciar pessoas.jpg"
+                                alt="Como Fazer Amigos e Influenciar Pessoas">
+
+                            <button
+                                class="favorito-btn"
+                                aria-label="Adicionar aos favoritos">
+
+                                ♡
+
+                            </button>
+
+                            <span class="livro-badge">
+                                Clássico
+                            </span>
+
+                        </div>
+
+                        <div class="livro-info">
+
+                            <h3>
+                                Como Fazer Amigos e Influenciar Pessoas
+                            </h3>
+
+                            <p>
+                                Dale Carnegie
+                            </p>
+
+                            <div class="livro-acoes">
+
+                                <a href="Reserva.html">
+                                    <button>
+                                        Reservar
+                                    </button>
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- LIVRO 6 -->
+
+                    <article
+                        class="livro-card"
+                        data-titulo="Um Amor da Primeira"
+                        data-autor="Samira Almeida">
+
+                        <div class="livro-capa">
+
+                            <img
+                                src="img/romance.webp"
+                                alt="Um Amor da Primeira">
+
+                            <button
+                                class="favorito-btn"
+                                aria-label="Adicionar aos favoritos">
+
+                                ♡
+
+                            </button>
+
+                        </div>
+
+                        <div class="livro-info">
+
+                            <h3>
+                                Um Amor da Primeira
+                            </h3>
+
+                            <p>
+                                Samira Almeida
+                            </p>
+
+                            <div class="livro-acoes">
+
+                                <a href="Reserva.html">
+                                    <button>
+                                        Reservar
+                                    </button>
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 CONTINUE SUA LEITURA
+            ================================================== -->
+
+            <section class="continue-section">
+
+                <div class="section-cabecalho">
+
+                    <div>
+
+                        <span class="section-mini">
+                            SUA JORNADA
+                        </span>
+
+                        <h2>
+                            Continue sua leitura
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="continue-card">
+
+                    <div class="continue-capa">
+
+                        <img
+                            src="img/habitos atomicos.webp"
+                            alt="Hábitos Atômicos">
+
+                    </div>
+
+
+                    <div class="continue-info">
+
+                        <span>
+                            📖 Em leitura
+                        </span>
+
+                        <h3>
+                            Hábitos Atômicos
+                        </h3>
+
+                        <p>
+                            James Clear
+                        </p>
+
+                        <div class="progresso-leitura">
+
+                            <div class="progresso-topo">
+
+                                <span>
+                                    Seu progresso
+                                </span>
+
+                                <strong>
+                                    35%
+                                </strong>
+
+                            </div>
+
+                            <div class="progresso-barra">
+
+                                <div
+                                    class="progresso-preenchido"
+                                    style="width:35%;">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <button class="btn-continuar">
+                            Continuar leitura →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 CATEGORIAS
+            ================================================== -->
+
+            <section
+                class="categorias-section"
+                id="categorias">
+
+                <div class="section-cabecalho">
+
+                    <div>
+
+                        <span class="section-mini">
+                            EXPLORE
+                        </span>
+
+                        <h2>
+                            Explore por categoria
+                        </h2>
+
+                        <p>
+                            Encontre livros de acordo com os seus interesses.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="categorias-grid">
+
+
+                    <!-- LITERATURA -->
+
+                    <a
+                        href="geografia.html"
+                        class="categoria-caixa geografia">
+
+                        <div class="icone">
+                            🌎
+                        </div>
+
+                        <div>
+                            <h3>
+                                Literatura
+                            </h3>
+
+                            <span>
+                                3434 livros
+                            </span>
+                        </div>
+
+                        <strong>
+                            →
+                        </strong>
+
+                    </a>
+
+
+
+                    <!-- PSICOLOGIA -->
+
+                    <a
+                        href="psicologia.html"
+                        class="categoria-caixa psicologia">
+
+                        <div class="icone">
+                            🧠
+                        </div>
+
+                        <div>
+                            <h3>
+                                Psicologia
+                            </h3>
+
+                            <span>
+                                3434 livros
+                            </span>
+                        </div>
+
+                        <strong>
+                            →
+                        </strong>
+
+                    </a>
+
+
+
+                    <!-- DESPORTO -->
+
+                    <a
+                        href="desporto.html"
+                        class="categoria-caixa desporto">
+
+                        <div class="icone">
+                            🏅
+                        </div>
+
+                        <div>
+                            <h3>
+                                Desporto
+                            </h3>
+
+                            <span>
+                                3434 livros
+                            </span>
+                        </div>
+
+                        <strong>
+                            →
+                        </strong>
+
+                    </a>
+
+
+
+                    <!-- RELIGIÃO -->
+
+                    <a
+                        href="religiao.html"
+                        class="categoria-caixa religiao">
+
+                        <div class="icone">
+                            🏫
+                        </div>
+
+                        <div>
+                            <h3>
+                                Religião
+                            </h3>
+
+                            <span>
+                                3432 livros
+                            </span>
+                        </div>
+
+                        <strong>
+                            →
+                        </strong>
+
+                    </a>
+
+
+
+                    <!-- INFORMÁTICA -->
+
+                    <a
+                        href="informatica.html"
+                        class="categoria-caixa informatica">
+
+                        <div class="icone">
+                            💻
+                        </div>
+
+                        <div>
+                            <h3>
+                                Informática
+                            </h3>
+
+                            <span>
+                                340 livros
+                            </span>
+                        </div>
+
+                        <strong>
+                            →
+                        </strong>
+
+                    </a>
+
+
+
+                    <!-- DIREITO -->
+
+                    <a
+                        href="direito.html"
+                        class="categoria-caixa direito">
+
+                        <div class="icone">
+                            ⚖️
+                        </div>
+
+                        <div>
+                            <h3>
+                                Direito
+                            </h3>
+
+                            <span>
+                                344 livros
+                            </span>
+
+                        </div>
+
+                        <strong>
+                            →
+                        </strong>
+
+                    </a>
+
+
+
+                    <!-- ECONOMIA -->
+
+                    <a
+                        href="economia.html"
+                        class="categoria-caixa Economia">
+
+                        <div class="icone">
+                            📈
+                        </div>
+
+                        <div>
+                            <h3>
+                                Economia
+                            </h3>
+
+                            <span>
+                                34 livros
+                            </span>
+                        </div>
+
+                        <strong>
+                            →
+                        </strong>
+
+                    </a>
+
+
+
+                    <!-- ROMANCE -->
+
+                    <a
+                        href="romance.html"
+                        class="categoria-caixa romance">
+
+                        <div class="icone">
+                            ❤️
+                        </div>
+
+                        <div>
+                            <h3>
+                                Romance
+                            </h3>
+
+                            <span>
+                                45 livros
+                            </span>
+                        </div>
+
+                        <strong>
+                            →
+                        </strong>
+
+                    </a>
+
+
+
+                    <!-- OUTROS -->
+
+                    <a
+                        href="Reserva.html"
+                        class="categoria-caixa outros">
+
+                        <div class="icone">
+                            ➕
+                        </div>
+
+                        <div>
+                            <h3>
+                                Outros
+                            </h3>
+
+                            <span>
+                                3 livros
+                            </span>
+                        </div>
+
+                        <strong>
+                            →
+                        </strong>
+
+                    </a>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 DESCUBRA ALGO NOVO
+            ================================================== -->
+
+            <section class="descoberta-section">
+
+                <div class="descoberta-conteudo">
+
+                    <div class="descoberta-icone">
+                        ✨
+                    </div>
+
+                    <div>
+
+                        <span>
+                            RECOMENDAÇÃO PARA VOCÊ
+                        </span>
+
+                        <h2>
+                            Descubra algo novo hoje
+                        </h2>
+
+                        <p>
+                            Explore novos conhecimentos, novas histórias
+                            e encontre o próximo livro da sua jornada.
+                        </p>
+
+                    </div>
+
+                    <a href="#livros">
+                        <button>
+                            Explorar livros →
+                        </button>
+                    </a>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 FAVORITOS
+            ================================================== -->
+
+            <section
+                class="favoritos-section"
+                id="favoritos">
+
+                <div class="section-cabecalho">
+
+                    <div>
+
+                        <span class="section-mini">
+                            SUA COLEÇÃO
+                        </span>
+
+                        <h2>
+                            Seus favoritos
+                        </h2>
+
+                    </div>
+
+                    <span class="favoritos-contador">
+                        0 livros
+                    </span>
+
+                </div>
+
+                <div
+                    id="listaFavoritos"
+                    class="lista-favoritos">
+
+                    <div class="sem-favoritos">
+
+                        <div>
+                            ❤️
+                        </div>
+
+                        <h3>
+                            Ainda não tem favoritos
+                        </h3>
+
+                        <p>
+                            Clique no ❤️ dos livros que você mais gosta
+                            para guardá-los aqui.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
         </main>
 
-    </main>
-     
 
-  
+        <!-- =================================================
+             NOTIFICAÇÕES
+        ================================================== -->
 
-    <aside class="painel">
-    <div class="livro-destaque">
-        <img src="img/as-48-leis-de-poder.webp" class="imag">
+        <div
+            class="notificacoes-painel"
+            id="notificacoesPainel">
+
+            <div class="notificacoes-header">
+
+                <h3>
+                    🔔 Notificações
+                </h3>
+
+                <button id="fecharNotificacoes">
+                    ×
+                </button>
+
+            </div>
+
+            <div class="notificacao-item">
+
+                <span>
+                    📚
+                </span>
+
+                <div>
+
+                    <strong>
+                        Bem-vindo à biblioteca!
+                    </strong>
+
+                    <p>
+                        Explore o nosso catálogo e encontre
+                        o próximo livro para ler.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="notificacao-item">
+
+                <span>
+                    ⭐
+                </span>
+
+                <div>
+
+                    <strong>
+                        Ganhe pontos
+                    </strong>
+
+                    <p>
+                        Reserve livros e participe nos desafios
+                        para ganhar pontos.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="notificacao-item">
+
+                <span>
+                    🏆
+                </span>
+
+                <div>
+
+                    <strong>
+                        Novos desafios disponíveis
+                    </strong>
+
+                    <p>
+                        Visite a biblioteca e comece a sua jornada.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
     </div>
 
-    <div class="painel-info">
-        <p class="text">
-             “As 48 Leis do Poder” é mais que um livro: é um manual atemporal sobre influência, estratégia e liderança. Inspirado em histórias de reis, generais e pensadores, Robert Greene revela como o poder molda relações e abre caminhos para quem sabe usá-lo. Uma leitura provocadora, que desafia a mente e transforma a forma como você enxerga o mundo.”
 
-  
-        </p>
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
 
-        <a href="Reserva.html">
-            <button class="btn-reservar">Reservar</button>
-        </a>
-    </div>
-</aside>
+    <footer class="futer">
+
+        <div class="footer-conteudo">
 
 
+            <div class="footer-brand">
 
-<footer class="futer">
+                <div class="footer-logo">
+                    📖
+                </div>
 
-    <p class="topo">Biblioteca Provincial de Pemba</p>
+                <h2>
+                    Biblioteca Digital Inteligente de Pemba
+                </h2>
 
-    <h2>Biblioteca digital inteligente de pemba</h2>
+                <p>
+                    Descubra, reserve e leia.
+                    Ganhe pontos e conquistas enquanto
+                    explora o conhecimento.
+                </p>
 
-    <p>
-        Descobra, Reserva e leia. Ganhe pontos e conquistas enquanto explora o conhecimento
-    </p>
-
-    <h2 class="titulo">Contactos</h2>
-
-    <p>873645793</p>
-    <p>843727907</p>
-    <p>bibliotecaprovincial@gmail.com.mz</p>
-    <p>Avenida samora machel, rua nr 24</p>
-
-</footer>
+            </div>
 
 
-</div>
-<script src="inicio.js"></script>
+            <div class="footer-coluna">
+
+                <h3>
+                    Biblioteca
+                </h3>
+
+                <a href="INICIO.html">
+                    Início
+                </a>
+
+                <a href="#categorias">
+                    Categorias
+                </a>
+
+                <a href="Reserva.html">
+                    Reservas
+                </a>
+
+                <a href="#favoritos">
+                    Favoritos
+                </a>
+
+            </div>
+
+
+            <div class="footer-coluna">
+
+                <h3>
+                    Minha conta
+                </h3>
+
+                <a href="perfil.html">
+                    Meu perfil
+                </a>
+
+                <a href="desafios.html">
+                    Desafios
+                </a>
+
+                <a href="#">
+                    Definições
+                </a>
+
+            </div>
+
+
+            <div class="footer-coluna">
+
+                <h3>
+                    Contactos
+                </h3>
+
+                <p>
+                    📞 873645793
+                </p>
+
+                <p>
+                    📞 843727907
+                </p>
+
+                <p>
+                    ✉️ bibliotecaprovincial@gmail.com.mz
+                </p>
+
+                <p>
+                    📍 Avenida Samora Machel,
+                    Rua nº 24
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Biblioteca Provincial de Pemba.
+                Todos os direitos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="inicio.js"></script>
+
 </body>
+
 </html>
