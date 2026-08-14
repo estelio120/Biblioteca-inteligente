@@ -1,8 +1,109 @@
 document.addEventListener("DOMContentLoaded", () => {
     "use strict";
 
-    const $ = (selector, parent = document) => parent.querySelector(selector);
-    const $$ = (selector, parent = document) => [...parent.querySelectorAll(selector)];
+    /* =========================================================
+       1. HELPERS
+       ========================================================= */
+
+    const $ = (selector, parent = document) =>
+        parent.querySelector(selector);
+
+    const $$ = (selector, parent = document) =>
+        [...parent.querySelectorAll(selector)];
+
+    const STORAGE = {
+        favoritos: "biblioteca_favoritos",
+        reservas: "biblioteca_reservas",
+        pontos: "biblioteca_pontos",
+        leitura: "biblioteca_leitura",
+        notificacoes: "biblioteca_notificacoes",
+        utilizador: "biblioteca_utilizador",
+        preferencias: "biblioteca_preferencias"
+    };
+
+    const BREAKPOINT = 900;
+
+    const lerStorage = (chave, valorPadrao) => {
+        try {
+            const valor = localStorage.getItem(chave);
+
+            if (valor === null) {
+                return valorPadrao;
+            }
+
+            return JSON.parse(valor);
+        } catch (erro) {
+            console.warn(`Erro ao ler ${chave}:`, erro);
+            return valorPadrao;
+        }
+    };
+
+    const salvarStorage = (chave, valor) => {
+        try {
+            localStorage.setItem(chave, JSON.stringify(valor));
+        } catch (erro) {
+            console.warn(`Erro ao salvar ${chave}:`, erro);
+        }
+    };
+
+    const normalizar = (texto) =>
+        String(texto || "")
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .toLowerCase()
+            .trim();
+
+    const escaparHTML = (texto) =>
+        String(texto || "")
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+
+    /* =========================================================
+       2. ESTADO
+       ========================================================= */
+
+    let favoritos = lerStorage(STORAGE.favoritos, []);
+    let reservas = lerStorage(STORAGE.reservas, []);
+    let pontos = Number(lerStorage(STORAGE.pontos, 0)) || 0;
+
+    let leitura = lerStorage(STORAGE.leitura, {});
+
+    let notificacoes = lerStorage(STORAGE.notificacoes, []);
+
+    let utilizador = lerStorage(STORAGE.utilizador, {
+        nome: "Utilizador",
+        email: "utilizador@email.com",
+        avatar: ""
+    });
+
+    let preferencias = lerStorage(STORAGE.preferencias, {
+        notificacoes: true,
+        animacoes: true,
+        modoEscuro: false
+    });
+
+    if (!Array.isArray(favoritos)) {
+        favoritos = [];
+    }
+
+    if (!Array.isArray(reservas)) {
+        reservas = [];
+    }
+
+    if (!Array.isArray(notificacoes)) {
+        notificacoes = [];
+    }
+
+    if (!leitura || typeof leitura !== "object" || Array.isArray(leitura)) {
+        leitura = {};
+    }
+
+    /* =========================================================
+       3. ELEMENTOS
+       ========================================================= */
 
     const abrirMenu = $("#abrirMenu");
     const menuLateral = $("#menuLateral");
@@ -28,72 +129,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const verDetalhesDestaque = $("#verDetalhesDestaque");
 
     const btnSair = $("#btnSair");
-    const btnContinuar = $(".btn-continuar");
 
-    const livros = $$(".livro-card");
-    const menuItens = $$(".menu-item");
-    const secoes = $$("main section");
-    const linksInternos = $$('a[href^="#"]');
+    /* =========================================================
+       4. LIVROS
+       ========================================================= */
 
-    const STORAGE_FAVORITOS = "biblioteca_favoritos";
-    const STORAGE_RESERVAS = "biblioteca_reservas";
-    const STORAGE_PONTOS = "biblioteca_pontos";
-    const STORAGE_LEITURA = "biblioteca_leitura";
+    const obterLivros = () => $$(".livro-card");
 
-    let favoritos = JSON.parse(localStorage.getItem(STORAGE_FAVORITOS) || "[]");
-    let reservas = JSON.parse(localStorage.getItem(STORAGE_RESERVAS) || "[]");
-    let pontos = Number(localStorage.getItem(STORAGE_PONTOS) || 0);
-    let leitura = Number(localStorage.getItem(STORAGE_LEITURA) || 35);
+    const criarIdLivro = (livro) => {
+        if (!livro) return "";
 
-    const normalizar = texto =>
-        String(texto || "")
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .toLowerCase()
-            .trim();
-
-    const salvarDados = () => {
-        localStorage.setItem(STORAGE_FAVORITOS, JSON.stringify(favoritos));
-        localStorage.setItem(STORAGE_RESERVAS, JSON.stringify(reservas));
-        localStorage.setItem(STORAGE_PONTOS, String(pontos));
-        localStorage.setItem(STORAGE_LEITURA, String(leitura));
-    };
-
-    const animarNumero = (elemento, valor) => {
-        if (!elemento) return;
-
-        const inicio = Number(elemento.textContent.replace(/\D/g, "")) || 0;
-        const destino = Number(valor) || 0;
-        const duracao = 700;
-        const inicioTempo = performance.now();
-
-        const atualizar = tempoAtual => {
-            const progresso = Math.min((tempoAtual - inicioTempo) / duracao, 1);
-            const suavizado = 1 - Math.pow(1 - progresso, 3);
-            const numero = Math.round(inicio + (destino - inicio) * suavizado);
-
-            elemento.textContent = numero;
-
-            if (progresso < 1) {
-                requestAnimationFrame(atualizar);
-            }
-        };
-
-        requestAnimationFrame(atualizar);
-    };
-
-    const atualizarContadores = () => {
-        animarNumero(totalReservas, reservas.length);
-        animarNumero(totalFavoritos, favoritos.length);
-        animarNumero(totalPontos, pontos);
-
-        if (favoritosContador) {
-            favoritosContador.textContent =
-                `${favoritos.length} ${favoritos.length === 1 ? "livro" : "livros"}`;
+        if (livro.dataset.id) {
+            return String(livro.dataset.id);
         }
-    };
 
-    const criarIdLivro = livro => {
         const titulo = livro.dataset.titulo || "";
         const autor = livro.dataset.autor || "";
 
@@ -102,45 +151,43 @@ document.addEventListener("DOMContentLoaded", () => {
             .replace(/^-|-$/g, "");
     };
 
-    const mostrarToast = (mensagem, tipo = "sucesso") => {
-        const antigo = $(".biblioteca-toast");
+    const obterDadosLivro = (livro) => {
+        if (!livro) return null;
 
-        if (antigo) {
-            antigo.remove();
+        return {
+            id: criarIdLivro(livro),
+            titulo: livro.dataset.titulo || "Livro",
+            autor: livro.dataset.autor || "Autor desconhecido",
+            categoria: livro.dataset.categoria || "",
+            capa: $("img", livro)?.src || "",
+            descricao: livro.dataset.descricao || "",
+            paginas: Number(livro.dataset.paginas || 0),
+            ano: livro.dataset.ano || "",
+            isbn: livro.dataset.isbn || "",
+            avaliacao: Number(livro.dataset.avaliacao || 0),
+            disponivel:
+                livro.dataset.disponivel !== "false"
+        };
+    };
+
+    /* =========================================================
+       5. MENU LATERAL
+       ========================================================= */
+
+    const abrirMenuMobile = () => {
+        if (!menuLateral) return;
+
+        menuLateral.classList.add("aberto");
+
+        if (overlay) {
+            overlay.classList.add("ativo");
         }
 
-        const toast = document.createElement("div");
-        toast.className = `biblioteca-toast ${tipo}`;
+        document.body.classList.add("menu-aberto");
 
-        const icone = tipo === "erro"
-            ? "⚠️"
-            : tipo === "info"
-                ? "ℹ️"
-                : "✓";
-
-        toast.innerHTML = `
-            <span class="toast-icone">${icone}</span>
-            <span class="toast-texto">${mensagem}</span>
-            <button class="toast-fechar" aria-label="Fechar">×</button>
-        `;
-
-        document.body.appendChild(toast);
-
-        requestAnimationFrame(() => {
-            toast.classList.add("mostrar");
-        });
-
-        const fechar = () => {
-            toast.classList.remove("mostrar");
-
-            setTimeout(() => {
-                toast.remove();
-            }, 350);
-        };
-
-        $(".toast-fechar", toast).addEventListener("click", fechar);
-
-        setTimeout(fechar, 3500);
+        if (abrirMenu) {
+            abrirMenu.setAttribute("aria-expanded", "true");
+        }
     };
 
     const fecharMenu = () => {
@@ -153,55 +200,246 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         document.body.classList.remove("menu-aberto");
+
+        if (abrirMenu) {
+            abrirMenu.setAttribute("aria-expanded", "false");
+        }
     };
 
-    const abrirMenuMobile = () => {
-        if (!menuLateral) return;
-
-        menuLateral.classList.add("aberto");
-
-        if (overlay) {
-            overlay.classList.add("ativo");
+    const alternarMenu = () => {
+        if (window.innerWidth > BREAKPOINT) {
+            return;
         }
 
-        document.body.classList.add("menu-aberto");
+        if (menuLateral?.classList.contains("aberto")) {
+            fecharMenu();
+        } else {
+            abrirMenuMobile();
+        }
     };
 
     if (abrirMenu) {
-        abrirMenu.addEventListener("click", () => {
-            if (menuLateral?.classList.contains("aberto")) {
-                fecharMenu();
-            } else {
-                abrirMenuMobile();
-            }
+        abrirMenu.setAttribute("aria-expanded", "false");
+
+        abrirMenu.addEventListener("click", (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+
+            alternarMenu();
         });
     }
 
     if (overlay) {
-        overlay.addEventListener("click", fecharMenu);
+        overlay.addEventListener("click", () => {
+            fecharMenu();
+        });
     }
 
-    document.addEventListener("keydown", event => {
+    document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") {
             fecharMenu();
             fecharPainelNotificacoes();
         }
     });
 
-    menuItens.forEach(item => {
-        const link = $("a", item);
+    const configurarMenu = () => {
+        const itens = $$(".menu-item");
 
-        if (!link) return;
+        itens.forEach((item) => {
+            const link = $("a", item);
 
-        link.addEventListener("click", () => {
-            menuItens.forEach(outro => outro.classList.remove("ativo"));
-            item.classList.add("ativo");
+            if (!link) return;
 
-            if (window.innerWidth <= 900) {
-                fecharMenu();
-            }
+            link.addEventListener("click", () => {
+                itens.forEach((outro) => {
+                    outro.classList.remove("ativo");
+                });
+
+                item.classList.add("ativo");
+
+                if (window.innerWidth <= BREAKPOINT) {
+                    fecharMenu();
+                }
+            });
         });
+    };
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > BREAKPOINT) {
+            fecharMenu();
+        }
     });
+
+    /* =========================================================
+       6. NOTIFICAÇÕES
+       ========================================================= */
+
+    const obterNotificacoesNaoLidas = () =>
+        notificacoes.filter((item) => !item.lida).length;
+
+    const atualizarContadorNotificacoes = () => {
+        const contador =
+            $(".notificacoes-contador") ||
+            $("#contadorNotificacoes") ||
+            $(".notification-count");
+
+        const quantidade = obterNotificacoesNaoLidas();
+
+        if (contador) {
+            contador.textContent = quantidade;
+            contador.hidden = quantidade === 0;
+        }
+
+        if (btnNotificacao) {
+            btnNotificacao.setAttribute(
+                "aria-label",
+                quantidade
+                    ? `${quantidade} notificações não lidas`
+                    : "Notificações"
+            );
+        }
+    };
+
+    const renderizarNotificacoes = () => {
+        if (!notificacoesPainel) return;
+
+        const lista =
+            $("#listaNotificacoes", notificacoesPainel) ||
+            $(".lista-notificacoes", notificacoesPainel);
+
+        if (!lista) return;
+
+        lista.innerHTML = "";
+
+        if (!notificacoes.length) {
+            lista.innerHTML = `
+                <div class="sem-notificacoes">
+                    <div>🔔</div>
+                    <p>Não existem notificações.</p>
+                </div>
+            `;
+
+            return;
+        }
+
+        notificacoes
+            .slice()
+            .reverse()
+            .forEach((notificacao) => {
+                const elemento = document.createElement("div");
+
+                elemento.className =
+                    `notificacao-item ${notificacao.lida ? "lida" : "nao-lida"}`;
+
+                elemento.dataset.id = notificacao.id;
+
+                elemento.innerHTML = `
+                    <div class="notificacao-conteudo">
+                        <strong>
+                            ${escaparHTML(notificacao.titulo)}
+                        </strong>
+
+                        <p>
+                            ${escaparHTML(notificacao.mensagem)}
+                        </p>
+
+                        <small>
+                            ${escaparHTML(notificacao.data || "")}
+                        </small>
+                    </div>
+
+                    ${
+                        !notificacao.lida
+                            ? `
+                                <button
+                                    type="button"
+                                    class="marcar-notificacao"
+                                    data-id="${escaparHTML(notificacao.id)}"
+                                >
+                                    Marcar como lida
+                                </button>
+                            `
+                            : ""
+                    }
+                `;
+
+                lista.appendChild(elemento);
+            });
+
+        $$(".marcar-notificacao", lista).forEach((botao) => {
+            botao.addEventListener("click", () => {
+                marcarNotificacaoComoLida(botao.dataset.id);
+            });
+        });
+    };
+
+    const adicionarNotificacao = (
+        titulo,
+        mensagem
+    ) => {
+        if (!preferencias.notificacoes) {
+            return;
+        }
+
+        notificacoes.push({
+            id:
+                Date.now().toString() +
+                Math.random().toString(36).slice(2),
+
+            titulo,
+            mensagem,
+
+            data:
+                new Date().toLocaleString("pt-PT"),
+
+            lida: false
+        });
+
+        salvarStorage(
+            STORAGE.notificacoes,
+            notificacoes
+        );
+
+        renderizarNotificacoes();
+        atualizarContadorNotificacoes();
+    };
+
+    const marcarNotificacaoComoLida = (id) => {
+        const notificacao = notificacoes.find(
+            (item) => String(item.id) === String(id)
+        );
+
+        if (!notificacao) return;
+
+        notificacao.lida = true;
+
+        salvarStorage(
+            STORAGE.notificacoes,
+            notificacoes
+        );
+
+        renderizarNotificacoes();
+        atualizarContadorNotificacoes();
+
+        mostrarToast(
+            "Notificação marcada como lida.",
+            "info"
+        );
+    };
+
+    const marcarTodasComoLidas = () => {
+        notificacoes.forEach((item) => {
+            item.lida = true;
+        });
+
+        salvarStorage(
+            STORAGE.notificacoes,
+            notificacoes
+        );
+
+        renderizarNotificacoes();
+        atualizarContadorNotificacoes();
+    };
 
     const fecharPainelNotificacoes = () => {
         if (!notificacoesPainel) return;
@@ -210,25 +448,52 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (btnNotificacao) {
             btnNotificacao.classList.remove("ativo");
+            btnNotificacao.setAttribute(
+                "aria-expanded",
+                "false"
+            );
         }
     };
 
+    const abrirPainelNotificacoes = () => {
+        if (!notificacoesPainel) return;
+
+        notificacoesPainel.classList.add("ativo");
+
+        if (btnNotificacao) {
+            btnNotificacao.classList.add("ativo");
+            btnNotificacao.setAttribute(
+                "aria-expanded",
+                "true"
+            );
+        }
+
+        renderizarNotificacoes();
+    };
+
     if (btnNotificacao) {
-        btnNotificacao.addEventListener("click", event => {
+        btnNotificacao.addEventListener("click", (event) => {
+            event.preventDefault();
             event.stopPropagation();
 
-            if (!notificacoesPainel) return;
-
-            notificacoesPainel.classList.toggle("ativo");
-            btnNotificacao.classList.toggle("ativo");
+            if (
+                notificacoesPainel?.classList.contains("ativo")
+            ) {
+                fecharPainelNotificacoes();
+            } else {
+                abrirPainelNotificacoes();
+            }
         });
     }
 
     if (fecharNotificacoes) {
-        fecharNotificacoes.addEventListener("click", fecharPainelNotificacoes);
+        fecharNotificacoes.addEventListener(
+            "click",
+            fecharPainelNotificacoes
+        );
     }
 
-    document.addEventListener("click", event => {
+    document.addEventListener("click", (event) => {
         if (
             notificacoesPainel &&
             !notificacoesPainel.contains(event.target) &&
@@ -238,74 +503,328 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    const configurarFavoritos = () => {
-        livros.forEach(livro => {
-            const botao = $(".favorito-btn", livro);
+    /* =========================================================
+       7. TOAST
+       ========================================================= */
 
-            if (!botao) return;
+    const mostrarToast = (
+        mensagem,
+        tipo = "sucesso"
+    ) => {
+        const antigo =
+            $(".biblioteca-toast");
 
-            const id = criarIdLivro(livro);
-            const estaFavorito = favoritos.includes(id);
+        if (antigo) {
+            antigo.remove();
+        }
 
-            botao.classList.toggle("favoritado", estaFavorito);
-            botao.textContent = estaFavorito ? "♥" : "♡";
-            botao.setAttribute(
-                "aria-label",
-                estaFavorito
-                    ? "Remover dos favoritos"
-                    : "Adicionar aos favoritos"
-            );
+        const toast =
+            document.createElement("div");
 
-            botao.addEventListener("click", event => {
-                event.preventDefault();
-                event.stopPropagation();
+        toast.className =
+            `biblioteca-toast ${tipo}`;
 
-                const indice = favoritos.indexOf(id);
+        const icone =
+            tipo === "erro"
+                ? "⚠️"
+                : tipo === "info"
+                    ? "ℹ️"
+                    : tipo === "aviso"
+                        ? "⚠️"
+                        : "✓";
 
-                if (indice === -1) {
-                    favoritos.push(id);
-                    botao.classList.add("favoritado");
-                    botao.textContent = "♥";
-                    botao.setAttribute("aria-label", "Remover dos favoritos");
+        toast.innerHTML = `
+            <span class="toast-icone">
+                ${icone}
+            </span>
 
-                    criarEfeitoCoracao(botao);
-                    mostrarToast(
-                        `"${livro.dataset.titulo}" foi adicionado aos favoritos.`
-                    );
-                } else {
-                    favoritos.splice(indice, 1);
-                    botao.classList.remove("favoritado");
-                    botao.textContent = "♡";
-                    botao.setAttribute("aria-label", "Adicionar aos favoritos");
+            <span class="toast-texto">
+                ${escaparHTML(mensagem)}
+            </span>
 
-                    mostrarToast(
-                        `"${livro.dataset.titulo}" foi removido dos favoritos.`,
-                        "info"
-                    );
-                }
+            <button
+                type="button"
+                class="toast-fechar"
+                aria-label="Fechar"
+            >
+                ×
+            </button>
+        `;
 
-                salvarDados();
-                atualizarContadores();
-                renderizarFavoritos();
-            });
+        document.body.appendChild(toast);
+
+        requestAnimationFrame(() => {
+            toast.classList.add("mostrar");
         });
+
+        let removendo = false;
+
+        const fechar = () => {
+            if (removendo) return;
+
+            removendo = true;
+
+            toast.classList.remove("mostrar");
+
+            setTimeout(() => {
+                toast.remove();
+            }, 350);
+        };
+
+        $(".toast-fechar", toast)
+            ?.addEventListener("click", fechar);
+
+        setTimeout(fechar, 3500);
     };
 
-    const criarEfeitoCoracao = elemento => {
-        const rect = elemento.getBoundingClientRect();
+    /* =========================================================
+       8. FAVORITOS
+       ========================================================= */
 
-        const coracao = document.createElement("span");
-        coracao.className = "coracao-flutuante";
+    const atualizarEstadoFavorito = (
+        livro,
+        botao
+    ) => {
+        if (!livro || !botao) return;
+
+        const id = criarIdLivro(livro);
+
+        const favorito =
+            favoritos.includes(id);
+
+        botao.classList.toggle(
+            "favoritado",
+            favorito
+        );
+
+        botao.textContent =
+            favorito ? "♥" : "♡";
+
+        botao.setAttribute(
+            "aria-label",
+            favorito
+                ? "Remover dos favoritos"
+                : "Adicionar aos favoritos"
+        );
+
+        botao.setAttribute(
+            "aria-pressed",
+            favorito ? "true" : "false"
+        );
+    };
+
+    const atualizarContadorFavoritos = () => {
+        if (!favoritosContador) return;
+
+        const quantidade =
+            favoritos.length;
+
+        favoritosContador.textContent =
+            `${quantidade} ${
+                quantidade === 1
+                    ? "livro"
+                    : "livros"
+            }`;
+    };
+
+    const animarNumero = (
+        elemento,
+        valor
+    ) => {
+        if (!elemento) return;
+
+        const atual =
+            Number(
+                elemento.textContent
+                    .replace(/\D/g, "")
+            ) || 0;
+
+        const destino =
+            Number(valor) || 0;
+
+        if (atual === destino) {
+            elemento.textContent =
+                destino;
+
+            return;
+        }
+
+        const duracao = 500;
+        const inicio = performance.now();
+
+        const animar = (tempo) => {
+            const progresso =
+                Math.min(
+                    (tempo - inicio) /
+                        duracao,
+                    1
+                );
+
+            const suavizado =
+                1 -
+                Math.pow(
+                    1 - progresso,
+                    3
+                );
+
+            const numero =
+                Math.round(
+                    atual +
+                    (destino - atual) *
+                        suavizado
+                );
+
+            elemento.textContent =
+                numero;
+
+            if (progresso < 1) {
+                requestAnimationFrame(
+                    animar
+                );
+            }
+        };
+
+        requestAnimationFrame(animar);
+    };
+
+    const atualizarContadores = () => {
+        animarNumero(
+            totalReservas,
+            reservas.length
+        );
+
+        animarNumero(
+            totalFavoritos,
+            favoritos.length
+        );
+
+        animarNumero(
+            totalPontos,
+            pontos
+        );
+
+        atualizarContadorFavoritos();
+    };
+
+    const criarEfeitoCoracao = (
+        elemento
+    ) => {
+        if (!elemento) return;
+
+        const rect =
+            elemento.getBoundingClientRect();
+
+        const coracao =
+            document.createElement("span");
+
+        coracao.className =
+            "coracao-flutuante";
+
         coracao.textContent = "♥";
 
-        coracao.style.left = `${rect.left + rect.width / 2}px`;
-        coracao.style.top = `${rect.top}px`;
+        coracao.style.left =
+            `${rect.left + rect.width / 2}px`;
 
-        document.body.appendChild(coracao);
+        coracao.style.top =
+            `${rect.top}px`;
+
+        document.body.appendChild(
+            coracao
+        );
 
         setTimeout(() => {
             coracao.remove();
         }, 1000);
+    };
+
+    const alternarFavorito = (
+        livro,
+        botao
+    ) => {
+        const id =
+            criarIdLivro(livro);
+
+        if (!id) return;
+
+        const indice =
+            favoritos.indexOf(id);
+
+        if (indice === -1) {
+            favoritos.push(id);
+
+            atualizarEstadoFavorito(
+                livro,
+                botao
+            );
+
+            criarEfeitoCoracao(botao);
+
+            mostrarToast(
+                `"${livro.dataset.titulo}" foi adicionado aos favoritos.`
+            );
+
+            adicionarNotificacao(
+                "Novo favorito",
+                `"${livro.dataset.titulo}" foi adicionado aos seus favoritos.`
+            );
+        } else {
+            favoritos.splice(indice, 1);
+
+            atualizarEstadoFavorito(
+                livro,
+                botao
+            );
+
+            mostrarToast(
+                `"${livro.dataset.titulo}" foi removido dos favoritos.`,
+                "info"
+            );
+        }
+
+        salvarStorage(
+            STORAGE.favoritos,
+            favoritos
+        );
+
+        atualizarContadores();
+        renderizarFavoritos();
+    };
+
+    const configurarFavoritos = () => {
+        obterLivros().forEach((livro) => {
+            const botao =
+                $(".favorito-btn", livro);
+
+            if (!botao) return;
+
+            atualizarEstadoFavorito(
+                livro,
+                botao
+            );
+
+            if (
+                botao.dataset.configurado ===
+                "true"
+            ) {
+                return;
+            }
+
+            botao.dataset.configurado =
+                "true";
+
+            botao.addEventListener(
+                "click",
+                (event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+
+                    alternarFavorito(
+                        livro,
+                        botao
+                    );
+                }
+            );
+        });
     };
 
     const renderizarFavoritos = () => {
@@ -313,319 +832,1200 @@ document.addEventListener("DOMContentLoaded", () => {
 
         listaFavoritos.innerHTML = "";
 
-        const livrosFavoritos = livros.filter(livro =>
-            favoritos.includes(criarIdLivro(livro))
-        );
+        const livros =
+            obterLivros();
+
+        const livrosFavoritos =
+            livros.filter((livro) =>
+                favoritos.includes(
+                    criarIdLivro(livro)
+                )
+            );
 
         if (!livrosFavoritos.length) {
             listaFavoritos.innerHTML = `
                 <div class="sem-favoritos">
                     <div>❤️</div>
-                    <h3>Ainda não tem favoritos</h3>
+
+                    <h3>
+                        Ainda não existem favoritos.
+                    </h3>
+
                     <p>
-                        Clique no ❤️ dos livros que você mais gosta
-                        para guardá-los aqui.
+                        Adicione livros aos favoritos
+                        para encontrá-los rapidamente depois.
                     </p>
                 </div>
             `;
 
-            if (favoritosContador) {
-                favoritosContador.textContent = "0 livros";
-            }
+            atualizarContadorFavoritos();
 
             return;
         }
 
-        const fragmento = document.createDocumentFragment();
+        const fragmento =
+            document.createDocumentFragment();
 
-        livrosFavoritos.forEach(livro => {
-            const clone = livro.cloneNode(true);
-            clone.classList.add("favorito-renderizado");
+        livrosFavoritos.forEach((livro) => {
+            const clone =
+                livro.cloneNode(true);
 
-            const botao = $(".favorito-btn", clone);
+            clone.classList.add(
+                "favorito-renderizado"
+            );
+
+            const botao =
+                $(".favorito-btn", clone);
 
             if (botao) {
-                botao.addEventListener("click", () => {
-                    const original = livros.find(
-                        item => criarIdLivro(item) === criarIdLivro(livro)
-                    );
+                botao.addEventListener(
+                    "click",
+                    (event) => {
+                        event.preventDefault();
+                        event.stopPropagation();
 
-                    if (original) {
-                        const originalBotao = $(".favorito-btn", original);
-                        originalBotao?.click();
+                        const original =
+                            obterLivros().find(
+                                (item) =>
+                                    criarIdLivro(item) ===
+                                    criarIdLivro(livro)
+                            );
+
+                        if (original) {
+                            $(
+                                ".favorito-btn",
+                                original
+                            )?.click();
+                        }
                     }
-                });
+                );
             }
 
-            fragmento.appendChild(clone);
+            fragmento.appendChild(
+                clone
+            );
         });
 
-        listaFavoritos.appendChild(fragmento);
+        listaFavoritos.appendChild(
+            fragmento
+        );
 
-        if (favoritosContador) {
-            favoritosContador.textContent =
-                `${livrosFavoritos.length} ${livrosFavoritos.length === 1 ? "livro" : "livros"}`;
-        }
+        atualizarContadorFavoritos();
     };
 
-    const reservarLivro = livro => {
+    /* =========================================================
+       9. RESERVAS
+       ========================================================= */
+
+    const encontrarReserva = (id) =>
+        reservas.find(
+            (reserva) =>
+                String(
+                    typeof reserva === "string"
+                        ? reserva
+                        : reserva.id
+                ) === String(id)
+        );
+
+    const reservarLivro = (
+        livro
+    ) => {
         if (!livro) return;
 
-        const id = criarIdLivro(livro);
-        const titulo = livro.dataset.titulo;
+        const dados =
+            obterDadosLivro(livro);
 
-        if (reservas.includes(id)) {
+        if (!dados) return;
+
+        const reservaExistente =
+            encontrarReserva(dados.id);
+
+        if (reservaExistente) {
             mostrarToast(
-                `"${titulo}" já está na sua lista de reservas.`,
+                `"${dados.titulo}" já está reservado.`,
                 "info"
             );
+
             return;
         }
 
-        reservas.push(id);
+        const reserva = {
+            id: dados.id,
+            titulo: dados.titulo,
+            autor: dados.autor,
+            data:
+                new Date().toLocaleDateString(
+                    "pt-PT"
+                ),
+            estado: dados.disponivel
+                ? "Confirmada"
+                : "Pendente"
+        };
+
+        reservas.push(reserva);
+
         pontos += 10;
 
-        salvarDados();
+        salvarStorage(
+            STORAGE.reservas,
+            reservas
+        );
+
+        salvarStorage(
+            STORAGE.pontos,
+            pontos
+        );
+
         atualizarContadores();
 
         mostrarToast(
-            `"${titulo}" foi reservado! Você ganhou +10 pontos.`
+            `"${dados.titulo}" foi reservado com sucesso. +10 pontos.`
+        );
+
+        adicionarNotificacao(
+            "Reserva realizada",
+            `A reserva de "${dados.titulo}" foi realizada com sucesso.`
         );
     };
 
-    const configurarReservas = () => {
-        livros.forEach(livro => {
-            const links = $$('a[href="Reserva.html"]', livro);
+    const cancelarReserva = (
+        id
+    ) => {
+        const reserva =
+            encontrarReserva(id);
 
-            links.forEach(link => {
-                link.addEventListener("click", event => {
-                    event.preventDefault();
+        if (!reserva) return;
 
-                    reservarLivro(livro);
+        if (
+            typeof reserva === "string"
+        ) {
+            reservas =
+                reservas.filter(
+                    (item) =>
+                        item !== id
+                );
+        } else {
+            if (
+                ["Concluída", "Cancelada"]
+                    .includes(
+                        reserva.estado
+                    )
+            ) {
+                mostrarToast(
+                    "Esta reserva não pode ser cancelada.",
+                    "erro"
+                );
 
-                    setTimeout(() => {
-                        window.location.href = link.href;
-                    }, 650);
-                });
-            });
-        });
+                return;
+            }
 
-        const destaque = $(".livro-destaque-section");
-
-        if (destaque) {
-            const linkReserva = $('a[href="Reserva.html"]', destaque);
-
-            linkReserva?.addEventListener("click", event => {
-                event.preventDefault();
-
-                const livroFake = {
-                    dataset: {
-                        titulo: "As 48 Leis do Poder",
-                        autor: "Robert Greene"
-                    }
-                };
-
-                reservarLivro(livroFake);
-
-                setTimeout(() => {
-                    window.location.href = linkReserva.href;
-                }, 650);
-            });
+            reserva.estado =
+                "Cancelada";
         }
+
+        salvarStorage(
+            STORAGE.reservas,
+            reservas
+        );
+
+        atualizarContadores();
+
+        mostrarToast(
+            "Reserva cancelada.",
+            "info"
+        );
+
+        adicionarNotificacao(
+            "Reserva cancelada",
+            "A reserva foi cancelada."
+        );
+
+        renderizarReservas();
     };
 
-    const pesquisarLivros = () => {
-        if (!listaLivros || !pesquisaLivro) return;
+    const renderizarReservas = () => {
+        const lista =
+            $("#listaReservas") ||
+            $(".lista-reservas");
 
-        const termo = normalizar(pesquisaLivro.value);
+        if (!lista) return;
+
+        lista.innerHTML = "";
+
+        if (!reservas.length) {
+            lista.innerHTML = `
+                <div class="sem-favoritos">
+                    <div>📚</div>
+                    <h3>Não existem reservas.</h3>
+                    <p>
+                        Reserve um livro para
+                        encontrá-lo nesta área.
+                    </p>
+                </div>
+            `;
+
+            return;
+        }
+
+        reservas.forEach((item) => {
+            const reserva =
+                typeof item === "string"
+                    ? {
+                        id: item,
+                        titulo: item,
+                        autor: "",
+                        data: "",
+                        estado: "Pendente"
+                    }
+                    : item;
+
+            const elemento =
+                document.createElement(
+                    "article"
+                );
+
+            elemento.className =
+                "reserva-card";
+
+            elemento.innerHTML = `
+                <div>
+                    <h3>
+                        ${escaparHTML(
+                            reserva.titulo
+                        )}
+                    </h3>
+
+                    <p>
+                        ${escaparHTML(
+                            reserva.autor
+                        )}
+                    </p>
+
+                    <small>
+                        Data:
+                        ${escaparHTML(
+                            reserva.data
+                        )}
+                    </small>
+
+                    <strong>
+                        ${escaparHTML(
+                            reserva.estado
+                        )}
+                    </strong>
+                </div>
+
+                ${
+                    ![
+                        "Cancelada",
+                        "Concluída"
+                    ].includes(
+                        reserva.estado
+                    )
+                        ? `
+                            <button
+                                type="button"
+                                class="btn-cancelar-reserva"
+                                data-id="${escaparHTML(
+                                    reserva.id
+                                )}"
+                            >
+                                Cancelar reserva
+                            </button>
+                        `
+                        : ""
+                }
+            `;
+
+            lista.appendChild(
+                elemento
+            );
+        });
+
+        $$(".btn-cancelar-reserva")
+            .forEach((botao) => {
+                botao.addEventListener(
+                    "click",
+                    () => {
+                        const confirmar =
+                            window.confirm(
+                                "Deseja cancelar esta reserva?"
+                            );
+
+                        if (!confirmar) {
+                            return;
+                        }
+
+                        cancelarReserva(
+                            botao.dataset.id
+                        );
+                    }
+                );
+            });
+    };
+
+    const configurarReservas = () => {
+        obterLivros().forEach((livro) => {
+            const links =
+                $$(
+                    'a[href*="reserva" i], a[href*="Reserva" i], .btn-reservar',
+                    livro
+                );
+
+            links.forEach((link) => {
+                if (
+                    link.dataset.configurado ===
+                    "true"
+                ) {
+                    return;
+                }
+
+                link.dataset.configurado =
+                    "true";
+
+                link.addEventListener(
+                    "click",
+                    (event) => {
+                        event.preventDefault();
+
+                        reservarLivro(
+                            livro
+                        );
+
+                        const destino =
+                            link.getAttribute(
+                                "href"
+                            );
+
+                        if (
+                            destino &&
+                            destino !== "#"
+                        ) {
+                            setTimeout(() => {
+                                window.location.href =
+                                    destino;
+                            }, 500);
+                        }
+                    }
+                );
+            });
+        });
+    };
+
+    /* =========================================================
+       10. PESQUISA
+       ========================================================= */
+
+    const pesquisarLivros = () => {
+        if (!pesquisaLivro) return;
+
+        const termo =
+            normalizar(
+                pesquisaLivro.value
+            );
+
+        const livros =
+            obterLivros();
 
         let encontrados = 0;
 
-        livros.forEach(livro => {
-            const titulo = normalizar(livro.dataset.titulo);
-            const autor = normalizar(livro.dataset.autor);
-            const texto = normalizar(livro.textContent);
+        livros.forEach((livro) => {
+            const dados =
+                obterDadosLivro(
+                    livro
+                );
+
+            const texto =
+                normalizar(
+                    [
+                        dados?.titulo,
+                        dados?.autor,
+                        dados?.categoria,
+                        dados?.descricao,
+                        livro.textContent
+                    ].join(" ")
+                );
 
             const corresponde =
                 !termo ||
-                titulo.includes(termo) ||
-                autor.includes(termo) ||
                 texto.includes(termo);
 
-            livro.style.display = corresponde ? "" : "none";
+            livro.style.display =
+                corresponde
+                    ? ""
+                    : "none";
 
             if (corresponde) {
                 encontrados++;
             }
         });
 
-        if (!termo) {
-            resultadoPesquisa.innerHTML = "";
-            resultadoPesquisa.classList.remove("ativo");
+        if (!resultadoPesquisa) {
             return;
         }
 
-        resultadoPesquisa.classList.add("ativo");
+        if (!termo) {
+            resultadoPesquisa.innerHTML =
+                "";
 
-        if (encontrados) {
+            resultadoPesquisa.classList.remove(
+                "ativo"
+            );
+
+            return;
+        }
+
+        resultadoPesquisa.classList.add(
+            "ativo"
+        );
+
+        if (encontrados > 0) {
             resultadoPesquisa.innerHTML = `
                 <span>🔎</span>
-                <strong>${encontrados}</strong>
-                ${encontrados === 1 ? "livro encontrado" : "livros encontrados"}
+                <strong>
+                    ${encontrados}
+                </strong>
+                ${
+                    encontrados === 1
+                        ? "livro encontrado"
+                        : "livros encontrados"
+                }
             `;
         } else {
             resultadoPesquisa.innerHTML = `
                 <span>📚</span>
-                <strong>Nenhum livro encontrado.</strong>
-                <button type="button" id="limparPesquisa">
+
+                <strong>
+                    Nenhum livro encontrado.
+                </strong>
+
+                <button
+                    type="button"
+                    id="limparPesquisa"
+                >
                     Limpar pesquisa
                 </button>
             `;
 
-            $("#limparPesquisa")?.addEventListener("click", () => {
-                pesquisaLivro.value = "";
-                pesquisarLivros();
-                pesquisaLivro.focus();
-            });
+            $("#limparPesquisa")
+                ?.addEventListener(
+                    "click",
+                    () => {
+                        pesquisaLivro.value =
+                            "";
+
+                        pesquisarLivros();
+
+                        pesquisaLivro.focus();
+                    }
+                );
         }
+
+        mostrarToast(
+            `${encontrados} ${
+                encontrados === 1
+                    ? "livro encontrado"
+                    : "livros encontrados"
+            }.`,
+            "info"
+        );
     };
 
     if (btnPesquisar) {
-        btnPesquisar.addEventListener("click", pesquisarLivros);
+        btnPesquisar.addEventListener(
+            "click",
+            pesquisarLivros
+        );
     }
 
     if (pesquisaLivro) {
-        pesquisaLivro.addEventListener("input", () => {
-            pesquisarLivros();
-        });
+        pesquisaLivro.addEventListener(
+            "input",
+            pesquisarLivros
+        );
 
-        pesquisaLivro.addEventListener("keydown", event => {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                pesquisarLivros();
+        pesquisaLivro.addEventListener(
+            "keydown",
+            (event) => {
+                if (event.key === "Enter") {
+                    event.preventDefault();
+
+                    pesquisarLivros();
+                }
             }
-        });
+        );
     }
 
     if (verTodosLivros) {
-        verTodosLivros.addEventListener("click", () => {
-            if (!listaLivros) return;
+        verTodosLivros.addEventListener(
+            "click",
+            () => {
+                const livros =
+                    obterLivros();
 
-            const escondidos = livros.filter(
-                livro => livro.style.display === "none"
-            );
-
-            if (escondidos.length) {
-                livros.forEach(livro => {
-                    livro.style.display = "";
+                livros.forEach((livro) => {
+                    livro.style.display =
+                        "";
                 });
 
                 if (pesquisaLivro) {
-                    pesquisaLivro.value = "";
+                    pesquisaLivro.value =
+                        "";
                 }
 
                 if (resultadoPesquisa) {
-                    resultadoPesquisa.innerHTML = "";
-                    resultadoPesquisa.classList.remove("ativo");
+                    resultadoPesquisa.innerHTML =
+                        "";
+
+                    resultadoPesquisa.classList.remove(
+                        "ativo"
+                    );
                 }
 
-                verTodosLivros.textContent = "Ver todos →";
-
-                mostrarToast("Todos os livros foram apresentados.", "info");
-            } else {
-                listaLivros.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
+                if (listaLivros) {
+                    listaLivros.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+                }
             }
-        });
+        );
     }
 
-    if (verDetalhesDestaque) {
-        verDetalhesDestaque.addEventListener("click", () => {
-            const destaque = $(".livro-destaque-section");
+    /* =========================================================
+       11. LEITURA
+       ========================================================= */
 
-            if (!destaque) return;
+    const obterIdLeituraAtual = () => {
+        const livro =
+            $(".continue-card") ||
+            $(".leitura-container");
 
-            const descricaoExistente = $(".destaque-descricao", destaque);
+        return (
+            livro?.dataset.id ||
+            document.body.dataset.livroId ||
+            "livro-principal"
+        );
+    };
 
-            if (!descricaoExistente) return;
+    const obterProgresso = (
+        id
+    ) => {
+        const valor =
+            leitura[id];
 
-            destaque.classList.toggle("detalhes-abertos");
+        if (
+            typeof valor === "number"
+        ) {
+            return Math.max(
+                0,
+                Math.min(
+                    100,
+                    valor
+                )
+            );
+        }
 
-            if (destaque.classList.contains("detalhes-abertos")) {
-                verDetalhesDestaque.textContent = "Ocultar detalhes ↑";
-                mostrarToast("Mais detalhes sobre o livro foram apresentados.", "info");
-            } else {
-                verDetalhesDestaque.textContent = "Ver detalhes →";
-            }
-        });
-    }
+        if (
+            valor &&
+            typeof valor === "object"
+        ) {
+            return Math.max(
+                0,
+                Math.min(
+                    100,
+                    Number(
+                        valor.porcentagem ||
+                        0
+                    )
+                )
+            );
+        }
 
-    if (btnContinuar) {
-        btnContinuar.addEventListener("click", () => {
-            const progresso = $(".progresso-preenchido");
-            const porcentagem = $(".progresso-topo strong");
+        return 0;
+    };
 
-            if (leitura < 100) {
-                leitura = Math.min(leitura + 5, 100);
-            } else {
-                leitura = 0;
-            }
+    const salvarProgresso = (
+        id,
+        porcentagem,
+        pagina = null
+    ) => {
+        leitura[id] = {
+            porcentagem:
+                Math.max(
+                    0,
+                    Math.min(
+                        100,
+                        Number(
+                            porcentagem
+                        ) || 0
+                    )
+                ),
+            pagina:
+                pagina !== null
+                    ? Number(pagina)
+                    : 0,
+            atualizadoEm:
+                Date.now()
+        };
 
-            salvarDados();
+        salvarStorage(
+            STORAGE.leitura,
+            leitura
+        );
+    };
 
-            if (progresso) {
-                progresso.style.width = `${leitura}%`;
-            }
+    const atualizarBarrasLeitura = () => {
+        const id =
+            obterIdLeituraAtual();
 
-            if (porcentagem) {
-                porcentagem.textContent = `${leitura}%`;
-            }
+        const progresso =
+            obterProgresso(id);
 
-            if (leitura >= 100) {
-                pontos += 25;
-                salvarDados();
-                atualizarContadores();
+        $$(".progresso-preenchido")
+            .forEach((barra) => {
+                barra.style.width =
+                    `${progresso}%`;
+            });
 
-                mostrarToast(
-                    "Parabéns! Você concluiu a leitura e ganhou +25 pontos."
+        $$(".progresso-topo strong")
+            .forEach((elemento) => {
+                elemento.textContent =
+                    `${progresso}%`;
+            });
+
+        $$(".progresso-percentagem")
+            .forEach((elemento) => {
+                elemento.textContent =
+                    `${progresso}%`;
+            });
+    };
+
+    const continuarLeitura = () => {
+        const id =
+            obterIdLeituraAtual();
+
+        let progresso =
+            obterProgresso(id);
+
+        progresso =
+            progresso >= 100
+                ? 0
+                : Math.min(
+                    progresso + 5,
+                    100
                 );
-            } else {
+
+        salvarProgresso(
+            id,
+            progresso
+        );
+
+        atualizarBarrasLeitura();
+
+        if (progresso >= 100) {
+            pontos += 25;
+
+            salvarStorage(
+                STORAGE.pontos,
+                pontos
+            );
+
+            atualizarContadores();
+
+            mostrarToast(
+                "Parabéns! Você concluiu a leitura e ganhou +25 pontos."
+            );
+
+            adicionarNotificacao(
+                "Leitura concluída",
+                "Parabéns! Você concluiu uma leitura e ganhou 25 pontos."
+            );
+        } else {
+            mostrarToast(
+                `Progresso atualizado para ${progresso}%.`,
+                "info"
+            );
+        }
+    };
+
+    $$(".btn-continuar")
+        .forEach((botao) => {
+            botao.addEventListener(
+                "click",
+                (event) => {
+                    event.preventDefault();
+
+                    continuarLeitura();
+                }
+            );
+        });
+
+    const configurarLeituraPagina = () => {
+        const anterior =
+            $("#paginaAnterior") ||
+            $(".pagina-anterior");
+
+        const proxima =
+            $("#paginaProxima") ||
+            $(".pagina-proxima");
+
+        const paginaAtual =
+            $("#paginaAtual") ||
+            $(".pagina-atual");
+
+        const totalPaginas =
+            $("#totalPaginas") ||
+            $(".total-paginas");
+
+        if (
+            !paginaAtual ||
+            !totalPaginas
+        ) {
+            return;
+        }
+
+        let pagina =
+            Number(
+                paginaAtual.textContent
+            ) || 1;
+
+        const total =
+            Number(
+                totalPaginas.textContent
+            ) || 1;
+
+        const atualizar = () => {
+            pagina =
+                Math.max(
+                    1,
+                    Math.min(
+                        total,
+                        pagina
+                    )
+                );
+
+            paginaAtual.textContent =
+                pagina;
+
+            const progresso =
+                Math.round(
+                    (pagina / total) *
+                        100
+                );
+
+            salvarProgresso(
+                obterIdLeituraAtual(),
+                progresso,
+                pagina
+            );
+
+            atualizarBarrasLeitura();
+        };
+
+        anterior?.addEventListener(
+            "click",
+            () => {
+                pagina--;
+
+                atualizar();
+            }
+        );
+
+        proxima?.addEventListener(
+            "click",
+            () => {
+                pagina++;
+
+                atualizar();
+            }
+        );
+    };
+
+    /* =========================================================
+       12. DETALHES DO LIVRO
+       ========================================================= */
+
+    const configurarDetalhes = () => {
+        const botoes =
+            $$(
+                ".btn-detalhes, #verDetalhesDestaque"
+            );
+
+        botoes.forEach((botao) => {
+            botao.addEventListener(
+                "click",
+                (event) => {
+                    const link =
+                        botao.closest("a");
+
+                    if (
+                        link &&
+                        link.getAttribute(
+                            "href"
+                        ) &&
+                        link.getAttribute(
+                            "href"
+                        ) !== "#"
+                    ) {
+                        return;
+                    }
+
+                    event.preventDefault();
+
+                    const secao =
+                        botao.closest(
+                            ".livro-destaque-section"
+                        );
+
+                    if (!secao) return;
+
+                    const descricao =
+                        $(".destaque-descricao", secao);
+
+                    if (!descricao) return;
+
+                    const aberto =
+                        secao.classList.toggle(
+                            "detalhes-abertos"
+                        );
+
+                    botao.textContent =
+                        aberto
+                            ? "Ocultar detalhes ↑"
+                            : "Ver detalhes →";
+                }
+            );
+        });
+    };
+
+    /* =========================================================
+       13. PERFIL
+       ========================================================= */
+
+    const atualizarPerfil = () => {
+        $$("[data-utilizador-nome]")
+            .forEach((elemento) => {
+                elemento.textContent =
+                    utilizador.nome;
+            });
+
+        $$("[data-utilizador-email]")
+            .forEach((elemento) => {
+                elemento.textContent =
+                    utilizador.email;
+            });
+
+        $$("[data-utilizador-pontos]")
+            .forEach((elemento) => {
+                elemento.textContent =
+                    pontos;
+            });
+
+        const campos = {
+            "#nomeUtilizador":
+                utilizador.nome,
+
+            "#emailUtilizador":
+                utilizador.email
+        };
+
+        Object.entries(campos)
+            .forEach(
+                ([seletor, valor]) => {
+                    const campo =
+                        $(seletor);
+
+                    if (campo) {
+                        campo.value =
+                            valor;
+                    }
+                }
+            );
+    };
+
+    const configurarPerfil = () => {
+        const formulario =
+            $("#formPerfil");
+
+        if (!formulario) return;
+
+        formulario.addEventListener(
+            "submit",
+            (event) => {
+                event.preventDefault();
+
+                const nome =
+                    $("#nomeUtilizador")
+                        ?.value
+                        .trim();
+
+                const email =
+                    $("#emailUtilizador")
+                        ?.value
+                        .trim();
+
+                if (nome) {
+                    utilizador.nome =
+                        nome;
+                }
+
+                if (email) {
+                    utilizador.email =
+                        email;
+                }
+
+                salvarStorage(
+                    STORAGE.utilizador,
+                    utilizador
+                );
+
+                atualizarPerfil();
+
                 mostrarToast(
-                    `Progresso atualizado para ${leitura}%.`,
+                    "Perfil atualizado com sucesso."
+                );
+            }
+        );
+    };
+
+    /* =========================================================
+       14. DEFINIÇÕES
+       ========================================================= */
+
+    const aplicarPreferencias = () => {
+        document.body.classList.toggle(
+            "modo-escuro",
+            Boolean(
+                preferencias.modoEscuro
+            )
+        );
+
+        document.body.classList.toggle(
+            "sem-animacoes",
+            !preferencias.animacoes
+        );
+
+        const checkboxNotificacoes =
+            $("#notificacoesAtivas");
+
+        if (checkboxNotificacoes) {
+            checkboxNotificacoes.checked =
+                Boolean(
+                    preferencias.notificacoes
+                );
+        }
+
+        const checkboxAnimacoes =
+            $("#animacoesAtivas");
+
+        if (checkboxAnimacoes) {
+            checkboxAnimacoes.checked =
+                Boolean(
+                    preferencias.animacoes
+                );
+        }
+
+        const checkboxEscuro =
+            $("#modoEscuro");
+
+        if (checkboxEscuro) {
+            checkboxEscuro.checked =
+                Boolean(
+                    preferencias.modoEscuro
+                );
+        }
+    };
+
+    const configurarDefinicoes = () => {
+        const elementos = {
+            "#notificacoesAtivas":
+                "notificacoes",
+
+            "#animacoesAtivas":
+                "animacoes",
+
+            "#modoEscuro":
+                "modoEscuro"
+        };
+
+        Object.entries(elementos)
+            .forEach(
+                ([seletor, chave]) => {
+                    const elemento =
+                        $(seletor);
+
+                    if (!elemento) {
+                        return;
+                    }
+
+                    elemento.addEventListener(
+                        "change",
+                        () => {
+                            preferencias[
+                                chave
+                            ] =
+                                elemento.checked;
+
+                            salvarStorage(
+                                STORAGE.preferencias,
+                                preferencias
+                            );
+
+                            aplicarPreferencias();
+
+                            mostrarToast(
+                                "Preferência atualizada.",
+                                "info"
+                            );
+                        }
+                    );
+                }
+            );
+    };
+
+    /* =========================================================
+       15. BOTÃO SAIR
+       ========================================================= */
+
+    if (btnSair) {
+        btnSair.addEventListener(
+            "click",
+            (event) => {
+                const confirmar =
+                    window.confirm(
+                        "Tem certeza que deseja sair da sua conta?"
+                    );
+
+                if (!confirmar) {
+                    event.preventDefault();
+
+                    return;
+                }
+
+                fecharMenu();
+
+                mostrarToast(
+                    "Sessão encerrada.",
                     "info"
                 );
             }
-
-            btnContinuar.classList.add("clicado");
-
-            setTimeout(() => {
-                btnContinuar.classList.remove("clicado");
-            }, 500);
-        });
+        );
     }
 
-    const configurarProgresso = () => {
-        const barra = $(".progresso-preenchido");
-        const porcentagem = $(".progresso-topo strong");
+    /* =========================================================
+       16. LINKS INTERNOS
+       ========================================================= */
 
-        if (!barra || !porcentagem) return;
+    const configurarLinksInternos = () => {
+        $$('a[href^="#"]')
+            .forEach((link) => {
+                link.addEventListener(
+                    "click",
+                    (event) => {
+                        const href =
+                            link.getAttribute(
+                                "href"
+                            );
 
-        barra.style.width = "0%";
+                        if (
+                            !href ||
+                            href === "#"
+                        ) {
+                            event.preventDefault();
 
-        setTimeout(() => {
-            barra.style.width = `${leitura}%`;
-            porcentagem.textContent = `${leitura}%`;
-        }, 700);
+                            return;
+                        }
+
+                        let alvo;
+
+                        try {
+                            alvo =
+                                document.querySelector(
+                                    href
+                                );
+                        } catch {
+                            return;
+                        }
+
+                        if (!alvo) return;
+
+                        event.preventDefault();
+
+                        fecharMenu();
+
+                        alvo.scrollIntoView({
+                            behavior:
+                                preferencias.animacoes
+                                    ? "smooth"
+                                    : "auto",
+
+                            block: "start"
+                        });
+                    }
+                );
+            });
     };
 
+    /* =========================================================
+       17. CATEGORIAS
+       ========================================================= */
+
+    const configurarCategorias = () => {
+        const botoes =
+            $$(
+                "[data-categoria], .categoria-caixa"
+            );
+
+        botoes.forEach((botao) => {
+            botao.addEventListener(
+                "click",
+                () => {
+                    const categoria =
+                        botao.dataset.categoria;
+
+                    if (!categoria) {
+                        return;
+                    }
+
+                    const campo =
+                        $("#pesquisaLivro");
+
+                    if (campo) {
+                        campo.value =
+                            categoria;
+
+                        pesquisarLivros();
+                    }
+
+                    if (listaLivros) {
+                        listaLivros.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
+                    }
+                }
+            );
+        });
+    };
+
+    /* =========================================================
+       18. ANIMAÇÕES DE ENTRADA
+       ========================================================= */
+
     const configurarAnimacoesEntrada = () => {
-        document.body.classList.add("pagina-carregada");
+        if (!preferencias.animacoes) {
+            return;
+        }
+
+        document.body.classList.add(
+            "pagina-carregada"
+        );
 
         const elementos = [
             $(".header"),
             $(".menu"),
+            $(".menu-lateral"),
             $(".boas-vindas"),
             $(".pesquisa-area"),
             $(".livro-destaque-section"),
@@ -635,20 +2035,35 @@ document.addEventListener("DOMContentLoaded", () => {
             $(".categorias-section"),
             $(".descoberta-section"),
             $(".favoritos-section"),
-            $(".futer")
+            $(".futer"),
+            $("footer")
         ].filter(Boolean);
 
-        elementos.forEach((elemento, index) => {
-            elemento.classList.add("animacao-entrada");
+        elementos.forEach(
+            (elemento, index) => {
+                elemento.classList.add(
+                    "animacao-entrada"
+                );
 
-            elemento.style.setProperty(
-                "--delay-entrada",
-                `${index * 70}ms`
-            );
-        });
+                elemento.style.setProperty(
+                    "--delay-entrada",
+                    `${index * 60}ms`
+                );
+            }
+        );
     };
 
+    /* =========================================================
+       19. SCROLL REVEAL
+       ========================================================= */
+
     const configurarScrollReveal = () => {
+        if (
+            !preferencias.animacoes
+        ) {
+            return;
+        }
+
         const elementos = [
             ...$$(".atividade-card"),
             ...$$(".livro-card"),
@@ -659,269 +2074,392 @@ document.addEventListener("DOMContentLoaded", () => {
             ...$$(".footer-brand")
         ];
 
-        if (!("IntersectionObserver" in window)) {
-            elementos.forEach(elemento =>
-                elemento.classList.add("visivel")
+        if (
+            !("IntersectionObserver" in window)
+        ) {
+            elementos.forEach(
+                (elemento) => {
+                    elemento.classList.add(
+                        "visivel"
+                    );
+                }
             );
+
             return;
         }
 
-        const observer = new IntersectionObserver(
-            entradas => {
-                entradas.forEach(entrada => {
-                    if (entrada.isIntersecting) {
-                        entrada.target.classList.add("visivel");
-                        observer.unobserve(entrada.target);
-                    }
-                });
-            },
-            {
-                threshold: 0.12,
-                rootMargin: "0px 0px -50px 0px"
-            }
-        );
+        const observer =
+            new IntersectionObserver(
+                (entradas) => {
+                    entradas.forEach(
+                        (entrada) => {
+                            if (
+                                !entrada.isIntersecting
+                            ) {
+                                return;
+                            }
 
-        elementos.forEach((elemento, index) => {
-            elemento.classList.add("reveal");
+                            entrada.target.classList.add(
+                                "visivel"
+                            );
 
-            elemento.style.setProperty(
-                "--reveal-delay",
-                `${(index % 6) * 80}ms`
+                            observer.unobserve(
+                                entrada.target
+                            );
+                        }
+                    );
+                },
+                {
+                    threshold: 0.12,
+
+                    rootMargin:
+                        "0px 0px -50px 0px"
+                }
             );
 
-            observer.observe(elemento);
-        });
+        elementos.forEach(
+            (elemento, index) => {
+                elemento.classList.add(
+                    "reveal"
+                );
+
+                elemento.style.setProperty(
+                    "--reveal-delay",
+                    `${(index % 6) * 70}ms`
+                );
+
+                observer.observe(
+                    elemento
+                );
+            }
+        );
     };
 
+    /* =========================================================
+       20. HOVER DOS CARDS
+       ========================================================= */
+
     const configurarHoverCards = () => {
+        if (
+            !preferencias.animacoes
+        ) {
+            return;
+        }
+
         const cards = [
             ...$$(".livro-card"),
             ...$$(".categoria-caixa"),
             ...$$(".atividade-card")
         ];
 
-        cards.forEach(card => {
-            card.addEventListener("pointermove", event => {
-                if (window.innerWidth < 900) return;
+        cards.forEach((card) => {
+            card.addEventListener(
+                "pointermove",
+                (event) => {
+                    if (
+                        window.innerWidth <
+                        900
+                    ) {
+                        return;
+                    }
 
-                const rect = card.getBoundingClientRect();
+                    const rect =
+                        card.getBoundingClientRect();
 
-                const x =
-                    ((event.clientX - rect.left) / rect.width) * 100;
+                    const x =
+                        ((event.clientX -
+                            rect.left) /
+                            rect.width) *
+                        100;
 
-                const y =
-                    ((event.clientY - rect.top) / rect.height) * 100;
+                    const y =
+                        ((event.clientY -
+                            rect.top) /
+                            rect.height) *
+                        100;
 
-                card.style.setProperty("--mouse-x", `${x}%`);
-                card.style.setProperty("--mouse-y", `${y}%`);
-            });
+                    card.style.setProperty(
+                        "--mouse-x",
+                        `${x}%`
+                    );
 
-            card.addEventListener("pointerleave", () => {
-                card.style.removeProperty("--mouse-x");
-                card.style.removeProperty("--mouse-y");
-            });
-        });
-    };
-
-    const configurarLinksInternos = () => {
-        linksInternos.forEach(link => {
-            link.addEventListener("click", event => {
-                const href = link.getAttribute("href");
-
-                if (!href || href === "#") {
-                    event.preventDefault();
-                    return;
+                    card.style.setProperty(
+                        "--mouse-y",
+                        `${y}%`
+                    );
                 }
+            );
 
-                const alvo = document.querySelector(href);
+            card.addEventListener(
+                "pointerleave",
+                () => {
+                    card.style.removeProperty(
+                        "--mouse-x"
+                    );
 
-                if (!alvo) return;
-
-                event.preventDefault();
-
-                fecharMenu();
-
-                alvo.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
-            });
+                    card.style.removeProperty(
+                        "--mouse-y"
+                    );
+                }
+            );
         });
     };
 
-    const configurarSecaoAtiva = () => {
-        const secoesObservadas = secoes.filter(
-            secao => secao.id
-        );
+    /* =========================================================
+       21. IMAGENS
+       ========================================================= */
 
-        if (!secoesObservadas.length) return;
-
-        if (!("IntersectionObserver" in window)) return;
-
-        const observer = new IntersectionObserver(
-            entradas => {
-                entradas.forEach(entrada => {
-                    if (!entrada.isIntersecting) return;
-
-                    const id = entrada.target.id;
-
-                    menuItens.forEach(item => {
-                        const link = $("a", item);
-
-                        if (!link) return;
-
-                        const href = link.getAttribute("href");
-
-                        item.classList.toggle(
-                            "ativo",
-                            href === `#${id}`
+    const configurarImagemFallback = () => {
+        $$("img").forEach(
+            (img) => {
+                img.addEventListener(
+                    "error",
+                    () => {
+                        img.classList.add(
+                            "imagem-erro"
                         );
-                    });
-                });
-            },
-            {
-                threshold: 0.35,
-                rootMargin: "-80px 0px -40% 0px"
+
+                        const container =
+                            img.closest(
+                                ".livro-capa, .destaque-capa, .continue-capa"
+                            );
+
+                        if (
+                            container
+                        ) {
+                            container.classList.add(
+                                "sem-imagem"
+                            );
+                        }
+                    }
+                );
             }
         );
+    };
 
-        secoesObservadas.forEach(secao =>
-            observer.observe(secao)
+    /* =========================================================
+       22. ATALHOS
+       ========================================================= */
+
+    const configurarAtalhos = () => {
+        document.addEventListener(
+            "keydown",
+            (event) => {
+                const elemento =
+                    document.activeElement;
+
+                const tag =
+                    elemento?.tagName;
+
+                if (
+                    event.key === "/" &&
+                    ![
+                        "INPUT",
+                        "TEXTAREA",
+                        "SELECT"
+                    ].includes(tag)
+                ) {
+                    event.preventDefault();
+
+                    pesquisaLivro?.focus();
+                }
+            }
         );
     };
 
-    const configurarParallax = () => {
-        const destaque = $(".livro-destaque-section");
-        const capa = $(".destaque-capa");
+    /* =========================================================
+       23. LOGO
+       ========================================================= */
 
-        if (!destaque || !capa) return;
-
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const configurarAnimacaoLogo = () => {
+        if (
+            !preferencias.animacoes
+        ) {
             return;
         }
 
-        let ticking = false;
-
-        const atualizar = () => {
-            if (window.innerWidth <= 900) {
-                capa.style.transform = "";
-                ticking = false;
-                return;
-            }
-
-            const rect = destaque.getBoundingClientRect();
-            const centroTela = window.innerHeight / 2;
-            const centroSecao = rect.top + rect.height / 2;
-
-            const distancia = (centroSecao - centroTela) * 0.015;
-
-            capa.style.transform =
-                `translateY(${distancia}px)`;
-
-            ticking = false;
-        };
-
-        window.addEventListener("scroll", () => {
-            if (!ticking) {
-                requestAnimationFrame(atualizar);
-                ticking = true;
-            }
-        });
-
-        atualizar();
-    };
-
-    const configurarImagemFallback = () => {
-        const imagens = $$("img");
-
-        imagens.forEach(img => {
-            img.addEventListener("error", () => {
-                img.classList.add("imagem-erro");
-
-                const container = img.closest(
-                    ".livro-capa, .destaque-capa, .continue-capa"
-                );
-
-                if (!container) return;
-
-                container.classList.add("sem-imagem");
-            });
-        });
-    };
-
-    const configurarBotaoSair = () => {
-        if (!btnSair) return;
-
-        btnSair.addEventListener("click", event => {
-            const confirmar = window.confirm(
-                "Tem certeza que deseja sair da sua conta?"
-            );
-
-            if (!confirmar) {
-                event.preventDefault();
-            }
-        });
-    };
-
-    const configurarTeclasAtalho = () => {
-        document.addEventListener("keydown", event => {
-            const tag = document.activeElement?.tagName;
-
-            if (
-                event.key === "/" &&
-                !["INPUT", "TEXTAREA", "SELECT"].includes(tag)
-            ) {
-                event.preventDefault();
-                pesquisaLivro?.focus();
-            }
-        });
-    };
-
-    const configurarAnimacaoLogo = () => {
         const logos = [
             $(".logo-icone"),
             $(".header-logo span"),
             $(".footer-logo")
         ].filter(Boolean);
 
-        logos.forEach(logo => {
-            logo.addEventListener("mouseenter", () => {
-                logo.classList.add("logo-animado");
-            });
+        logos.forEach((logo) => {
+            logo.addEventListener(
+                "mouseenter",
+                () => {
+                    logo.classList.add(
+                        "logo-animado"
+                    );
+                }
+            );
 
-            logo.addEventListener("animationend", () => {
-                logo.classList.remove("logo-animado");
-            });
+            logo.addEventListener(
+                "animationend",
+                () => {
+                    logo.classList.remove(
+                        "logo-animado"
+                    );
+                }
+            );
         });
     };
 
+    /* =========================================================
+       24. DESTAQUE
+       ========================================================= */
+
+    const configurarLivroDestaque = () => {
+        const destaque =
+            $(".livro-destaque-section");
+
+        if (!destaque) return;
+
+        const botaoReserva =
+            $(
+                'a[href*="reserva" i], .btn-reservar',
+                destaque
+            );
+
+        if (botaoReserva) {
+            botaoReserva.addEventListener(
+                "click",
+                (event) => {
+                    const titulo =
+                        destaque.dataset.titulo ||
+                        $(".destaque-titulo", destaque)
+                            ?.textContent
+                            ?.trim() ||
+                        "Livro em destaque";
+
+                    const autor =
+                        destaque.dataset.autor ||
+                        $(".destaque-autor", destaque)
+                            ?.textContent
+                            ?.trim() ||
+                        "";
+
+                    const livroFake =
+                        document.createElement(
+                            "article"
+                        );
+
+                    livroFake.dataset.id =
+                        destaque.dataset.id ||
+                        normalizar(
+                            titulo
+                        )
+                            .replace(
+                                /[^a-z0-9]+/g,
+                                "-"
+                            );
+
+                    livroFake.dataset.titulo =
+                        titulo;
+
+                    livroFake.dataset.autor =
+                        autor;
+
+                    livroFake.dataset.disponivel =
+                        "true";
+
+                    reservarLivro(
+                        livroFake
+                    );
+                }
+            );
+        }
+    };
+
+    /* =========================================================
+       25. ATUALIZAR DADOS DA PÁGINA
+       ========================================================= */
+
+    const atualizarDadosPagina = () => {
+        atualizarContadores();
+
+        atualizarContadorNotificacoes();
+
+        atualizarPerfil();
+
+        atualizarBarrasLeitura();
+
+        aplicarPreferencias();
+    };
+
+    /* =========================================================
+       26. INICIALIZAÇÃO
+       ========================================================= */
+
     const iniciar = () => {
+        configurarMenu();
+
         configurarFavoritos();
+
         configurarReservas();
 
-        atualizarContadores();
-        renderizarFavoritos();
+        configurarCategorias();
 
-        configurarProgresso();
+        configurarDetalhes();
+
+        configurarLivroDestaque();
+
+        configurarPerfil();
+
+        configurarDefinicoes();
+
+        configurarLeituraPagina();
+
+        configurarLinksInternos();
 
         configurarAnimacoesEntrada();
+
         configurarScrollReveal();
+
         configurarHoverCards();
-        configurarLinksInternos();
-        configurarSecaoAtiva();
-        configurarParallax();
+
         configurarImagemFallback();
-        configurarBotaoSair();
-        configurarTeclasAtalho();
+
+        configurarAtalhos();
+
         configurarAnimacaoLogo();
 
-        window.addEventListener("resize", () => {
-            if (window.innerWidth > 900) {
-                fecharMenu();
-            }
-        });
+        renderizarFavoritos();
 
-        document.documentElement.style.scrollBehavior = "smooth";
+        renderizarReservas();
+
+        renderizarNotificacoes();
+
+        atualizarDadosPagina();
+
+        /*
+         * Garante que o menu começa fechado
+         * no mobile.
+         */
+
+        fecharMenu();
+
+        /*
+         * Mantém o painel de notificações fechado
+         * ao carregar a página.
+         */
+
+        fecharPainelNotificacoes();
+
+        /*
+         * Define o estado inicial do botão hamburger.
+         */
+
+        if (abrirMenu) {
+            abrirMenu.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+        }
+
+        console.log(
+            "Biblioteca inicializada com sucesso."
+        );
     };
 
     iniciar();
