@@ -43,7 +43,7 @@ html {
 
 body {
     min-height: 100vh;
-    background: var(--background);
+    background:pink;
     color: var(--text);
     font-family:
         Inter,
