@@ -1,1 +1,1725 @@
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --secondary: #7c3aed;
 
+    --success: #10b981;
+    --success-dark: #059669;
+
+    --warning: #f59e0b;
+    --danger: #ef4444;
+
+    --bg: #f5f7fb;
+    --card: #ffffff;
+
+    --text: #1e293b;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+
+    --radius: 18px;
+
+    --shadow: 0 10px 30px rgba(15, 23, 42, 0.07);
+    --shadow-hover: 0 18px 40px rgba(15, 23, 42, 0.12);
+}
+
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+}
+
+
+/* =========================
+   ESTRUTURA PRINCIPAL
+========================= */
+
+.app {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* =========================
+   MENU LATERAL
+========================= */
+
+.menu-lateral {
+    width: 280px;
+    min-width: 280px;
+    background: #fff;
+    border-right: 1px solid var(--border);
+    padding: 28px 22px;
+
+    position: sticky;
+    top: 0;
+
+    height: 100vh;
+
+    overflow-y: auto;
+
+    box-shadow: 5px 0 25px rgba(15, 23, 42, 0.03);
+}
+
+
+/* LOGO */
+
+.logo-area {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.avatar {
+    width: 88px;
+    height: 88px;
+
+    margin: 0 auto 14px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    color: #fff;
+
+    font-size: 30px;
+    font-weight: 800;
+
+    box-shadow:
+        0 15px 30px rgba(37, 99, 235, 0.25);
+
+    transition: 0.3s;
+}
+
+.avatar:hover {
+    transform: scale(1.05);
+}
+
+.logo-area h2 {
+    font-size: 21px;
+    margin-bottom: 5px;
+}
+
+.logo-area p {
+    color: var(--text-light);
+    font-size: 13px;
+}
+
+
+/* PERFIL MENU */
+
+.perfil-menu {
+    padding: 18px;
+
+    background: #f8fafc;
+
+    border: 1px solid #eef2f7;
+
+    border-radius: 16px;
+
+    text-align: center;
+
+    margin-bottom: 25px;
+}
+
+.perfil-menu h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.perfil-menu span {
+    display: block;
+
+    color: var(--text-light);
+
+    font-size: 13px;
+
+    margin-bottom: 13px;
+}
+
+.pontos-menu {
+    padding: 9px;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    color: #fff;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* MENU */
+
+.menu-lista {
+    list-style: none;
+}
+
+.menu-lista li {
+    margin-bottom: 7px;
+
+    border-radius: 13px;
+
+    transition: 0.3s;
+}
+
+.menu-lista li a {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 13px 15px;
+
+    font-size: 14px;
+
+    color: #475569;
+}
+
+.menu-lista li:hover {
+    background: #eff6ff;
+
+    transform: translateX(4px);
+}
+
+.menu-lista li:hover a {
+    color: var(--primary);
+}
+
+
+/* ITEM ATIVO */
+
+.menu-lista li.ativo {
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    box-shadow:
+        0 10px 20px rgba(37, 99, 235, 0.18);
+}
+
+.menu-lista li.ativo a {
+    color: #fff;
+    font-weight: 600;
+}
+
+
+/* =========================
+   CONTEÚDO
+========================= */
+
+.conteudo {
+    flex: 1;
+
+    padding: 30px;
+
+    max-width: 1500px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.top-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    background: #fff;
+
+    padding: 20px 24px;
+
+    border-radius: var(--radius);
+
+    margin-bottom: 25px;
+
+    box-shadow: var(--shadow);
+
+    border: 1px solid #f0f2f5;
+}
+
+.top-header h1 {
+    font-size: 26px;
+    margin-bottom: 4px;
+}
+
+.top-header p {
+    color: var(--text-light);
+    font-size: 14px;
+}
+
+.acoes-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+
+/* NOTIFICAÇÃO */
+
+.notificacao {
+    width: 43px;
+    height: 43px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f1f5f9;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.notificacao:hover {
+    background: var(--primary);
+    color: #fff;
+
+    transform: scale(1.05);
+}
+
+
+/* USUÁRIO HEADER */
+
+.usuario-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.usuario-header strong {
+    font-size: 14px;
+}
+
+.usuario-header span {
+    display: block;
+
+    color: var(--text-light);
+
+    font-size: 12px;
+}
+
+.mini-avatar {
+    width: 43px;
+    height: 43px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+
+    font-weight: 700;
+
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+}
+
+
+/* =========================
+   PERFIL PRINCIPAL
+========================= */
+
+.perfil-principal {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 30px;
+
+    margin-bottom: 22px;
+
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #f8fbff
+    );
+
+    border-radius: 22px;
+
+    border: 1px solid #e8eef7;
+
+    box-shadow: var(--shadow);
+}
+
+
+/* IDENTIDADE */
+
+.perfil-identidade {
+    display: flex;
+
+    align-items: center;
+
+    gap: 22px;
+}
+
+.avatar-grande {
+    width: 105px;
+    height: 105px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    color: #fff;
+
+    font-size: 34px;
+
+    font-weight: 800;
+
+    box-shadow:
+        0 15px 30px rgba(37, 99, 235, 0.25);
+}
+
+.dados-perfil h2 {
+    font-size: 27px;
+
+    margin-bottom: 4px;
+}
+
+.tipo-leitor {
+    color: var(--primary);
+
+    font-weight: 600;
+
+    margin-bottom: 3px;
+}
+
+.membro-desde {
+    color: var(--text-light);
+
+    font-size: 13px;
+
+    margin-bottom: 14px;
+}
+
+
+/* EDITAR PERFIL */
+
+.btn-editar {
+    border: none;
+
+    padding: 9px 15px;
+
+    border-radius: 10px;
+
+    background: #eff6ff;
+
+    color: var(--primary);
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.btn-editar:hover {
+    background: var(--primary);
+
+    color: #fff;
+
+    transform: translateY(-2px);
+}
+
+
+/* PONTOS */
+
+.perfil-pontos {
+    min-width: 170px;
+
+    padding: 20px;
+
+    text-align: center;
+
+    border-radius: 16px;
+
+    background: linear-gradient(
+        135deg,
+        #eff6ff,
+        #f5f3ff
+    );
+}
+
+.perfil-pontos span {
+    display: block;
+
+    color: var(--text-light);
+
+    font-size: 13px;
+}
+
+.perfil-pontos strong {
+    display: block;
+
+    font-size: 30px;
+
+    color: var(--primary);
+
+    margin: 3px 0;
+}
+
+.perfil-pontos small {
+    color: var(--text-light);
+}
+
+
+/* =========================
+   PROGRESSO
+========================= */
+
+.progresso-card {
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    color: #fff;
+
+    padding: 27px;
+
+    border-radius: 20px;
+
+    margin-bottom: 25px;
+
+    box-shadow:
+        0 18px 35px rgba(37, 99, 235, 0.22);
+}
+
+.progresso-topo {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 18px;
+}
+
+.progresso-topo h3 {
+    font-size: 18px;
+
+    margin-bottom: 4px;
+}
+
+.progresso-topo p {
+    font-size: 13px;
+
+    opacity: 0.85;
+}
+
+.percentagem {
+    font-size: 26px;
+}
+
+
+/* NÍVEIS */
+
+.nivel-info {
+    display: flex;
+
+    justify-content: space-between;
+
+    font-size: 12px;
+
+    margin-bottom: 7px;
+
+    opacity: 0.9;
+}
+
+
+/* BARRA */
+
+.barra-progresso {
+    width: 100%;
+
+    height: 13px;
+
+    background: rgba(255, 255, 255, 0.2);
+
+    border-radius: 50px;
+
+    overflow: hidden;
+}
+
+.barra {
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        #facc15,
+        #22c55e
+    );
+
+    border-radius: 50px;
+
+    transition: width 1s ease;
+}
+
+.mensagem-nivel {
+    margin-top: 12px;
+
+    font-size: 13px;
+
+    opacity: 0.9;
+}
+
+
+/* =========================
+   ESTATÍSTICAS
+========================= */
+
+.estatisticas {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 30px;
+}
+
+.estatistica-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    background: #fff;
+
+    padding: 20px;
+
+    border-radius: 17px;
+
+    border: 1px solid #eef2f7;
+
+    box-shadow: var(--shadow);
+
+    transition: 0.3s;
+}
+
+.estatistica-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: var(--shadow-hover);
+}
+
+.icone {
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: #eff6ff;
+
+    font-size: 23px;
+}
+
+.estatistica-card strong {
+    display: block;
+
+    font-size: 24px;
+}
+
+.estatistica-card span {
+    display: block;
+
+    color: var(--text-light);
+
+    font-size: 12px;
+}
+
+
+/* =========================
+   TÍTULOS DAS SEÇÕES
+========================= */
+
+.titulo-secao {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 16px;
+}
+
+.titulo-secao h2 {
+    font-size: 21px;
+
+    margin-bottom: 3px;
+}
+
+.titulo-secao p {
+    color: var(--text-light);
+
+    font-size: 13px;
+}
+
+.ver-todos {
+    color: var(--primary);
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+.ver-todos:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   LIVROS
+========================= */
+
+#areaReservas {
+    margin-bottom: 35px;
+}
+
+.lista-reservas {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+}
+
+.card-livro {
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 20px;
+
+    background: #fff;
+
+    border-radius: 18px;
+
+    border: 1px solid #eef2f7;
+
+    box-shadow: var(--shadow);
+
+    transition: 0.3s;
+}
+
+.card-livro:hover {
+    transform: translateY(-4px);
+
+    box-shadow: var(--shadow-hover);
+}
+
+
+/* CAPA */
+
+.livro-capa img {
+    width: 90px;
+
+    height: 125px;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+
+    background: #e2e8f0;
+}
+
+.livro-info {
+    flex: 1;
+}
+
+.categoria {
+    display: inline-block;
+
+    padding: 4px 9px;
+
+    border-radius: 20px;
+
+    background: #eff6ff;
+
+    color: var(--primary);
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    margin-bottom: 6px;
+}
+
+.livro-info h3 {
+    font-size: 17px;
+
+    margin-bottom: 7px;
+}
+
+.livro-info p {
+    font-size: 13px;
+
+    color: var(--text-light);
+
+    margin-bottom: 3px;
+}
+
+.status {
+    display: inline-block;
+
+    margin-top: 8px;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+.status.reservado {
+    background: #dcfce7;
+
+    color: #166534;
+}
+
+
+/* AÇÕES */
+
+.livro-acoes {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.btn-detalhes,
+.btn-cancelar {
+    padding: 9px 13px;
+
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.btn-detalhes {
+    border: none;
+
+    background: var(--primary);
+
+    color: #fff;
+}
+
+.btn-detalhes:hover {
+    background: var(--primary-dark);
+}
+
+.btn-cancelar {
+    border: 1px solid #fecaca;
+
+    background: #fff;
+
+    color: var(--danger);
+}
+
+.btn-cancelar:hover {
+    background: #fef2f2;
+}
+
+
+/* =========================
+   DESAFIOS
+========================= */
+
+.secao-desafios {
+    margin-bottom: 35px;
+}
+
+.lista-desafios {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+.desafio {
+    position: relative;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 14px;
+
+    padding: 22px;
+
+    background: #fff;
+
+    border-radius: 17px;
+
+    border-left: 5px solid;
+
+    box-shadow: var(--shadow);
+
+    transition: 0.3s;
+}
+
+.desafio:hover {
+    transform: translateY(-5px);
+
+    box-shadow: var(--shadow-hover);
+}
+
+.desafio.amarelo {
+    border-color: #f59e0b;
+}
+
+.desafio.verde {
+    border-color: #10b981;
+}
+
+.desafio.azul {
+    border-color: #2563eb;
+}
+
+.desafio-icone {
+    width: 45px;
+    height: 45px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #f8fafc;
+
+    font-size: 21px;
+}
+
+.desafio-conteudo {
+    flex: 1;
+}
+
+.desafio-conteudo h3 {
+    font-size: 15px;
+
+    margin-bottom: 5px;
+}
+
+.desafio-conteudo p {
+    color: var(--text-light);
+
+    font-size: 12px;
+
+    margin-bottom: 12px;
+}
+
+
+/* PROGRESSO DO DESAFIO */
+
+.progresso-desafio {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+.progresso-desafio-barra {
+    flex: 1;
+
+    height: 7px;
+
+    background: #e2e8f0;
+
+    border-radius: 50px;
+
+    overflow: hidden;
+}
+
+.progresso-desafio-preenchido {
+    height: 100%;
+
+    background: var(--success);
+
+    border-radius: 50px;
+}
+
+.progresso-desafio span {
+    color: var(--text-light);
+
+    font-size: 10px;
+
+    white-space: nowrap;
+}
+
+.pontos-desafio {
+    position: absolute;
+
+    top: 18px;
+
+    right: 18px;
+
+    color: var(--success);
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   CONQUISTAS
+========================= */
+
+.secao-conquistas {
+    margin-bottom: 35px;
+}
+
+.lista-conquistas {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+}
+
+.conquista {
+    padding: 25px 18px;
+
+    text-align: center;
+
+    background: #fff;
+
+    border-radius: 17px;
+
+    box-shadow: var(--shadow);
+
+    border: 1px solid #eef2f7;
+
+    transition: 0.3s;
+}
+
+.conquista:hover {
+    transform: translateY(-5px);
+
+    box-shadow: var(--shadow-hover);
+}
+
+.medalha {
+    width: 65px;
+    height: 65px;
+
+    margin: 0 auto 12px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #fef3c7;
+
+    font-size: 28px;
+}
+
+.conquista h3 {
+    font-size: 14px;
+
+    margin-bottom: 5px;
+}
+
+.conquista p {
+    color: var(--text-light);
+
+    font-size: 11px;
+}
+
+
+/* BLOQUEADA */
+
+.conquista.bloqueada {
+    opacity: 0.55;
+
+    background: #f8fafc;
+}
+
+.conquista.bloqueada .medalha {
+    background: #e2e8f0;
+
+    filter: grayscale(1);
+}
+
+
+/* =========================
+   RANKING
+========================= */
+
+.secao-ranking {
+    margin-bottom: 35px;
+}
+
+.ranking {
+    background: #fff;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow: var(--shadow);
+}
+
+.usuario-ranking {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 16px 20px;
+
+    border-bottom: 1px solid #f1f5f9;
+
+    transition: 0.3s;
+}
+
+.usuario-ranking:last-child {
+    border-bottom: none;
+}
+
+.usuario-ranking:hover {
+    background: #f8fafc;
+}
+
+.usuario-ranking.atual {
+    background: #eff6ff;
+
+    border-left: 4px solid var(--primary);
+}
+
+.posicao {
+    width: 35px;
+
+    text-align: center;
+
+    font-weight: 700;
+}
+
+.ranking-avatar {
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    color: #fff;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+.ranking-nome {
+    flex: 1;
+}
+
+.ranking-nome strong {
+    display: block;
+
+    font-size: 14px;
+}
+
+.ranking-nome span {
+    color: var(--text-light);
+
+    font-size: 11px;
+}
+
+.ranking-pontos {
+    color: var(--primary);
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   COMO GANHAR PONTOS
+========================= */
+
+.como-ganhar {
+    padding: 25px;
+
+    margin-bottom: 20px;
+
+    background: #fff;
+
+    border-radius: 18px;
+
+    box-shadow: var(--shadow);
+}
+
+.lista-pontos {
+    border-top: 1px solid #f1f5f9;
+}
+
+.linha-pontos {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 14px 5px;
+
+    border-bottom: 1px solid #f1f5f9;
+
+    font-size: 13px;
+}
+
+.linha-pontos strong {
+    color: var(--success);
+}
+
+
+/* =========================
+   RODAPÉ
+========================= */
+
+.futer {
+    padding: 45px 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #079669,
+            #10b981
+        );
+
+    color: #fff;
+
+    text-align: center;
+}
+
+.futer .topo {
+    display: inline-block;
+
+    padding: 8px 18px;
+
+    margin-bottom: 15px;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.15);
+
+    font-size: 12px;
+}
+
+.futer h2 {
+    font-size: 21px;
+
+    margin-bottom: 10px;
+}
+
+.futer > p:not(.topo) {
+    max-width: 600px;
+
+    margin: 0 auto 25px;
+
+    font-size: 13px;
+
+    opacity: 0.9;
+}
+
+.contactos h3 {
+    margin-bottom: 12px;
+}
+
+.contactos p {
+    font-size: 13px;
+
+    margin: 5px 0;
+
+    opacity: 0.9;
+}
+
+
+/* =========================
+   ANIMAÇÕES
+========================= */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+.perfil-principal,
+.progresso-card,
+.estatistica-card,
+.card-livro,
+.desafio,
+.conquista,
+.ranking,
+.como-ganhar {
+    animation: aparecer 0.5s ease forwards;
+}
+
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+
+/* TABLET */
+
+@media (max-width: 1100px) {
+
+    .menu-lateral {
+        width: 240px;
+
+        min-width: 240px;
+    }
+
+    .conteudo {
+        padding: 22px;
+    }
+
+    .estatisticas {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .lista-desafios {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .lista-conquistas {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+/* TABLET PEQUENO */
+
+@media (max-width: 850px) {
+
+    .app {
+        flex-direction: column;
+    }
+
+    .menu-lateral {
+        position: relative;
+
+        width: 100%;
+
+        min-width: 100%;
+
+        height: auto;
+
+        padding: 20px;
+    }
+
+    .logo-area {
+        margin-bottom: 20px;
+    }
+
+    .menu-lista {
+        display: grid;
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap: 8px;
+    }
+
+    .menu-lista li {
+        margin-bottom: 0;
+    }
+
+    .menu-lista li a {
+        justify-content: center;
+
+        flex-direction: column;
+
+        gap: 5px;
+
+        text-align: center;
+
+        padding: 10px 5px;
+
+        font-size: 11px;
+    }
+
+    .perfil-menu {
+        max-width: 350px;
+
+        margin: 0 auto 20px;
+    }
+
+    .perfil-principal {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 20px;
+    }
+
+    .perfil-pontos {
+        width: 100%;
+    }
+
+}
+
+
+/* TELEMÓVEL */
+
+@media (max-width: 600px) {
+
+    .conteudo {
+        padding: 15px;
+    }
+
+    .top-header {
+        padding: 17px;
+
+        align-items: flex-start;
+    }
+
+    .top-header h1 {
+        font-size: 21px;
+    }
+
+    .top-header p {
+        font-size: 12px;
+    }
+
+    .usuario-header {
+        display: none;
+    }
+
+    .acoes-header {
+        gap: 0;
+    }
+
+
+    /* PERFIL */
+
+    .perfil-principal {
+        padding: 22px;
+
+        align-items: center;
+
+        text-align: center;
+    }
+
+    .perfil-identidade {
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    .avatar-grande {
+        width: 90px;
+        height: 90px;
+
+        font-size: 28px;
+    }
+
+    .dados-perfil h2 {
+        font-size: 22px;
+    }
+
+
+    /* PROGRESSO */
+
+    .progresso-card {
+        padding: 21px;
+    }
+
+    .progresso-topo {
+        align-items: flex-start;
+    }
+
+    .percentagem {
+        font-size: 21px;
+    }
+
+
+    /* ESTATÍSTICAS */
+
+    .estatisticas {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 10px;
+    }
+
+    .estatistica-card {
+        padding: 15px;
+
+        gap: 10px;
+    }
+
+    .icone {
+        width: 42px;
+        height: 42px;
+
+        font-size: 18px;
+    }
+
+    .estatistica-card strong {
+        font-size: 20px;
+    }
+
+
+    /* LIVROS */
+
+    .card-livro {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        padding: 18px;
+    }
+
+    .livro-capa {
+        width: 100%;
+
+        text-align: center;
+    }
+
+    .livro-capa img {
+        width: 120px;
+
+        height: 165px;
+    }
+
+    .livro-info {
+        width: 100%;
+    }
+
+    .livro-acoes {
+        width: 100%;
+
+        flex-direction: row;
+    }
+
+    .btn-detalhes,
+    .btn-cancelar {
+        flex: 1;
+    }
+
+
+    /* DESAFIOS */
+
+    .lista-desafios {
+        grid-template-columns: 1fr;
+    }
+
+    .desafio {
+        padding: 19px;
+    }
+
+
+    /* CONQUISTAS */
+
+    .lista-conquistas {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 10px;
+    }
+
+    .conquista {
+        padding: 18px 10px;
+    }
+
+    .medalha {
+        width: 52px;
+        height: 52px;
+
+        font-size: 23px;
+    }
+
+
+    /* RANKING */
+
+    .usuario-ranking {
+        gap: 9px;
+
+        padding: 14px;
+    }
+
+    .ranking-avatar {
+        width: 37px;
+        height: 37px;
+    }
+
+    .ranking-nome strong {
+        font-size: 12px;
+    }
+
+    .ranking-pontos {
+        font-size: 11px;
+    }
+
+
+    /* MENU */
+
+    .menu-lista {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    /* RODAPÉ */
+
+    .futer {
+        padding: 35px 18px;
+    }
+
+    .futer h2 {
+        font-size: 18px;
+    }
+
+}
+
+
+/* TELEMÓVEL MUITO PEQUENO */
+
+@media (max-width: 400px) {
+
+    .estatisticas {
+        grid-template-columns: 1fr;
+    }
+
+    .lista-conquistas {
+        grid-template-columns: 1fr;
+    }
+
+    .menu-lista {
+        grid-template-columns: 1fr;
+    }
+
+    .titulo-secao {
+        align-items: flex-start;
+
+        gap: 10px;
+    }
+
+    .titulo-secao h2 {
+        font-size: 18px;
+    }
+
+}
