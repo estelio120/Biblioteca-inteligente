@@ -1,250 +1,680 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const livro = JSON.parse(localStorage.getItem("livroSelecionado"));
+    const livro = JSON.parse(
+        localStorage.getItem("livroSelecionado")
+    );
+
+    const dadosUsuario = JSON.parse(
+        localStorage.getItem("dadosUsuario")
+    );
+
+    const form = document.getElementById("formReserva");
 
     const img = document.getElementById("livro-img");
     const titulo = document.getElementById("livro-titulo");
     const autor = document.getElementById("livro-autor");
+    const categoria = document.getElementById("livro-categoria");
     const status = document.getElementById("livro-status");
     const descricao = document.getElementById("livro-descricao");
 
     const inputTitulo = document.getElementById("titulo");
     const inputAutor = document.getElementById("autor");
 
+    const tipoEstudante =
+        document.getElementById("tipoEstudante");
 
-    if (livro) {
+    const camposAcademicos =
+        document.getElementById("camposAcademicos");
 
-        if (img) {
-            img.src = livro.imagem || "";
-            img.alt = livro.titulo || "Livrso";
-        }
 
-        if (titulo) titulo.innerText = livro.titulo || "";
-        if (autor) autor.innerText = livro.autor || "";
-        if (status) status.innerText = livro.estado || "Disponível";
-        if (descricao) {
-            descricao.innerText = "Livro disponível para reserva na Biblioteca Provincial de Pemba.";
-        }
+    if (!livro) {
 
-        if (inputTitulo) inputTitulo.value = livro.titulo || "";
-        if (inputAutor) inputAutor.value = livro.autor || "";
+        alert("Nenhum livro foi selecionado.");
+
+        window.location.href = "INICIO.html";
+
+        return;
+    }
+
+
+    if (img) {
+
+        img.src = livro.imagem || "";
+
+        img.alt =
+            livro.titulo || "Capa do livro";
 
     }
 
 
-    const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario"));
+    if (titulo) {
+
+        titulo.textContent =
+            livro.titulo || "";
+
+    }
+
+
+    if (autor) {
+
+        autor.textContent =
+            livro.autor || "";
+
+    }
+
+
+    if (categoria) {
+
+        categoria.textContent =
+            livro.categoria || "Literatura";
+
+    }
+
+
+    if (status) {
+
+        status.textContent =
+            livro.estado || "Disponível";
+
+    }
+
+
+    if (descricao) {
+
+        descricao.textContent =
+            livro.descricao ||
+            "Livro disponível para reserva na Biblioteca Provincial de Pemba.";
+
+    }
+
+
+    if (inputTitulo) {
+
+        inputTitulo.value =
+            livro.titulo || "";
+
+    }
+
+
+    if (inputAutor) {
+
+        inputAutor.value =
+            livro.autor || "";
+
+    }
+
 
     if (dadosUsuario) {
 
-        document.getElementById("nome").value = dadosUsuario.nome || "";
-        document.getElementById("nascimento").value = dadosUsuario.nascimento || "";
-        document.getElementById("bi").value = dadosUsuario.bi || "";
-        document.getElementById("telefone").value = dadosUsuario.telefone || "";
-        document.getElementById("endereco").value = dadosUsuario.endereco || "";
-        document.getElementById("email").value = dadosUsuario.email || "";
+        const nome =
+            document.getElementById("nome");
+
+        const nascimento =
+            document.getElementById("nascimento");
+
+        const bi =
+            document.getElementById("bi");
+
+        const telefone =
+            document.getElementById("telefone");
+
+        const endereco =
+            document.getElementById("endereco");
+
+        const email =
+            document.getElementById("email");
+
+
+        if (nome)
+            nome.value =
+                dadosUsuario.nome || "";
+
+
+        if (nascimento)
+            nascimento.value =
+                dadosUsuario.nascimento || "";
+
+
+        if (bi)
+            bi.value =
+                dadosUsuario.bi || "";
+
+
+        if (telefone)
+            telefone.value =
+                dadosUsuario.telefone || "";
+
+
+        if (endereco)
+            endereco.value =
+                dadosUsuario.endereco || "";
+
+
+        if (email)
+            email.value =
+                dadosUsuario.email || "";
 
     }
-
-
-    const tipoEstudante = document.getElementById("tipoEstudante");
-    const camposAcademicos = document.getElementById("camposAcademicos");
 
 
     if (tipoEstudante) {
 
-        tipoEstudante.addEventListener("change", () => {
+        tipoEstudante.addEventListener(
+            "change",
+            () => {
 
-            let tipo = tipoEstudante.value;
+                const tipo =
+                    tipoEstudante.value;
 
 
-            if (tipo === "primario") {
+                if (tipo === "primario") {
 
-                camposAcademicos.innerHTML = `
-                <label>Classe</label>
-                <select name="classe">
-                    <option>1ª Classe</option>
-                    <option>2ª Classe</option>
-                    <option>3ª Classe</option>
-                    <option>4ª Classe</option>
-                    <option>5ª Classe</option>
-                    <option>6ª Classe</option>
-                </select>
+                    camposAcademicos.innerHTML = `
 
-                <label>Escola</label>
-                <input type="text" name="escola">
+                        <label for="classe">
+                            Classe
+                        </label>
 
-                <label>Nome do encarregado</label>
-                <input type="text" name="encarregado">
-                `;
+                        <select
+                            id="classe"
+                            name="classe"
+                            required
+                        >
 
-            } else if (tipo === "medio") {
+                            <option value="">
+                                Selecione a classe
+                            </option>
 
-                camposAcademicos.innerHTML = `
-                <label>Classe</label>
-                <select name="classe">
-                    <option>7ª Classe</option>
-                    <option>8ª Classe</option>
-                    <option>9ª Classe</option>
-                    <option>10ª Classe</option>
-                    <option>11ª Classe</option>
-                    <option>12ª Classe</option>
-                </select>
+                            <option value="1ª Classe">
+                                1ª Classe
+                            </option>
 
-                <label>Escola</label>
-                <input type="text" name="escola">
+                            <option value="2ª Classe">
+                                2ª Classe
+                            </option>
 
-                <label>Turma</label>
-                <input type="text" name="turma">
-                `;
+                            <option value="3ª Classe">
+                                3ª Classe
+                            </option>
 
-            } else if (tipo === "universitario") {
+                            <option value="4ª Classe">
+                                4ª Classe
+                            </option>
 
-                camposAcademicos.innerHTML = `
-                <label>Universidade</label>
-                <input type="text" name="universidade">
+                            <option value="5ª Classe">
+                                5ª Classe
+                            </option>
 
-                <label>Curso</label>
-                <input type="text" name="curso">
-                `;
+                            <option value="6ª Classe">
+                                6ª Classe
+                            </option>
 
-            } else {
+                        </select>
 
-                camposAcademicos.innerHTML = "";
+
+                        <label for="escola">
+                            Escola
+                        </label>
+
+                        <input
+                            type="text"
+                            id="escola"
+                            name="escola"
+                            placeholder="Nome da escola"
+                            required
+                        >
+
+
+                        <label for="encarregado">
+                            Nome do encarregado
+                        </label>
+
+                        <input
+                            type="text"
+                            id="encarregado"
+                            name="encarregado"
+                            placeholder="Nome do encarregado"
+                            required
+                        >
+
+                    `;
+
+                }
+
+
+                else if (tipo === "medio") {
+
+                    camposAcademicos.innerHTML = `
+
+                        <label for="classe">
+                            Classe
+                        </label>
+
+                        <select
+                            id="classe"
+                            name="classe"
+                            required
+                        >
+
+                            <option value="">
+                                Selecione a classe
+                            </option>
+
+                            <option value="7ª Classe">
+                                7ª Classe
+                            </option>
+
+                            <option value="8ª Classe">
+                                8ª Classe
+                            </option>
+
+                            <option value="9ª Classe">
+                                9ª Classe
+                            </option>
+
+                            <option value="10ª Classe">
+                                10ª Classe
+                            </option>
+
+                            <option value="11ª Classe">
+                                11ª Classe
+                            </option>
+
+                            <option value="12ª Classe">
+                                12ª Classe
+                            </option>
+
+                        </select>
+
+
+                        <label for="escola">
+                            Escola
+                        </label>
+
+                        <input
+                            type="text"
+                            id="escola"
+                            name="escola"
+                            placeholder="Nome da escola"
+                            required
+                        >
+
+
+                        <label for="turma">
+                            Turma
+                        </label>
+
+                        <input
+                            type="text"
+                            id="turma"
+                            name="turma"
+                            placeholder="Ex.: A, B, C..."
+                            required
+                        >
+
+                    `;
+
+                }
+
+
+                else if (tipo === "universitario") {
+
+                    camposAcademicos.innerHTML = `
+
+                        <label for="universidade">
+                            Universidade
+                        </label>
+
+                        <input
+                            type="text"
+                            id="universidade"
+                            name="universidade"
+                            placeholder="Nome da universidade"
+                            required
+                        >
+
+
+                        <label for="curso">
+                            Curso
+                        </label>
+
+                        <input
+                            type="text"
+                            id="curso"
+                            name="curso"
+                            placeholder="Nome do curso"
+                            required
+                        >
+
+                    `;
+
+                }
+
+
+                else {
+
+                    camposAcademicos.innerHTML = "";
+
+                }
 
             }
-
-        });
+        );
 
     }
-
-
-    const form = document.getElementById("formReserva");
 
 
     if (form) {
 
-        form.addEventListener("submit", (e) => {
+        form.addEventListener(
+            "submit",
+            (e) => {
 
-            e.preventDefault();
-
-
-            const dados = Object.fromEntries(new FormData(form));
-
-
-            const dadosUsuario = {
-
-                nome: dados.nome,
-                nascimento: dados.nascimento,
-                bi: dados.bi,
-                telefone: dados.telefone,
-                endereco: dados.endereco,
-                email: dados.email
-
-            };
+                e.preventDefault();
 
 
-            localStorage.setItem(
-                "dadosUsuario",
-                JSON.stringify(dadosUsuario)
-            );
+                const dados =
+                    Object.fromEntries(
+                        new FormData(form)
+                    );
 
 
-            let reservas = JSON.parse(localStorage.getItem("reservas")) || [];
+                if (
+                    !dados.nome ||
+                    !dados.nascimento ||
+                    !dados.bi ||
+                    !dados.telefone ||
+                    !dados.endereco ||
+                    !dados.email ||
+                    !dados.tipoEstudante ||
+                    !dados.titulo ||
+                    !dados.autor ||
+                    !dados.dataLevantamento ||
+                    !dados.horaLevantamento
+                ) {
+
+                    alert(
+                        "Preencha todos os campos obrigatórios."
+                    );
+
+                    return;
+                }
 
 
-            const existe = reservas.some(
-                r => r.titulo === livro.titulo
-            );
+                const reservas =
+                    JSON.parse(
+                        localStorage.getItem("reservas")
+                    ) || [];
 
 
-            if (existe) {
+                const existe =
+                    reservas.some(
+                        reserva =>
+                            reserva.titulo === livro.titulo
+                    );
 
-                alert("Este livro já está reservado!");
-                return;
+
+                if (existe) {
+
+                    alert(
+                        "Este livro já está reservado!"
+                    );
+
+                    return;
+                }
+
+
+                const dadosUsuarioAtual = {
+
+                    nome:
+                        dados.nome,
+
+                    nascimento:
+                        dados.nascimento,
+
+                    bi:
+                        dados.bi,
+
+                    telefone:
+                        dados.telefone,
+
+                    endereco:
+                        dados.endereco,
+
+                    email:
+                        dados.email
+
+                };
+
+
+                localStorage.setItem(
+                    "dadosUsuario",
+                    JSON.stringify(
+                        dadosUsuarioAtual
+                    )
+                );
+
+
+                const novaReserva = {
+
+                    id:
+                        Date.now(),
+
+                    titulo:
+                        dados.titulo,
+
+                    autor:
+                        dados.autor,
+
+                    categoria:
+                        livro.categoria || "Literatura",
+
+                    imagem:
+                        livro.imagem || "",
+
+                    descricao:
+                        livro.descricao || "",
+
+                    estado:
+                        "Reservado",
+
+                    data:
+                        new Date()
+                            .toLocaleString("pt-PT"),
+
+
+                    dataLevantamento:
+                        dados.dataLevantamento,
+
+                    horaLevantamento:
+                        dados.horaLevantamento,
+
+
+                    nome:
+                        dados.nome,
+
+                    nascimento:
+                        dados.nascimento,
+
+                    bi:
+                        dados.bi,
+
+                    telefone:
+                        dados.telefone,
+
+                    endereco:
+                        dados.endereco,
+
+                    email:
+                        dados.email,
+
+
+                    tipoEstudante:
+                        dados.tipoEstudante,
+
+                    classe:
+                        dados.classe || "",
+
+                    escola:
+                        dados.escola || "",
+
+                    turma:
+                        dados.turma || "",
+
+                    encarregado:
+                        dados.encarregado || "",
+
+                    universidade:
+                        dados.universidade || "",
+
+                    curso:
+                        dados.curso || "",
+
+
+                    assinaturaLeitor:
+                        dados.assinaturaLeitor || "",
+
+                    assinaturaFuncionario:
+                        dados.assinaturaFuncionario || ""
+
+                };
+
+
+                reservas.push(
+                    novaReserva
+                );
+
+
+                localStorage.setItem(
+                    "reservas",
+                    JSON.stringify(
+                        reservas
+                    )
+                );
+
+
+                mostrarConfirmacao();
 
             }
-
-
-            const novaReserva = {
-
-                ...dados,
-
-                titulo: livro.titulo || "",
-                autor: livro.autor || "",
-                imagem: livro.imagem || "",
-                estado: "Reservado",
-                data: new Date().toLocaleString()
-
-            };
-
-
-            reservas.push(novaReserva);
-
-
-            localStorage.setItem(
-                "reservas",
-                JSON.stringify(reservas)
-            );
-
-
-            mostrarConfirmacao();
-
-        });
+        );
 
     }
 
+
+    const menu =
+        document.querySelector(".menu");
+
+    const menuBtn =
+        document.getElementById("menuBtn");
+
+    const overlay =
+        document.getElementById("overlay");
+
+
+    if (
+        menu &&
+        menuBtn &&
+        overlay
+    ) {
+
+        menuBtn.addEventListener(
+            "click",
+            () => {
+
+                menu.classList.toggle(
+                    "active"
+                );
+
+                overlay.classList.toggle(
+                    "active"
+                );
+
+            }
+        );
+
+
+        overlay.addEventListener(
+            "click",
+            () => {
+
+                menu.classList.remove(
+                    "active"
+                );
+
+                overlay.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+    }
 
 });
 
 
 function mostrarConfirmacao() {
 
-    const popup = document.createElement("div");
+    const popup =
+        document.createElement("div");
 
-    popup.className = "popup-overlay";
+
+    popup.className =
+        "popup-overlay";
 
 
     popup.innerHTML = `
 
-    <div class="popup-card">
+        <div class="popup-card">
 
-        <h2>✔ Requisição Confirmada!</h2>
+            <h2>
+                ✔ Requisição Confirmada!
+            </h2>
 
-        <p>Reserva registada com sucesso.</p>
+            <p>
+                A reserva foi registada com sucesso.
+            </p>
 
-        <button id="perfil">
-            Ver perfil
-        </button>
+            <button id="perfil">
+                Ver perfil
+            </button>
 
-        <button id="outroLivro">
-            Reservar outro livro
-        </button>
+            <button id="outroLivro">
+                Reservar outro livro
+            </button>
 
-    </div>
+        </div>
 
     `;
 
 
-    document.body.appendChild(popup);
+    document.body.appendChild(
+        popup
+    );
 
 
-    document.getElementById("perfil").onclick = () => {
+    document
+        .getElementById("perfil")
+        .addEventListener(
+            "click",
+            () => {
 
-        window.location.href = "perfil.html";
+                window.location.href =
+                    "perfil.html";
 
-    };
+            }
+        );
 
 
-    document.getElementById("outroLivro").onclick = () => {
+    document
+        .getElementById("outroLivro")
+        .addEventListener(
+            "click",
+            () => {
 
-        window.location.href = "INICIO.html";
+                window.location.href =
+                    "INICIO.html";
 
-    };
+            }
+        );
 
 }
-
-
-overlay.addEventListener("click",()=>{
-menu.classList.remove("active");
-overlay.classList.remove("active");
-});
