@@ -1,159 +1,378 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const livro = JSON.parse(
+    const form = document.getElementById("formReserva");
+    const livroSelecionado = JSON.parse(
         localStorage.getItem("livroSelecionado")
     );
 
-    const dadosUsuario = JSON.parse(
+    const dadosGuardados = JSON.parse(
         localStorage.getItem("dadosUsuario")
-    );
+    ) || {};
 
-    const form = document.getElementById("formReserva");
+    const livroImg = document.getElementById("livro-img");
+    const livroTitulo = document.getElementById("livro-titulo");
+    const livroAutor = document.getElementById("livro-autor");
+    const livroCategoria = document.getElementById("livro-categoria");
+    const livroStatus = document.getElementById("livro-status");
+    const livroDescricao = document.getElementById("livro-descricao");
 
-    const img = document.getElementById("livro-img");
-    const titulo = document.getElementById("livro-titulo");
-    const autor = document.getElementById("livro-autor");
-    const categoria = document.getElementById("livro-categoria");
-    const status = document.getElementById("livro-status");
-    const descricao = document.getElementById("livro-descricao");
+    const inputNome = document.getElementById("nome");
+    const inputNascimento = document.getElementById("nascimento");
+    const inputBI = document.getElementById("bi");
+    const inputTelefone = document.getElementById("telefone");
+    const inputEndereco = document.getElementById("endereco");
+    const inputEmail = document.getElementById("email");
 
     const inputTitulo = document.getElementById("titulo");
     const inputAutor = document.getElementById("autor");
 
-    const tipoEstudante =
-        document.getElementById("tipoEstudante");
+    const tipoEstudante = document.getElementById("tipoEstudante");
+    const camposAcademicos = document.getElementById("camposAcademicos");
 
-    const camposAcademicos =
-        document.getElementById("camposAcademicos");
+    const dataLevantamento = document.getElementById("dataLevantamento");
+    const horaLevantamento = document.getElementById("horaLevantamento");
+
+    const menuBtn = document.getElementById("menuBtn");
+    const menu = document.querySelector(".menu");
+    const overlay = document.getElementById("overlay");
 
 
-    if (!livro) {
+    /*
+    ==========================================
+    DADOS DO LIVRO
+    ==========================================
+    */
 
-        alert("Nenhum livro foi selecionado.");
+    if (livroSelecionado) {
 
-        window.location.href = "INICIO.html";
+        if (livroImg) {
+            livroImg.src = livroSelecionado.imagem || "";
+            livroImg.alt = livroSelecionado.titulo || "Capa do livro";
+        }
 
-        return;
+        if (livroTitulo) {
+            livroTitulo.textContent =
+                livroSelecionado.titulo || "Livro selecionado";
+        }
+
+        if (livroAutor) {
+            livroAutor.textContent =
+                livroSelecionado.autor || "Autor não informado";
+        }
+
+        if (livroCategoria) {
+            livroCategoria.textContent =
+                livroSelecionado.categoria || "Literatura";
+        }
+
+        if (livroStatus) {
+            livroStatus.textContent =
+                livroSelecionado.estado || "Disponível";
+        }
+
+        if (livroDescricao) {
+            livroDescricao.textContent =
+                livroSelecionado.descricao ||
+                "Livro disponível para requisição na Biblioteca Provincial de Pemba.";
+        }
+
+        if (inputTitulo) {
+            inputTitulo.value =
+                livroSelecionado.titulo || "";
+        }
+
+        if (inputAutor) {
+            inputAutor.value =
+                livroSelecionado.autor || "";
+        }
     }
 
 
-    if (img) {
+    /*
+    ==========================================
+    DADOS DO UTILIZADOR
+    ==========================================
+    */
 
-        img.src = livro.imagem || "";
+    if (inputNome) {
+        inputNome.value = dadosGuardados.nome || "";
+    }
 
-        img.alt =
-            livro.titulo || "Capa do livro";
+    if (inputNascimento) {
+        inputNascimento.value = dadosGuardados.nascimento || "";
+    }
 
+    if (inputBI) {
+        inputBI.value = dadosGuardados.bi || "";
+    }
+
+    if (inputTelefone) {
+        inputTelefone.value = dadosGuardados.telefone || "";
+    }
+
+    if (inputEndereco) {
+        inputEndereco.value = dadosGuardados.endereco || "";
+    }
+
+    if (inputEmail) {
+        inputEmail.value = dadosGuardados.email || "";
     }
 
 
-    if (titulo) {
+    /*
+    ==========================================
+    INSTITUIÇÕES DE PEMBA
+    ==========================================
+    */
 
-        titulo.textContent =
-            livro.titulo || "";
+    const escolasPrimarias = [
+        "EPC Amizade Moçambique-China",
+        "EPC Anexa do IFP",
+        "EPC de Gingone 2",
+        "EPC de Mahate",
+        "EPC Eduardo Mondlane",
+        "Escola Primária de Chuiba",
+        "Escola Primária de Ngonane",
+        "Escola Primária Comunitária São Carlos Lwanga",
+        "Escola Primária Iris"
+    ];
 
+    const escolasSecundarias = [
+        "Escola Secundária de Pemba",
+        "Escola Secundária de Gingone",
+        "Escola Secundária 19 de Outubro",
+        "Escola Secundária SOS",
+        "Escola Secundária Marcelino dos Santos",
+        "Escola Secundária Comunitária Maria Mazzarello",
+        "Iris Secondary School"
+    ];
+
+    const universidadesInstitutos = [
+        "Universidade Lúrio - UniLúrio",
+        "Universidade Rovuma - UniRovuma",
+        "Universidade Católica de Moçambique - UCM",
+        "Universidade Íris",
+        "Instituto Superior de Ciências e Tecnologia Alberto Chipande - ISCTAC",
+        "Instituto Superior de Ciências e Educação a Distância - ISC﻿ED",
+        "Instituto Industrial e Comercial de Pemba",
+        "Instituto Superior Dom Bosco - ISDB",
+        "Instituto de Formação de Professores Alberto Joaquim Chipande"
+    ];
+
+
+    /*
+    ==========================================
+    CAMPOS ACADÉMICOS
+    ==========================================
+    */
+
+    function criarSelectInstituicao(
+        nome,
+        id,
+        titulo,
+        opcoes
+    ) {
+
+        return `
+            <label for="${id}">${titulo}</label>
+
+            <select
+                id="${id}"
+                name="${nome}"
+                required
+            >
+
+                <option value="">
+                    Selecione a instituição
+                </option>
+
+                ${opcoes.map(escola => `
+                    <option value="${escola}">
+                        ${escola}
+                    </option>
+                `).join("")}
+
+            </select>
+        `;
     }
 
 
-    if (autor) {
+    function mostrarCamposAcademicos() {
 
-        autor.textContent =
-            livro.autor || "";
+        if (!tipoEstudante || !camposAcademicos) {
+            return;
+        }
 
-    }
+        const tipo = tipoEstudante.value;
 
-
-    if (categoria) {
-
-        categoria.textContent =
-            livro.categoria || "Literatura";
-
-    }
+        camposAcademicos.innerHTML = "";
 
 
-    if (status) {
+        if (tipo === "primario") {
 
-        status.textContent =
-            livro.estado || "Disponível";
+            camposAcademicos.innerHTML = `
 
-    }
+                ${criarSelectInstituicao(
+                    "instituicao",
+                    "instituicao",
+                    "Escola primária",
+                    escolasPrimarias
+                )}
 
+                <label for="classe">
+                    Classe
+                </label>
 
-    if (descricao) {
+                <select
+                    id="classe"
+                    name="classe"
+                    required
+                >
+                    <option value="">
+                        Selecione a classe
+                    </option>
 
-        descricao.textContent =
-            livro.descricao ||
-            "Livro disponível para reserva na Biblioteca Provincial de Pemba.";
+                    <option value="1ª Classe">1ª Classe</option>
+                    <option value="2ª Classe">2ª Classe</option>
+                    <option value="3ª Classe">3ª Classe</option>
+                    <option value="4ª Classe">4ª Classe</option>
+                    <option value="5ª Classe">5ª Classe</option>
+                    <option value="6ª Classe">6ª Classe</option>
+                </select>
 
-    }
+                <label for="encarregado">
+                    Nome do encarregado
+                </label>
 
+                <input
+                    type="text"
+                    id="encarregado"
+                    name="encarregado"
+                    placeholder="Nome completo do encarregado"
+                    required
+                >
 
-    if (inputTitulo) {
+            `;
 
-        inputTitulo.value =
-            livro.titulo || "";
-
-    }
-
-
-    if (inputAutor) {
-
-        inputAutor.value =
-            livro.autor || "";
-
-    }
-
-
-    if (dadosUsuario) {
-
-        const nome =
-            document.getElementById("nome");
-
-        const nascimento =
-            document.getElementById("nascimento");
-
-        const bi =
-            document.getElementById("bi");
-
-        const telefone =
-            document.getElementById("telefone");
-
-        const endereco =
-            document.getElementById("endereco");
-
-        const email =
-            document.getElementById("email");
+        }
 
 
-        if (nome)
-            nome.value =
-                dadosUsuario.nome || "";
+        else if (tipo === "medio") {
+
+            camposAcademicos.innerHTML = `
+
+                ${criarSelectInstituicao(
+                    "instituicao",
+                    "instituicao",
+                    "Escola secundária / Colégio",
+                    escolasSecundarias
+                )}
+
+                <label for="classe">
+                    Classe
+                </label>
+
+                <select
+                    id="classe"
+                    name="classe"
+                    required
+                >
+
+                    <option value="">
+                        Selecione a classe
+                    </option>
+
+                    <option value="7ª Classe">7ª Classe</option>
+                    <option value="8ª Classe">8ª Classe</option>
+                    <option value="9ª Classe">9ª Classe</option>
+                    <option value="10ª Classe">10ª Classe</option>
+                    <option value="11ª Classe">11ª Classe</option>
+                    <option value="12ª Classe">12ª Classe</option>
+
+                </select>
+
+                <label for="turma">
+                    Turma
+                </label>
+
+                <input
+                    type="text"
+                    id="turma"
+                    name="turma"
+                    placeholder="Ex.: A, B, C..."
+                    required
+                >
+
+            `;
+
+        }
 
 
-        if (nascimento)
-            nascimento.value =
-                dadosUsuario.nascimento || "";
+        else if (tipo === "universitario") {
 
+            camposAcademicos.innerHTML = `
 
-        if (bi)
-            bi.value =
-                dadosUsuario.bi || "";
+                ${criarSelectInstituicao(
+                    "instituicao",
+                    "instituicao",
+                    "Universidade / Instituto",
+                    universidadesInstitutos
+                )}
 
+                <label for="curso">
+                    Curso
+                </label>
 
-        if (telefone)
-            telefone.value =
-                dadosUsuario.telefone || "";
+                <input
+                    type="text"
+                    id="curso"
+                    name="curso"
+                    placeholder="Nome do curso"
+                    required
+                >
 
+                <label for="ano">
+                    Ano de frequência
+                </label>
 
-        if (endereco)
-            endereco.value =
-                dadosUsuario.endereco || "";
+                <select
+                    id="ano"
+                    name="ano"
+                    required
+                >
 
+                    <option value="">
+                        Selecione o ano
+                    </option>
 
-        if (email)
-            email.value =
-                dadosUsuario.email || "";
+                    <option value="1º Ano">
+                        1º Ano
+                    </option>
 
+                    <option value="2º Ano">
+                        2º Ano
+                    </option>
+
+                    <option value="3º Ano">
+                        3º Ano
+                    </option>
+
+                    <option value="4º Ano">
+                        4º Ano
+                    </option>
+
+                    <option value="5º Ano">
+                        5º Ano
+                    </option>
+
+                    <option value="6º Ano">
+                        6º Ano
+                    </option>
+
+                </select>
+
+            `;
+        }
     }
 
 
@@ -161,462 +380,394 @@ document.addEventListener("DOMContentLoaded", () => {
 
         tipoEstudante.addEventListener(
             "change",
-            () => {
-
-                const tipo =
-                    tipoEstudante.value;
-
-
-                if (tipo === "primario") {
-
-                    camposAcademicos.innerHTML = `
-
-                        <label for="classe">
-                            Classe
-                        </label>
-
-                        <select
-                            id="classe"
-                            name="classe"
-                            required
-                        >
-
-                            <option value="">
-                                Selecione a classe
-                            </option>
-
-                            <option value="1ª Classe">
-                                1ª Classe
-                            </option>
-
-                            <option value="2ª Classe">
-                                2ª Classe
-                            </option>
-
-                            <option value="3ª Classe">
-                                3ª Classe
-                            </option>
-
-                            <option value="4ª Classe">
-                                4ª Classe
-                            </option>
-
-                            <option value="5ª Classe">
-                                5ª Classe
-                            </option>
-
-                            <option value="6ª Classe">
-                                6ª Classe
-                            </option>
-
-                        </select>
-
-
-                        <label for="escola">
-                            Escola
-                        </label>
-
-                        <input
-                            type="text"
-                            id="escola"
-                            name="escola"
-                            placeholder="Nome da escola"
-                            required
-                        >
-
-
-                        <label for="encarregado">
-                            Nome do encarregado
-                        </label>
-
-                        <input
-                            type="text"
-                            id="encarregado"
-                            name="encarregado"
-                            placeholder="Nome do encarregado"
-                            required
-                        >
-
-                    `;
-
-                }
-
-
-                else if (tipo === "medio") {
-
-                    camposAcademicos.innerHTML = `
-
-                        <label for="classe">
-                            Classe
-                        </label>
-
-                        <select
-                            id="classe"
-                            name="classe"
-                            required
-                        >
-
-                            <option value="">
-                                Selecione a classe
-                            </option>
-
-                            <option value="7ª Classe">
-                                7ª Classe
-                            </option>
-
-                            <option value="8ª Classe">
-                                8ª Classe
-                            </option>
-
-                            <option value="9ª Classe">
-                                9ª Classe
-                            </option>
-
-                            <option value="10ª Classe">
-                                10ª Classe
-                            </option>
-
-                            <option value="11ª Classe">
-                                11ª Classe
-                            </option>
-
-                            <option value="12ª Classe">
-                                12ª Classe
-                            </option>
-
-                        </select>
-
-
-                        <label for="escola">
-                            Escola
-                        </label>
-
-                        <input
-                            type="text"
-                            id="escola"
-                            name="escola"
-                            placeholder="Nome da escola"
-                            required
-                        >
-
-
-                        <label for="turma">
-                            Turma
-                        </label>
-
-                        <input
-                            type="text"
-                            id="turma"
-                            name="turma"
-                            placeholder="Ex.: A, B, C..."
-                            required
-                        >
-
-                    `;
-
-                }
-
-
-                else if (tipo === "universitario") {
-
-                    camposAcademicos.innerHTML = `
-
-                        <label for="universidade">
-                            Universidade
-                        </label>
-
-                        <input
-                            type="text"
-                            id="universidade"
-                            name="universidade"
-                            placeholder="Nome da universidade"
-                            required
-                        >
-
-
-                        <label for="curso">
-                            Curso
-                        </label>
-
-                        <input
-                            type="text"
-                            id="curso"
-                            name="curso"
-                            placeholder="Nome do curso"
-                            required
-                        >
-
-                    `;
-
-                }
-
-
-                else {
-
-                    camposAcademicos.innerHTML = "";
-
-                }
-
-            }
+            mostrarCamposAcademicos
         );
 
     }
 
+
+    /*
+    ==========================================
+    MENU MOBILE
+    ==========================================
+    */
+
+    if (menuBtn && menu && overlay) {
+
+        menuBtn.addEventListener("click", () => {
+
+            menu.classList.toggle("active");
+            overlay.classList.toggle("active");
+
+        });
+
+
+        overlay.addEventListener("click", () => {
+
+            menu.classList.remove("active");
+            overlay.classList.remove("active");
+
+        });
+
+    }
+
+
+    /*
+    ==========================================
+    SUBMISSÃO DA REQUISIÇÃO
+    ==========================================
+    */
 
     if (form) {
 
-        form.addEventListener(
-            "submit",
-            (e) => {
+        form.addEventListener("submit", (event) => {
 
-                e.preventDefault();
+            event.preventDefault();
 
 
-                const dados =
-                    Object.fromEntries(
-                        new FormData(form)
-                    );
+            if (!livroSelecionado) {
+
+                alert(
+                    "Não foi possível identificar o livro selecionado."
+                );
+
+                return;
+            }
 
 
-                if (
-                    !dados.nome ||
-                    !dados.nascimento ||
-                    !dados.bi ||
-                    !dados.telefone ||
-                    !dados.endereco ||
-                    !dados.email ||
-                    !dados.tipoEstudante ||
-                    !dados.titulo ||
-                    !dados.autor ||
-                    !dados.dataLevantamento ||
-                    !dados.horaLevantamento
-                ) {
-
-                    alert(
-                        "Preencha todos os campos obrigatórios."
-                    );
-
-                    return;
-                }
-
-
-                const reservas =
-                    JSON.parse(
-                        localStorage.getItem("reservas")
-                    ) || [];
-
-
-                const existe =
-                    reservas.some(
-                        reserva =>
-                            reserva.titulo === livro.titulo
-                    );
-
-
-                if (existe) {
-
-                    alert(
-                        "Este livro já está reservado!"
-                    );
-
-                    return;
-                }
-
-
-                const dadosUsuarioAtual = {
-
-                    nome:
-                        dados.nome,
-
-                    nascimento:
-                        dados.nascimento,
-
-                    bi:
-                        dados.bi,
-
-                    telefone:
-                        dados.telefone,
-
-                    endereco:
-                        dados.endereco,
-
-                    email:
-                        dados.email
-
-                };
-
-
-                localStorage.setItem(
-                    "dadosUsuario",
-                    JSON.stringify(
-                        dadosUsuarioAtual
-                    )
+            const dadosFormulario =
+                Object.fromEntries(
+                    new FormData(form)
                 );
 
 
-                const novaReserva = {
+            /*
+            ==============================
+            VERIFICAR CAMPOS
+            ==============================
+            */
 
-                    id:
-                        Date.now(),
+            if (!dadosFormulario.nome) {
 
-                    titulo:
-                        dados.titulo,
+                alert(
+                    "Digite o seu nome completo."
+                );
 
-                    autor:
-                        dados.autor,
+                inputNome?.focus();
 
-                    categoria:
-                        livro.categoria || "Literatura",
-
-                    imagem:
-                        livro.imagem || "",
-
-                    descricao:
-                        livro.descricao || "",
-
-                    estado:
-                        "Reservado",
-
-                    data:
-                        new Date()
-                            .toLocaleString("pt-PT"),
+                return;
+            }
 
 
-                    dataLevantamento:
-                        dados.dataLevantamento,
+            if (!dadosFormulario.bi) {
 
-                    horaLevantamento:
-                        dados.horaLevantamento,
+                alert(
+                    "Digite o número do BI."
+                );
 
+                inputBI?.focus();
+
+                return;
+            }
+
+
+            if (!dadosFormulario.telefone) {
+
+                alert(
+                    "Digite o seu telefone."
+                );
+
+                inputTelefone?.focus();
+
+                return;
+            }
+
+
+            if (!dadosFormulario.email) {
+
+                alert(
+                    "Digite o seu email."
+                );
+
+                inputEmail?.focus();
+
+                return;
+            }
+
+
+            if (!dadosFormulario.tipoEstudante) {
+
+                alert(
+                    "Selecione o tipo de estudante."
+                );
+
+                tipoEstudante?.focus();
+
+                return;
+            }
+
+
+            /*
+            ==============================
+            DADOS DO UTILIZADOR
+            ==============================
+            */
+
+            const dadosUsuario = {
+
+                nome: dadosFormulario.nome || "",
+                nascimento: dadosFormulario.nascimento || "",
+                bi: dadosFormulario.bi || "",
+                telefone: dadosFormulario.telefone || "",
+                endereco: dadosFormulario.endereco || "",
+                email: dadosFormulario.email || "",
+
+                tipoEstudante:
+                    dadosFormulario.tipoEstudante || "",
+
+                instituicao:
+                    dadosFormulario.instituicao || "",
+
+                classe:
+                    dadosFormulario.classe || "",
+
+                turma:
+                    dadosFormulario.turma || "",
+
+                curso:
+                    dadosFormulario.curso || "",
+
+                ano:
+                    dadosFormulario.ano || "",
+
+                encarregado:
+                    dadosFormulario.encarregado || ""
+
+            };
+
+
+            localStorage.setItem(
+                "dadosUsuario",
+                JSON.stringify(dadosUsuario)
+            );
+
+
+            /*
+            ==============================
+            RESERVAS EXISTENTES
+            ==============================
+            */
+
+            let reservas =
+                JSON.parse(
+                    localStorage.getItem("reservas")
+                ) || [];
+
+
+            const existeReserva =
+                reservas.some(reserva =>
+                    reserva.titulo ===
+                    livroSelecionado.titulo
+                );
+
+
+            if (existeReserva) {
+
+                alert(
+                    "Este livro já está reservado por si."
+                );
+
+                return;
+            }
+
+
+            /*
+            ==============================
+            NOVA RESERVA
+            ==============================
+            */
+
+            const novaReserva = {
+
+                id:
+                    Date.now(),
+
+                titulo:
+                    livroSelecionado.titulo || "",
+
+                autor:
+                    livroSelecionado.autor || "",
+
+                categoria:
+                    livroSelecionado.categoria ||
+                    "Literatura",
+
+                imagem:
+                    livroSelecionado.imagem || "",
+
+                descricao:
+                    livroSelecionado.descricao || "",
+
+                estado:
+                    "Reservado",
+
+                status:
+                    "Reservado",
+
+                data:
+                    new Date().toLocaleString(
+                        "pt-PT"
+                    ),
+
+                dataReserva:
+                    new Date().toISOString(),
+
+                dataLevantamento:
+                    dataLevantamento?.value || "",
+
+                horaLevantamento:
+                    horaLevantamento?.value || "",
+
+                leitor: {
 
                     nome:
-                        dados.nome,
+                        dadosFormulario.nome || "",
 
                     nascimento:
-                        dados.nascimento,
+                        dadosFormulario.nascimento || "",
 
                     bi:
-                        dados.bi,
+                        dadosFormulario.bi || "",
 
                     telefone:
-                        dados.telefone,
+                        dadosFormulario.telefone || "",
 
                     endereco:
-                        dados.endereco,
+                        dadosFormulario.endereco || "",
 
                     email:
-                        dados.email,
+                        dadosFormulario.email || ""
 
+                },
 
-                    tipoEstudante:
-                        dados.tipoEstudante,
+                academico: {
+
+                    tipo:
+                        dadosFormulario.tipoEstudante ||
+                        "",
+
+                    instituicao:
+                        dadosFormulario.instituicao ||
+                        "",
 
                     classe:
-                        dados.classe || "",
-
-                    escola:
-                        dados.escola || "",
+                        dadosFormulario.classe ||
+                        "",
 
                     turma:
-                        dados.turma || "",
-
-                    encarregado:
-                        dados.encarregado || "",
-
-                    universidade:
-                        dados.universidade || "",
+                        dadosFormulario.turma ||
+                        "",
 
                     curso:
-                        dados.curso || "",
+                        dadosFormulario.curso ||
+                        "",
+
+                    ano:
+                        dadosFormulario.ano ||
+                        "",
+
+                    encarregado:
+                        dadosFormulario.encarregado ||
+                        ""
+
+                }
+
+            };
 
 
-                    assinaturaLeitor:
-                        dados.assinaturaLeitor || "",
-
-                    assinaturaFuncionario:
-                        dados.assinaturaFuncionario || ""
-
-                };
+            reservas.push(novaReserva);
 
 
-                reservas.push(
-                    novaReserva
-                );
+            localStorage.setItem(
+                "reservas",
+                JSON.stringify(reservas)
+            );
 
 
-                localStorage.setItem(
-                    "reservas",
-                    JSON.stringify(
-                        reservas
+            /*
+            ==============================
+            ATUALIZAR LIVROS REQUISITADOS
+            ==============================
+            */
+
+            let livrosRequisitados =
+                JSON.parse(
+                    localStorage.getItem(
+                        "livrosRequisitados"
                     )
-                );
+                ) || [];
 
 
-                mostrarConfirmacao();
+            livrosRequisitados.push({
+                titulo:
+                    novaReserva.titulo,
 
-            }
-        );
+                autor:
+                    novaReserva.autor,
 
-    }
+                categoria:
+                    novaReserva.categoria,
 
+                imagem:
+                    novaReserva.imagem,
 
-    const menu =
-        document.querySelector(".menu");
+                estado:
+                    novaReserva.estado,
 
-    const menuBtn =
-        document.getElementById("menuBtn");
+                data:
+                    novaReserva.data
 
-    const overlay =
-        document.getElementById("overlay");
-
-
-    if (
-        menu &&
-        menuBtn &&
-        overlay
-    ) {
-
-        menuBtn.addEventListener(
-            "click",
-            () => {
-
-                menu.classList.toggle(
-                    "active"
-                );
-
-                overlay.classList.toggle(
-                    "active"
-                );
-
-            }
-        );
+            });
 
 
-        overlay.addEventListener(
-            "click",
-            () => {
+            localStorage.setItem(
+                "livrosRequisitados",
+                JSON.stringify(
+                    livrosRequisitados
+                )
+            );
 
-                menu.classList.remove(
-                    "active"
-                );
 
-                overlay.classList.remove(
-                    "active"
-                );
+            /*
+            ==============================
+            CONFIRMAÇÃO
+            ==============================
+            */
 
-            }
-        );
+            mostrarConfirmacao();
+
+        });
 
     }
+
 
 });
 
 
 function mostrarConfirmacao() {
 
+    const popupExistente =
+        document.querySelector(
+            ".popup-overlay"
+        );
+
+    if (popupExistente) {
+        popupExistente.remove();
+    }
+
+
     const popup =
         document.createElement("div");
-
 
     popup.className =
         "popup-overlay";
@@ -627,19 +778,27 @@ function mostrarConfirmacao() {
         <div class="popup-card">
 
             <h2>
-                ✔ Requisição Confirmada!
+                Requisição Confirmada!
             </h2>
 
             <p>
-                A reserva foi registada com sucesso.
+                O livro foi requisitado com sucesso.
+                Os dados da requisição já foram
+                guardados no seu perfil.
             </p>
 
-            <button id="perfil">
-                Ver perfil
+            <button
+                type="button"
+                id="perfil"
+            >
+                Ver meu perfil
             </button>
 
-            <button id="outroLivro">
-                Reservar outro livro
+            <button
+                type="button"
+                id="outroLivro"
+            >
+                Requisitar outro livro
             </button>
 
         </div>
@@ -647,14 +806,22 @@ function mostrarConfirmacao() {
     `;
 
 
-    document.body.appendChild(
-        popup
-    );
+    document.body.appendChild(popup);
 
 
-    document
-        .getElementById("perfil")
-        .addEventListener(
+    const botaoPerfil =
+        document.getElementById("perfil");
+
+
+    const botaoOutroLivro =
+        document.getElementById(
+            "outroLivro"
+        );
+
+
+    if (botaoPerfil) {
+
+        botaoPerfil.addEventListener(
             "click",
             () => {
 
@@ -664,10 +831,12 @@ function mostrarConfirmacao() {
             }
         );
 
+    }
 
-    document
-        .getElementById("outroLivro")
-        .addEventListener(
+
+    if (botaoOutroLivro) {
+
+        botaoOutroLivro.addEventListener(
             "click",
             () => {
 
@@ -676,5 +845,7 @@ function mostrarConfirmacao() {
 
             }
         );
+
+    }
 
 }
