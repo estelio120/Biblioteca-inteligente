@@ -4,223 +4,424 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
+
+    <title>Criar conta - Biblioteca Digital</title>
+
     <link rel="stylesheet" href="css/Pagina de cadastro.css">
 </head>
 
 <body>
 
-    <div class="login">
+    <div class="background-shape shape-one"></div>
+    <div class="background-shape shape-two"></div>
 
-        <h1>Criar conta</h1>
+    <main class="auth-container">
 
-        <p>
-            Faça o seu cadastro para acessar as principais funcionalidades da plataforma
-        </p>
+        <section class="auth-card">
 
-        <form id="formCadastro">
+            <div class="brand">
 
-            <label for="nome">
-                <b>Nome</b>
-            </label>
+                <div class="brand-icon">
 
-            <input
-                type="text"
-                id="nome"
-                placeholder="Digite o seu nome"
-                required>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/>
+                        <path d="M8 6h8"/>
+                        <path d="M8 10h8"/>
+                    </svg>
 
-            <label for="apelido">
-                <b>Apelido</b>
-            </label>
+                </div>
 
-            <input
-                type="text"
-                id="apelido"
-                placeholder="Digite o seu apelido"
-                required>
+                <div>
+                    <strong>Biblioteca Digital</strong>
+                    <span>Biblioteca Provincial de Pemba</span>
+                </div>
 
-            <label for="senha">
-                <b>Senha</b>
-            </label>
+            </div>
 
-            <input
-                type="password"
-                id="senha"
-                placeholder="********"
-                required>
+            <div class="auth-header">
 
-            <label for="confirmarSenha">
-                <b>Confirmar senha</b>
-            </label>
+                <h1>Criar sua conta</h1>
 
-            <input
-                type="password"
-                id="confirmarSenha"
-                placeholder="********"
-                required>
+                <p>
+                    Crie sua conta para explorar livros, fazer reservas
+                    e acompanhar suas atividades na biblioteca.
+                </p>
 
-            <br><br>
+            </div>
 
-            <button type="submit">
-                Criar conta
-            </button>
+            <form id="formCadastro">
 
-        </form>
+                <div class="campo">
 
-    </div>
+                    <label for="nome">
+                        Nome
+                    </label>
 
+                    <div class="input-box">
+
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="8" r="3.5"/>
+                            <path d="M5 20a7 7 0 0 1 14 0"/>
+                        </svg>
+
+                        <input
+                            type="text"
+                            id="nome"
+                            placeholder="Digite o seu nome"
+                            autocomplete="given-name"
+                            required>
+
+                    </div>
+
+                </div>
+
+                <div class="campo">
+
+                    <label for="apelido">
+                        Apelido
+                    </label>
+
+                    <div class="input-box">
+
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9.5" cy="7" r="4"/>
+                            <path d="M16 3.5a4 4 0 0 1 0 7.5"/>
+                            <path d="M19 14a4 4 0 0 1 2 3.5V21"/>
+                        </svg>
+
+                        <input
+                            type="text"
+                            id="apelido"
+                            placeholder="Digite o seu apelido"
+                            autocomplete="family-name"
+                            required>
+
+                    </div>
+
+                </div>
+
+                <div class="campo">
+
+                    <label for="senha">
+                        Senha
+                    </label>
+
+                    <div class="input-box">
+
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="4" y="10" width="16" height="11" rx="2"/>
+                            <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+                            <circle cx="12" cy="15.5" r="1"/>
+                        </svg>
+
+                        <input
+                            type="password"
+                            id="senha"
+                            placeholder="Digite sua senha"
+                            autocomplete="new-password"
+                            required>
+
+                        <button
+                            type="button"
+                            class="mostrar-senha"
+                            data-target="senha"
+                            aria-label="Mostrar senha">
+
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/>
+                                <circle cx="12" cy="12" r="2.5"/>
+                            </svg>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="campo">
+
+                    <label for="confirmarSenha">
+                        Confirmar senha
+                    </label>
+
+                    <div class="input-box">
+
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="4" y="10" width="16" height="11" rx="2"/>
+                            <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+                            <path d="m9 15 2 2 4-4"/>
+                        </svg>
+
+                        <input
+                            type="password"
+                            id="confirmarSenha"
+                            placeholder="Repita sua senha"
+                            autocomplete="new-password"
+                            required>
+
+                        <button
+                            type="button"
+                            class="mostrar-senha"
+                            data-target="confirmarSenha"
+                            aria-label="Mostrar senha">
+
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/>
+                                <circle cx="12" cy="12" r="2.5"/>
+                            </svg>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <button type="submit" class="btn-principal">
+
+                    <span>Criar minha conta</span>
+
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14"/>
+                        <path d="m13 6 6 6-6 6"/>
+                    </svg>
+
+                </button>
+
+            </form>
+
+            <div class="separador">
+                <span>Já possui uma conta?</span>
+            </div>
+
+            <a href="INDEX.html" class="btn-secundario">
+                Entrar na minha conta
+            </a>
+
+            <p class="rodape-auth">
+                Biblioteca Digital Inteligente
+            </p>
+
+        </section>
+
+    </main>
 
     <div id="popup" class="popup">
 
-        <div class="popup-conteudo">
+        <div class="popup-card">
 
-            <div id="popupIcone" class="popup-icone">
-                ✓
-            </div>
+            <button class="popup-fechar" id="fecharPopup" type="button">
 
-            <h2 id="popupTitulo">
-                Conta criada!
-            </h2>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 6l12 12"/>
+                    <path d="M18 6 6 18"/>
+                </svg>
 
-            <p id="popupMensagem">
-                A sua conta foi criada com sucesso.
-            </p>
+            </button>
 
-            <button id="popupBotao">
-                Ir para Login
+            <div class="popup-icone" id="popupIcone"></div>
+
+            <h2 id="popupTitulo"></h2>
+
+            <p id="popupMensagem"></p>
+
+            <button id="popupBotao" class="popup-botao" type="button">
+                Continuar
             </button>
 
         </div>
 
     </div>
 
-
     <script>
 
         const formCadastro = document.getElementById("formCadastro");
-
         const popup = document.getElementById("popup");
-
-        const popupIcone = document.getElementById("popupIcone");
-
         const popupTitulo = document.getElementById("popupTitulo");
-
         const popupMensagem = document.getElementById("popupMensagem");
-
+        const popupIcone = document.getElementById("popupIcone");
         const popupBotao = document.getElementById("popupBotao");
+        const fecharPopup = document.getElementById("fecharPopup");
 
+        let acaoPopup = null;
 
-        function abrirPopup(titulo, mensagem, tipo) {
+        function abrirPopup(tipo, titulo, mensagem, acao = null) {
 
             popupTitulo.textContent = titulo;
-
             popupMensagem.textContent = mensagem;
 
-            popup.classList.add("ativo");
+            popupIcone.className = "popup-icone " + tipo;
 
-            if (tipo === "erro") {
+            if (tipo === "sucesso") {
 
-                popupIcone.textContent = "!";
-
-                popupIcone.classList.add("erro");
-
-                popupBotao.textContent = "Tentar novamente";
+                popupIcone.innerHTML = `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="m5 12 4 4L19 6"/>
+                    </svg>
+                `;
 
             } else {
 
-                popupIcone.textContent = "✓";
-
-                popupIcone.classList.remove("erro");
-
-                popupBotao.textContent = "Ir para Login";
+                popupIcone.innerHTML = `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M12 8v5"/>
+                        <path d="M12 16h.01"/>
+                        <circle cx="12" cy="12" r="9"/>
+                    </svg>
+                `;
 
             }
 
+            acaoPopup = acao;
+
+            popup.classList.add("ativo");
+            document.body.classList.add("bloqueado");
         }
 
-
-        function fecharPopup() {
+        function fecharJanela() {
 
             popup.classList.remove("ativo");
+            document.body.classList.remove("bloqueado");
 
         }
 
+        fecharPopup.addEventListener("click", fecharJanela);
+
+        popup.addEventListener("click", function(event) {
+
+            if (event.target === popup) {
+                fecharJanela();
+            }
+
+        });
+
+        popupBotao.addEventListener("click", function() {
+
+            if (acaoPopup) {
+                acaoPopup();
+            } else {
+                fecharJanela();
+            }
+
+        });
+
+        document.querySelectorAll(".mostrar-senha").forEach(function(botao) {
+
+            botao.addEventListener("click", function() {
+
+                const input = document.getElementById(this.dataset.target);
+
+                if (input.type === "password") {
+
+                    input.type = "text";
+
+                } else {
+
+                    input.type = "password";
+
+                }
+
+            });
+
+        });
 
         formCadastro.addEventListener("submit", function(event) {
 
             event.preventDefault();
 
             const nome = document.getElementById("nome").value.trim();
-
             const apelido = document.getElementById("apelido").value.trim();
-
             const senha = document.getElementById("senha").value;
-
             const confirmarSenha = document.getElementById("confirmarSenha").value;
 
+            if (nome.length < 2) {
+
+                abrirPopup(
+                    "erro",
+                    "Nome inválido",
+                    "Digite um nome válido para continuar."
+                );
+
+                return;
+            }
+
+            if (apelido.length < 2) {
+
+                abrirPopup(
+                    "erro",
+                    "Apelido inválido",
+                    "Digite um apelido válido para continuar."
+                );
+
+                return;
+            }
+
+            if (senha.length < 6) {
+
+                abrirPopup(
+                    "erro",
+                    "Senha muito curta",
+                    "A senha deve possuir pelo menos 6 caracteres."
+                );
+
+                return;
+            }
 
             if (senha !== confirmarSenha) {
 
                 abrirPopup(
+                    "erro",
                     "Senhas diferentes",
-                    "As senhas que digitou não coincidem. Verifique e tente novamente.",
-                    "erro"
+                    "A senha e a confirmação da senha precisam ser iguais."
                 );
 
                 return;
-
             }
 
+            const usuarioExistente = localStorage.getItem("usuarioBiblioteca");
+
+            if (usuarioExistente) {
+
+                const usuario = JSON.parse(usuarioExistente);
+
+                if (
+                    usuario.nome.toLowerCase() === nome.toLowerCase() &&
+                    usuario.apelido.toLowerCase() === apelido.toLowerCase()
+                ) {
+
+                    abrirPopup(
+                        "erro",
+                        "Conta já existente",
+                        "Já existe uma conta com esses dados."
+                    );
+
+                    return;
+                }
+
+            }
 
             const usuario = {
 
                 nome: nome,
-
                 apelido: apelido,
-
                 senha: senha
 
             };
-
 
             localStorage.setItem(
                 "usuarioBiblioteca",
                 JSON.stringify(usuario)
             );
 
-
             abrirPopup(
-                "Conta criada!",
-                "A sua conta foi criada com sucesso. Agora faça login para continuar.",
-                "sucesso"
+                "sucesso",
+                "Conta criada com sucesso",
+                "Sua conta foi criada. Agora entre na sua conta para continuar.",
+                function() {
+                    window.location.href = "INDEX.html";
+                }
             );
-
-        });
-
-
-        popupBotao.addEventListener("click", function() {
-
-            if (popupBotao.textContent === "Ir para Login") {
-
-                window.location.href = "index.html";
-
-            } else {
-
-                fecharPopup();
-
-            }
-
-        });
-
-
-        popup.addEventListener("click", function(event) {
-
-            if (event.target === popup) {
-
-                fecharPopup();
-
-            }
 
         });
 
