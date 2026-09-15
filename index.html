@@ -11,7 +11,6 @@
 
 <body>
 
-
 <div class="login">
 
     <h1>LOGIN</h1>
@@ -20,22 +19,22 @@
         Acesse sua conta para requisitar livros, acompanhar empréstimos e explorar o catálogo da biblioteca.
     </p>
 
-    <form>
+    <form id="formLogin">
 
-        <label for="email">
-            <b>Email ou Número</b>
+        <label for="nome">
+            <b>Nome</b>
         </label>
 
         <input
             type="text"
-            id="email"
-            placeholder="stgevan@gmail.com"
+            id="nome"
+            placeholder="Digite o seu nome"
             required>
 
         <label for="senha">
             <b>Senha</b>
         </label>
-    
+
         <input
             type="password"
             id="senha"
@@ -45,33 +44,82 @@
         <div class="op">
 
             <label class="lembrar">
-                <input type="checkbox" required>
+
+                <input
+                    type="checkbox"
+                    id="lembrar">
+
                 Lembrar de mim
+
             </label>
 
-            <a href="esqueciSenh.html " required>
+            <a href="esqueciSenh.html">
                 Esqueci minha senha
             </a>
 
         </div>
 
-        <a href="INICIO.html">
-            <button type="button">
-                Entrar
-            </button>
-        </a>
+        <button type="submit">
+            Entrar
+        </button>
 
     </form>
 
     <p class="registar">
+
         Ainda não tem conta?
+
         <a href="Pagina de cadastro.html">
             Criar conta
         </a>
+
     </p>
 
 </div>
 
+<script>
+
+    document.getElementById("formLogin").addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const nomeDigitado = document.getElementById("nome").value.trim();
+        const senhaDigitada = document.getElementById("senha").value;
+
+        const dadosGuardados = localStorage.getItem("usuarioBiblioteca");
+
+        if (!dadosGuardados) {
+            alert("Nenhuma conta foi encontrada. Crie uma conta primeiro.");
+            return;
+        }
+
+        const usuario = JSON.parse(dadosGuardados);
+
+        if (
+            nomeDigitado === usuario.nome &&
+            senhaDigitada === usuario.senha
+        ) {
+
+            localStorage.setItem("usuarioLogado", "true");
+
+            localStorage.setItem(
+                "nomeUsuario",
+                usuario.nome
+            );
+
+            alert("Login realizado com sucesso!");
+
+            window.location.href = "INICIO.html";
+
+        } else {
+
+            alert("Nome ou senha incorretos!");
+
+        }
+
+    });
+
+</script>
 
 </body>
 
