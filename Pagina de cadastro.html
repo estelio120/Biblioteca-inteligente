@@ -70,40 +70,157 @@
 
     </div>
 
+
+    <div id="popup" class="popup">
+
+        <div class="popup-conteudo">
+
+            <div id="popupIcone" class="popup-icone">
+                ✓
+            </div>
+
+            <h2 id="popupTitulo">
+                Conta criada!
+            </h2>
+
+            <p id="popupMensagem">
+                A sua conta foi criada com sucesso.
+            </p>
+
+            <button id="popupBotao">
+                Ir para Login
+            </button>
+
+        </div>
+
+    </div>
+
+
     <script>
 
-        document.getElementById("formCadastro").addEventListener("submit", function(event) {
+        const formCadastro = document.getElementById("formCadastro");
+
+        const popup = document.getElementById("popup");
+
+        const popupIcone = document.getElementById("popupIcone");
+
+        const popupTitulo = document.getElementById("popupTitulo");
+
+        const popupMensagem = document.getElementById("popupMensagem");
+
+        const popupBotao = document.getElementById("popupBotao");
+
+
+        function abrirPopup(titulo, mensagem, tipo) {
+
+            popupTitulo.textContent = titulo;
+
+            popupMensagem.textContent = mensagem;
+
+            popup.classList.add("ativo");
+
+            if (tipo === "erro") {
+
+                popupIcone.textContent = "!";
+
+                popupIcone.classList.add("erro");
+
+                popupBotao.textContent = "Tentar novamente";
+
+            } else {
+
+                popupIcone.textContent = "✓";
+
+                popupIcone.classList.remove("erro");
+
+                popupBotao.textContent = "Ir para Login";
+
+            }
+
+        }
+
+
+        function fecharPopup() {
+
+            popup.classList.remove("ativo");
+
+        }
+
+
+        formCadastro.addEventListener("submit", function(event) {
 
             event.preventDefault();
 
             const nome = document.getElementById("nome").value.trim();
+
             const apelido = document.getElementById("apelido").value.trim();
+
             const senha = document.getElementById("senha").value;
+
             const confirmarSenha = document.getElementById("confirmarSenha").value;
+
 
             if (senha !== confirmarSenha) {
 
-                alert("As senhas não coincidem!");
+                abrirPopup(
+                    "Senhas diferentes",
+                    "As senhas que digitou não coincidem. Verifique e tente novamente.",
+                    "erro"
+                );
 
                 return;
+
             }
+
 
             const usuario = {
 
                 nome: nome,
+
                 apelido: apelido,
+
                 senha: senha
 
             };
+
 
             localStorage.setItem(
                 "usuarioBiblioteca",
                 JSON.stringify(usuario)
             );
 
-            alert("Conta criada com sucesso! Faça login para continuar.");
 
-            window.location.href = "INICIO.html";
+            abrirPopup(
+                "Conta criada!",
+                "A sua conta foi criada com sucesso. Agora faça login para continuar.",
+                "sucesso"
+            );
+
+        });
+
+
+        popupBotao.addEventListener("click", function() {
+
+            if (popupBotao.textContent === "Ir para Login") {
+
+                window.location.href = "index.html";
+
+            } else {
+
+                fecharPopup();
+
+            }
+
+        });
+
+
+        popup.addEventListener("click", function(event) {
+
+            if (event.target === popup) {
+
+                fecharPopup();
+
+            }
 
         });
 
