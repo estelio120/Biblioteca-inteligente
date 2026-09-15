@@ -20,7 +20,9 @@
 
         <form id="formCadastro">
 
-            <label for="nome"><b>Nome</b></label>
+            <label for="nome">
+                <b>Nome</b>
+            </label>
 
             <input
                 type="text"
@@ -28,7 +30,9 @@
                 placeholder="Digite o seu nome"
                 required>
 
-            <label for="apelido"><b>Apelido</b></label>
+            <label for="apelido">
+                <b>Apelido</b>
+            </label>
 
             <input
                 type="text"
@@ -36,7 +40,9 @@
                 placeholder="Digite o seu apelido"
                 required>
 
-            <label for="senha"><b>Senha</b></label>
+            <label for="senha">
+                <b>Senha</b>
+            </label>
 
             <input
                 type="password"
@@ -44,7 +50,9 @@
                 placeholder="********"
                 required>
 
-            <label for="confirmarSenha"><b>Confirmar senha</b></label>
+            <label for="confirmarSenha">
+                <b>Confirmar senha</b>
+            </label>
 
             <input
                 type="password"
@@ -74,21 +82,28 @@
             const confirmarSenha = document.getElementById("confirmarSenha").value;
 
             if (senha !== confirmarSenha) {
+
                 alert("As senhas não coincidem!");
+
                 return;
             }
 
             const usuario = {
+
                 nome: nome,
                 apelido: apelido,
                 senha: senha
+
             };
 
-            localStorage.setItem("usuarioBiblioteca", JSON.stringify(usuario));
+            localStorage.setItem(
+                "usuarioBiblioteca",
+                JSON.stringify(usuario)
+            );
 
-            alert("Conta criada com sucesso!");
+            alert("Conta criada com sucesso! Faça login para continuar.");
 
-            window.location.href = "LOGIN.html";
+            window.location.href = "index.html";
 
         });
 
