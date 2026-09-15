@@ -2,800 +2,987 @@
 <html lang="pt">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>categoria de economia</title>
-<link rel="stylesheet" href="css/Reserva.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categoria de Economia</title>
+    <link rel="stylesheet" href="css/Reserva.css">
 </head>
 
 <body>
-    
+
 <header class="header">
 
-    <h2>Biblioteca Digital</h2>
+    <button class="menu-btn" id="abrirMenu" type="button" aria-label="Abrir menu" aria-expanded="false">
 
-    <button
-        class="menu-btn"
-        id="menuBtn"
-        aria-label="Abrir menu"
-        aria-expanded="false">
-
-        ☰
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
 
     </button>
 
+    <h2>Biblioteca Digital</h2>
+
 </header>
-    <div id="overlay"></div>
+
+<div id="overlay"></div>
+
 <div class="app">
 
-    <!-- MENU -->
     <aside class="menu">
 
-        <div class="icone">📖 BIBLIOTECA DIGITAL INTELIGENTE</div>
+        <div class="icone">
+
+            <div class="logo-icon">
+
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                    <path d="M8 6h8M8 10h8"/>
+                </svg>
+
+            </div>
+
+            <span>BIBLIOTECA DIGITAL INTELIGENTE</span>
+
+        </div>
+
         <p class="TE">Biblioteca Provincial de Pemba</p>
 
         <ul class="menu-lista">
-                  
-                  <a href="INICIO.html">
-                    <li class="lugar">Inicio</li></a></li>
-</a>
-        <a href="perfil.html"><li class="conta"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-</svg> Perfil</li></a>
-              
 
-                              <li class="conta"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
-</svg> Favoritos</li>
+            <li>
+                <a href="INICIO.html">
 
-                   <a href="Reserva.html">
-                    <li class="lugar"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
-  <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
-</svg>Reservar</li>
-</a>
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 10.5 12 3l9 7.5"/>
+                        <path d="M5 9.5V21h14V9.5"/>
+                        <path d="M9 21v-6h6v6"/>
+                    </svg>
 
- 
-                               <a href="LOGIN.html"><li id="conta1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
-  <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
-</svg> Sair</li></a> 
-            </ul>
-            </ul>
-            </ul>
+                    <span>Início</span>
+
+                </a>
+            </li>
+
+            <li>
+                <a href="perfil.html">
+
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#10b981" stroke-width="2">
+                        <circle cx="12" cy="8" r="3"/>
+                        <path d="M5 20a7 7 0 0 1 14 0"/>
+                    </svg>
+
+                    <span>Perfil</span>
+
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#ec4899" stroke-width="2">
+                        <path d="M20.8 8.7c0 5.5-8.8 11-8.8 11S3.2 14.2 3.2 8.7A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"/>
+                    </svg>
+
+                    <span>Favoritos</span>
+
+                </a>
+            </li>
+
+            <li>
+                <a href="Reserva.html">
+
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#2563eb" stroke-width="2">
+                        <path d="M4 4h16v16H4z"/>
+                        <path d="M8 4v16M16 4v16"/>
+                        <path d="M8 8h8M8 12h8M8 16h5"/>
+                    </svg>
+
+                    <span>Reservar</span>
+
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#8b5cf6" stroke-width="2">
+                        <path d="M4 5a2 2 0 0 1 2-2h11v17H6a2 2 0 0 0-2 2V5Z"/>
+                        <path d="M6 20h13"/>
+                        <path d="M8 7h6M8 11h6"/>
+                    </svg>
+
+                    <span>Categorias</span>
+
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#f59e0b" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"/>
+                        <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-1.5 1.5-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6V20h-2v-.2a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1-1.5-1.5.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.6-1H7v-2h.2a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1 1.5-1.5.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.6V6h2v.2a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1 1.5 1.5-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.2v2h-.2a1.7 1.7 0 0 0-1.6 1Z"/>
+                    </svg>
+
+                    <span>Definições</span>
+
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#14b8a6" stroke-width="2">
+                        <path d="M12 3 5 6v5c0 4.5 2.9 8.5 7 10 4.1-1.5 7-5.5 7-10V6l-7-3Z"/>
+                        <path d="m9 12 2 2 4-4"/>
+                    </svg>
+
+                    <span>Política de privacidade</span>
+
+                </a>
+            </li>
+
+            <li>
+                <a href="LOGIN.html">
+
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#ef4444" stroke-width="2">
+                        <path d="M10 17l5-5-5-5"/>
+                        <path d="M15 12H3"/>
+                        <path d="M21 4v16"/>
+                    </svg>
+
+                    <span>Sair</span>
+
+                </a>
+            </li>
+
+        </ul>
 
     </aside>
+
 </div>
 
-<br>
 <section class="conteudo">
 
-<h2>Literatura</h2>
-<p>324 livros disponiveis</p><br>
-<!-- PESQUISA -->
-        <div class="busca">
-            <input type="text" id="pesquisa" placeholder="Pesquise o livro">
-            <div id="sugestoes"></div>
+    <h2>Literatura</h2>
+
+    <p>324 livros disponiveis</p>
+
+    <br>
+
+    <div class="busca">
+
+        <input
+            type="text"
+            id="pesquisa"
+            placeholder="Pesquise o livro">
+
+        <div id="sugestoes"></div>
+
+    </div>
+
+    <main class="conte">
+
+        <div class="card">
+
+            <span class="estado">Disponível</span>
+
+            <img src="img/-poder-da-acao.jpg">
+
+            <div class="info">
+
+                <h3>O Poder da Ação</h3>
+
+                <p class="autor">Paulo Vieira</p>
+
+                <p class="categoria">Literatura</p>
+
+                <div class="acoes">
+
+                    <button class="btnDetalhes">
+                        Ver detalhes
+                    </button>
+
+                    <button class="btnReservar">
+                        Reservar
+                    </button>
+
+                </div>
+
+            </div>
+
         </div>
 
-<main class="conte">
+        <div class="card">
 
+            <span class="estado">Disponível</span>
 
-<!-- CARD 1 -->
-<div class="card">
+            <img src="img/habitos atomicos.webp">
 
-    <span class="estado">Disponível</span>
+            <div class="info">
 
-    <img src="img/-poder-da-acao.jpg">
+                <h3>Hábitos Atómicos</h3>
 
-    <div class="info">
+                <p class="autor">James Clear</p>
 
-        <h3>O Poder da Ação</h3>
+                <p class="categoria">Desenvolvimento pessoal</p>
 
-        <p class="autor">Paulo Vieira</p>
+                <div class="acoes">
 
-        <p class="categoria">
-            Literatura
-        </p>
+                    <button class="btnDetalhes">
+                        Ver detalhes
+                    </button>
 
-        <div class="acoes">
+                    <button class="btnReservar">
+                        Reservar
+                    </button>
 
-            <button class="btnDetalhes">
-                Ver detalhes
-            </button>
+                </div>
 
-            <button class="btnReservar">
-                Reservar
-            </button>
-S
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <span class="estado">Disponível</span>
+
+            <img src="img/Os segredos da mente milionária (capa do livro).jpg">
+
+            <div class="info">
+
+                <h3>O Poder da Acçao</h3>
+
+                <p class="autor">Joseph Marph</p>
+
+                <p class="categoria">Comunicação</p>
+
+                <div class="acoes">
+
+                    <button class="btnDetalhes">
+                        Ver detalhes
+                    </button>
+
+                    <button class="btnReservar">
+                        Reservar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <span class="estado">Disponível</span>
+
+            <img src="img/Os segredos da mente milionária (capa do livro).jpg">
+
+            <div class="info">
+
+                <h3>Os segredos da mente milionária</h3>
+
+                <p class="autor">Tim Harv</p>
+
+                <p class="categoria">Comunicação</p>
+
+                <div class="acoes">
+
+                    <button class="btnDetalhes">
+                        Ver detalhes
+                    </button>
+
+                    <button class="btnReservar">
+                        Reservar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <span class="estado">Disponível</span>
+
+            <img src="img/JOSE CRAVERINHA.webp">
+
+            <div class="info">
+
+                <h3>Obra Poetica</h3>
+
+                <p class="autor">José Craveirinha</p>
+
+                <p class="categoria">Comunicação</p>
+
+                <div class="acoes">
+
+                    <button class="btnDetalhes">
+                        Ver detalhes
+                    </button>
+
+                    <button class="btnReservar">
+                        Reservar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <span class="estado">Disponível</span>
+
+            <img src="img/como fazer amigos e influenciar pessoas.jpg">
+
+            <div class="info">
+
+                <h3>Como fazer amigos e convencer pessoas</h3>
+
+                <p class="autor">Dale Cornigie</p>
+
+                <p class="categoria">Comunicação</p>
+
+                <div class="acoes">
+
+                    <button class="btnDetalhes">
+                        Ver detalhes
+                    </button>
+
+                    <button class="btnReservar">
+                        Reservar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <span class="estado">Disponível</span>
+
+            <img src="img/imagem de livro.png">
+
+            <div class="info">
+
+                <h3>Campanha das Ciencias</h3>
+
+                <p class="autor">José Manuel</p>
+
+                <p class="categoria">Comunicação</p>
+
+                <div class="acoes">
+
+                    <button class="btnDetalhes">
+                        Ver detalhes
+                    </button>
+
+                    <button class="btnReservar">
+                        Reservar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <span class="estado">Disponível</span>
+
+            <img src="img/romance.webp">
+
+            <div class="info">
+
+                <h3>Um amor de primavera</h3>
+
+                <p class="autor">Sandra Almeida</p>
+
+                <p class="categoria">Comunicação</p>
+
+                <div class="acoes">
+
+                    <button class="btnDetalhes">
+                        Ver detalhes
+                    </button>
+
+                    <button class="btnReservar">
+                        Reservar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <span class="estado">Disponível</span>
+
+            <img src="img/mocambique-ricardo-martinez-llorca.jpg">
+
+            <div class="info">
+
+                <h3>Moçambique</h3>
+
+                <p class="autor">Ricardos Martinez Llrona</p>
+
+                <p class="categoria">Comunicação</p>
+
+                <div class="acoes">
+
+                    <button class="btnDetalhes">
+                        Ver detalhes
+                    </button>
+
+                    <button class="btnReservar">
+                        Reservar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <span class="estado">Disponível</span>
+
+            <img src="img/habitos atomicos.webp">
+
+            <div class="info">
+
+                <h3>Hábitos Atomicos</h3>
+
+                <p class="autor">James Clear</p>
+
+                <p class="categoria">Comunicação</p>
+
+                <div class="acoes">
+
+                    <button class="btnDetalhes">
+                        Ver detalhes
+                    </button>
+
+                    <button class="btnReservar">
+                        Reservar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <span class="estado">Disponível</span>
+
+            <img src="img/Mia Couto Gungunhana.jpg">
+
+            <div class="info">
+
+                <h3>Gungunhana</h3>
+
+                <p class="autor">Mia Couto</p>
+
+                <p class="categoria">Comunicação</p>
+
+                <div class="acoes">
+
+                    <button class="btnDetalhes">
+                        Ver detalhes
+                    </button>
+
+                    <button class="btnReservar">
+                        Reservar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <span class="estado">Disponível</span>
+
+            <img src="img/o temor sabio.png">
+
+            <div class="info">
+
+                <h3>O temor do sabio</h3>
+
+                <p class="autor">Patrick Ruthfush</p>
+
+                <p class="categoria">Comunicação</p>
+
+                <div class="acoes">
+
+                    <button class="btnDetalhes">
+                        Ver detalhes
+                    </button>
+
+                    <button class="btnReservar">
+                        Reservar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <span class="estado">Disponível</span>
+
+            <img src="img/sosuros na floresta.webp">
+
+            <div class="info">
+
+                <h3>Sousuros da floresta</h3>
+
+                <p class="autor">Maria silvera</p>
+
+                <p class="categoria">Comunicação</p>
+
+                <div class="acoes">
+
+                    <button class="btnDetalhes">
+                        Ver detalhes
+                    </button>
+
+                    <button class="btnReservar">
+                        Reservar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <span class="estado">Disponível</span>
+
+            <img src="img/o nome do vento.png">
+
+            <div class="info">
+
+                <h3>O nome do vento</h3>
+
+                <p class="autor">Patrick ruthfush</p>
+
+                <p class="categoria">Comunicação</p>
+
+                <div class="acoes">
+
+                    <button class="btnDetalhes">
+                        Ver detalhes
+                    </button>
+
+                    <button class="btnReservar">
+                        Reservar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <div id="popup" class="popup">
+
+        <div class="popup-conteudo">
+
+            <span id="fecharPopup" class="fechar">&times;</span>
+
+            <div class="popup-topo">
+
+                <div class="popup-capa">
+
+                    <img id="popupImagem" src="">
+
+                </div>
+
+                <div class="popup-info">
+
+                    <span class="badgeLivro">
+                        Mais Procurado
+                    </span>
+
+                    <h2 id="popupTitulo"></h2>
+
+                    <h4 id="popupAutor"></h4>
+
+                    <div class="avaliacao">
+
+                        <span class="estrelas">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="#f59e0b" stroke="#f59e0b">
+                                <path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9L12 3Z"/>
+                            </svg>
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="#f59e0b" stroke="#f59e0b">
+                                <path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9L12 3Z"/>
+                            </svg>
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="#f59e0b" stroke="#f59e0b">
+                                <path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9L12 3Z"/>
+                            </svg>
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="#f59e0b" stroke="#f59e0b">
+                                <path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9L12 3Z"/>
+                            </svg>
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="#f59e0b" stroke="#f59e0b">
+                                <path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9L12 3Z"/>
+                            </svg>
+                        </span>
+
+                        <span>4.9 (245 leitores)</span>
+
+                    </div>
+
+                    <p class="popupCategoria">
+                        Desenvolvimento Pessoal
+                    </p>
+
+                    <div class="estadoLivro">
+
+                        <span class="disponivel">
+                            Disponível
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="descricaoLivro">
+
+                <h3>Sobre este livro</h3>
+
+                <p id="popupDescricao">
+                    Uma leitura inspiradora que ajuda a desenvolver hábitos,
+                    disciplina e estratégias para alcançar objetivos pessoais e
+                    profissionais.
+                </p>
+
+            </div>
+
+            <div class="beneficios">
+
+                <div class="beneficio">
+
+                    <div class="beneficio-icon blue">
+
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 5a2 2 0 0 1 2-2h11v17H6a2 2 0 0 0-2 2V5Z"/>
+                            <path d="M6 20h13"/>
+                            <path d="M8 7h6M8 11h6"/>
+                        </svg>
+
+                    </div>
+
+                    <div>
+
+                        <strong>Leitura Enriquecedora</strong>
+
+                        <p>Amplie seus conhecimentos e desenvolva novas competências.</p>
+
+                    </div>
+
+                </div>
+
+                <div class="beneficio">
+
+                    <div class="beneficio-icon green">
+
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 21h18"/>
+                            <path d="M5 21V8l7-4 7 4v13"/>
+                            <path d="M9 21v-6h6v6"/>
+                        </svg>
+
+                    </div>
+
+                    <div>
+
+                        <strong>Disponível na Biblioteca</strong>
+
+                        <p>Reserve online e levante quando desejar.</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="mensagemPersuasiva">
+
+                <h3>Porque vale a pena ler este livro?</h3>
+
+                <p>
+                    Cada página oferece conhecimentos que podem transformar a sua
+                    forma de pensar, estudar e alcançar resultados. Junte-se aos
+                    leitores que descobriram novas oportunidades através desta obra.
+                </p>
+
+            </div>
+
+            <div class="caixaReserva">
+
+                <div>
+
+                    <h3>Livro Físico</h3>
+
+                    <p>
+                        Reserve gratuitamente e levante na Biblioteca Provincial de
+                        Pemba.
+                    </p>
+
+                </div>
+
+                <button id="popupReservar" class="btnReservarGrande">
+                    Reservar Agora
+                </button>
+
+            </div>
+
+            <div class="separador">
+
+                <span>OU</span>
+
+            </div>
+
+            <div class="caixaPDF">
+
+                <div>
+
+                    <h3>Livro Digital (PDF)</h3>
+
+                    <p>
+                        Leia imediatamente no computador, tablet ou telemóvel após
+                        a confirmação do pagamento.
+                    </p>
+
+                    <h2 class="precoPDF">
+                        100 MT
+                    </h2>
+
+                </div>
+
+                <button id="btnComprarPDF" class="btnComprarGrande">
+                    Comprar PDF
+                </button>
+
+            </div>
+
         </div>
 
     </div>
 
-</div>
+    <div id="popupPagamento" class="popup">
 
+        <div class="popupPagamento">
 
+            <span id="fecharPagamento" class="fechar">&times;</span>
 
-<!-- CARD 2 -->
-<div class="card">
+            <div class="checkoutHeader">
 
-<span class="estado">Disponível</span>
+                <div class="iconeCheckout">
 
-<img src="img/habitos atomicos.webp">
-
-<div class="info">
-
-<h3>Hábitos Atómicos</h3>
-
-<p class="autor">
-James Clear
-</p>
-
-<p class="categoria">
-Desenvolvimento pessoal
-</p>
-
-
-<div class="acoes">
-
-<button class="btnDetalhes">
-Ver detalhes
-</button>
-
-<button class="btnReservar">
-Reservar
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-
-<!-- CARD 3 -->
-<div class="card">
-
-<span class="estado">Disponível</span>
-
-<img src="img/Os segredos da mente milionária (capa do livro).jpg">
-
-
-<div class="info">
-
-<h3>O Poder da Acçao</h3>
-
-<p class="autor">
-Joseph Marph
-</p>
-
-<p class="categoria">
-Comunicação
-</p>
-
-
-<div class="acoes">
-
-<button class="btnDetalhes">
-Ver detalhes
-</button>
-
-<button class="btnReservar">
-Reservar
-</button>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-
-<!-- CARD 3 -->
-<div class="card">
-
-<span class="estado">Disponível</span>
-
-<img src="img/Os segredos da mente milionária (capa do livro).jpg">
-
-
-<div class="info">
-
-<h3>Os segredos da mente milionária</h3>
-
-<p class="autor">
-Tim Harv
-</p>
-
-<p class="categoria">
-Comunicação
-</p>
-
-
-<div class="acoes">
-
-<button class="btnDetalhes">
-Ver detalhes
-</button>
-
-<button class="btnReservar">
-Reservar
-</button>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<!-- CARD 3 -->
-<div class="card">
-
-<span class="estado">Disponível</span>
-
-<img src="img/JOSE CRAVERINHA.webp">
-
-
-<div class="info">
-
-<h3>Obra Poetica</h3>
-
-<p class="autor">
-José Craveirinha
-</p>
-
-<p class="categoria">
-Comunicação
-</p>
-
-
-<div class="acoes">
-
-<button class="btnDetalhes">
-Ver detalhes
-</button>
-
-<button class="btnReservar">
-Reservar
-</button>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<!-- CARD 3 -->
-<div class="card">
-
-<span class="estado">Disponível</span>
-
-<img src="img/como fazer amigos e influenciar pessoas.jpg">
-
-
-<div class="info">
-
-<h3>Como fazer amigos e convencer pessoas </h3>
-
-<p class="autor">
-Dale Cornigie
-</p>
-
-<p class="categoria">
-Comunicação
-</p>
-
-
-<div class="acoes">
-
-<button class="btnDetalhes">
-Ver detalhes
-</button>
-
-<button class="btnReservar">
-Reservar
-</button>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<!-- CARD 3 -->
-<div class="card">
-
-<span class="estado">Disponível</span>
-
-<img src="img/imagem de livro.png">
-
-
-<div class="info">
-
-<h3>Campanha das Ciencias</h3>
-
-<p class="autor">
-José Manuel
-</p>
-
-<p class="categoria">
-Comunicação
-</p>
-
-
-<div class="acoes">
-
-<button class="btnDetalhes">
-Ver detalhes
-</button>
-
-<button class="btnReservar">
-Reservar
-</button>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<!-- CARD 3 -->
-<div class="card">
-
-<span class="estado">Disponível</span>
-
-<img src="img/romance.webp">
-
-
-<div class="info">
-
-<h3>Um amor  de primavera</h3>
-
-<p class="autor">
-Sandra Almeida
-</p>
-
-<p class="categoria">
-Comunicação
-</p>
-
-
-<div class="acoes">
-
-<button class="btnDetalhes">
-Ver detalhes
-</button>
-
-<button class="btnReservar">
-Reservar
-</button>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<!-- CARD 3 -->
-<div class="card">
-
-<span class="estado">Disponível</span>
-
-<img src="img/mocambique-ricardo-martinez-llorca.jpg">
-
-
-<div class="info">
-
-<h3>Moçambique</h3>
-
-<p class="autor">
-Ricardos Martinez Llrona
-</p>
-
-<p class="categoria">
-Comunicação
-</p>
-
-
-<div class="acoes">
-
-<button class="btnDetalhes">
-Ver detalhes
-</button>
-
-<button class="btnReservar">
-Reservar
-</button>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<!-- CARD 3 -->
-<div class="card">
-
-<span class="estado">Disponível</span>
-
-<img src="img/habitos atomicos.webp">
-
-
-<div class="info">
-
-<h3>Hábitos Atomicos</h3>
-
-<p class="autor">
-James Clear
-</p>
-
-<p class="categoria">
-Comunicação
-</p>
-
-
-<div class="acoes">
-
-<button class="btnDetalhes">
-Ver detalhes
-</button>
-
-<button class="btnReservar">
-Reservar
-</button>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<!-- CARD 3 -->
-<div class="card">
-
-<span class="estado">Disponível</span>
-
-<img src="img/Mia Couto Gungunhana.jpg">
-
-
-<div class="info">
-
-<h3>Gungunhana</h3>
-
-<p class="autor">
-Mia Couto
-</p>
-
-<p class="categoria">
-Comunicação
-</p>
-
-
-<div class="acoes">
-
-<button class="btnDetalhes">
-Ver detalhes
-</button>
-
-<button class="btnReservar">
-Reservar
-</button>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<div class="card">
-
-<span class="estado">Disponível</span>
-
-<img src="img/o temor sabio.png">
-
-
-<div class="info">
-
-<h3>O temor do sabio</h3>
-
-<p class="autor">
-Patrick Ruthfush
-</p>
-
-<p class="categoria">
-Comunicação
-</p>
-
-
-<div class="acoes">
-
-<button class="btnDetalhes">
-Ver detalhes
-</button>
-
-<button class="btnReservar">
-Reservar
-</button>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<div class="card">
-
-<span class="estado">Disponível</span>
-
-<img src="img/sosuros na floresta.webp">
-
-
-<div class="info">
-
-<h3>Sousuros da floresta</h3>
-
-<p class="autor">
-Maria silvera
-</p>
-
-<p class="categoria">
-Comunicação
-</p>
-
-
-<div class="acoes">
-
-<button class="btnDetalhes">
-Ver detalhes
-</button>
-
-<button class="btnReservar">
-Reservar
-</button>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<div class="card">
-
-<span class="estado">Disponível</span>
-
-<img src="img/o nome do vento.png">
-
-
-<div class="info">
-
-<h3>O nome do vento</h3>
-
-<p class="autor">
-Patrick ruthfush
-</p>
-
-<p class="categoria">
-Comunicação
-</p>
-
-
-<div class="acoes">
-
-<button class="btnDetalhes">
-Ver detalhes
-</button>
-
-<button class="btnReservar">
-Reservar
-</button>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-
-
-</main>
-
-
-
-
-<div id="popup" class="popup">
-
-    <div class="popup-conteudo">
-
-        <!-- Fechar -->
-        <span id="fecharPopup" class="fechar">&times;</span>
-
-        <!-- Cabeçalho -->
-        <div class="popup-topo">
-
-            <div class="popup-capa">
-                <img id="popupImagem" src="">
-            </div>
-
-            <div class="popup-info">
-
-                <span class="badgeLivro">
-                     Mais Procurado
-                </span>
-
-                <h2 id="popupTitulo"></h2>
-
-                <h4 id="popupAutor"></h4>
-
-                <div class="avaliacao">
-
-                    ⭐⭐⭐⭐⭐
-
-                    <span>4.9 (245 leitores)</span>
+                    <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="5" width="20" height="14" rx="2"/>
+                        <path d="M2 10h20"/>
+                        <path d="M6 15h3"/>
+                    </svg>
 
                 </div>
 
-                <p class="popupCategoria">
-                    Desenvolvimento Pessoal
-                </p>
+                <div>
 
-                <div class="estadoLivro">
+                    <h2>Finalizar Compra</h2>
 
-                    <span class="disponivel">
-                         Disponível
+                    <p>
+                        Complete o pagamento para desbloquear o PDF do livro.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="checkoutLivro">
+
+                <img id="imagemPagamento" src="">
+
+                <div class="checkoutInfo">
+
+                    <h3 id="tituloPagamento">
+                        O Poder da Ação
+                    </h3>
+
+                    <p>Formato Digital (PDF)</p>
+
+                    <span class="livroDigital">
+
+                        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 3v12"/>
+                            <path d="m7 10 5 5 5-5"/>
+                            <path d="M5 21h14"/>
+                        </svg>
+
+                        Download imediato
+
                     </span>
 
                 </div>
 
             </div>
 
-        </div>
+            <div class="resumoCompra">
 
+                <h3>Resumo da compra</h3>
 
-        <div class="descricaoLivro">
+                <div class="linhaResumo">
 
-            <h3>Sobre este livro</h3>
+                    <span>Livro PDF</span>
 
-            <p id="popupDescricao">
+                    <strong>100 MT</strong>
 
-                Uma leitura inspiradora que ajuda a desenvolver hábitos,
-                disciplina e estratégias para alcançar objetivos pessoais e
-                profissionais.
+                </div>
 
-            </p>
+                <div class="linhaResumo">
 
-        </div>
+                    <span>Taxas</span>
 
+                    <strong>0 MT</strong>
 
-        <div class="beneficios">
+                </div>
 
-            <div class="beneficio">
+                <div class="linhaResumo total">
 
-                <span>📖</span>
+                    <span>Total</span>
 
-                <div>
-
-                    <strong>Leitura Enriquecedora</strong>
-
-                    <p>Amplie seus conhecimentos e desenvolva novas competências.</p>
+                    <strong>100 MT</strong>
 
                 </div>
 
             </div>
 
-            <div class="beneficio">
+            <div class="metodoPagamento">
 
-                <span>🏛</span>
+                <h3>Escolha a carteira móvel</h3>
 
-                <div>
+                <label class="opcaoPagamento">
 
-                    <strong>Disponível na Biblioteca</strong>
+                    <input
+                        type="radio"
+                        name="pagamento"
+                        value="mpesa"
+                        checked>
 
-                    <p>Reserve online e levante quando desejar.</p>
+                    <div class="cartaoPagamento">
 
-                </div>
+                        <img src="img/VODACOM.jpeg" class="logoEmola" alt="Vodacom">
 
-            </div>
+                        <div>
 
-        </div>
+                            <strong>M-Pesa</strong>
 
+                            <p>Vodacom Moçambique</p>
 
-        <div class="mensagemPersuasiva">
+                        </div>
 
-            <h3>✨ Porque vale a pena ler este livro?</h3>
+                    </div>
 
-            <p>
+                </label>
 
-                Cada página oferece conhecimentos que podem transformar a sua
-                forma de pensar, estudar e alcançar resultados. Junte-se aos
-                leitores que descobriram novas oportunidades através desta obra.
+                <label class="opcaoPagamento">
 
-            </p>
+                    <input
+                        type="radio"
+                        name="pagamento"
+                        value="emola">
 
-        </div>
+                    <div class="cartaoPagamento">
 
-        <!-- Reserva -->
+                        <img src="img/movitel-logo-.png" class="logoEmola" alt="Movitel">
 
-        <div class="caixaReserva">
+                        <div>
 
-            <div>
+                            <strong>e-Mola</strong>
 
-                <h3>Livro Físico</h3>
+                            <p>Movitel</p>
 
-                <p>
-                    Reserve gratuitamente e levante na Biblioteca Provincial de
-                    Pemba.
-                </p>
+                        </div>
 
-            </div>
+                    </div>
 
-            <a href="Requisitar livro.html"><button id="popupReservar" class="btnReservarGrande">
-
-                Reservar Agora
-
-            </button></a>
-
-        </div>
-
-        <!-- Separador -->
-
-        <div class="separador">
-
-            <span>OU</span>
-
-        </div>
-
-        <!-- Comprar PDF -->
-
-        <div class="caixaPDF">
-
-            <div>
-
-                <h3>Livro Digital (PDF)</h3>
-
-                <p>
-
-                    Leia imediatamente no computador, tablet ou telemóvel após
-                    a confirmação do pagamento.
-
-                </p>
-
-                <h2 class="precoPDF">
-
-                    100 MT
-
-                </h2>
+                </label>
 
             </div>
 
-            <button id="btnComprarPDF" class="btnComprarGrande">
+            <div class="dadosPagamento">
 
-                Comprar PDF
+                <label for="numeroPagamento">
+                    Número da Carteira Móvel
+                </label>
+
+                <input
+                    type="tel"
+                    id="numeroPagamento"
+                    placeholder="84 ou 87XXXXXXXX">
+
+            </div>
+
+            <div class="dadosPagamento">
+
+                <label>
+                    Código promocional (Opcional)
+                </label>
+
+                <input
+                    type="text"
+                    placeholder="Introduza o código">
+
+            </div>
+
+            <div class="seguranca">
+
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#10b981" stroke-width="2">
+                    <path d="M12 3 5 6v5c0 4.5 2.9 8.5 7 10 4.1-1.5 7-5.5 7-10V6l-7-3Z"/>
+                    <path d="m9 12 2 2 4-4"/>
+                </svg>
+
+                <span>
+                    Os seus dados são protegidos.
+                    O pagamento é processado de forma segura.
+                </span>
+
+            </div>
+
+            <button
+                id="confirmarPagamento"
+                class="btnConfirmarPagamento">
+
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="m5 12 4 4L19 6"/>
+                </svg>
+
+                Confirmar Pagamento
 
             </button>
 
@@ -803,190 +990,6 @@ Reservar
 
     </div>
 
-</div>
-
-
-<div id="popupPagamento" class="popup">
-
-    <div class="popupPagamento">
-
-        <!-- Fechar -->
-        <span id="fecharPagamento" class="fechar">&times;</span>
-
-        <!-- Cabeçalho -->
-        <div class="checkoutHeader">
-
-            <div class="iconeCheckout">
-                💳
-            </div>
-
-            <div>
-
-                <h2>Finalizar Compra</h2>
-
-                <p>
-                    Complete o pagamento para desbloquear o PDF do livro.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="checkoutLivro">
-
-            <img id="imagemPagamento" src="">
-
-            <div class="checkoutInfo">
-
-                <h3 id="tituloPagamento">
-                    O Poder da Ação
-                </h3>
-
-                <p>Formato Digital (PDF)</p>
-
-                <span class="livroDigital">
-                    📥 Download imediato
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <div class="resumoCompra">
-
-            <h3>Resumo da compra</h3>
-
-            <div class="linhaResumo">
-
-                <span>Livro PDF</span>
-
-                <strong>100 MT</strong>
-
-            </div>
-
-            <div class="linhaResumo">
-
-                <span>Taxas</span>
-
-                <strong>0 MT</strong>
-
-            </div>
-
-            <div class="linhaResumo total">
-
-                <span>Total</span>
-
-                <strong>100 MT</strong>
-
-            </div>
-
-        </div>
-
-
-        <div class="metodoPagamento">
-
-            <h3>Escolha a carteira móvel</h3>
-
-            <label class="opcaoPagamento">
-
-                <input type="radio"
-                       name="pagamento"
-                       value="mpesa"
-                       checked>
-
-                <div class="cartaoPagamento">
-
-                    <img src="img/VODACOM.jpeg" class="logoEmola" alt="Movitel">
-
-                    <div>
-
-                        <strong>M-Pesa</strong>
-
-                        <p>Vodacom Moçambique</p>
-
-                    </div>
-
-                </div>
-
-            </label>
-
-            <label class="opcaoPagamento">
-
-                <input type="radio"
-                       name="pagamento"
-                       value="emola">
-
-                <div class="cartaoPagamento">
-
-                    <img src="img/movitel-logo-.png" class="logoEmola" alt="Movitel">
-
-                    <div>
-
-                        <strong>e-Mola</strong>
-
-                        <p>Movitel</p>
-
-                    </div>
-
-                </div>
-
-            </label>
-
-        </div>
-
-
-        <div class="dadosPagamento">
-
-            <label>
-
-                Número da Carteira Móvel
-
-            </label>
-
-            <input
-                type="tel"
-                id="numeroPagamento"
-                placeholder="84 ou 87XXXXXXXX">
-
-        </div>
-
-
-        <div class="dadosPagamento">
-
-            <label>
-
-                Código promocional (Opcional)
-
-            </label>
-
-            <input
-                type="text"
-                placeholder="Introduza o código">
-
-        </div>
-
-
-        <div class="seguranca">
-
-             Os seus dados são protegidos.
-            O pagamento é processado de forma segura.
-
-        </div>
-
-        <!-- Botão -->
-
-        <button id="confirmarPagamento"
-                class="btnConfirmarPagamento">
-
-            Confirmar Pagamento
-
-        </button>
-
-    </div>
-
-</div>
 </section>
 
 <footer class="futer">
@@ -1002,11 +1005,17 @@ Reservar
     <h2 class="titulo">contactos</h2>
 
     <p>873645793</p>
+
     <p>843727907</p>
+
     <p>bibliotecaprovincial@gmail.com.mz</p>
+
     <p>Avenida samora machel, rua nr 24</p>
 
 </footer>
+
 <script src="Reservar.js"></script>
+
 </body>
+
 </html>
