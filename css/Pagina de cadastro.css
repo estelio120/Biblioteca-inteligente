@@ -8,71 +8,161 @@
     --azul: #2563eb;
     --azul-escuro: #1d4ed8;
     --azul-claro: #eff6ff;
+
     --texto: #172033;
     --texto-suave: #64748b;
-    --borda: #dbe3ef;
+
+    --borda: #e2e8f0;
+    --fundo: #f4f7fb;
+    --branco: #ffffff;
+
     --verde: #10b981;
     --vermelho: #ef4444;
+    --laranja: #f59e0b;
+}
+
+/* =========================
+   BASE
+========================= */
+
+html {
+    min-height: 100%;
 }
 
 body {
     min-height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
     background:
-        radial-gradient(circle at 15% 20%, rgba(59, 130, 246, .18), transparent 30%),
-        radial-gradient(circle at 85% 80%, rgba(16, 185, 129, .12), transparent 30%),
-        linear-gradient(135deg, #eff6ff, #dbeafe 50%, #f8fafc);
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(37, 99, 235, 0.10),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 85%,
+            rgba(16, 185, 129, 0.08),
+            transparent 25%
+        ),
+        var(--fundo);
+
     color: var(--texto);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px 18px;
+
+    position: relative;
     overflow-x: hidden;
 }
 
-body.bloqueado {
-    overflow: hidden;
-}
+/* =========================
+   DECORAÇÕES DO FUNDO
+========================= */
 
-.background-shape {
+body::before {
+    content: "";
+
     position: fixed;
+
+    width: 280px;
+    height: 280px;
+
     border-radius: 50%;
+
+    background: rgba(37, 99, 235, 0.06);
+
+    top: -100px;
+    right: -90px;
+
     pointer-events: none;
-    filter: blur(2px);
 }
 
-.shape-one {
-    width: 260px;
-    height: 260px;
-    background: rgba(37, 99, 235, .08);
-    top: -90px;
-    left: -80px;
+body::after {
+    content: "";
+
+    position: fixed;
+
+    width: 220px;
+    height: 220px;
+
+    border-radius: 50%;
+
+    background: rgba(16, 185, 129, 0.05);
+
+    bottom: -90px;
+    left: -70px;
+
+    pointer-events: none;
 }
 
-.shape-two {
-    width: 320px;
-    height: 320px;
-    background: rgba(16, 185, 129, .07);
-    bottom: -140px;
-    right: -100px;
+.fundo-decoracao {
+    position: fixed;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 0;
 }
 
-.auth-container {
+.decoracao-1 {
+    width: 120px;
+    height: 120px;
+
+    background: rgba(37, 99, 235, 0.04);
+
+    top: 25%;
+    left: -50px;
+}
+
+.decoracao-2 {
+    width: 160px;
+    height: 160px;
+
+    background: rgba(16, 185, 129, 0.04);
+
+    right: -70px;
+    bottom: 20%;
+}
+
+/* =========================
+   PÁGINA
+========================= */
+
+.pagina {
     width: 100%;
-    min-height: 100vh;
-    padding: 35px 20px;
     display: flex;
     justify-content: center;
-    align-items: center;
+
+    position: relative;
+    z-index: 2;
 }
 
-.auth-card {
-    position: relative;
+/* =========================
+   CARTÃO DE CADASTRO
+========================= */
+
+.cartao-cadastro {
     width: 100%;
-    max-width: 470px;
-    padding: 38px;
-    background: rgba(255, 255, 255, .96);
-    border: 1px solid rgba(255, 255, 255, .8);
-    border-radius: 28px;
-    box-shadow: 0 25px 70px rgba(30, 64, 175, .15);
-    backdrop-filter: blur(10px);
-    animation: entrada .65s ease;
+    max-width: 500px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    border: 1px solid rgba(226, 232, 240, 0.9);
+
+    border-radius: 24px;
+
+    padding: 36px 38px;
+
+    box-shadow:
+        0 25px 60px rgba(15, 23, 42, 0.10),
+        0 5px 18px rgba(15, 23, 42, 0.04);
+
+    position: relative;
+
+    animation: entrada 0.65s ease forwards;
 }
 
 @keyframes entrada {
@@ -87,338 +177,793 @@ body.bloqueado {
     }
 }
 
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    margin-bottom: 32px;
+/* Linha azul no topo */
+
+.cartao-cadastro::before {
+    content: "";
+
+    display: block;
+
+    width: 58px;
+    height: 5px;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        90deg,
+        var(--azul),
+        #60a5fa
+    );
+
+    margin: 0 auto 25px;
 }
 
-.brand-icon {
-    width: 52px;
-    height: 52px;
+/* =========================
+   MARCA / LOGO
+========================= */
+
+.marca {
     display: flex;
     align-items: center;
+
     justify-content: center;
-    color: var(--azul);
-    background: #eff6ff;
-    border: 1px solid #dbeafe;
-    border-radius: 16px;
-}
 
-.brand-icon svg {
-    width: 28px;
-    height: 28px;
-}
+    gap: 12px;
 
-.brand strong {
-    display: block;
-    color: #172033;
-    font-size: 16px;
-}
-
-.brand span {
-    display: block;
-    margin-top: 4px;
-    color: var(--texto-suave);
-    font-size: 12px;
-}
-
-.auth-header {
     margin-bottom: 28px;
 }
 
-.auth-header h1 {
-    color: #111827;
+.marca-icone {
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    border-radius: 14px;
+
+    background: var(--azul-claro);
+
+    color: var(--azul);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.marca-icone svg {
+    width: 27px;
+    height: 27px;
+}
+
+.marca strong {
+    display: block;
+
+    color: var(--texto);
+
+    font-size: 16px;
+    font-weight: 800;
+
+    margin-bottom: 3px;
+}
+
+.marca span {
+    display: block;
+
+    color: var(--texto-suave);
+
+    font-size: 12px;
+}
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+.cabecalho {
+    text-align: center;
+
+    margin-bottom: 28px;
+}
+
+.cabecalho h1 {
     font-size: 30px;
+
+    font-weight: 800;
+
+    color: var(--texto);
+
+    letter-spacing: -0.7px;
+
     margin-bottom: 10px;
 }
 
-.auth-header p {
+.cabecalho p {
+    max-width: 380px;
+
+    margin: 0 auto;
+
     color: var(--texto-suave);
+
     font-size: 14px;
-    line-height: 1.6;
+
+    line-height: 1.65;
 }
 
+/* =========================
+   CAMPOS
+========================= */
+
 .campo {
+    width: 100%;
+
     margin-bottom: 18px;
 }
 
 .campo label {
     display: block;
-    margin-bottom: 8px;
+
     color: #334155;
-    font-size: 13px;
-    font-weight: 700;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
 }
 
-.input-box {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
+/* Container do input */
 
-.input-box > svg {
-    position: absolute;
-    left: 15px;
-    width: 19px;
-    height: 19px;
-    color: var(--azul);
-    pointer-events: none;
-}
-
-.input-box input {
+.input-container {
     width: 100%;
     height: 50px;
-    padding: 0 48px;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+
     border: 1px solid var(--borda);
-    border-radius: 13px;
-    outline: none;
-    color: #172033;
+
+    border-radius: 12px;
+
     background: #f8fafc;
-    font-size: 14px;
-    transition: .25s ease;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
 }
 
-.input-box input::placeholder {
+.input-container:hover {
+    border-color: #bfdbfe;
+
+    background: #ffffff;
+}
+
+.input-container:focus-within {
+    border-color: var(--azul);
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 4px rgba(37, 99, 235, 0.10);
+
+    transform: translateY(-1px);
+}
+
+/* Ícones */
+
+.input-container > svg {
+    width: 20px;
+    height: 20px;
+
+    flex-shrink: 0;
+
+    margin-left: 15px;
+
+    color: #94a3b8;
+
+    transition: color 0.25s ease;
+}
+
+.input-container:focus-within > svg {
+    color: var(--azul);
+}
+
+/* Inputs */
+
+.input-container input {
+    width: 100%;
+    height: 100%;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: var(--texto);
+
+    font-size: 14px;
+
+    padding: 0 15px 0 11px;
+}
+
+.input-container input::placeholder {
     color: #94a3b8;
 }
 
-.input-box input:focus {
-    border-color: var(--azul);
-    background: #fff;
-    box-shadow: 0 0 0 4px rgba(37, 99, 235, .1);
-}
+/* =========================
+   BOTÃO MOSTRAR SENHA
+========================= */
 
 .mostrar-senha {
-    position: absolute;
-    right: 10px;
-    width: 36px;
-    height: 36px;
-    padding: 8px;
-    margin: 0;
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    margin-right: 5px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #94a3b8;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    border: none;
-    background: transparent;
-    color: #64748b;
+
     cursor: pointer;
+
+    border-radius: 8px;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease;
+}
+
+.mostrar-senha svg {
+    width: 20px;
+    height: 20px;
 }
 
 .mostrar-senha:hover {
     color: var(--azul);
-    transform: none;
+
+    background: var(--azul-claro);
 }
 
-.mostrar-senha svg {
+.mostrar-senha.ativo {
+    color: var(--azul);
+}
+
+/* =========================
+   FORÇA DA SENHA
+========================= */
+
+.forca-senha {
+    margin-top: -5px;
+
+    margin-bottom: 22px;
+}
+
+.barra-forca {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 5px;
+
+    margin-bottom: 8px;
+}
+
+.barra-forca span {
+    height: 4px;
+
+    border-radius: 10px;
+
+    background: #e2e8f0;
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+.barra-forca span.fraca {
+    background: var(--vermelho);
+}
+
+.barra-forca span.media {
+    background: var(--laranja);
+}
+
+.barra-forca span.forte {
+    background: var(--verde);
+}
+
+.forca-senha p {
+    color: var(--texto-suave);
+
+    font-size: 12px;
+
+    line-height: 1.4;
+}
+
+/* =========================
+   BOTÃO CADASTRAR
+========================= */
+
+.btn-cadastrar {
+    width: 100%;
+    height: 52px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        var(--azul),
+        var(--azul-escuro)
+    );
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    box-shadow:
+        0 8px 18px rgba(37, 99, 235, 0.22);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease;
+}
+
+.btn-cadastrar svg {
+    width: 20px;
+    height: 20px;
+
+    transition: transform 0.25s ease;
+}
+
+.btn-cadastrar:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 24px rgba(37, 99, 235, 0.28);
+
+    filter: brightness(1.03);
+}
+
+.btn-cadastrar:hover svg {
+    transform: translateX(3px);
+}
+
+.btn-cadastrar:active {
+    transform: translateY(0);
+}
+
+/* =========================
+   SEPARADOR
+========================= */
+
+.separador {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 25px 0 18px;
+
+    color: var(--texto-suave);
+
+    font-size: 13px;
+}
+
+.separador::before,
+.separador::after {
+    content: "";
+
+    height: 1px;
+
+    flex: 1;
+
+    background: var(--borda);
+}
+
+.separador span {
+    white-space: nowrap;
+}
+
+/* =========================
+   BOTÃO LOGIN
+========================= */
+
+.btn-login {
+    width: 100%;
+    height: 50px;
+
+    border: 1px solid var(--borda);
+
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    color: var(--azul);
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.btn-login svg {
     width: 19px;
     height: 19px;
 }
 
-.btn-principal {
-    width: 100%;
-    height: 52px;
-    margin-top: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    border: none;
-    border-radius: 13px;
-    background: linear-gradient(135deg, #2563eb, #1d4ed8);
-    color: #fff;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    box-shadow: 0 10px 25px rgba(37, 99, 235, .25);
-    transition: .25s ease;
-}
+.btn-login:hover {
+    border-color: #bfdbfe;
 
-.btn-principal svg {
-    width: 18px;
-    height: 18px;
-}
+    background: var(--azul-claro);
 
-.btn-principal:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 14px 30px rgba(37, 99, 235, .32);
-}
-
-.separador {
-    margin: 24px 0 15px;
-    text-align: center;
-}
-
-.separador span {
-    color: #94a3b8;
-    font-size: 12px;
-}
-
-.btn-secundario {
-    width: 100%;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #bfdbfe;
-    border-radius: 13px;
-    background: #eff6ff;
     color: var(--azul-escuro);
-    font-size: 14px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: .25s ease;
-}
 
-.btn-secundario:hover {
-    background: #dbeafe;
     transform: translateY(-1px);
 }
 
-.rodape-auth {
-    margin-top: 25px;
+/* =========================
+   RODAPÉ
+========================= */
+
+.rodape {
     text-align: center;
+
     color: #94a3b8;
+
     font-size: 11px;
+
+    line-height: 1.6;
+
+    margin-top: 20px;
+
+    padding: 0 10px;
 }
+
+/* =========================
+   POPUP
+========================= */
 
 .popup {
     position: fixed;
+
     inset: 0;
-    z-index: 9999;
-    padding: 20px;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(15, 23, 42, 0.58);
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(15, 23, 42, .58);
+
+    padding: 20px;
+
     opacity: 0;
+
     visibility: hidden;
-    transition: .25s ease;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+
+    z-index: 9999;
 }
 
 .popup.ativo {
     opacity: 1;
+
     visibility: visible;
+
+    pointer-events: auto;
 }
 
-.popup-card {
-    position: relative;
+/* Conteúdo */
+
+.popup-conteudo {
     width: 100%;
-    max-width: 390px;
-    padding: 35px 30px;
+
+    max-width: 410px;
+
+    background: #ffffff;
+
+    border: 1px solid rgba(226, 232, 240, 0.8);
+
+    border-radius: 22px;
+
+    padding: 32px 28px;
+
     text-align: center;
-    background: #fff;
-    border-radius: 24px;
-    box-shadow: 0 25px 80px rgba(0, 0, 0, .25);
-    transform: scale(.9);
-    transition: .25s ease;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.20);
+
+    transform:
+        translateY(20px)
+        scale(0.94);
+
+    transition:
+        transform 0.3s ease;
 }
 
-.popup.ativo .popup-card {
-    transform: scale(1);
+.popup.ativo .popup-conteudo {
+    transform:
+        translateY(0)
+        scale(1);
 }
 
-.popup-fechar {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    width: 35px;
-    height: 35px;
-    padding: 8px;
-    border: none;
-    border-radius: 50%;
-    background: #f1f5f9;
-    color: #64748b;
-    cursor: pointer;
-}
-
-.popup-fechar:hover {
-    background: #e2e8f0;
-    transform: none;
-}
-
-.popup-fechar svg {
-    width: 18px;
-    height: 18px;
-}
+/* Ícone */
 
 .popup-icone {
-    width: 70px;
-    height: 70px;
+    width: 68px;
+    height: 68px;
+
     margin: 0 auto 18px;
+
+    border-radius: 50%;
+
+    background: #dcfce7;
+
+    color: var(--verde);
+
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
+
+    box-shadow:
+        0 8px 20px rgba(16, 185, 129, 0.12);
 }
 
 .popup-icone svg {
-    width: 35px;
-    height: 35px;
-}
-
-.popup-icone.sucesso {
-    background: #dcfce7;
-    color: #16a34a;
+    width: 32px;
+    height: 32px;
 }
 
 .popup-icone.erro {
     background: #fee2e2;
-    color: #dc2626;
+
+    color: var(--vermelho);
+
+    box-shadow:
+        0 8px 20px rgba(239, 68, 68, 0.10);
 }
 
-.popup-card h2 {
-    margin-bottom: 10px;
-    color: #172033;
-    font-size: 22px;
+/* Título */
+
+.popup-conteudo h2 {
+    margin: 0 0 10px;
+
+    color: var(--texto);
+
+    font-size: 24px;
+
+    font-weight: 800;
 }
 
-.popup-card p {
-    margin-bottom: 24px;
-    color: #64748b;
-    font-size: 14px;
+/* Mensagem */
+
+.popup-conteudo p {
+    margin: 0 auto 24px;
+
+    max-width: 320px;
+
+    color: var(--texto-suave);
+
     line-height: 1.6;
-}
 
-.popup-botao {
-    width: 100%;
-    height: 48px;
-    border: none;
-    border-radius: 12px;
-    background: var(--azul);
-    color: #fff;
     font-size: 14px;
+}
+
+/* Botão */
+
+.popup-conteudo button {
+    width: 100%;
+
+    height: 48px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    padding: 0 20px;
+
+    background: var(--azul);
+
+    color: #ffffff;
+
+    font-size: 14px;
+
     font-weight: 700;
+
     cursor: pointer;
-    transition: .2s ease;
+
+    box-shadow:
+        0 7px 16px rgba(37, 99, 235, 0.20);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
-.popup-botao:hover {
+.popup-conteudo button:hover {
     background: var(--azul-escuro);
+
     transform: translateY(-1px);
+
+    box-shadow:
+        0 10px 20px rgba(37, 99, 235, 0.25);
 }
 
-@media (max-width: 520px) {
+.popup-conteudo button:active {
+    transform: translateY(0);
+}
 
-    .auth-container {
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 600px) {
+
+    body {
         padding: 20px 14px;
     }
 
-    .auth-card {
+    .cartao-cadastro {
+        max-width: 100%;
+
+        padding: 30px 22px;
+
+        border-radius: 20px;
+    }
+
+    .marca {
+        margin-bottom: 24px;
+    }
+
+    .marca-icone {
+        width: 44px;
+        height: 44px;
+    }
+
+    .marca-icone svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .marca strong {
+        font-size: 15px;
+    }
+
+    .marca span {
+        font-size: 11px;
+    }
+
+    .cabecalho {
+        margin-bottom: 24px;
+    }
+
+    .cabecalho h1 {
+        font-size: 27px;
+    }
+
+    .cabecalho p {
+        font-size: 13px;
+    }
+
+    .input-container {
+        height: 49px;
+    }
+
+    .btn-cadastrar {
+        height: 50px;
+    }
+
+    .btn-login {
+        height: 49px;
+    }
+
+    .popup {
+        padding: 15px;
+    }
+
+    .popup-conteudo {
         padding: 28px 21px;
-        border-radius: 22px;
+
+        border-radius: 19px;
+    }
+}
+
+/* =========================
+   ECRÃS MUITO PEQUENOS
+========================= */
+
+@media (max-width: 360px) {
+
+    .cartao-cadastro {
+        padding: 27px 18px;
     }
 
-    .brand {
-        margin-bottom: 25px;
+    .marca {
+        gap: 9px;
     }
 
-    .auth-header h1 {
-        font-size: 26px;
+    .marca strong {
+        font-size: 14px;
     }
 
-    .popup-card {
-        padding: 32px 22px;
+    .marca span {
+        font-size: 10px;
+    }
+
+    .cabecalho h1 {
+        font-size: 24px;
+    }
+
+    .cabecalho p {
+        font-size: 12px;
+    }
+
+    .campo label {
+        font-size: 13px;
+    }
+
+    .input-container input {
+        font-size: 13px;
+    }
+
+    .btn-cadastrar {
+        font-size: 14px;
+    }
+
+    .btn-login {
+        font-size: 13px;
+    }
+
+    .popup-conteudo h2 {
+        font-size: 21px;
     }
 }
