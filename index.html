@@ -2,51 +2,858 @@
 <html lang="pt">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
-    <link rel="stylesheet" href="css/Pagina de cadastro.css">
+
+    <title>Entrar - Biblioteca Digital</title>
+
+    <link rel="stylesheet" href="css/LOGIN.css">
+
 </head>
 
 <body>
 
-    <div class="login">
-        <h1>Criar conta</h1>
-        <p>Faça o seu cadastro para acessar as principais funcionalidades da plataforma</p>
+    <!-- =========================================
+         DECORAÇÕES DO FUNDO
+    ========================================== -->
 
-        <form action="INICIO.html" onsubmit="return validarSenha()">
+    <div class="fundo-decoracao decoracao-1"></div>
+    <div class="fundo-decoracao decoracao-2"></div>
 
-            <label><b>Nome</b></label>
-            <input type="text" placeholder="Digite o seu nome" required>
 
-            <label><b>Apelido</b></label>
-            <input type="text" placeholder="Digite o seu apelido" required>
+    <!-- =========================================
+         PÁGINA
+    ========================================== -->
 
-            <label><b>Senha</b></label>
-            <input type="password" id="senha" placeholder="********" required>
+    <main class="pagina">
 
-            <label><b>Confirmar senha</b></label>
-            <input type="password" id="confirmarSenha" placeholder="********" required>
+        <section class="cartao-login">
 
-            <br><br>
 
-            <button type="submit">Entrar</button>
+            <!-- =================================
+                 MARCA
+            ================================== -->
 
-        </form>
+            <div class="marca">
+
+                <div class="marca-icone">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2">
+
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/>
+
+                        <path d="M8 6h8"/>
+
+                        <path d="M8 10h8"/>
+
+                    </svg>
+
+                </div>
+
+                <div>
+
+                    <strong>
+                        Biblioteca Digital
+                    </strong>
+
+                    <span>
+                        Biblioteca Provincial de Pemba
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 CABEÇALHO
+            ================================== -->
+
+            <div class="cabecalho">
+
+                <h1>
+                    Bem-vindo de volta
+                </h1>
+
+                <p>
+                    Entre na sua conta para acessar livros,
+                    reservas e todas as funcionalidades da biblioteca.
+                </p>
+
+            </div>
+
+
+            <!-- =================================
+                 FORMULÁRIO
+            ================================== -->
+
+            <form id="formLogin">
+
+
+                <!-- NOME -->
+
+                <div class="campo">
+
+                    <label for="nome">
+                        Nome
+                    </label>
+
+                    <div class="input-container">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2">
+
+                            <circle
+                                cx="12"
+                                cy="8"
+                                r="4"/>
+
+                            <path
+                                d="M4 21a8 8 0 0 1 16 0"/>
+
+                        </svg>
+
+                        <input
+                            type="text"
+                            id="nome"
+                            placeholder="Digite o seu nome"
+                            autocomplete="username"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SENHA -->
+
+                <div class="campo">
+
+                    <label for="senha">
+                        Senha
+                    </label>
+
+                    <div class="input-container">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2">
+
+                            <rect
+                                x="4"
+                                y="10"
+                                width="16"
+                                height="11"
+                                rx="2"/>
+
+                            <path
+                                d="M8 10V7a4 4 0 0 1 8 0v3"/>
+
+                        </svg>
+
+                        <input
+                            type="password"
+                            id="senha"
+                            placeholder="Digite a sua senha"
+                            autocomplete="current-password"
+                            required>
+
+                        <button
+                            type="button"
+                            class="mostrar-senha"
+                            id="mostrarSenha"
+                            aria-label="Mostrar senha">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2">
+
+                                <path
+                                    d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/>
+
+                                <circle
+                                    cx="12"
+                                    cy="12"
+                                    r="2.5"/>
+
+                            </svg>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     OPÇÕES
+                ================================== -->
+
+                <div class="opcoes">
+
+                    <label class="lembrar">
+
+                        <input
+                            type="checkbox"
+                            id="lembrar">
+
+                        <span>
+                            Lembrar de mim
+                        </span>
+
+                    </label>
+
+
+                    <!--
+                        IMPORTANTE:
+                        Não existe JavaScript aqui.
+                        O link vai diretamente para
+                        RECUPERAR-SENHA.html
+                    -->
+
+                    <a
+                        href="RECUPERAR-SENHA.html"
+                        id="esqueciSenha">
+
+                        Esqueci a senha
+
+                    </a>
+
+                </div>
+
+
+                <!-- =================================
+                     BOTÃO ENTRAR
+                ================================== -->
+
+                <button
+                    type="submit"
+                    class="btn-entrar">
+
+                    <span>
+                        Entrar na minha conta
+                    </span>
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2">
+
+                        <path d="M5 12h14"/>
+
+                        <path d="m13 6 6 6-6 6"/>
+
+                    </svg>
+
+                </button>
+
+            </form>
+
+
+            <!-- =================================
+                 SEPARADOR
+            ================================== -->
+
+            <div class="separador">
+
+                <span>
+                    Ainda não possui uma conta?
+                </span>
+
+            </div>
+
+
+            <!-- =================================
+                 CADASTRO
+            ================================== -->
+
+            <a
+                href="Pagina de cadastro.html"
+                class="btn-cadastro">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+
+                    <path
+                        d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+
+                    <circle
+                        cx="9"
+                        cy="7"
+                        r="4"/>
+
+                    <path
+                        d="M19 8v6"/>
+
+                    <path
+                        d="M22 11h-6"/>
+
+                </svg>
+
+                Criar uma nova conta
+
+            </a>
+
+
+            <!-- =================================
+                 RODAPÉ
+            ================================== -->
+
+            <p class="rodape">
+
+                Acesse os recursos digitais da
+                Biblioteca Provincial de Pemba
+                de forma simples e segura.
+
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         POPUP
+    ========================================== -->
+
+    <div
+        id="popup"
+        class="popup">
+
+        <div class="popup-conteudo">
+
+
+            <!-- ÍCONE -->
+
+            <div
+                id="popupIcone"
+                class="popup-icone">
+
+
+                <!-- SUCESSO -->
+
+                <svg
+                    id="iconeSucesso"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+
+                    <path
+                        d="m5 12 4 4L19 6"/>
+
+                </svg>
+
+
+                <!-- ERRO -->
+
+                <svg
+                    id="iconeErro"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+
+                    <path
+                        d="M6 6l12 12"/>
+
+                    <path
+                        d="M18 6L6 18"/>
+
+                </svg>
+
+            </div>
+
+
+            <!-- TÍTULO -->
+
+            <h2 id="popupTitulo">
+                Login
+            </h2>
+
+
+            <!-- MENSAGEM -->
+
+            <p id="popupMensagem">
+                Mensagem
+            </p>
+
+
+            <!-- BOTÃO -->
+
+            <button
+                id="popupBotao"
+                type="button">
+
+                Continuar
+
+            </button>
+
+        </div>
+
     </div>
 
-    <script>
-        function validarSenha() {
-            let senha = document.getElementById("senha").value;
-            let confirmarSenha = document.getElementById("confirmarSenha").value;
 
-            if (senha !== confirmarSenha) {
-                alert("As senhas não coincidem!");
-                return false; // impede o envio do formulário
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script>
+
+
+        /* ========================================
+           ELEMENTOS
+        ======================================== */
+
+        const formLogin =
+            document.getElementById("formLogin");
+
+        const nomeInput =
+            document.getElementById("nome");
+
+        const senhaInput =
+            document.getElementById("senha");
+
+        const lembrar =
+            document.getElementById("lembrar");
+
+        const mostrarSenha =
+            document.getElementById("mostrarSenha");
+
+
+        /* ========================================
+           POPUP
+        ======================================== */
+
+        const popup =
+            document.getElementById("popup");
+
+        const popupIcone =
+            document.getElementById("popupIcone");
+
+        const popupTitulo =
+            document.getElementById("popupTitulo");
+
+        const popupMensagem =
+            document.getElementById("popupMensagem");
+
+        const popupBotao =
+            document.getElementById("popupBotao");
+
+        const iconeSucesso =
+            document.getElementById("iconeSucesso");
+
+        const iconeErro =
+            document.getElementById("iconeErro");
+
+
+        /* ========================================
+           VARIÁVEL PARA SABER SE FOI SUCESSO
+        ======================================== */
+
+        let loginFoiSucesso = false;
+
+
+        /* ========================================
+           MOSTRAR / ESCONDER SENHA
+        ======================================== */
+
+        mostrarSenha.addEventListener("click", function () {
+
+            if (senhaInput.type === "password") {
+
+                senhaInput.type = "text";
+
+                this.classList.add("ativo");
+
+                this.setAttribute(
+                    "aria-label",
+                    "Esconder senha"
+                );
+
+            } else {
+
+                senhaInput.type = "password";
+
+                this.classList.remove("ativo");
+
+                this.setAttribute(
+                    "aria-label",
+                    "Mostrar senha"
+                );
+
             }
 
-            return true; // permite entrar
+        });
+
+
+        /* ========================================
+           ABRIR POPUP
+        ======================================== */
+
+        function abrirPopup(
+            titulo,
+            mensagem,
+            sucesso
+        ) {
+
+            popupTitulo.textContent = titulo;
+
+            popupMensagem.textContent = mensagem;
+
+            loginFoiSucesso = sucesso;
+
+
+            /* Limpar estado */
+
+            popupIcone.classList.remove("erro");
+
+            iconeSucesso.style.display = "none";
+
+            iconeErro.style.display = "none";
+
+
+            /* SUCESSO */
+
+            if (sucesso) {
+
+                iconeSucesso.style.display = "block";
+
+                popupBotao.textContent =
+                    "Ir para a página inicial";
+
+            }
+
+
+            /* ERRO */
+
+            else {
+
+                iconeErro.style.display = "block";
+
+                popupIcone.classList.add("erro");
+
+                popupBotao.textContent =
+                    "Corrigir dados";
+
+            }
+
+
+            popup.classList.add("ativo");
+
         }
+
+
+        /* ========================================
+           FECHAR POPUP
+        ======================================== */
+
+        function fecharPopup() {
+
+            popup.classList.remove("ativo");
+
+        }
+
+
+        /* ========================================
+           BOTÃO DO POPUP
+        ======================================== */
+
+        popupBotao.addEventListener("click", function () {
+
+
+            /* Se for erro */
+
+            if (!loginFoiSucesso) {
+
+                fecharPopup();
+
+                nomeInput.focus();
+
+                return;
+
+            }
+
+
+            /* Se for sucesso */
+
+            window.location.href = "INICIO.html";
+
+        });
+
+
+        /* ========================================
+           CLICAR FORA DO POPUP
+        ======================================== */
+
+        popup.addEventListener("click", function (event) {
+
+            if (event.target === popup) {
+
+                fecharPopup();
+
+            }
+
+        });
+
+
+        /* ========================================
+           LOGIN
+        ======================================== */
+
+        formLogin.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+
+            /* ================================
+               PEGAR DADOS
+            ================================= */
+
+            const nome =
+                nomeInput.value.trim();
+
+            const senha =
+                senhaInput.value;
+
+
+            /* ================================
+               VALIDAR NOME
+            ================================= */
+
+            if (nome.length < 2) {
+
+                abrirPopup(
+                    "Nome inválido",
+                    "Digite o seu nome para continuar.",
+                    false
+                );
+
+                return;
+
+            }
+
+
+            /* ================================
+               VALIDAR SENHA
+            ================================= */
+
+            if (senha.length === 0) {
+
+                abrirPopup(
+                    "Senha obrigatória",
+                    "Digite a sua senha para continuar.",
+                    false
+                );
+
+                return;
+
+            }
+
+
+            /* ================================
+               BUSCAR USUÁRIO
+            ================================= */
+
+            const dadosUsuario =
+                localStorage.getItem(
+                    "usuarioBiblioteca"
+                );
+
+
+            /* ================================
+               CONTA NÃO EXISTE
+            ================================= */
+
+            if (!dadosUsuario) {
+
+                abrirPopup(
+                    "Conta não encontrada",
+                    "Não existe nenhuma conta cadastrada. Crie uma conta antes de entrar.",
+                    false
+                );
+
+                return;
+
+            }
+
+
+            /* ================================
+               CONVERTER DADOS
+            ================================= */
+
+            let usuario;
+
+            try {
+
+                usuario =
+                    JSON.parse(dadosUsuario);
+
+            } catch (erro) {
+
+                abrirPopup(
+                    "Erro na conta",
+                    "Os dados da conta estão inválidos. Faça o cadastro novamente.",
+                    false
+                );
+
+                return;
+
+            }
+
+
+            /* ================================
+               VERIFICAR DADOS
+            ================================= */
+
+            const nomeCorreto =
+                usuario.nome
+                    .toLowerCase()
+                    .trim() ===
+                nome
+                    .toLowerCase()
+                    .trim();
+
+
+            const senhaCorreta =
+                usuario.senha === senha;
+
+
+            /* ================================
+               DADOS INCORRETOS
+            ================================= */
+
+            if (!nomeCorreto || !senhaCorreta) {
+
+                abrirPopup(
+                    "Dados incorretos",
+                    "O nome ou a senha não correspondem à conta cadastrada.",
+                    false
+                );
+
+                return;
+
+            }
+
+
+            /* ================================
+               CRIAR SESSÃO
+            ================================= */
+
+            const sessao = {
+
+                nome: usuario.nome,
+
+                apelido: usuario.apelido,
+
+                logado: true,
+
+                dataLogin:
+                    new Date().toISOString()
+
+            };
+
+
+            localStorage.setItem(
+                "usuarioLogado",
+                JSON.stringify(sessao)
+            );
+
+
+            /* ================================
+               LEMBRAR NOME
+            ================================= */
+
+            if (lembrar.checked) {
+
+                localStorage.setItem(
+                    "nomeLembrado",
+                    nome
+                );
+
+            } else {
+
+                localStorage.removeItem(
+                    "nomeLembrado"
+                );
+
+            }
+
+
+            /* ================================
+               LOGIN COM SUCESSO
+            ================================= */
+
+            abrirPopup(
+
+                "Login realizado com sucesso",
+
+                "Bem-vindo à Biblioteca Digital, " +
+                usuario.nome +
+                "! Você entrou na sua conta.",
+
+                true
+
+            );
+
+        });
+
+
+        /* ========================================
+           CARREGAR NOME LEMBRADO
+        ======================================== */
+
+        const nomeLembrado =
+            localStorage.getItem(
+                "nomeLembrado"
+            );
+
+
+        if (nomeLembrado) {
+
+            nomeInput.value =
+                nomeLembrado;
+
+            lembrar.checked =
+                true;
+
+        }
+
+
+        /* ========================================
+           IMPORTANTE
+           
+           NÃO adicionamos nenhum evento
+           ao "Esqueci a senha".
+
+           Portanto, este link:
+
+           RECUPERAR-SENHA.html
+
+           funciona normalmente e leva
+           diretamente para a página.
+        ======================================== */
+
+
     </script>
 
 </body>
