@@ -5,36 +5,28 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>Entrar - Biblioteca Digital</title>
 
-    <link rel="stylesheet" href="css/LOGIN.css">
+    <link
+        rel="stylesheet"
+        href="css/LOGIN.css">
 
 </head>
 
 <body>
 
-    <!-- =========================================
-         DECORAÇÕES DO FUNDO
-    ========================================== -->
-
     <div class="fundo-decoracao decoracao-1"></div>
     <div class="fundo-decoracao decoracao-2"></div>
 
-
-    <!-- =========================================
-         PÁGINA
-    ========================================== -->
 
     <main class="pagina">
 
         <section class="cartao-login">
 
-
-            <!-- =================================
-                 MARCA
-            ================================== -->
 
             <div class="marca">
 
@@ -47,11 +39,8 @@
                         stroke-width="2">
 
                         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-
                         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/>
-
                         <path d="M8 6h8"/>
-
                         <path d="M8 10h8"/>
 
                     </svg>
@@ -73,10 +62,6 @@
             </div>
 
 
-            <!-- =================================
-                 CABEÇALHO
-            ================================== -->
-
             <div class="cabecalho">
 
                 <h1>
@@ -91,14 +76,8 @@
             </div>
 
 
-            <!-- =================================
-                 FORMULÁRIO
-            ================================== -->
-
             <form id="formLogin">
 
-
-                <!-- NOME -->
 
                 <div class="campo">
 
@@ -135,8 +114,6 @@
 
                 </div>
 
-
-                <!-- SENHA -->
 
                 <div class="campo">
 
@@ -200,10 +177,6 @@
                 </div>
 
 
-                <!-- =================================
-                     OPÇÕES
-                ================================== -->
-
                 <div class="opcoes">
 
                     <label class="lembrar">
@@ -219,13 +192,6 @@
                     </label>
 
 
-                    <!--
-                        IMPORTANTE:
-                        Não existe JavaScript aqui.
-                        O link vai diretamente para
-                        RECUPERAR-SENHA.html
-                    -->
-
                     <a
                         href="RECUPERAR-SENHA.html"
                         id="esqueciSenha">
@@ -236,10 +202,6 @@
 
                 </div>
 
-
-                <!-- =================================
-                     BOTÃO ENTRAR
-                ================================== -->
 
                 <button
                     type="submit"
@@ -256,7 +218,6 @@
                         stroke-width="2">
 
                         <path d="M5 12h14"/>
-
                         <path d="m13 6 6 6-6 6"/>
 
                     </svg>
@@ -266,10 +227,6 @@
             </form>
 
 
-            <!-- =================================
-                 SEPARADOR
-            ================================== -->
-
             <div class="separador">
 
                 <span>
@@ -278,10 +235,6 @@
 
             </div>
 
-
-            <!-- =================================
-                 CADASTRO
-            ================================== -->
 
             <a
                 href="Pagina de cadastro.html"
@@ -314,10 +267,6 @@
             </a>
 
 
-            <!-- =================================
-                 RODAPÉ
-            ================================== -->
-
             <p class="rodape">
 
                 Acesse os recursos digitais da
@@ -331,25 +280,15 @@
     </main>
 
 
-    <!-- =========================================
-         POPUP
-    ========================================== -->
-
     <div
         id="popup"
         class="popup">
 
         <div class="popup-conteudo">
 
-
-            <!-- ÍCONE -->
-
             <div
                 id="popupIcone"
                 class="popup-icone">
-
-
-                <!-- SUCESSO -->
 
                 <svg
                     id="iconeSucesso"
@@ -363,8 +302,6 @@
 
                 </svg>
 
-
-                <!-- ERRO -->
 
                 <svg
                     id="iconeErro"
@@ -384,21 +321,15 @@
             </div>
 
 
-            <!-- TÍTULO -->
-
             <h2 id="popupTitulo">
                 Login
             </h2>
 
 
-            <!-- MENSAGEM -->
-
             <p id="popupMensagem">
                 Mensagem
             </p>
 
-
-            <!-- BOTÃO -->
 
             <button
                 id="popupBotao"
@@ -413,16 +344,11 @@
     </div>
 
 
-    <!-- =========================================
-         JAVASCRIPT
-    ========================================== -->
-
     <script>
 
-
-        /* ========================================
+        /* ==========================================
            ELEMENTOS
-        ======================================== */
+        ========================================== */
 
         const formLogin =
             document.getElementById("formLogin");
@@ -440,9 +366,9 @@
             document.getElementById("mostrarSenha");
 
 
-        /* ========================================
+        /* ==========================================
            POPUP
-        ======================================== */
+        ========================================== */
 
         const popup =
             document.getElementById("popup");
@@ -466,49 +392,48 @@
             document.getElementById("iconeErro");
 
 
-        /* ========================================
-           VARIÁVEL PARA SABER SE FOI SUCESSO
-        ======================================== */
-
         let loginFoiSucesso = false;
 
 
-        /* ========================================
+        /* ==========================================
            MOSTRAR / ESCONDER SENHA
-        ======================================== */
+        ========================================== */
 
-        mostrarSenha.addEventListener("click", function () {
+        mostrarSenha.addEventListener(
+            "click",
+            function() {
 
-            if (senhaInput.type === "password") {
+                if (senhaInput.type === "password") {
 
-                senhaInput.type = "text";
+                    senhaInput.type = "text";
 
-                this.classList.add("ativo");
+                    this.classList.add("ativo");
 
-                this.setAttribute(
-                    "aria-label",
-                    "Esconder senha"
-                );
+                    this.setAttribute(
+                        "aria-label",
+                        "Esconder senha"
+                    );
 
-            } else {
+                } else {
 
-                senhaInput.type = "password";
+                    senhaInput.type = "password";
 
-                this.classList.remove("ativo");
+                    this.classList.remove("ativo");
 
-                this.setAttribute(
-                    "aria-label",
-                    "Mostrar senha"
-                );
+                    this.setAttribute(
+                        "aria-label",
+                        "Mostrar senha"
+                    );
+
+                }
 
             }
+        );
 
-        });
 
-
-        /* ========================================
-           ABRIR POPUP
-        ======================================== */
+        /* ==========================================
+           POPUP
+        ========================================== */
 
         function abrirPopup(
             titulo,
@@ -516,41 +441,43 @@
             sucesso
         ) {
 
-            popupTitulo.textContent = titulo;
+            popupTitulo.textContent =
+                titulo;
 
-            popupMensagem.textContent = mensagem;
+            popupMensagem.textContent =
+                mensagem;
 
-            loginFoiSucesso = sucesso;
-
-
-            /* Limpar estado */
-
-            popupIcone.classList.remove("erro");
-
-            iconeSucesso.style.display = "none";
-
-            iconeErro.style.display = "none";
+            loginFoiSucesso =
+                sucesso;
 
 
-            /* SUCESSO */
+            popupIcone.classList.remove(
+                "erro"
+            );
+
+            iconeSucesso.style.display =
+                "none";
+
+            iconeErro.style.display =
+                "none";
+
 
             if (sucesso) {
 
-                iconeSucesso.style.display = "block";
+                iconeSucesso.style.display =
+                    "block";
 
                 popupBotao.textContent =
                     "Ir para a página inicial";
 
-            }
+            } else {
 
+                iconeErro.style.display =
+                    "block";
 
-            /* ERRO */
-
-            else {
-
-                iconeErro.style.display = "block";
-
-                popupIcone.classList.add("erro");
+                popupIcone.classList.add(
+                    "erro"
+                );
 
                 popupBotao.textContent =
                     "Corrigir dados";
@@ -558,246 +485,284 @@
             }
 
 
-            popup.classList.add("ativo");
+            popup.classList.add(
+                "ativo"
+            );
 
         }
 
-
-        /* ========================================
-           FECHAR POPUP
-        ======================================== */
 
         function fecharPopup() {
 
-            popup.classList.remove("ativo");
+            popup.classList.remove(
+                "ativo"
+            );
 
         }
 
 
-        /* ========================================
+        /* ==========================================
            BOTÃO DO POPUP
-        ======================================== */
+        ========================================== */
 
-        popupBotao.addEventListener("click", function () {
+        popupBotao.addEventListener(
+            "click",
+            function() {
 
+                if (!loginFoiSucesso) {
 
-            /* Se for erro */
+                    fecharPopup();
 
-            if (!loginFoiSucesso) {
-
-                fecharPopup();
-
-                nomeInput.focus();
-
-                return;
-
-            }
+                    return;
+                }
 
 
-            /* Se for sucesso */
-
-            window.location.href = "INICIO.html";
-
-        });
-
-
-        /* ========================================
-           CLICAR FORA DO POPUP
-        ======================================== */
-
-        popup.addEventListener("click", function (event) {
-
-            if (event.target === popup) {
-
-                fecharPopup();
+                window.location.href =
+                    "INICIO.html";
 
             }
+        );
 
-        });
+
+        /* ==========================================
+           CLICAR FORA
+        ========================================== */
+
+        popup.addEventListener(
+            "click",
+            function(event) {
+
+                if (event.target === popup) {
+
+                    fecharPopup();
+
+                }
+
+            }
+        );
 
 
-        /* ========================================
+        /* ==========================================
            LOGIN
-        ======================================== */
+        ========================================== */
 
-        formLogin.addEventListener("submit", function (event) {
+        formLogin.addEventListener(
+            "submit",
+            function(event) {
 
-            event.preventDefault();
-
-
-            /* ================================
-               PEGAR DADOS
-            ================================= */
-
-            const nome =
-                nomeInput.value.trim();
-
-            const senha =
-                senhaInput.value;
+                event.preventDefault();
 
 
-            
+                const nomeDigitado =
+                    nomeInput.value.trim();
 
-            if (nome.length < 2) {
-
-                abrirPopup(
-                    "Nome inválido",
-                    "Digite o seu nome para continuar.",
-                    false
-                );
-
-                return;
-
-            }
+                const senhaDigitada =
+                    senhaInput.value;
 
 
-            
+                /* VALIDAR NOME */
 
-            if (senha.length === 0) {
+                if (nomeDigitado.length < 2) {
 
-                abrirPopup(
-                    "Senha obrigatória",
-                    "Digite a sua senha para continuar.",
-                    false
-                );
+                    abrirPopup(
+                        "Nome inválido",
+                        "Digite o seu nome para continuar.",
+                        false
+                    );
 
-                return;
+                    nomeInput.focus();
 
-            }
-
-
-           
-
-            const dadosUsuario =
-                localStorage.getItem(
-                    "usuarioBiblioteca"
-                );
+                    return;
+                }
 
 
-            
+                /* VALIDAR SENHA */
 
-            if (!dadosUsuario) {
+                if (senhaDigitada.length === 0) {
 
-                abrirPopup(
-                    "Conta não encontrada",
-                    "Não existe nenhuma conta cadastrada. Crie uma conta antes de entrar.",
-                    false
-                );
+                    abrirPopup(
+                        "Senha obrigatória",
+                        "Digite a sua senha para continuar.",
+                        false
+                    );
 
-                return;
+                    senhaInput.focus();
 
-            }
-
-
-            
-
-            let usuario;
-
-            try {
-
-                usuario =
-                    JSON.parse(dadosUsuario);
-
-            } catch (erro) {
-
-                abrirPopup(
-                    "Erro na conta",
-                    "Os dados da conta estão inválidos. Faça o cadastro novamente.",
-                    false
-                );
-
-                return;
-
-            }
+                    return;
+                }
 
 
-            
+                /* PEGAR CONTA */
 
-            const nomeCorreto =
-                usuario.nome
-                    .toLowerCase()
-                    .trim() ===
-                nome
-                    .toLowerCase()
-                    .trim();
+                const dadosUsuario =
+                    localStorage.getItem(
+                        "usuarioBiblioteca"
+                    );
 
 
-            const senhaCorreta =
-                usuario.senha === senha;
+                if (!dadosUsuario) {
+
+                    abrirPopup(
+                        "Conta não encontrada",
+                        "Não existe nenhuma conta cadastrada. Crie uma conta antes de entrar.",
+                        false
+                    );
+
+                    return;
+                }
 
 
-           
+                /* CONVERTER JSON */
 
-            if (!nomeCorreto || !senhaCorreta) {
+                let usuario;
 
-                abrirPopup(
-                    "Dados incorretos",
-                    "O nome ou a senha não correspondem à conta cadastrada.",
-                    false
-                );
+                try {
 
-                return;
+                    usuario =
+                        JSON.parse(
+                            dadosUsuario
+                        );
 
-            }
+                } catch (erro) {
 
+                    localStorage.removeItem(
+                        "usuarioBiblioteca"
+                    );
 
-            
+                    abrirPopup(
+                        "Erro na conta",
+                        "Os dados da conta estão inválidos. Faça o cadastro novamente.",
+                        false
+                    );
 
-            const sessao = {
-
-                nome: usuario.nome,
-
-                apelido: usuario.apelido,
-
-                logado: true,
-
-                dataLogin:
-                    new Date().toISOString()
-
-            };
+                    return;
+                }
 
 
-            localStorage.setItem(
-                "usuarioLogado",
-                JSON.stringify(sessao)
-            );
+                /* VERIFICAR DADOS */
+
+                if (
+                    !usuario ||
+                    typeof usuario.nome !== "string" ||
+                    typeof usuario.senha !== "string"
+                ) {
+
+                    localStorage.removeItem(
+                        "usuarioBiblioteca"
+                    );
+
+                    abrirPopup(
+                        "Dados inválidos",
+                        "Os dados da conta estão incompletos. Faça o cadastro novamente.",
+                        false
+                    );
+
+                    return;
+                }
 
 
+                /* COMPARAR NOME */
 
-            if (lembrar.checked) {
+                const nomeSalvo =
+                    usuario.nome
+                        .trim()
+                        .toLowerCase();
+
+                const nomeInformado =
+                    nomeDigitado
+                        .trim()
+                        .toLowerCase();
+
+
+                const nomeCorreto =
+                    nomeSalvo === nomeInformado;
+
+
+                /* COMPARAR SENHA */
+
+                const senhaCorreta =
+                    usuario.senha === senhaDigitada;
+
+
+                /* VERIFICAR */
+
+                if (
+                    !nomeCorreto ||
+                    !senhaCorreta
+                ) {
+
+                    abrirPopup(
+                        "Dados incorretos",
+                        "O nome ou a senha não correspondem à conta cadastrada.",
+                        false
+                    );
+
+                    return;
+                }
+
+
+                /* CRIAR SESSÃO */
+
+                const sessao = {
+
+                    nome: usuario.nome,
+
+                    apelido: usuario.apelido,
+
+                    logado: true,
+
+                    dataLogin:
+                        new Date().toISOString()
+
+                };
+
 
                 localStorage.setItem(
-                    "nomeLembrado",
-                    nome
+                    "usuarioLogado",
+                    JSON.stringify(sessao)
                 );
 
-            } else {
 
-                localStorage.removeItem(
-                    "nomeLembrado"
+                /* LEMBRAR NOME */
+
+                if (lembrar.checked) {
+
+                    localStorage.setItem(
+                        "nomeLembrado",
+                        nomeDigitado
+                    );
+
+                } else {
+
+                    localStorage.removeItem(
+                        "nomeLembrado"
+                    );
+
+                }
+
+
+                /* SUCESSO */
+
+                abrirPopup(
+
+                    "Login realizado com sucesso",
+
+                    "Bem-vindo à Biblioteca Digital, " +
+                    usuario.nome +
+                    "! Você entrou na sua conta.",
+
+                    true
+
                 );
 
             }
+        );
 
 
-         
+        /* ==========================================
+           CARREGAR NOME LEMBRADO
+        ========================================== */
 
-            abrirPopup(
-
-                "Login realizado com sucesso",
-
-                "Bem-vindo à Biblioteca Digital, " +
-                usuario.nome +
-                "! Você entrou na sua conta.",
-
-                true
-
-            );
-
-        });
-
-
-        
         const nomeLembrado =
             localStorage.getItem(
                 "nomeLembrado"
@@ -813,9 +778,6 @@
                 true;
 
         }
-
-
-
 
     </script>
 
