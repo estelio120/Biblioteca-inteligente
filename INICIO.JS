@@ -2464,3 +2464,62 @@ document.addEventListener("DOMContentLoaded", () => {
 
     iniciar();
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const dadosUsuario = localStorage.getItem("usuarioLogado");
+
+    if (!dadosUsuario) {
+        window.location.href = "index.html";
+        return;
+    }
+
+    let usuario;
+
+    try {
+        usuario = JSON.parse(dadosUsuario);
+    } catch (erro) {
+        localStorage.removeItem("usuarioLogado");
+        window.location.href = "index.html";
+        return;
+    }
+
+    if (!usuario || usuario.logado !== true || !usuario.nome) {
+        localStorage.removeItem("usuarioLogado");
+        window.location.href = "index.html";
+        return;
+    }
+
+    const nome = usuario.nome.trim();
+    const apelido = usuario.apelido ? usuario.apelido.trim() : "";
+    const nomeCompleto = apelido ? `${nome} ${apelido}` : nome;
+    const inicial = nome.charAt(0).toUpperCase();
+
+    const headerNomeUtilizador = document.getElementById("headerNomeUtilizador");
+    const menuNomeUtilizador = document.getElementById("menuNomeUtilizador");
+    const nomeBoasVindas = document.getElementById("nomeBoasVindas");
+    const headerAvatarInicial = document.getElementById("headerAvatarInicial");
+    const menuAvatarInicial = document.getElementById("menuAvatarInicial");
+
+    if (headerNomeUtilizador) {
+        headerNomeUtilizador.textContent = nomeCompleto;
+    }
+
+    if (menuNomeUtilizador) {
+        menuNomeUtilizador.textContent = nomeCompleto;
+    }
+
+    if (nomeBoasVindas) {
+        nomeBoasVindas.textContent = nome;
+    }
+
+    if (headerAvatarInicial) {
+        headerAvatarInicial.textContent = inicial;
+    }
+
+    if (menuAvatarInicial) {
+        menuAvatarInicial.textContent = inicial;
+    }
+});
+
+
