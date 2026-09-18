@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -22,15 +23,37 @@
                 aria-controls="menuLateral"
                 aria-expanded="false"
             >
-                ☰
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M4 6h16M4 12h16M4 18h16"
+                          stroke="#2563eb"
+                          stroke-width="2"
+                          stroke-linecap="round"/>
+                </svg>
             </button>
 
             <a href="index.html" class="header-logo">
-                <span class="logo-icone">📚</span>
+
+                <span class="logo-icone">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5v-17Z"
+                              fill="#ffffff"/>
+                        <path d="M4 5v16.5A2.5 2.5 0 0 1 6.5 19H20"
+                              stroke="#bfdbfe"
+                              stroke-width="1.7"
+                              stroke-linecap="round"/>
+                        <path d="M8 6h8M8 10h8"
+                              stroke="#2563eb"
+                              stroke-width="1.5"
+                              stroke-linecap="round"/>
+                    </svg>
+                </span>
+
                 <span>Biblioteca Digital</span>
+
             </a>
 
         </div>
+
 
         <div class="header-direita">
 
@@ -41,9 +64,23 @@
                 aria-label="Notificações"
                 aria-expanded="false"
             >
-                🔔
+
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9Z"
+                          fill="#f59e0b"
+                          stroke="#d97706"
+                          stroke-width="1.4"
+                          stroke-linejoin="round"/>
+                    <path d="M10 21h4"
+                          stroke="#d97706"
+                          stroke-width="1.7"
+                          stroke-linecap="round"/>
+                </svg>
+
                 <span class="notificacao-contador" id="notificacaoContador">0</span>
+
             </button>
+
 
             <a href="perfil.html" class="header-utilizador">
 
@@ -52,6 +89,7 @@
                 </div>
 
                 <div class="header-utilizador-info">
+
                     <strong id="headerNomeUtilizador">
                         Utilizador
                     </strong>
@@ -59,6 +97,7 @@
                     <small>
                         Leitor
                     </small>
+
                 </div>
 
             </a>
@@ -78,10 +117,20 @@
             <a href="index.html" class="menu-logo">
 
                 <span class="logo-icone">
-                    📚
+
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5v-17Z"
+                              fill="#ffffff"/>
+                        <path d="M4 5v16.5A2.5 2.5 0 0 1 6.5 19H20"
+                              stroke="#bfdbfe"
+                              stroke-width="1.7"
+                              stroke-linecap="round"/>
+                    </svg>
+
                 </span>
 
                 <div>
+
                     <strong>
                         Biblioteca
                     </strong>
@@ -89,6 +138,7 @@
                     <small>
                         Digital Inteligente
                     </small>
+
                 </div>
 
             </a>
@@ -99,7 +149,12 @@
                 id="fecharMenu"
                 aria-label="Fechar menu"
             >
-                ×
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M6 6l12 12M18 6L6 18"
+                          stroke="#64748b"
+                          stroke-width="2"
+                          stroke-linecap="round"/>
+                </svg>
             </button>
 
         </div>
@@ -137,7 +192,10 @@
             <a href="index.html" class="menu-item ativo">
 
                 <span class="menu-icone">
-                    🏠
+                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M3 10.5 12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1v-10.5Z"
+                              fill="#2563eb"/>
+                    </svg>
                 </span>
 
                 <span>
@@ -150,7 +208,14 @@
             <a href="livros.html" class="menu-item">
 
                 <span class="menu-icone">
-                    📚
+                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M5 3h11a2 2 0 0 1 2 2v16H7a2 2 0 0 1-2-2V3Z"
+                              fill="#3b82f6"/>
+                        <path d="M7 21h12M8 7h7M8 11h7"
+                              stroke="#ffffff"
+                              stroke-width="1.5"
+                              stroke-linecap="round"/>
+                    </svg>
                 </span>
 
                 <span>
@@ -163,17 +228,17 @@
             <a href="favoritos.html" class="menu-item">
 
                 <span class="menu-icone">
-                    ❤️
+                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M20.8 8.8c0 5.5-8.8 10.2-8.8 10.2S3.2 14.3 3.2 8.8A4.8 4.8 0 0 1 12 6.1a4.8 4.8 0 0 1 8.8 2.7Z"
+                              fill="#ef4444"/>
+                    </svg>
                 </span>
 
                 <span>
                     Favoritos
                 </span>
 
-                <span
-                    class="menu-contador"
-                    id="menuFavoritosContador"
-                >
+                <span class="menu-contador" id="menuFavoritosContador">
                     0
                 </span>
 
@@ -183,7 +248,12 @@
             <a href="categorias.html" class="menu-item">
 
                 <span class="menu-icone">
-                    🗂️
+                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <rect x="3" y="3" width="7" height="7" rx="1.5" fill="#8b5cf6"/>
+                        <rect x="14" y="3" width="7" height="7" rx="1.5" fill="#a78bfa"/>
+                        <rect x="3" y="14" width="7" height="7" rx="1.5" fill="#c4b5fd"/>
+                        <rect x="14" y="14" width="7" height="7" rx="1.5" fill="#7c3aed"/>
+                    </svg>
                 </span>
 
                 <span>
@@ -196,29 +266,35 @@
             <a href="reservas.html" class="menu-item">
 
                 <span class="menu-icone">
-                    📖
+                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M6 3h10a2 2 0 0 1 2 2v16l-7-3-7 3V5a2 2 0 0 1 2-2Z"
+                              fill="#16a34a"/>
+                        <path d="M8 7h7M8 11h7"
+                              stroke="#ffffff"
+                              stroke-width="1.5"
+                              stroke-linecap="round"/>
+                    </svg>
                 </span>
 
                 <span>
                     Minhas reservas
                 </span>
 
-                <span
-                    class="menu-contador"
-                    id="menuReservasContador"
-                >
+                <span class="menu-contador" id="menuReservasContador">
                     0
                 </span>
 
             </a>
 
 
-
-
             <a href="perfil.html" class="menu-item">
 
                 <span class="menu-icone">
-                    👤
+                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <circle cx="12" cy="8" r="4" fill="#f59e0b"/>
+                        <path d="M4 21c.8-4 3.4-6 8-6s7.2 2 8 6"
+                              fill="#fbbf24"/>
+                    </svg>
                 </span>
 
                 <span>
@@ -226,8 +302,6 @@
                 </span>
 
             </a>
-
-
 
         </nav>
 
@@ -241,7 +315,19 @@
             >
 
                 <span class="menu-icone">
-                    🚪
+
+                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M10 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5"
+                              stroke="#ef4444"
+                              stroke-width="2"
+                              stroke-linecap="round"/>
+                        <path d="M14 8l4 4-4 4M18 12H9"
+                              stroke="#ef4444"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"/>
+                    </svg>
+
                 </span>
 
                 <span>
@@ -264,6 +350,7 @@
         <div class="notificacoes-cabecalho">
 
             <div>
+
                 <h3>
                     Notificações
                 </h3>
@@ -271,6 +358,7 @@
                 <span>
                     Atualizações da sua biblioteca
                 </span>
+
             </div>
 
             <button
@@ -278,7 +366,12 @@
                 id="fecharNotificacoes"
                 aria-label="Fechar notificações"
             >
-                ×
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M6 6l12 12M18 6L6 18"
+                          stroke="#64748b"
+                          stroke-width="2"
+                          stroke-linecap="round"/>
+                </svg>
             </button>
 
         </div>
@@ -292,7 +385,14 @@
             <div class="notificacao-vazia">
 
                 <span>
-                    🔔
+                    <svg width="38" height="38" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9Z"
+                              fill="#f59e0b"/>
+                        <path d="M10 21h4"
+                              stroke="#d97706"
+                              stroke-width="1.8"
+                              stroke-linecap="round"/>
+                    </svg>
                 </span>
 
                 <strong>
@@ -333,16 +433,25 @@
                     a sua próxima leitura.
                 </p>
 
-               </div>
+            </div>
 
             <div class="boas-vindas-ilustracao">
-                📚
+
+                <svg width="90" height="90" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5v-17Z"
+                          fill="#ffffff"/>
+                    <path d="M4 5v16.5A2.5 2.5 0 0 1 6.5 19H20"
+                          stroke="#bfdbfe"
+                          stroke-width="1.5"/>
+                    <path d="M8 6h8M8 10h8M8 14h5"
+                          stroke="#2563eb"
+                          stroke-width="1.4"
+                          stroke-linecap="round"/>
+                </svg>
+
             </div>
 
         </section>
-
-
-
 
 
         <section class="livro-destaque-section">
@@ -383,6 +492,8 @@
 
                 </div>
 
+            </div>
+
             <div class="destaque-capa">
 
                 <img
@@ -394,8 +505,6 @@
 
         </section>
 
-
-       
 
         <section class="categorias-section">
 
@@ -429,19 +538,19 @@
                 >
 
                     <span class="categoria-icone">
-                        🌍
+
+                        <svg width="23" height="23" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <circle cx="12" cy="12" r="9" fill="#3b82f6"/>
+                            <path d="M3 12h18M12 3c2.2 2.5 3.3 5.5 3.3 9S14.2 18.5 12 21c-2.2-2.5-3.3-5.5-3.3-9S9.8 5.5 12 3Z"
+                                  stroke="#ffffff"
+                                  stroke-width="1.3"/>
+                        </svg>
+
                     </span>
 
                     <div>
-
-                        <h3>
-                            Geografia
-                        </h3>
-
-                        <p>
-                            Explorar livros
-                        </p>
-
+                        <h3>Geografia</h3>
+                        <p>Explorar livros</p>
                     </div>
 
                 </a>
@@ -453,19 +562,26 @@
                 >
 
                     <span class="categoria-icone">
-                        🧠
+
+                        <svg width="23" height="23" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M9 20v-1.5A6 6 0 0 1 6 13a6 6 0 1 1 12 0 6 6 0 0 1-3 5.5V20H9Z"
+                                  fill="#8b5cf6"/>
+                            <path d="M9 22h6"
+                                  stroke="#7c3aed"
+                                  stroke-width="1.6"
+                                  stroke-linecap="round"/>
+                            <path d="M9 11c.4-1 1.2-1.5 2.2-1.5 1.1 0 1.8.6 1.8 1.5 0 .8-.5 1.2-1.2 1.6-.6.3-.8.7-.8 1.4"
+                                  stroke="#ffffff"
+                                  stroke-width="1.4"
+                                  stroke-linecap="round"/>
+                            <circle cx="12" cy="16.5" r=".8" fill="#ffffff"/>
+                        </svg>
+
                     </span>
 
                     <div>
-
-                        <h3>
-                            Psicologia
-                        </h3>
-
-                        <p>
-                            Explorar livros
-                        </p>
-
+                        <h3>Psicologia</h3>
+                        <p>Explorar livros</p>
                     </div>
 
                 </a>
@@ -477,19 +593,23 @@
                 >
 
                     <span class="categoria-icone">
-                        ⚽
+
+                        <svg width="23" height="23" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <circle cx="12" cy="12" r="9" fill="#16a34a"/>
+                            <path d="m8 5 4 3 4-3M4 11l4-3M20 11l-4-3M8 19l4-3 4 3"
+                                  stroke="#ffffff"
+                                  stroke-width="1.3"
+                                  stroke-linejoin="round"/>
+                            <path d="M8 8l1 5 3 2 3-2 1-5"
+                                  stroke="#ffffff"
+                                  stroke-width="1.3"/>
+                        </svg>
+
                     </span>
 
                     <div>
-
-                        <h3>
-                            Desporto
-                        </h3>
-
-                        <p>
-                            Explorar livros
-                        </p>
-
+                        <h3>Desporto</h3>
+                        <p>Explorar livros</p>
                     </div>
 
                 </a>
@@ -501,19 +621,21 @@
                 >
 
                     <span class="categoria-icone">
-                        🕊️
+
+                        <svg width="23" height="23" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M12 3c3 4 6 6 6 10a6 6 0 1 1-12 0c0-4 3-6 6-10Z"
+                                  fill="#60a5fa"/>
+                            <path d="M12 8v7M9.5 11.5h5"
+                                  stroke="#ffffff"
+                                  stroke-width="1.6"
+                                  stroke-linecap="round"/>
+                        </svg>
+
                     </span>
 
                     <div>
-
-                        <h3>
-                            Religião
-                        </h3>
-
-                        <p>
-                            Explorar livros
-                        </p>
-
+                        <h3>Religião</h3>
+                        <p>Explorar livros</p>
                     </div>
 
                 </a>
@@ -525,19 +647,25 @@
                 >
 
                     <span class="categoria-icone">
-                        💻
+
+                        <svg width="23" height="23" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <rect x="3" y="4" width="18" height="13" rx="2" fill="#0ea5e9"/>
+                            <path d="M8 21h8M12 17v4"
+                                  stroke="#0369a1"
+                                  stroke-width="1.7"
+                                  stroke-linecap="round"/>
+                            <path d="m9 10 2 2 4-4"
+                                  stroke="#ffffff"
+                                  stroke-width="1.6"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"/>
+                        </svg>
+
                     </span>
 
                     <div>
-
-                        <h3>
-                            Informática
-                        </h3>
-
-                        <p>
-                            Explorar livros
-                        </p>
-
+                        <h3>Informática</h3>
+                        <p>Explorar livros</p>
                     </div>
 
                 </a>
@@ -549,19 +677,21 @@
                 >
 
                     <span class="categoria-icone">
-                        ⚖️
+
+                        <svg width="23" height="23" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M12 4v15M7 7h10M5 20h14"
+                                  stroke="#7c3aed"
+                                  stroke-width="1.6"
+                                  stroke-linecap="round"/>
+                            <path d="m4 8 3 6H1l3-6ZM20 8l3 6h-6l3-6Z"
+                                  fill="#a78bfa"/>
+                        </svg>
+
                     </span>
 
                     <div>
-
-                        <h3>
-                            Direito
-                        </h3>
-
-                        <p>
-                            Explorar livros
-                        </p>
-
+                        <h3>Direito</h3>
+                        <p>Explorar livros</p>
                     </div>
 
                 </a>
@@ -573,19 +703,20 @@
                 >
 
                     <span class="categoria-icone">
-                        💰
+
+                        <svg width="23" height="23" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <circle cx="12" cy="12" r="9" fill="#22c55e"/>
+                            <path d="M14.5 8.5c-.7-.7-1.6-1-2.6-1-1.5 0-2.5.8-2.5 1.8 0 2.7 5.4 1.2 5.4 4 0 1.1-1 1.9-2.7 1.9-1.1 0-2.1-.4-2.8-1.1M12 6v12"
+                                  stroke="#ffffff"
+                                  stroke-width="1.5"
+                                  stroke-linecap="round"/>
+                        </svg>
+
                     </span>
 
                     <div>
-
-                        <h3>
-                            Economia
-                        </h3>
-
-                        <p>
-                            Explorar livros
-                        </p>
-
+                        <h3>Economia</h3>
+                        <p>Explorar livros</p>
                     </div>
 
                 </a>
@@ -597,19 +728,21 @@
                 >
 
                     <span class="categoria-icone">
-                        ❤️
+
+                        <svg width="23" height="23" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M20.8 8.8c0 5.5-8.8 10.2-8.8 10.2S3.2 14.3 3.2 8.8A4.8 4.8 0 0 1 12 6.1a4.8 4.8 0 0 1 8.8 2.7Z"
+                                  fill="#ef4444"/>
+                            <path d="M7 9.5c1 .8 2 1.2 3 1.2"
+                                  stroke="#fecaca"
+                                  stroke-width="1.2"
+                                  stroke-linecap="round"/>
+                        </svg>
+
                     </span>
 
                     <div>
-
-                        <h3>
-                            Romance
-                        </h3>
-
-                        <p>
-                            Explorar livros
-                        </p>
-
+                        <h3>Romance</h3>
+                        <p>Explorar livros</p>
                     </div>
 
                 </a>
@@ -621,19 +754,21 @@
                 >
 
                     <span class="categoria-icone">
-                        📚
+
+                        <svg width="23" height="23" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M4 5a2 2 0 0 1 2-2h12v17H6a2 2 0 0 0-2 2V5Z"
+                                  fill="#6366f1"/>
+                            <path d="M6 20h12M8 7h7M8 11h7"
+                                  stroke="#ffffff"
+                                  stroke-width="1.4"
+                                  stroke-linecap="round"/>
+                        </svg>
+
                     </span>
 
                     <div>
-
-                        <h3>
-                            Outros
-                        </h3>
-
-                        <p>
-                            Explorar livros
-                        </p>
-
+                        <h3>Outros</h3>
+                        <p>Explorar livros</p>
                     </div>
 
                 </a>
@@ -642,9 +777,7 @@
 
         </section>
 
-      
 
-  
     </main>
 
 
@@ -658,7 +791,13 @@
                 <a href="index.html" class="footer-logo">
 
                     <span>
-                        
+                        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5v-17Z"
+                                  fill="#ffffff"/>
+                            <path d="M4 5v16.5A2.5 2.5 0 0 1 6.5 19H20"
+                                  stroke="#bfdbfe"
+                                  stroke-width="1.5"/>
+                        </svg>
                     </span>
 
                     Biblioteca Digital
@@ -774,3 +913,4 @@
 
 </body>
 </html>
+```
