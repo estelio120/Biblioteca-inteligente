@@ -1,98 +1,36 @@
 <!DOCTYPE html>
-
 <html lang="pt">
 
 <head>
 
+    <meta charset="UTF-8">
 
-<meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0">
+    <title>Entrar - Biblioteca Digital</title>
 
-<title>Entrar - Biblioteca Digital</title>
-
-<link
-    rel="stylesheet"
-    href="css/LOGIN.css">
-
+    <link rel="stylesheet" href="css/LOGIN.css">
 
 </head>
 
 <body>
 
-<div class="fundo-decoracao decoracao-1"></div>
-<div class="fundo-decoracao decoracao-2"></div>
+    <div class="fundo-decoracao decoracao-1"></div>
+    <div class="fundo-decoracao decoracao-2"></div>
 
 
-<main class="pagina">
+    <main class="pagina">
 
-    <section class="cartao-login">
-
-
-        <!-- MARCA -->
-        <div class="marca">
-
-            <div class="marca-icone">
-
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2">
-
-                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/>
-                    <path d="M8 6h8"/>
-                    <path d="M8 10h8"/>
-
-                </svg>
-
-            </div>
-
-            <div>
-
-                <strong>
-                    Biblioteca Digital
-                </strong>
-
-                <span>
-                    Biblioteca Provincial de Pemba
-                </span>
-
-            </div>
-
-        </div>
+        <section class="cartao-login">
 
 
-        <!-- CABEÇALHO -->
-        <div class="cabecalho">
+            <!-- MARCA -->
 
-            <h1>
-                Bem-vindo de volta
-            </h1>
+            <div class="marca">
 
-            <p>
-                Entre na sua conta para acessar livros,
-                reservas e todas as funcionalidades da biblioteca.
-            </p>
-
-        </div>
-
-
-        <!-- FORMULÁRIO -->
-        <form id="formLogin">
-
-
-            <!-- NOME -->
-            <div class="campo">
-
-                <label for="nome">
-                    Nome
-                </label>
-
-                <div class="input-container">
+                <div class="marca-icone">
 
                     <svg
                         viewBox="0 0 24 24"
@@ -100,67 +38,61 @@
                         stroke="currentColor"
                         stroke-width="2">
 
-                        <circle
-                            cx="12"
-                            cy="8"
-                            r="4"/>
-
-                        <path
-                            d="M4 21a8 8 0 0 1 16 0"/>
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/>
+                        <path d="M8 6h8"/>
+                        <path d="M8 10h8"/>
 
                     </svg>
 
-                    <input
-                        type="text"
-                        id="nome"
-                        placeholder="Digite o seu nome ou nome completo"
-                        autocomplete="username"
-                        required>
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Biblioteca Digital
+                    </strong>
+
+                    <span>
+                        Biblioteca Provincial de Pemba
+                    </span>
 
                 </div>
 
             </div>
 
 
-            <!-- SENHA -->
-            <div class="campo">
+            <!-- CABEÇALHO -->
 
-                <label for="senha">
-                    Senha
-                </label>
+            <div class="cabecalho">
 
-                <div class="input-container">
+                <h1>
+                    Bem-vindo de volta
+                </h1>
 
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2">
+                <p>
+                    Entre na sua conta para acessar livros,
+                    reservas e todas as funcionalidades da biblioteca.
+                </p>
 
-                        <rect
-                            x="4"
-                            y="10"
-                            width="16"
-                            height="11"
-                            rx="2"/>
+            </div>
 
-                        <path
-                            d="M8 10V7a4 4 0 0 1 8 0v3"/>
 
-                    </svg>
+            <!-- FORMULÁRIO -->
 
-                    <input
-                        type="password"
-                        id="senha"
-                        placeholder="Digite a sua senha"
-                        autocomplete="current-password"
-                        required>
+            <form id="formLogin">
 
-                    <button
-                        type="button"
-                        class="mostrar-senha"
-                        id="mostrarSenha"
-                        aria-label="Mostrar senha">
+
+                <!-- NOME -->
+
+                <div class="campo">
+
+                    <label for="nome">
+                        Nome
+                    </label>
+
+                    <div class="input-container">
 
                         <svg
                             viewBox="0 0 24 24"
@@ -168,58 +100,194 @@
                             stroke="currentColor"
                             stroke-width="2">
 
-                            <path
-                                d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/>
-
                             <circle
                                 cx="12"
-                                cy="12"
-                                r="2.5"/>
+                                cy="8"
+                                r="4"/>
+
+                            <path
+                                d="M4 21a8 8 0 0 1 16 0"/>
 
                         </svg>
 
-                    </button>
+
+                        <input
+                            type="text"
+                            id="nome"
+                            placeholder="Digite o seu nome"
+                            autocomplete="given-name"
+                            required>
+
+                    </div>
 
                 </div>
 
-            </div>
+
+                <!-- APELIDO -->
+
+                <div class="campo">
+
+                    <label for="apelido">
+                        Apelido
+                    </label>
+
+                    <div class="input-container">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2">
+
+                            <path d="M20 21a8 8 0 0 0-16 0"/>
+                            <circle cx="12" cy="7" r="4"/>
+
+                        </svg>
 
 
-            <!-- OPÇÕES -->
-            <div class="opcoes">
+                        <input
+                            type="text"
+                            id="apelido"
+                            placeholder="Digite o seu apelido"
+                            autocomplete="family-name"
+                            required>
 
-                <label class="lembrar">
+                    </div>
 
-                    <input
-                        type="checkbox"
-                        id="lembrar">
+                </div>
+
+
+                <!-- SENHA -->
+
+                <div class="campo">
+
+                    <label for="senha">
+                        Senha
+                    </label>
+
+                    <div class="input-container">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2">
+
+                            <rect
+                                x="4"
+                                y="10"
+                                width="16"
+                                height="11"
+                                rx="2"/>
+
+                            <path
+                                d="M8 10V7a4 4 0 0 1 8 0v3"/>
+
+                        </svg>
+
+
+                        <input
+                            type="password"
+                            id="senha"
+                            placeholder="Digite a sua senha"
+                            autocomplete="current-password"
+                            required>
+
+
+                        <button
+                            type="button"
+                            class="mostrar-senha"
+                            id="mostrarSenha"
+                            aria-label="Mostrar senha">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2">
+
+                                <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/>
+                                <circle cx="12" cy="12" r="2.5"/>
+
+                            </svg>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OPÇÕES -->
+
+                <div class="opcoes">
+
+                    <label class="lembrar">
+
+                        <input
+                            type="checkbox"
+                            id="lembrar">
+
+                        <span>
+                            Lembrar de mim
+                        </span>
+
+                    </label>
+
+
+                    <a
+                        href="RECUPERAR-SENHA.html"
+                        id="esqueciSenha">
+
+                        Esqueci a senha
+
+                    </a>
+
+                </div>
+
+
+                <!-- BOTÃO ENTRAR -->
+
+                <button
+                    type="submit"
+                    class="btn-entrar">
 
                     <span>
-                        Lembrar de mim
+                        Entrar na minha conta
                     </span>
 
-                </label>
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2">
+
+                        <path d="M5 12h14"/>
+                        <path d="m13 6 6 6-6 6"/>
+
+                    </svg>
+
+                </button>
+
+            </form>
 
 
-                <a
-                    href="RECUPERAR-SENHA.html"
-                    id="esqueciSenha">
+            <!-- SEPARADOR -->
 
-                    Esqueci a senha
+            <div class="separador">
 
-                </a>
+                <span>
+                    Ainda não possui uma conta?
+                </span>
 
             </div>
 
 
-            <!-- BOTÃO ENTRAR -->
-            <button
-                type="submit"
-                class="btn-entrar">
+            <!-- CADASTRO -->
 
-                <span>
-                    Entrar na minha conta
-                </span>
+            <a
+                href="Pagina de cadastro.html"
+                class="btn-cadastro">
 
                 <svg
                     viewBox="0 0 24 24"
@@ -227,633 +295,562 @@
                     stroke="currentColor"
                     stroke-width="2">
 
-                    <path d="M5 12h14"/>
-                    <path d="m13 6 6 6-6 6"/>
+                    <path
+                        d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+
+                    <circle
+                        cx="9"
+                        cy="7"
+                        r="4"/>
+
+                    <path d="M19 8v6"/>
+                    <path d="M22 11h-6"/>
 
                 </svg>
 
+                Criar uma nova conta
+
+            </a>
+
+
+            <!-- RODAPÉ -->
+
+            <p class="rodape">
+
+                Acesse os recursos digitais da
+                Biblioteca Provincial de Pemba
+                de forma simples e segura.
+
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- POPUP -->
+
+    <div
+        id="popup"
+        class="popup">
+
+        <div class="popup-conteudo">
+
+            <div
+                id="popupIcone"
+                class="popup-icone">
+
+
+                <svg
+                    id="iconeSucesso"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+
+                    <path
+                        d="m5 12 4 4L19 6"/>
+
+                </svg>
+
+
+                <svg
+                    id="iconeErro"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+
+                    <path d="M6 6l12 12"/>
+                    <path d="M18 6L6 18"/>
+
+                </svg>
+
+            </div>
+
+
+            <h2 id="popupTitulo">
+                Login
+            </h2>
+
+
+            <p id="popupMensagem">
+                Mensagem
+            </p>
+
+
+            <button
+                id="popupBotao"
+                type="button">
+
+                Continuar
+
             </button>
 
-        </form>
-
-
-        <!-- SEPARADOR -->
-        <div class="separador">
-
-            <span>
-                Ainda não possui uma conta?
-            </span>
-
         </div>
-
-
-        <!-- CADASTRO -->
-        <a
-            href="Pagina de cadastro.html"
-            class="btn-cadastro">
-
-            <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2">
-
-                <path
-                    d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-
-                <circle
-                    cx="9"
-                    cy="7"
-                    r="4"/>
-
-                <path
-                    d="M19 8v6"/>
-
-                <path
-                    d="M22 11h-6"/>
-
-            </svg>
-
-            Criar uma nova conta
-
-        </a>
-
-
-        <p class="rodape">
-
-            Acesse os recursos digitais da
-            Biblioteca Provincial de Pemba
-            de forma simples e segura.
-
-        </p>
-
-    </section>
-
-</main>
-
-
-<!-- POPUP -->
-<div
-    id="popup"
-    class="popup">
-
-    <div class="popup-conteudo">
-
-        <div
-            id="popupIcone"
-            class="popup-icone">
-
-            <svg
-                id="iconeSucesso"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2">
-
-                <path
-                    d="m5 12 4 4L19 6"/>
-
-            </svg>
-
-
-            <svg
-                id="iconeErro"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2">
-
-                <path
-                    d="M6 6l12 12"/>
-
-                <path
-                    d="M18 6L6 18"/>
-
-            </svg>
-
-        </div>
-
-
-        <h2 id="popupTitulo">
-            Login
-        </h2>
-
-
-        <p id="popupMensagem">
-            Mensagem
-        </p>
-
-
-        <button
-            id="popupBotao"
-            type="button">
-
-            Continuar
-
-        </button>
 
     </div>
-
-</div>
 
 
 <script>
 
-    /* =========================================
-       ELEMENTOS
-    ========================================= */
 
-    const formLogin =
-        document.getElementById("formLogin");
+/* ================================
+   ELEMENTOS
+================================ */
 
-    const nomeInput =
-        document.getElementById("nome");
+const formLogin =
+    document.getElementById("formLogin");
 
-    const senhaInput =
-        document.getElementById("senha");
+const nomeInput =
+    document.getElementById("nome");
 
-    const lembrar =
-        document.getElementById("lembrar");
+const apelidoInput =
+    document.getElementById("apelido");
 
-    const mostrarSenha =
-        document.getElementById("mostrarSenha");
+const senhaInput =
+    document.getElementById("senha");
 
+const lembrar =
+    document.getElementById("lembrar");
 
-    /* =========================================
-       POPUP
-    ========================================= */
-
-    const popup =
-        document.getElementById("popup");
-
-    const popupIcone =
-        document.getElementById("popupIcone");
-
-    const popupTitulo =
-        document.getElementById("popupTitulo");
-
-    const popupMensagem =
-        document.getElementById("popupMensagem");
-
-    const popupBotao =
-        document.getElementById("popupBotao");
-
-    const iconeSucesso =
-        document.getElementById("iconeSucesso");
-
-    const iconeErro =
-        document.getElementById("iconeErro");
+const mostrarSenha =
+    document.getElementById("mostrarSenha");
 
 
-    let loginFoiSucesso = false;
+/* ================================
+   POPUP
+================================ */
+
+const popup =
+    document.getElementById("popup");
+
+const popupIcone =
+    document.getElementById("popupIcone");
+
+const popupTitulo =
+    document.getElementById("popupTitulo");
+
+const popupMensagem =
+    document.getElementById("popupMensagem");
+
+const popupBotao =
+    document.getElementById("popupBotao");
+
+const iconeSucesso =
+    document.getElementById("iconeSucesso");
+
+const iconeErro =
+    document.getElementById("iconeErro");
 
 
-    /* =========================================
-       MOSTRAR / ESCONDER SENHA
-    ========================================= */
-
-    mostrarSenha.addEventListener(
-        "click",
-        function() {
-
-            if (senhaInput.type === "password") {
-
-                senhaInput.type = "text";
-
-                this.classList.add("ativo");
-
-                this.setAttribute(
-                    "aria-label",
-                    "Esconder senha"
-                );
-
-            } else {
-
-                senhaInput.type = "password";
-
-                this.classList.remove("ativo");
-
-                this.setAttribute(
-                    "aria-label",
-                    "Mostrar senha"
-                );
-
-            }
-
-        }
-    );
+let loginFoiSucesso = false;
 
 
-    /* =========================================
-       POPUP
-    ========================================= */
+/* ================================
+   MOSTRAR SENHA
+================================ */
 
-    function abrirPopup(
-        titulo,
-        mensagem,
-        sucesso
-    ) {
+mostrarSenha.addEventListener(
+    "click",
+    function() {
 
-        popupTitulo.textContent =
-            titulo;
+        if (senhaInput.type === "password") {
 
-        popupMensagem.textContent =
-            mensagem;
+            senhaInput.type = "text";
 
-        loginFoiSucesso =
-            sucesso;
+            this.classList.add("ativo");
 
-
-        popupIcone.classList.remove(
-            "erro"
-        );
-
-        iconeSucesso.style.display =
-            "none";
-
-        iconeErro.style.display =
-            "none";
-
-
-        if (sucesso) {
-
-            iconeSucesso.style.display =
-                "block";
-
-            popupBotao.textContent =
-                "Ir para a página inicial";
+            this.setAttribute(
+                "aria-label",
+                "Esconder senha"
+            );
 
         } else {
 
-            iconeErro.style.display =
-                "block";
+            senhaInput.type = "password";
 
-            popupIcone.classList.add(
-                "erro"
+            this.classList.remove("ativo");
+
+            this.setAttribute(
+                "aria-label",
+                "Mostrar senha"
+            );
+        }
+
+    }
+);
+
+
+/* ================================
+   POPUP
+================================ */
+
+function abrirPopup(
+    titulo,
+    mensagem,
+    sucesso
+) {
+
+    popupTitulo.textContent =
+        titulo;
+
+    popupMensagem.textContent =
+        mensagem;
+
+    loginFoiSucesso =
+        sucesso;
+
+    popupIcone.classList.remove("erro");
+
+    iconeSucesso.style.display =
+        "none";
+
+    iconeErro.style.display =
+        "none";
+
+
+    if (sucesso) {
+
+        iconeSucesso.style.display =
+            "block";
+
+        popupBotao.textContent =
+            "Ir para a página inicial";
+
+    } else {
+
+        iconeErro.style.display =
+            "block";
+
+        popupIcone.classList.add(
+            "erro"
+        );
+
+        popupBotao.textContent =
+            "Corrigir dados";
+
+    }
+
+    popup.classList.add("ativo");
+}
+
+
+function fecharPopup() {
+
+    popup.classList.remove(
+        "ativo"
+    );
+
+}
+
+
+popupBotao.addEventListener(
+    "click",
+    function() {
+
+        if (!loginFoiSucesso) {
+
+            fecharPopup();
+
+            nomeInput.focus();
+
+            return;
+        }
+
+
+        window.location.href =
+            "INICIO.html";
+
+    }
+);
+
+
+popup.addEventListener(
+    "click",
+    function(event) {
+
+        if (event.target === popup) {
+
+            fecharPopup();
+
+        }
+
+    }
+);
+
+
+/* ================================
+   LOGIN
+================================ */
+
+formLogin.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+
+        const nome =
+            nomeInput.value.trim();
+
+        const apelido =
+            apelidoInput.value.trim();
+
+        const senha =
+            senhaInput.value;
+
+
+        /* NOME */
+
+        if (nome.length < 2) {
+
+            abrirPopup(
+                "Nome inválido",
+                "Digite o seu nome para continuar.",
+                false
             );
 
-            popupBotao.textContent =
-                "Corrigir dados";
-
+            return;
         }
 
 
-        popup.classList.add(
-            "ativo"
-        );
+        /* APELIDO */
 
-    }
+        if (apelido.length < 2) {
 
+            abrirPopup(
+                "Apelido inválido",
+                "Digite o seu apelido para continuar.",
+                false
+            );
 
-    function fecharPopup() {
-
-        popup.classList.remove(
-            "ativo"
-        );
-
-    }
-
-
-    /* =========================================
-       BOTÃO POPUP
-    ========================================= */
-
-    popupBotao.addEventListener(
-        "click",
-        function() {
-
-            if (!loginFoiSucesso) {
-
-                fecharPopup();
-
-                return;
-            }
-
-
-            window.location.href =
-                "INICIO.html";
-
+            return;
         }
-    );
 
 
-    /* =========================================
-       CLICAR FORA
-    ========================================= */
+        /* SENHA */
 
-    popup.addEventListener(
-        "click",
-        function(event) {
+        if (senha.length === 0) {
 
-            if (event.target === popup) {
+            abrirPopup(
+                "Senha obrigatória",
+                "Digite a sua senha para continuar.",
+                false
+            );
 
-                fecharPopup();
-
-            }
-
+            return;
         }
-    );
 
 
-    /* =========================================
-       LOGIN
-    ========================================= */
+        /* ================================
+           PEGAR USUÁRIO CADASTRADO
+        ================================= */
 
-    formLogin.addEventListener(
-        "submit",
-        function(event) {
-
-            event.preventDefault();
-
-
-            const nomeDigitado =
-                nomeInput.value.trim();
-
-            const senhaDigitada =
-                senhaInput.value;
+        const dadosUsuario =
+            localStorage.getItem(
+                "usuarioBiblioteca"
+            );
 
 
-            /* VALIDAR NOME */
+        if (!dadosUsuario) {
 
-            if (nomeDigitado.length < 2) {
+            abrirPopup(
+                "Conta não encontrada",
+                "Não existe nenhuma conta cadastrada. Crie uma conta antes de entrar.",
+                false
+            );
 
-                abrirPopup(
-                    "Nome inválido",
-                    "Digite o seu nome ou nome completo para continuar.",
-                    false
+            return;
+        }
+
+
+        let usuario;
+
+
+        try {
+
+            usuario =
+                JSON.parse(
+                    dadosUsuario
                 );
 
-                nomeInput.focus();
+        } catch (erro) {
 
-                return;
-            }
+            abrirPopup(
+                "Erro na conta",
+                "Os dados da conta estão inválidos. Faça o cadastro novamente.",
+                false
+            );
 
-
-            /* VALIDAR SENHA */
-
-            if (senhaDigitada.length === 0) {
-
-                abrirPopup(
-                    "Senha obrigatória",
-                    "Digite a sua senha para continuar.",
-                    false
-                );
-
-                senhaInput.focus();
-
-                return;
-            }
+            return;
+        }
 
 
-            /* BUSCAR CONTA */
+        /* ================================
+           COMPARAR NOME
+        ================================= */
 
-            const dadosUsuario =
-                localStorage.getItem(
-                    "usuarioBiblioteca"
-                );
-
-
-            if (!dadosUsuario) {
-
-                abrirPopup(
-                    "Conta não encontrada",
-                    "Não existe nenhuma conta cadastrada. Crie uma conta antes de entrar.",
-                    false
-                );
-
-                return;
-            }
-
-
-            /* CONVERTER DADOS */
-
-            let usuario;
-
-            try {
-
-                usuario =
-                    JSON.parse(
-                        dadosUsuario
-                    );
-
-            } catch (erro) {
-
-                localStorage.removeItem(
-                    "usuarioBiblioteca"
-                );
-
-                abrirPopup(
-                    "Erro na conta",
-                    "Os dados da conta estão inválidos. Faça o cadastro novamente.",
-                    false
-                );
-
-                return;
-            }
-
-
-            /* VERIFICAR DADOS */
-
-            if (
-                !usuario ||
-                typeof usuario.nome !== "string" ||
-                typeof usuario.senha !== "string"
-            ) {
-
-                localStorage.removeItem(
-                    "usuarioBiblioteca"
-                );
-
-                abrirPopup(
-                    "Dados inválidos",
-                    "Os dados da conta estão incompletos. Faça o cadastro novamente.",
-                    false
-                );
-
-                return;
-            }
-
-
-            /* =====================================
-               PREPARAR NOME E APELIDO
-            ===================================== */
-
-            const nomeSalvo =
-                usuario.nome
-                    .trim()
-                    .toLowerCase();
-
-
-            const apelidoSalvo =
-                String(
-                    usuario.apelido || ""
-                )
-                .trim()
-                .toLowerCase();
-
-
-            const nomeInformado =
-                nomeDigitado
-                    .trim()
-                    .toLowerCase();
-
-
-            /* =====================================
-               OPÇÃO 1:
-               SOMENTE NOME
-            ===================================== */
-
-            const nomeCurtoCorreto =
-                nomeInformado ===
-                nomeSalvo;
-
-
-            /* =====================================
-               OPÇÃO 2:
-               NOME + APELIDO
-            ===================================== */
-
-            const nomeCompletoSalvo =
-                (
-                    nomeSalvo +
-                    " " +
-                    apelidoSalvo
-                )
+        const nomeCorreto =
+            usuario.nome
+                .toLowerCase()
+                .trim() ===
+            nome
+                .toLowerCase()
                 .trim();
 
 
-            const nomeCompletoCorreto =
-                nomeInformado ===
-                nomeCompletoSalvo;
+        /* ================================
+           COMPARAR APELIDO
+        ================================= */
+
+        const apelidoCorreto =
+            usuario.apelido
+                .toLowerCase()
+                .trim() ===
+            apelido
+                .toLowerCase()
+                .trim();
 
 
-            /* =====================================
-               ACEITAR OS DOIS
-            ===================================== */
+        /* ================================
+           COMPARAR SENHA
+        ================================= */
 
-            const nomeCorreto =
-                nomeCurtoCorreto ||
-                nomeCompletoCorreto;
-
-
-            /* =====================================
-               VERIFICAR SENHA
-            ===================================== */
-
-            const senhaCorreta =
-                usuario.senha ===
-                senhaDigitada;
+        const senhaCorreta =
+            usuario.senha === senha;
 
 
-            /* =====================================
-               DADOS INCORRETOS
-            ===================================== */
+        /* ================================
+           VERIFICAR TUDO
+        ================================= */
 
-            if (
-                !nomeCorreto ||
-                !senhaCorreta
-            ) {
-
-                abrirPopup(
-                    "Dados incorretos",
-                    "O nome ou a senha não correspondem à conta cadastrada.",
-                    false
-                );
-
-                return;
-            }
-
-
-            /* =====================================
-               CRIAR SESSÃO
-            ===================================== */
-
-            const sessao = {
-
-                nome:
-                    usuario.nome,
-
-                apelido:
-                    usuario.apelido,
-
-                logado:
-                    true,
-
-                dataLogin:
-                    new Date().toISOString()
-
-            };
-
-
-            localStorage.setItem(
-                "usuarioLogado",
-                JSON.stringify(sessao)
-            );
-
-
-            /* =====================================
-               LEMBRAR NOME
-            ===================================== */
-
-            if (lembrar.checked) {
-
-                localStorage.setItem(
-                    "nomeLembrado",
-                    nomeDigitado
-                );
-
-            } else {
-
-                localStorage.removeItem(
-                    "nomeLembrado"
-                );
-
-            }
-
-
-            /* =====================================
-               LOGIN CONCLUÍDO
-            ===================================== */
+        if (
+            !nomeCorreto ||
+            !apelidoCorreto ||
+            !senhaCorreta
+        ) {
 
             abrirPopup(
-
-                "Login realizado com sucesso",
-
-                "Bem-vindo à Biblioteca Digital, " +
-                usuario.nome +
-                "! Você entrou na sua conta.",
-
-                true
-
+                "Dados incorretos",
+                "O nome, apelido ou senha não correspondem à conta cadastrada.",
+                false
             );
 
+            return;
         }
-    );
 
 
-    /* =========================================
-       NOME LEMBRADO
-    ========================================= */
+        /* ================================
+           CRIAR SESSÃO
+        ================================= */
 
-    const nomeLembrado =
-        localStorage.getItem(
-            "nomeLembrado"
+        const sessao = {
+
+            nome: usuario.nome,
+
+            apelido: usuario.apelido,
+
+            logado: true,
+
+            dataLogin:
+                new Date().toISOString()
+
+        };
+
+
+        localStorage.setItem(
+            "usuarioLogado",
+            JSON.stringify(sessao)
         );
 
 
-    if (nomeLembrado) {
+        /* ================================
+           LEMBRAR DE MIM
+        ================================= */
 
-        nomeInput.value =
-            nomeLembrado;
+        if (lembrar.checked) {
 
-        lembrar.checked =
-            true;
+            localStorage.setItem(
+                "nomeLembrado",
+                nome
+            );
+
+            localStorage.setItem(
+                "apelidoLembrado",
+                apelido
+            );
+
+        } else {
+
+            localStorage.removeItem(
+                "nomeLembrado"
+            );
+
+            localStorage.removeItem(
+                "apelidoLembrado"
+            );
+
+        }
+
+
+        /* ================================
+           LOGIN CONCLUÍDO
+        ================================= */
+
+        abrirPopup(
+
+            "Login realizado com sucesso",
+
+            "Bem-vindo à Biblioteca Digital, " +
+            usuario.nome +
+            " " +
+            usuario.apelido +
+            "! Você entrou na sua conta.",
+
+            true
+
+        );
 
     }
+);
+
+
+/* ================================
+   RECUPERAR NOME LEMBRADO
+================================ */
+
+const nomeLembrado =
+    localStorage.getItem(
+        "nomeLembrado"
+    );
+
+const apelidoLembrado =
+    localStorage.getItem(
+        "apelidoLembrado"
+    );
+
+
+if (nomeLembrado) {
+
+    nomeInput.value =
+        nomeLembrado;
+
+    lembrar.checked =
+        true;
+
+}
+
+
+if (apelidoLembrado) {
+
+    apelidoInput.value =
+        apelidoLembrado;
+
+}
+
 
 </script>
-```
 
 </body>
-
 </html>
