@@ -8,22 +8,14 @@
     --azul: #2563eb;
     --azul-escuro: #1d4ed8;
     --azul-claro: #eff6ff;
-
     --texto: #172033;
     --texto-suave: #64748b;
-
     --borda: #e2e8f0;
     --fundo: #f4f7fb;
     --branco: #ffffff;
-
     --verde: #10b981;
     --vermelho: #ef4444;
-    --laranja: #f59e0b;
 }
-
-/* =========================
-   BASE
-========================= */
 
 html {
     min-height: 100%;
@@ -32,6 +24,7 @@ html {
 body {
     min-height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
+
     background:
         radial-gradient(
             circle at 10% 15%,
@@ -56,10 +49,6 @@ body {
     position: relative;
     overflow-x: hidden;
 }
-
-/* =========================
-   DECORAÇÕES DO FUNDO
-========================= */
 
 body::before {
     content: "";
@@ -99,11 +88,8 @@ body::after {
 
 .fundo-decoracao {
     position: fixed;
-
     border-radius: 50%;
-
     pointer-events: none;
-
     z-index: 0;
 }
 
@@ -127,12 +113,9 @@ body::after {
     bottom: 20%;
 }
 
-/* =========================
-   PÁGINA
-========================= */
-
 .pagina {
     width: 100%;
+
     display: flex;
     justify-content: center;
 
@@ -140,13 +123,9 @@ body::after {
     z-index: 2;
 }
 
-/* =========================
-   CARTÃO DE CADASTRO
-========================= */
-
-.cartao-cadastro {
+.cartao-login {
     width: 100%;
-    max-width: 500px;
+    max-width: 450px;
 
     background: rgba(255, 255, 255, 0.96);
 
@@ -154,7 +133,7 @@ body::after {
 
     border-radius: 24px;
 
-    padding: 36px 38px;
+    padding: 38px;
 
     box-shadow:
         0 25px 60px rgba(15, 23, 42, 0.10),
@@ -166,6 +145,7 @@ body::after {
 }
 
 @keyframes entrada {
+
     from {
         opacity: 0;
         transform: translateY(25px);
@@ -175,11 +155,10 @@ body::after {
         opacity: 1;
         transform: translateY(0);
     }
+
 }
 
-/* Linha azul no topo */
-
-.cartao-cadastro::before {
+.cartao-login::before {
     content: "";
 
     display: block;
@@ -189,23 +168,19 @@ body::after {
 
     border-radius: 10px;
 
-    background: linear-gradient(
-        90deg,
-        var(--azul),
-        #60a5fa
-    );
+    background:
+        linear-gradient(
+            90deg,
+            var(--azul),
+            #60a5fa
+        );
 
     margin: 0 auto 25px;
 }
 
-/* =========================
-   MARCA / LOGO
-========================= */
-
 .marca {
     display: flex;
     align-items: center;
-
     justify-content: center;
 
     gap: 12px;
@@ -216,8 +191,6 @@ body::after {
 .marca-icone {
     width: 48px;
     height: 48px;
-
-    flex-shrink: 0;
 
     border-radius: 14px;
 
@@ -254,13 +227,8 @@ body::after {
     font-size: 12px;
 }
 
-/* =========================
-   CABEÇALHO
-========================= */
-
 .cabecalho {
     text-align: center;
-
     margin-bottom: 28px;
 }
 
@@ -277,9 +245,9 @@ body::after {
 }
 
 .cabecalho p {
-    max-width: 380px;
+    max-width: 350px;
 
-    margin: 0 auto;
+    margin: auto;
 
     color: var(--texto-suave);
 
@@ -288,13 +256,8 @@ body::after {
     line-height: 1.65;
 }
 
-/* =========================
-   CAMPOS
-========================= */
-
 .campo {
     width: 100%;
-
     margin-bottom: 18px;
 }
 
@@ -310,8 +273,6 @@ body::after {
     margin-bottom: 8px;
 }
 
-/* Container do input */
-
 .input-container {
     width: 100%;
     height: 50px;
@@ -319,24 +280,17 @@ body::after {
     display: flex;
     align-items: center;
 
-    position: relative;
-
     border: 1px solid var(--borda);
 
     border-radius: 12px;
 
     background: #f8fafc;
 
-    transition:
-        border-color 0.25s ease,
-        background 0.25s ease,
-        box-shadow 0.25s ease,
-        transform 0.25s ease;
+    transition: 0.25s ease;
 }
 
 .input-container:hover {
     border-color: #bfdbfe;
-
     background: #ffffff;
 }
 
@@ -347,30 +301,16 @@ body::after {
 
     box-shadow:
         0 0 0 4px rgba(37, 99, 235, 0.10);
-
-    transform: translateY(-1px);
 }
-
-/* Ícones */
 
 .input-container > svg {
     width: 20px;
     height: 20px;
 
-    flex-shrink: 0;
-
     margin-left: 15px;
 
     color: #94a3b8;
-
-    transition: color 0.25s ease;
 }
-
-.input-container:focus-within > svg {
-    color: var(--azul);
-}
-
-/* Inputs */
 
 .input-container input {
     width: 100%;
@@ -392,15 +332,9 @@ body::after {
     color: #94a3b8;
 }
 
-/* =========================
-   BOTÃO MOSTRAR SENHA
-========================= */
-
 .mostrar-senha {
     width: 40px;
     height: 40px;
-
-    flex-shrink: 0;
 
     margin-right: 5px;
 
@@ -415,12 +349,6 @@ body::after {
     justify-content: center;
 
     cursor: pointer;
-
-    border-radius: 8px;
-
-    transition:
-        color 0.2s ease,
-        background 0.2s ease;
 }
 
 .mostrar-senha svg {
@@ -428,75 +356,60 @@ body::after {
     height: 20px;
 }
 
-.mostrar-senha:hover {
-    color: var(--azul);
-
-    background: var(--azul-claro);
-}
-
+.mostrar-senha:hover,
 .mostrar-senha.ativo {
     color: var(--azul);
 }
 
-/* =========================
-   FORÇA DA SENHA
-========================= */
+.opcoes {
+    display: flex;
 
-.forca-senha {
-    margin-top: -5px;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
 
     margin-bottom: 22px;
 }
 
-.barra-forca {
-    width: 100%;
+.lembrar {
+    display: flex;
 
-    display: grid;
+    align-items: center;
 
-    grid-template-columns: repeat(4, 1fr);
+    gap: 7px;
 
-    gap: 5px;
-
-    margin-bottom: 8px;
-}
-
-.barra-forca span {
-    height: 4px;
-
-    border-radius: 10px;
-
-    background: #e2e8f0;
-
-    transition:
-        background 0.25s ease,
-        transform 0.25s ease;
-}
-
-.barra-forca span.fraca {
-    background: var(--vermelho);
-}
-
-.barra-forca span.media {
-    background: var(--laranja);
-}
-
-.barra-forca span.forte {
-    background: var(--verde);
-}
-
-.forca-senha p {
     color: var(--texto-suave);
 
-    font-size: 12px;
+    font-size: 13px;
 
-    line-height: 1.4;
+    cursor: pointer;
 }
 
-/* =========================
-   BOTÃO CADASTRAR
-========================= */
+.lembrar input {
+    width: 16px;
+    height: 16px;
 
-.btn-cadastrar {
+    accent-color: var(--azul);
+
+    cursor: pointer;
+}
+
+.opcoes a {
+    color: var(--azul);
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+.opcoes a:hover {
+    color: var(--azul-escuro);
+}
+
+.btn-entrar {
     width: 100%;
     height: 52px;
 
@@ -504,13 +417,14 @@ body::after {
 
     border-radius: 12px;
 
-    background: linear-gradient(
-        135deg,
-        var(--azul),
-        var(--azul-escuro)
-    );
+    background:
+        linear-gradient(
+            135deg,
+            var(--azul),
+            var(--azul-escuro)
+        );
 
-    color: #ffffff;
+    color: white;
 
     font-size: 15px;
 
@@ -519,6 +433,7 @@ body::after {
     cursor: pointer;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -527,42 +442,24 @@ body::after {
     box-shadow:
         0 8px 18px rgba(37, 99, 235, 0.22);
 
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        filter 0.25s ease;
+    transition: 0.25s ease;
 }
 
-.btn-cadastrar svg {
+.btn-entrar svg {
     width: 20px;
     height: 20px;
-
-    transition: transform 0.25s ease;
 }
 
-.btn-cadastrar:hover {
+.btn-entrar:hover {
     transform: translateY(-2px);
 
     box-shadow:
         0 12px 24px rgba(37, 99, 235, 0.28);
-
-    filter: brightness(1.03);
 }
-
-.btn-cadastrar:hover svg {
-    transform: translateX(3px);
-}
-
-.btn-cadastrar:active {
-    transform: translateY(0);
-}
-
-/* =========================
-   SEPARADOR
-========================= */
 
 .separador {
     display: flex;
+
     align-items: center;
 
     gap: 12px;
@@ -589,11 +486,7 @@ body::after {
     white-space: nowrap;
 }
 
-/* =========================
-   BOTÃO LOGIN
-========================= */
-
-.btn-login {
+.btn-cadastro {
     width: 100%;
     height: 50px;
 
@@ -601,7 +494,7 @@ body::after {
 
     border-radius: 12px;
 
-    background: #ffffff;
+    background: white;
 
     color: var(--azul);
 
@@ -612,24 +505,21 @@ body::after {
     font-weight: 700;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     gap: 9px;
 
-    transition:
-        border-color 0.25s ease,
-        background 0.25s ease,
-        color 0.25s ease,
-        transform 0.25s ease;
+    transition: 0.25s ease;
 }
 
-.btn-login svg {
+.btn-cadastro svg {
     width: 19px;
     height: 19px;
 }
 
-.btn-login:hover {
+.btn-cadastro:hover {
     border-color: #bfdbfe;
 
     background: var(--azul-claro);
@@ -638,10 +528,6 @@ body::after {
 
     transform: translateY(-1px);
 }
-
-/* =========================
-   RODAPÉ
-========================= */
 
 .rodape {
     text-align: center;
@@ -653,28 +539,19 @@ body::after {
     line-height: 1.6;
 
     margin-top: 20px;
-
-    padding: 0 10px;
 }
-
-/* =========================
-   POPUP
-========================= */
 
 .popup {
     position: fixed;
 
     inset: 0;
 
-    width: 100%;
-    height: 100%;
-
     background: rgba(15, 23, 42, 0.58);
 
     backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -686,9 +563,7 @@ body::after {
 
     pointer-events: none;
 
-    transition:
-        opacity 0.3s ease,
-        visibility 0.3s ease;
+    transition: 0.3s ease;
 
     z-index: 9999;
 }
@@ -701,16 +576,11 @@ body::after {
     pointer-events: auto;
 }
 
-/* Conteúdo */
-
 .popup-conteudo {
     width: 100%;
-
     max-width: 410px;
 
-    background: #ffffff;
-
-    border: 1px solid rgba(226, 232, 240, 0.8);
+    background: white;
 
     border-radius: 22px;
 
@@ -721,21 +591,14 @@ body::after {
     box-shadow:
         0 30px 80px rgba(0, 0, 0, 0.20);
 
-    transform:
-        translateY(20px)
-        scale(0.94);
+    transform: translateY(20px) scale(0.94);
 
-    transition:
-        transform 0.3s ease;
+    transition: 0.3s ease;
 }
 
 .popup.ativo .popup-conteudo {
-    transform:
-        translateY(0)
-        scale(1);
+    transform: translateY(0) scale(1);
 }
-
-/* Ícone */
 
 .popup-icone {
     width: 68px;
@@ -750,11 +613,9 @@ body::after {
     color: var(--verde);
 
     display: flex;
+
     align-items: center;
     justify-content: center;
-
-    box-shadow:
-        0 8px 20px rgba(16, 185, 129, 0.12);
 }
 
 .popup-icone svg {
@@ -764,17 +625,11 @@ body::after {
 
 .popup-icone.erro {
     background: #fee2e2;
-
     color: var(--vermelho);
-
-    box-shadow:
-        0 8px 20px rgba(239, 68, 68, 0.10);
 }
 
-/* Título */
-
 .popup-conteudo h2 {
-    margin: 0 0 10px;
+    margin-bottom: 10px;
 
     color: var(--texto);
 
@@ -782,8 +637,6 @@ body::after {
 
     font-weight: 800;
 }
-
-/* Mensagem */
 
 .popup-conteudo p {
     margin: 0 auto 24px;
@@ -797,22 +650,17 @@ body::after {
     font-size: 14px;
 }
 
-/* Botão */
-
 .popup-conteudo button {
     width: 100%;
-
     height: 48px;
 
     border: none;
 
     border-radius: 11px;
 
-    padding: 0 20px;
-
     background: var(--azul);
 
-    color: #ffffff;
+    color: white;
 
     font-size: 14px;
 
@@ -820,31 +668,22 @@ body::after {
 
     cursor: pointer;
 
-    box-shadow:
-        0 7px 16px rgba(37, 99, 235, 0.20);
-
-    transition:
-        transform 0.2s ease,
-        background 0.2s ease,
-        box-shadow 0.2s ease;
+    transition: 0.2s ease;
 }
 
 .popup-conteudo button:hover {
     background: var(--azul-escuro);
 
     transform: translateY(-1px);
-
-    box-shadow:
-        0 10px 20px rgba(37, 99, 235, 0.25);
 }
 
-.popup-conteudo button:active {
-    transform: translateY(0);
+#iconeErro {
+    display: none;
 }
 
-/* =========================
-   RESPONSIVO
-========================= */
+#iconeSucesso {
+    display: none;
+}
 
 @media (max-width: 600px) {
 
@@ -852,38 +691,10 @@ body::after {
         padding: 20px 14px;
     }
 
-    .cartao-cadastro {
-        max-width: 100%;
-
+    .cartao-login {
         padding: 30px 22px;
 
         border-radius: 20px;
-    }
-
-    .marca {
-        margin-bottom: 24px;
-    }
-
-    .marca-icone {
-        width: 44px;
-        height: 44px;
-    }
-
-    .marca-icone svg {
-        width: 24px;
-        height: 24px;
-    }
-
-    .marca strong {
-        font-size: 15px;
-    }
-
-    .marca span {
-        font-size: 11px;
-    }
-
-    .cabecalho {
-        margin-bottom: 24px;
     }
 
     .cabecalho h1 {
@@ -894,76 +705,32 @@ body::after {
         font-size: 13px;
     }
 
-    .input-container {
-        height: 49px;
+    .opcoes a {
+        font-size: 12px;
     }
 
-    .btn-cadastrar {
-        height: 50px;
-    }
-
-    .btn-login {
-        height: 49px;
-    }
-
-    .popup {
-        padding: 15px;
-    }
-
-    .popup-conteudo {
-        padding: 28px 21px;
-
-        border-radius: 19px;
+    .lembrar {
+        font-size: 12px;
     }
 }
 
-/* =========================
-   ECRÃS MUITO PEQUENOS
-========================= */
-
 @media (max-width: 360px) {
 
-    .cartao-cadastro {
+    .cartao-login {
         padding: 27px 18px;
-    }
-
-    .marca {
-        gap: 9px;
-    }
-
-    .marca strong {
-        font-size: 14px;
-    }
-
-    .marca span {
-        font-size: 10px;
     }
 
     .cabecalho h1 {
         font-size: 24px;
     }
 
-    .cabecalho p {
-        font-size: 12px;
+    .opcoes {
+        flex-direction: column;
+
+        align-items: flex-start;
     }
 
-    .campo label {
-        font-size: 13px;
-    }
-
-    .input-container input {
-        font-size: 13px;
-    }
-
-    .btn-cadastrar {
-        font-size: 14px;
-    }
-
-    .btn-login {
-        font-size: 13px;
-    }
-
-    .popup-conteudo h2 {
-        font-size: 21px;
+    .opcoes a {
+        align-self: flex-end;
     }
 }
