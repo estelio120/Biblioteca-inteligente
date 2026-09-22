@@ -1,4 +1,7 @@
 
+/* =========================================================
+   1. RESET / CONFIGURAÇÕES GERAIS
+========================================================= */
 
 * {
     margin: 0;
@@ -170,7 +173,7 @@ body {
 }
 
 
-/* Ícone de três linhas */
+/* Ícone do botão */
 
 .menu-btn::before {
     content: "";
@@ -278,9 +281,6 @@ body {
 
     line-height: 1.35;
 }
-
-
-/* Se futuramente houver um ícone separado */
 
 .logo-icon {
     width: 44px;
@@ -434,15 +434,6 @@ body {
    15. ITEM ATIVO
 ========================================================= */
 
-/*
-   O seu HTML atual não possui uma classe "ativo"
-   nos links.
-
-   Esta regra permite usar futuramente:
-
-   <a class="ativo">
-*/
-
 .menu-lista a.ativo {
     background: #effaf6;
 
@@ -499,228 +490,193 @@ body {
 
 
 /* =========================================================
-   18. DESKTOP
+   18. CONTEÚDO PRINCIPAL
 ========================================================= */
 
-@media (min-width: 901px) {
+/*
+   CORREÇÃO PRINCIPAL:
 
-    /*
-       O menu permanece fixo.
-       Apenas o conteúdo da página fará scroll.
-    */
+   O menu lateral ocupa 285px.
+   Por isso, no computador o conteúdo também
+   precisa começar depois desses 285px.
+*/
 
-    .menu {
-        transform: translateX(0);
-    }
-
-    .menu-btn {
-        display: none;
-    }
-
-    #overlay {
-        display: none;
-    }
-
-    .header {
-        left: 285px;
-
-        width:
-            calc(100% - 285px);
-    }
-
-    .header h2 {
-        margin-left: 0;
-    }
-}
-
-
-/* =========================================================
-   19. TABLET
-========================================================= */
-
-@media (max-width: 900px) {
-
-    .header {
-        height: 64px;
-
-        padding: 0 18px;
-    }
-
-    .header h2 {
-        margin-left: 50px;
-
-        font-size: 18px;
-    }
-
-    .menu-btn {
-        display: flex;
-    }
-
-    /*
-       No celular/tablet o menu começa escondido.
-    */
-
-    .menu {
-        width: 285px;
-
-        transform:
-            translateX(-105%);
-    }
-
-    /*
-       Quando o JavaScript colocar
-       .ativo, o menu aparece.
-    */
-
-    .menu.ativo {
-        transform:
-            translateX(0);
-    }
-}
-
-
-/* =========================================================
-   20. CELULAR
-========================================================= */
-
-@media (max-width: 600px) {
-
-    .header {
-        height: 64px;
-
-        padding: 0 15px;
-    }
-
-    .header h2 {
-        margin-left: 48px;
-
-        font-size: 17px;
-    }
-
-    .menu-btn {
-        left: 12px;
-        top: 11px;
-
-        width: 40px;
-        height: 40px;
-    }
-
-    .menu {
-        width: 280px;
-
-        padding:
-            22px 15px;
-    }
-}
-
-
-@media (max-width: 380px) {
-
-    .menu {
-        width: 270px;
-    }
-
-    .header h2 {
-        font-size: 16px;
-    }
-}
 .conteudo {
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 105px 35px 40px;
+    width: calc(100% - 285px);
+
+    margin-left: 285px;
+
+    padding:
+        105px 35px
+        40px;
+
+    min-height: 100vh;
 }
 
 .conteudo h2 {
     color: #172033;
+
     font-size: 30px;
+
     font-weight: 800;
+
     margin-bottom: 7px;
 }
 
 .conteudo > p {
     color: #64748b;
+
     font-size: 15px;
+
     margin-bottom: 24px;
 }
 
+
+/* =========================================================
+   19. PESQUISA
+========================================================= */
+
 .busca {
     position: relative;
+
     width: min(650px, 100%);
-    margin: 0 auto 32px;
+
+    margin:
+        0 auto
+        32px;
 }
 
 .busca input {
     width: 100%;
     height: 52px;
-    padding: 0 20px 0 50px;
-    border: 1px solid #dbe3ee;
+
+    padding:
+        0 20px
+        0 50px;
+
+    border:
+        1px solid #dbe3ee;
+
     border-radius: 14px;
+
     outline: none;
+
     background: #ffffff;
+
     color: #1e293b;
+
     font-size: 14px;
-    box-shadow: 0 5px 20px rgba(15, 23, 42, .06);
+
+    box-shadow:
+        0 5px 20px rgba(15, 23, 42, .06);
+
     transition: .25s ease;
 }
 
 .busca input:focus {
     border-color: #119b73;
-    box-shadow: 0 0 0 4px rgba(17, 155, 115, .10);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(17, 155, 115, .10);
 }
 
 .busca input::placeholder {
     color: #94a3b8;
 }
 
+
+/* Ícone de pesquisa */
+
 .busca::before {
     content: "";
+
     position: absolute;
+
     left: 19px;
     top: 50%;
+
     width: 15px;
     height: 15px;
-    border: 2px solid #64748b;
+
+    border:
+        2px solid #64748b;
+
     border-radius: 50%;
-    transform: translateY(-60%);
+
+    transform:
+        translateY(-60%);
+
     z-index: 2;
+
     pointer-events: none;
 }
 
 .busca::after {
     content: "";
+
     position: absolute;
+
     left: 33px;
     top: calc(50% + 7px);
+
     width: 7px;
     height: 2px;
+
     background: #64748b;
+
     transform: rotate(45deg);
+
     border-radius: 2px;
+
     z-index: 2;
+
     pointer-events: none;
 }
 
+
+/* =========================================================
+   20. SUGESTÕES DA PESQUISA
+========================================================= */
+
 #sugestoes {
     position: absolute;
+
     top: calc(100% + 7px);
+
     left: 0;
     right: 0;
+
     display: none;
+
     background: #ffffff;
-    border: 1px solid #e2e8f0;
+
+    border:
+        1px solid #e2e8f0;
+
     border-radius: 13px;
+
     overflow: hidden;
+
     z-index: 1500;
-    box-shadow: 0 15px 35px rgba(15, 23, 42, .12);
+
+    box-shadow:
+        0 15px 35px
+        rgba(15, 23, 42, .12);
 }
 
 .item-sugestao {
     padding: 13px 16px;
+
     color: #334155;
+
     font-size: 13px;
+
     cursor: pointer;
-    border-bottom: 1px solid #f1f5f9;
+
+    border-bottom:
+        1px solid #f1f5f9;
+
     transition: .2s;
 }
 
@@ -730,26 +686,53 @@ body {
 
 .item-sugestao:hover {
     background: #effaf6;
+
     color: #119b73;
 }
 
+
+/* =========================================================
+   21. GRELHA DOS LIVROS
+========================================================= */
+
 .conte {
     width: 100%;
+
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
     gap: 24px;
+
     align-items: start;
 }
 
+
+/* =========================================================
+   22. CARD DO LIVRO
+========================================================= */
+
 .card {
     position: relative;
+
     width: 100%;
+
     min-width: 0;
+
     background: #ffffff;
-    border: 1px solid #e7ebf0;
+
+    border:
+        1px solid #e7ebf0;
+
     border-radius: 18px;
+
     overflow: hidden;
-    box-shadow: 0 7px 22px rgba(15, 23, 42, .06);
+
+    box-shadow:
+        0 7px 22px
+        rgba(15, 23, 42, .06);
+
     transition:
         transform .3s ease,
         box-shadow .3s ease,
@@ -758,50 +741,97 @@ body {
 
 .card:hover {
     transform: translateY(-5px);
+
     border-color: #d5e8e1;
-    box-shadow: 0 18px 38px rgba(15, 23, 42, .12);
+
+    box-shadow:
+        0 18px 38px
+        rgba(15, 23, 42, .12);
 }
+
+
+/* =========================================================
+   23. IMAGEM DO LIVRO
+========================================================= */
 
 .card > img {
     display: block;
+
     width: 100%;
     height: 275px;
+
     object-fit: cover;
+
     background: #f1f5f9;
-    transition: transform .35s ease;
+
+    transition:
+        transform .35s ease;
 }
 
 .card:hover > img {
     transform: scale(1.035);
 }
 
+
+/* =========================================================
+   24. ESTADO DO LIVRO
+========================================================= */
+
 .estado {
     position: absolute;
+
     top: 12px;
     left: 12px;
+
     z-index: 5;
+
     display: inline-flex;
+
     align-items: center;
+
     gap: 6px;
-    padding: 6px 10px;
+
+    padding:
+        6px 10px;
+
     border-radius: 20px;
-    background: rgba(236, 253, 245, .96);
+
+    background:
+        rgba(236, 253, 245, .96);
+
     color: #059669;
-    border: 1px solid #a7f3d0;
+
+    border:
+        1px solid #a7f3d0;
+
     font-size: 11px;
+
     font-weight: 700;
+
     backdrop-filter: blur(5px);
-    box-shadow: 0 4px 12px rgba(15, 23, 42, .08);
+
+    box-shadow:
+        0 4px 12px
+        rgba(15, 23, 42, .08);
 }
 
 .estado::before {
     content: "";
+
     width: 7px;
     height: 7px;
+
     flex-shrink: 0;
+
     border-radius: 50%;
+
     background: #10b981;
 }
+
+
+/* =========================================================
+   25. INFORMAÇÕES DO LIVRO
+========================================================= */
 
 .info {
     padding: 18px;
@@ -809,20 +839,43 @@ body {
 
 .info h3 {
     color: #172033;
+
     font-size: 17px;
+
     line-height: 1.35;
+
     font-weight: 750;
+
     min-height: 46px;
-    margin: 0 0 8px;
+
+    margin:
+        0 0 8px;
 }
 
 .autor {
     color: #64748b;
+
     font-size: 13px;
+
     line-height: 1.4;
-    margin: 0 0 10px;
+
+    margin:
+        0 0 10px;
 }
 
+
+/* =========================================================
+   26. RESPONSIVIDADE - DESKTOP
+========================================================= */
+
+@media (min-width: 901px) {
+
+    .menu {
+        transform: translateX(0);
+    }
+
+    .menu-btn {
+        display:
 .categoria {
     display: inline-flex;
     align-items: center;
